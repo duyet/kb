@@ -27,6 +27,9 @@ shopt -u nullglob
 # Drop the legacy CLI symlink from older installs, if present.
 rm_link "${BIN_DIR:-$HOME/.local/bin}/kb"
 
+# Remove the wired-in reflex block from global agent config.
+KB_DIR="$KB_DIR" "$KB_DIR/scripts/wire.sh" off 2>/dev/null | sed 's/^/- /' || true
+
 # Turn off auto-sync cron if it was enabled.
 "$KB_DIR/bin/kb" autosync off >/dev/null 2>&1 || true
 echo "- autosync off"

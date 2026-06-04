@@ -18,6 +18,12 @@ for s in "$KB_DIR"/skills/*/; do
 done
 shopt -u nullglob
 
+# Wire the reflex into global agent config (Claude Code / Codex / opencode).
+# Skip with KB_NO_WIRE=1.
+if [ -z "${KB_NO_WIRE:-}" ]; then
+  KB_DIR="$KB_DIR" "$KB_DIR/scripts/wire.sh" on | sed 's/^/  /'
+fi
+
 echo
 echo "KB_DIR = $KB_DIR"
 # Prefer a tidy ~/kb path in the hint if it resolves to this repo.
