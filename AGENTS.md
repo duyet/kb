@@ -60,6 +60,7 @@ category: <finer grouping>        # e.g. profile, stack, style, infra, clickhous
 tags: [tag-one, tag-two]          # lowercase-kebab; drives Obsidian graph clustering
 aliases: [alt-name]               # optional; alternative [[link]] targets
 related: ["[[other-slug]]", "[[another-slug]]"]   # explicit graph edges
+sources: ["https://…/llms.txt"]   # optional; live URLs to fetch for fresh/deeper detail
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 ---
@@ -70,6 +71,15 @@ Link related notes inline with [[their-slug]] too.>
 
 Required: `name`, `description`, `type`, `tags`, `created`, `updated`. The rest are
 optional but encouraged. `title`, `category`, `aliases`, `related` improve Obsidian.
+
+### Live sources for deep retrieval
+
+A note is a **compact snapshot**; the web is the live truth. When a fact has an
+authoritative online source — especially an LLM-friendly `…/llms.txt` — list it
+in `sources:` (and/or link it inline). Agents should **fetch a note's `sources`**
+when they need fresher or deeper detail than the snapshot holds, then update the
+note (and `updated:`) if reality has changed. Prefer `llms.txt` endpoints; they
+are built for exactly this. Keep only **public** URLs here.
 
 ### Memory types
 

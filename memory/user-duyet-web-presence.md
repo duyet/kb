@@ -6,6 +6,7 @@ type: reference
 category: profile
 tags: [reference, duyet, profile, links]
 related: ["[[user-duyet-profile]]", "[[user-duyet-stack]]"]
+sources: ["https://duyet.net/llms.txt", "https://blog.duyet.net/llms.txt", "https://cv.duyet.net/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-04
 ---

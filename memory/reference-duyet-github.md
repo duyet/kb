@@ -6,6 +6,7 @@ type: reference
 category: projects
 tags: [reference, duyet, github, projects]
 related: ["[[user-duyet-stack]]", "[[user-duyet-ai-stance]]", "[[reference-duyet-blog]]"]
+sources: ["https://github.com/duyet", "https://duyet.net/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-04
 ---

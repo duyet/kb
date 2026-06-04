@@ -6,6 +6,7 @@ type: user
 category: ai
 tags: [user, duyet, coding-agents, llm-agents]
 related: ["[[user-duyet-stack]]", "[[feedback-docs-driven-development]]", "[[user-duyet-profile]]"]
+sources: ["https://blog.duyet.net/llms.txt", "https://blog.duyet.net/feed"]
 created: 2026-06-04
 updated: 2026-06-04
 ---

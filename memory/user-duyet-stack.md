@@ -6,6 +6,7 @@ type: user
 category: stack
 tags: [user, duyet, stack, tooling, data-engineering]
 related: ["[[user-duyet-profile]]", "[[user-duyet-web-presence]]"]
+sources: ["https://cv.duyet.net/llms.txt", "https://blog.duyet.net/llms.txt", "https://github.com/duyet"]
 created: 2026-06-04
 updated: 2026-06-04
 ---
