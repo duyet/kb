@@ -5,7 +5,8 @@
 set -euo pipefail
 
 KB_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SKILLS_DIR="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
+HOME_BASE="${KB_HOME:-$HOME}"
+SKILLS_DIR="${CLAUDE_SKILLS_DIR:-$HOME_BASE/.claude/skills}"
 
 # Remove a symlink only if it resolves into KB_DIR (never touch real files).
 rm_link() {
@@ -23,6 +24,9 @@ for s in "$KB_DIR"/skills/*/; do
   rm_link "$SKILLS_DIR/$(basename "$s")"
 done
 shopt -u nullglob
+
+# hermes-native skill link.
+rm_link "$HOME_BASE/.hermes/skills/knowledge-base/kb"
 
 # Drop the legacy CLI symlink from older installs, if present.
 rm_link "${BIN_DIR:-$HOME/.local/bin}/kb"

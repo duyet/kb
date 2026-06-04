@@ -7,8 +7,10 @@
 set -euo pipefail
 
 KB_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SKILLS_DIR="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
+HOME_BASE="${KB_HOME:-$HOME}"
+SKILLS_DIR="${CLAUDE_SKILLS_DIR:-$HOME_BASE/.claude/skills}"
 
+# Claude Code / opencode skills (SKILL.md format).
 mkdir -p "$SKILLS_DIR"
 shopt -s nullglob
 for s in "$KB_DIR"/skills/*/; do
@@ -17,6 +19,13 @@ for s in "$KB_DIR"/skills/*/; do
   echo "+ link  $SKILLS_DIR/$name"
 done
 shopt -u nullglob
+
+# hermes-native skill — file-tool oriented — into hermes's own skills dir.
+if [ -d "$HOME_BASE/.hermes/skills" ]; then
+  mkdir -p "$HOME_BASE/.hermes/skills/knowledge-base"
+  ln -sfn "$KB_DIR/agents/hermes/kb" "$HOME_BASE/.hermes/skills/knowledge-base/kb"
+  echo "+ link  $HOME_BASE/.hermes/skills/knowledge-base/kb"
+fi
 
 # Wire the reflex into global agent config (Claude Code / Codex / opencode).
 # Skip with KB_NO_WIRE=1.
