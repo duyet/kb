@@ -6,6 +6,7 @@ type: user
 category: profile
 tags: [user, duyet, profile]
 related: ["[[user-duyet-web-presence]]", "[[user-duyet-stack]]", "[[feedback-working-style]]"]
+sources: ["https://duyet.net/llms.txt", "https://cv.duyet.net/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-04
 ---

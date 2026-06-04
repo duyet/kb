@@ -6,6 +6,7 @@ type: reference
 category: writing
 tags: [reference, duyet, blog, writing]
 related: ["[[user-duyet-web-presence]]", "[[user-duyet-ai-stance]]"]
+sources: ["https://blog.duyet.net/llms.txt", "https://blog.duyet.net/feed"]
 created: 2026-06-04
 updated: 2026-06-04
 ---
