@@ -49,16 +49,23 @@ Every note follows `memory/_TEMPLATE.md` and must pass `kb lint`. Format spec in
 curl -fsSL https://raw.githubusercontent.com/duyet/kb/main/scripts/bootstrap.sh | bash
 ```
 
-Minimal footprint — the only changes to your machine are **link the skills** into
-`~/.claude/skills` and a **PATH line** you add for the `kb` CLI (the script stays
-in the repo, nothing is copied):
+Minimal footprint — the changes to your machine are: **link the skills** into
+`~/.claude/skills`, **wire the reflex** into each installed agent's global config
+(a small marked, removable block), and a **PATH line** you add for the `kb` CLI
+(the script stays in the repo, nothing is copied):
 
 ```bash
 export PATH="$HOME/kb/bin:$PATH"     # add to ~/.zshrc or ~/.bashrc
 ```
 
-No cron, no edits to other files. Opt in to background sync with `kb autosync on`.
-Remove everything with `scripts/uninstall.sh` (unlinks; repo untouched). Env:
+**Wiring is multi-agent and adaptive** — it only touches agents that are present:
+Claude Code (`~/.claude/CLAUDE.md`+`AGENTS.md`), Codex (`~/.codex/AGENTS.md`),
+opencode (`~/.config/opencode/AGENTS.md`), hermes (`~/.hermes/SOUL.md`), openclaw
+(`~/.openclaw/CLAUDE.md`). Toggle with `kb wire on|off`; skip at install with
+`KB_NO_WIRE=1`.
+
+No cron, no other edits. Opt in to background sync with `kb autosync on`. Remove
+everything with `scripts/uninstall.sh` (unlinks + unwires; repo untouched). Env:
 `KB_DIR`, `KB_REPO`, `CLAUDE_SKILLS_DIR`. Verify: `kb root`.
 
 ## CLI
