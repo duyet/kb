@@ -62,23 +62,23 @@ rather than duplicating. Full rules in `AGENTS.md`.
 
 ```bash
 # 1. Clone to the standard location
-git clone git@github.com:duyet/kb.git ~/project/kb
+git clone git@github.com:duyet/kb.git ~/kb
 
 # 2. Point your global agent config at it (one-time)
-#    Claude Code:  ~/.claude/CLAUDE.md   already references ~/project/kb
+#    Claude Code:  ~/.claude/CLAUDE.md   already references ~/kb
 #    Codex/others: ~/.claude/AGENTS.md   (and/or ~/.codex/AGENTS.md)
-#    If missing, add a line telling the agent to read ~/project/kb/AGENTS.md
+#    If missing, add a line telling the agent to read ~/kb/AGENTS.md
 #    on session start.
 
 # 3. Verify
-cat ~/project/kb/MEMORY.md     # should list the current memories
+cat ~/kb/MEMORY.md     # should list the current memories
 ```
 
 That's it. The agent now shares the brain. Anything it writes back, commit and
 push so other devices pick it up:
 
 ```bash
-cd ~/project/kb && git add -A && git commit -m "memory: <what changed>" && git push
+cd ~/kb && git add -A && git commit -m "memory: <what changed>" && git push
 ```
 
 ## Scope
