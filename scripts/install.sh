@@ -10,17 +10,19 @@ KB_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SKILLS_DIR="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
 
 mkdir -p "$SKILLS_DIR"
+shopt -s nullglob
 for s in "$KB_DIR"/skills/*/; do
   name="$(basename "$s")"
   ln -sfn "${s%/}" "$SKILLS_DIR/$name"
   echo "+ link  $SKILLS_DIR/$name"
 done
+shopt -u nullglob
 
 echo
 echo "KB_DIR = $KB_DIR"
 # Prefer a tidy ~/kb path in the hint if it resolves to this repo.
 BIN_HINT="$KB_DIR/bin"
-if [ -e "$HOME/kb" ] && [ "$(cd -P "$HOME/kb" && pwd)" = "$KB_DIR" ]; then
+if [ -d "$HOME/kb" ] && [ "$(cd -P "$HOME/kb" 2>/dev/null && pwd)" = "$KB_DIR" ]; then
   BIN_HINT="\$HOME/kb/bin"
 fi
 case ":$PATH:" in
