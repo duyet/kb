@@ -52,20 +52,6 @@ kb/
 Every note follows `memory/_TEMPLATE.md` and must pass `scripts/lint.sh` (required
 frontmatter, `name` == filename, links resolve). See `AGENTS.md` for the format.
 
-### Reference: Karpathy's LLM-Wiki model
-
-This repo follows Andrej Karpathy's three-layer LLM-Wiki pattern — *the note app
-is the IDE, the LLM is the programmer, the wiki is the codebase*:
-
-| Layer | Karpathy | Here |
-|-------|----------|------|
-| 1 — Raw sources (immutable, read-only) | `raw/` | `raw/` |
-| 2 — Synthesized, interlinked notes (AI writes) | `wiki/` | `memory/` + `MEMORY.md` |
-| 3 — Schema/config (rules for the AI) | `CLAUDE.md` | `AGENTS.md` (+ `CLAUDE.md`) |
-
-Agents read `raw/`, synthesize linked notes into `memory/`, and follow the rules
-in `AGENTS.md`. `.agent/state.json` tracks what's been ingested.
-
 ## How to use
 
 **Reading.** Start every session by reading `MEMORY.md`, then open only the

@@ -22,5 +22,4 @@ records each in `.agent/state.json` (`processed`) so it's ingested once, and
 
 ---
 
-Public material only — this repo is public. See the Karpathy LLM-Wiki model in
-`../README.md`.
+Public material only — this repo is public.
