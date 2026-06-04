@@ -10,13 +10,19 @@ KB_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 HOME_BASE="${KB_HOME:-$HOME}"
 SKILLS_DIR="${CLAUDE_SKILLS_DIR:-$HOME_BASE/.claude/skills}"
 
-# Claude Code / opencode skills (SKILL.md format).
-mkdir -p "$SKILLS_DIR"
+# Link skills into every agent skills dir that exists on this machine.
+AGENT_SKILLS_DIRS=(
+  "${CLAUDE_SKILLS_DIR:-$HOME_BASE/.claude/skills}"
+  "$HOME_BASE/.agents/skills"
+)
 shopt -s nullglob
-for s in "$KB_DIR"/skills/*/; do
-  name="$(basename "$s")"
-  ln -sfn "${s%/}" "$SKILLS_DIR/$name"
-  echo "+ link  $SKILLS_DIR/$name"
+for dir in "${AGENT_SKILLS_DIRS[@]}"; do
+  [ -d "$dir" ] || continue
+  for s in "$KB_DIR"/skills/*/; do
+    name="$(basename "$s")"
+    ln -sfn "${s%/}" "$dir/$name"
+    echo "+ link  $dir/$name"
+  done
 done
 shopt -u nullglob
 
