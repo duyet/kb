@@ -78,41 +78,50 @@ rather than duplicating. Full rules in `AGENTS.md`.
 **Dreaming.** Periodically (or via `/loop`), run the consolidation pass in
 `DREAM.md` to keep the KB compact and well-organized.
 
-## Onboarding a new device or new agent
+## Install on a new machine
+
+One command clones the repo and installs the `kb` CLI + skills + auto-sync:
 
 ```bash
-# 1. Clone to the standard location
-git clone git@github.com:duyet/kb.git ~/kb
-
-# 2. Point your global agent config at it (one-time)
-#    Claude Code:  ~/.claude/CLAUDE.md   already references ~/kb
-#    Codex/others: ~/.claude/AGENTS.md   (and/or ~/.codex/AGENTS.md)
-#    If missing, add a line telling the agent to read ~/kb/AGENTS.md
-#    on session start.
-
-# 3. Verify
-cat ~/kb/MEMORY.md     # should list the current memories
+curl -fsSL https://raw.githubusercontent.com/duyet/kb/main/scripts/bootstrap.sh | bash
 ```
 
-That's it. The agent now shares the brain.
+Or step by step:
+
+```bash
+git clone git@github.com:duyet/kb.git ~/kb   # or KB_REPO=https://… for no-SSH
+~/kb/scripts/install.sh                       # symlink CLI + skills, add cron
+```
+
+`bootstrap.sh` / `install.sh` are **machine-agnostic** — they self-locate the
+repo and use `$HOME`. Configurable env: `KB_DIR` (repo location, default `~/kb`),
+`KB_REPO` (clone URL), `KB_NO_CRON=1` (skip auto-sync cron), `BIN_DIR`,
+`CLAUDE_SKILLS_DIR`. After install, point your agent config at it (one-time):
+`~/.claude/CLAUDE.md` and `~/.claude/AGENTS.md` already reference `~/kb`.
+
+Verify: `kb root && kb index`.
+
+## CLI & skills
+
+```bash
+kb capture "rough note"   # → raw/inbox/<today>.md  (dream distills it later)
+kb ingest <file>          # add a source doc to raw/
+kb index                  # print MEMORY.md
+kb lint                   # validate notes against the standard
+kb sync                   # pull + commit + push
+kb dream                  # how to run consolidation
+```
+
+Skills (installed to `~/.claude/skills/`, usable by Claude Code & others):
+`kb-memory` (read/write protocol) and `kb-dream` (consolidation). Both resolve
+the KB location from `$KB_DIR` / `kb root`, so they work wherever kb is cloned.
 
 ## Auto-sync
 
-`scripts/sync.sh` keeps this device and the `duyet/kb` remote in sync: it pulls
-(rebase + autostash), commits any local edits, and pushes — safe to run anytime.
-
-```bash
-~/kb/scripts/sync.sh            # one-off sync
-```
-
-Run it on a schedule so every device stays current:
-
-```bash
-# every 15 min via cron
-*/15 * * * * /Users/duet/kb/scripts/sync.sh >> ~/.kb-sync.log 2>&1
-```
-
-Agents should also sync at the end of any session where they wrote a note.
+`scripts/sync.sh` keeps each machine and the `duyet/kb` remote in sync: pull
+(rebase + autostash) → commit local edits → push. `install.sh` adds a `*/15 min`
+cron for it on every machine (opt out with `KB_NO_CRON=1`). Agents should also
+`kb sync` at the end of any session where they wrote a note.
 
 ## Scope
 
