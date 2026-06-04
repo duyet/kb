@@ -141,17 +141,36 @@ Every note must satisfy all four:
   `name`. Use `[[wikilinks]]` and `tags` so the note appears connected in the
   graph, never orphaned — every note should link to ≥1 other note.
 
-## 3. Do NOT store
+## 3. Do NOT store (public repo — assume the whole internet reads every commit)
 
-- Secrets: API keys, tokens, passwords, credentials.
-- Infrastructure: SSH hosts, internal IPs, cluster names, private endpoints.
-- Confidential: employer-internal project names, customer data, anything not
-  already public on the user's blog/CV/GitHub.
-- Ephemeral: facts only relevant to one conversation, or already recorded in a
-  repo's code/git history/CLAUDE.md.
+**Hard ban — never write these anywhere in this repo** (notes, inbox, commit
+messages, frontmatter, tags, filenames, comments):
 
-If unsure whether something is public, leave it out — or keep it in that repo's
-local kb / the agent's private per-project memory instead of here.
+- **Credentials:** API keys, tokens, passwords, certificates, connection strings,
+  auth headers, `.env` values.
+- **Infrastructure:** hostnames, IP addresses, SSH endpoints, private URLs,
+  cluster names, subnet/VPC IDs, cloud resource IDs, internal service endpoints.
+- **Machine identity:** machine names, device hostnames, server aliases,
+  `user@host` patterns, SSH config entries.
+- **Network topology:** port numbers on internal services, VPN details, proxy
+  configs, firewall rules, internal DNS names.
+- **Location data:** physical addresses, GPS coordinates, city of residence,
+  office locations, timezone-precise schedules that reveal geography.
+- **Employer-internal:** project codenames, internal tool names, team structures,
+  org charts, internal abbreviations, customer/client names, proprietary
+  processes — anything not already on the user's public blog/CV/GitHub.
+- **Personal identifiers:** phone numbers, email addresses (unless the user's
+  own public one), government IDs, financial data, medical information.
+
+**Allowed only if already publicly visible** on the user's GitHub profile,
+personal site, or published blog:
+- Public GitHub repo names (`duyet/kb` ✅, internal `acme/secret-project` ❌)
+- Public tech stack mentions ("I use Rust" ✅)
+- Public bio facts ("data engineer" ✅)
+
+**Rule of thumb:** if you would not put it on a public GitHub README, do not put
+it here. When in doubt, leave it out — keep it in the agent's private
+per-project memory instead.
 
 ## 4. Auto-dream
 
