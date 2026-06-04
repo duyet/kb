@@ -38,6 +38,17 @@ case "$cmd" in
   lint|l)   exec "$KB_DIR/scripts/lint.sh" ;;
   index)    cat "$KB_DIR/MEMORY.md" ;;
   root|path) echo "$KB_DIR" ;;
+  autosync)
+    command -v crontab >/dev/null 2>&1 || { echo "crontab not available"; exit 1; }
+    line="*/15 * * * * $KB_DIR/scripts/sync.sh >> \$HOME/.kb-sync.log 2>&1"
+    rest="$(crontab -l 2>/dev/null | grep -v '/scripts/sync\.sh' || true)"
+    case "${1:-status}" in
+      on)  { [ -n "$rest" ] && printf '%s\n' "$rest"; printf '%s\n' "$line"; } | crontab -
+           echo "autosync on (*/15 min)" ;;
+      off) if [ -n "$rest" ]; then printf '%s\n' "$rest" | crontab -; else crontab -r 2>/dev/null || true; fi
+           echo "autosync off" ;;
+      status|*) crontab -l 2>/dev/null | grep -q '/scripts/sync\.sh' && echo "on" || echo "off" ;;
+    esac ;;
   help|-h|--help)
     cat <<EOF
 kb — shared-brain CLI   (KB_DIR=$KB_DIR)
@@ -45,10 +56,11 @@ kb — shared-brain CLI   (KB_DIR=$KB_DIR)
   kb capture "<note>"   append a timestamped line to today's raw/inbox
   kb ingest <file>      copy a source doc into raw/ for later ingestion
   kb dream              how to run the consolidation pass (agent task)
-  kb sync               pull + commit + push (scripts/sync.sh)
-  kb lint               validate notes against the standard (scripts/lint.sh)
+  kb sync               pull + commit + push
+  kb lint               validate notes against the standard
   kb index              print MEMORY.md
   kb root               print the resolved KB location
+  kb autosync on|off|status   opt-in */15min sync cron (not installed by default)
 EOF
     ;;
   *) echo "kb: unknown command '$cmd' (try: kb help)"; exit 1 ;;

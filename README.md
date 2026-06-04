@@ -49,9 +49,17 @@ Every note follows `memory/_TEMPLATE.md` and must pass `kb lint`. Format spec in
 curl -fsSL https://raw.githubusercontent.com/duyet/kb/main/scripts/bootstrap.sh | bash
 ```
 
-Clones to `~/kb`, then symlinks the `kb` CLI + skills and adds a `*/15min`
-auto-sync cron. Machine-agnostic (self-locating, `$HOME`). Env: `KB_DIR`,
-`KB_REPO`, `KB_NO_CRON=1`, `BIN_DIR`, `CLAUDE_SKILLS_DIR`. Verify: `kb root`.
+Minimal footprint — the only changes to your machine are **link the skills** into
+`~/.claude/skills` and a **PATH line** you add for the `kb` CLI (the script stays
+in the repo, nothing is copied):
+
+```bash
+export PATH="$HOME/kb/bin:$PATH"     # add to ~/.zshrc or ~/.bashrc
+```
+
+No cron, no edits to other files. Opt in to background sync with `kb autosync on`.
+Remove everything with `scripts/uninstall.sh` (unlinks; repo untouched). Env:
+`KB_DIR`, `KB_REPO`, `CLAUDE_SKILLS_DIR`. Verify: `kb root`.
 
 ## CLI
 
@@ -59,6 +67,7 @@ auto-sync cron. Machine-agnostic (self-locating, `$HOME`). Env: `KB_DIR`,
 kb capture "rough note"   # → raw/inbox/<today>.md
 kb ingest <file>          # add a source doc to raw/
 kb index | kb lint | kb sync | kb dream | kb root
+kb autosync on|off|status # opt-in */15min sync cron
 ```
 
 Skills `kb-memory` (read/write protocol) and `kb-dream` (consolidation) install to
