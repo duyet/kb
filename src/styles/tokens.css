@@ -1,12 +1,18 @@
 /* ============================================================
-   Design Tokens — adapted from astro-tone
+   Design Tokens — aligned with astro-tone
    ============================================================ */
+
+/* Google Fonts — Inter (variable weight) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ------------------------------------------------------------
+   1. TYPOGRAPHY
+   ------------------------------------------------------------ */
 :root {
-  /* Font Families */
   --font-sans:
-    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
     Arial, sans-serif;
-  --font-mono: ui-monospace, Menlo, Consolas, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
 
   /* Type Scale */
   --text-large-title: 2.125rem;
@@ -14,7 +20,7 @@
   --text-title-2: 1.375rem;
   --text-title-3: 1.25rem;
   --text-headline: 1.0625rem;
-  --text-body: 1.0625rem;
+  --text-body: 1.125rem;
   --text-callout: 1rem;
   --text-subheadline: 0.9375rem;
   --text-footnote: 0.8125rem;
@@ -26,6 +32,7 @@
   --weight-medium: 500;
   --weight-semibold: 600;
   --weight-bold: 700;
+  --weight-accent-label: var(--weight-medium);
 
   /* Line Heights */
   --leading-tight: 1.2;
@@ -36,11 +43,17 @@
   /* Letter Spacing */
   --tracking-tight: -0.022em;
   --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
 
-  /* Accent */
-  --color-accent: #197ca8;
+  /* ------------------------------------------------------------
+     2. COLOR — Light Mode (default)
+     ------------------------------------------------------------ */
 
-  /* Label Colors */
+  /* Brand */
+  --color-blue: #197ca8;
+  --color-accent: var(--color-blue);
+
+  /* Label Colors — RGBA opacity hierarchy */
   --label-primary: rgba(0, 0, 0, 1);
   --label-secondary: rgba(24, 31, 36, 0.72);
   --label-tertiary: rgba(24, 31, 36, 0.56);
@@ -52,13 +65,20 @@
 
   /* Fill */
   --fill-primary: rgba(25, 124, 168, 0.14);
-  --fill-secondary: rgba(25, 124, 168, 0.1);
+  --fill-secondary: rgba(25, 124, 168, 0.10);
   --fill-tertiary: rgba(25, 124, 168, 0.07);
+  --fill-quaternary: rgba(25, 124, 168, 0.04);
 
   /* Separator */
   --separator: rgba(60, 60, 67, 0.29);
 
-  /* Spacing */
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+
+  /* ------------------------------------------------------------
+     3. SPACING
+     ------------------------------------------------------------ */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -69,45 +89,83 @@
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
 
-  /* Radius */
-  --radius-sm: 4px;
+  /* ------------------------------------------------------------
+     4. SHAPE
+     ------------------------------------------------------------ */
+  --radius-xs: 3px;
+  --radius-sm: 5px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --radius-xl: 16px;
 
-  /* Shadow */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.06);
-
-  /* Motion */
+  /* ------------------------------------------------------------
+     5. MOTION
+     ------------------------------------------------------------ */
   --duration-fast: 150ms;
   --duration-normal: 250ms;
   --ease-out: cubic-bezier(0, 0, 0.58, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* Layout */
-  --max-width-content: 784px;
+  /* ------------------------------------------------------------
+     6. LAYOUT
+     ------------------------------------------------------------ */
+  --max-width-content: 680px;
+  --max-width-wide: 1080px;
   --nav-height: 52px;
 }
 
-/* Dark Mode */
+/* ------------------------------------------------------------
+   Dark Mode — triggered via [data-theme="dark"] on <html>
+   ------------------------------------------------------------ */
+[data-theme="dark"] {
+  --color-blue: #60c4e8;
+  --color-accent: var(--color-blue);
+
+  --label-primary: rgba(255, 255, 255, 1);
+  --label-secondary: rgba(239, 247, 250, 0.76);
+  --label-tertiary: rgba(239, 247, 250, 0.56);
+  --label-quaternary: rgba(239, 247, 250, 0.38);
+
+  --bg-primary: #0c0e10;
+  --bg-secondary: #111518;
+
+  --fill-primary: rgba(96, 196, 232, 0.18);
+  --fill-secondary: rgba(96, 196, 232, 0.13);
+  --fill-tertiary: rgba(96, 196, 232, 0.09);
+  --fill-quaternary: rgba(96, 196, 232, 0.05);
+
+  --separator: rgba(84, 84, 88, 0.65);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Fallback: system prefers-color-scheme when no data-theme is set */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
+    --color-blue: #60c4e8;
+    --color-accent: var(--color-blue);
+
     --label-primary: rgba(255, 255, 255, 1);
     --label-secondary: rgba(239, 247, 250, 0.76);
     --label-tertiary: rgba(239, 247, 250, 0.56);
     --label-quaternary: rgba(239, 247, 250, 0.38);
 
-    --bg-primary: #000000;
-    --bg-secondary: #101416;
+    --bg-primary: #0c0e10;
+    --bg-secondary: #111518;
 
-    --fill-primary: rgba(116, 199, 220, 0.18);
-    --fill-secondary: rgba(116, 199, 220, 0.13);
-    --fill-tertiary: rgba(116, 199, 220, 0.09);
+    --fill-primary: rgba(96, 196, 232, 0.18);
+    --fill-secondary: rgba(96, 196, 232, 0.13);
+    --fill-tertiary: rgba(96, 196, 232, 0.09);
+    --fill-quaternary: rgba(96, 196, 232, 0.05);
 
     --separator: rgba(84, 84, 88, 0.65);
 
-    --color-accent: #74c7dc;
-
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 4px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -123,6 +181,12 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Suppress transition flash on initial theme load */
+html.no-transitions,
+html.no-transitions * {
+  transition: none !important;
+}
+
 body {
   font-family: var(--font-sans);
   font-size: var(--text-body);
@@ -133,7 +197,9 @@ body {
   margin: 0;
   padding: 0;
   overflow-wrap: break-word;
-  transition: background-color var(--duration-fast) var(--ease-out);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -157,3 +223,14 @@ a {
 a:hover { opacity: 0.75; }
 
 strong, b { font-weight: var(--weight-semibold); }
+
+img, video { max-width: 100%; height: auto; }
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+:focus:not(:focus-visible) { outline: none; }
+#main-content:focus { outline: none; }

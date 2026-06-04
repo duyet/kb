@@ -19,44 +19,133 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f7fbfd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0c0e10" media="(prefers-color-scheme: dark)" />
     <link rel="alternate" type="application/rss+xml" title="kb.duyet.net RSS" href={`${base}/rss.xml`} />
     <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
+    <!-- Prevent FOUC: run theme init before paint -->
+    <script is:inline>
+      (function () {
+        try {
+          var d = localStorage.getItem('theme') ||
+            (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', d);
+          document.documentElement.classList.add('no-transitions');
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              document.documentElement.classList.remove('no-transitions');
+            });
+          });
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
     <header class="site-header">
       <nav class="site-nav">
-        <a href={`${base}/`} class="logo">
-          <span class="logo-mark">◆</span>
+        <a href={`${base}/`} class="logo" aria-label="kb.duyet.net home">
+          <span class="logo-mark" aria-hidden="true">◆</span>
           <span class="logo-label">kb</span>
         </a>
         <div class="nav-links">
-          <a href={`${base}/`} class:list={['nav-link', { active: currentPath === `${base}/` || currentPath === base }]}>Home</a>
+          <a href={`${base}/`} class:list={['nav-link', { active: currentPath === `${base}/` || currentPath === base || currentPath === `${base}` }]}>Home</a>
           <a href={`${base}/memory`} class:list={['nav-link', { active: currentPath.includes('/memory') }]}>Memory</a>
           <a href={`${base}/articles`} class:list={['nav-link', { active: currentPath.includes('/articles') }]}>Articles</a>
         </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle dark/light mode">
+          <span class="theme-icon theme-icon--sun" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </span>
+          <span class="theme-icon theme-icon--moon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </span>
+        </button>
       </nav>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
 
     <footer class="site-footer">
       <div class="footer-inner">
         <p class="footer-text">
-          <a href="https://github.com/duyet/kb">GitHub</a> ·
+          <a href="https://github.com/duyet/kb" target="_blank" rel="noopener">GitHub</a> ·
           <a href={`${base}/rss.xml`}>RSS</a> ·
-          <a href={`${base}/llms.txt`}>llms.txt</a>
+          <a href={`${base}/llms.txt`}>llms.txt</a> ·
+          <a href={`${base}/llms-full.txt`}>llms-full.txt</a>
         </p>
-        <p class="footer-text">
-          <code>curl -fsSL https://raw.githubusercontent.com/duyet/kb/main/scripts/bootstrap.sh | bash</code>
+        <p class="footer-text muted">
+          Built with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> · Inspired by <a href="https://github.com/hanityx/astro-tone" target="_blank" rel="noopener">astro-tone</a>
         </p>
       </div>
     </footer>
+
+    <script>
+      // Theme toggle
+      const btn = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+
+      function getTheme() {
+        try { return localStorage.getItem('theme'); } catch { return null; }
+      }
+
+      function setTheme(theme: string) {
+        html.setAttribute('data-theme', theme);
+        try { localStorage.setItem('theme', theme); } catch {}
+      }
+
+      function resolvedTheme() {
+        return getTheme() || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      }
+
+      btn?.addEventListener('click', () => {
+        setTheme(resolvedTheme() === 'dark' ? 'light' : 'dark');
+      });
+    </script>
   </body>
 </html>
 
 <style>
+  /* Skip link */
+  .skip-link {
+    position: fixed;
+    top: 0;
+    left: var(--space-4);
+    z-index: 9999;
+    padding: var(--space-2) var(--space-5);
+    background: var(--color-accent);
+    color: #fff;
+    font-size: var(--text-footnote);
+    font-weight: 600;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    text-decoration: none;
+    transform: translateY(calc(-100% - var(--space-2)));
+    transition: transform 150ms ease-out;
+  }
+
+  .skip-link:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+    transform: translateY(0);
+  }
+
+  /* Header */
   .site-header {
     position: sticky;
     top: 0;
@@ -64,19 +153,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     height: var(--nav-height);
     display: flex;
     align-items: center;
-    background: var(--bg-primary);
-    border-bottom: 1px solid var(--separator);
-    transition: background-color var(--duration-fast) var(--ease-out);
+    background: color-mix(in srgb, var(--bg-primary) 80%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid color-mix(in srgb, var(--separator) 60%, transparent);
+    transition:
+      background-color var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out);
   }
 
   .site-nav {
     width: 100%;
-    max-width: var(--max-width-content);
+    max-width: var(--max-width-wide);
     margin: 0 auto;
-    padding: 0 var(--space-4);
+    padding: 0 var(--space-6);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: var(--space-4);
   }
 
   .logo {
@@ -87,27 +180,33 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     color: var(--label-primary);
     font-weight: var(--weight-semibold);
     font-size: var(--text-callout);
+    letter-spacing: var(--tracking-tight);
+    transition: opacity var(--duration-fast) var(--ease-out);
+    flex-shrink: 0;
   }
 
-  .logo:hover { opacity: 1; }
+  .logo:hover { opacity: 0.75; }
 
   .logo-mark {
-    font-size: 0.9em;
+    font-size: 0.85em;
     color: var(--color-accent);
+    line-height: 1;
   }
 
   .nav-links {
     display: flex;
     align-items: center;
     gap: var(--space-1);
+    flex: 1;
   }
 
   .nav-link {
     font-size: var(--text-subheadline);
     font-weight: var(--weight-medium);
-    color: var(--label-secondary);
-    padding: var(--space-1) var(--space-3);
+    color: var(--label-tertiary);
+    padding: 5px var(--space-3);
     border-radius: var(--radius-sm);
+    text-decoration: none;
     transition:
       color var(--duration-fast) var(--ease-out),
       background var(--duration-fast) var(--ease-out);
@@ -120,57 +219,98 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 
   .nav-link.active {
-    color: var(--color-accent);
+    color: var(--label-primary);
+    font-weight: var(--weight-semibold);
   }
 
+  /* Theme toggle button */
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: var(--label-tertiary);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    padding: 0;
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out);
+    flex-shrink: 0;
+  }
+
+  .theme-toggle:hover {
+    color: var(--label-primary);
+    background: var(--fill-tertiary);
+  }
+
+  /* Show sun in dark mode, moon in light mode */
+  .theme-icon--sun { display: none; }
+  .theme-icon--moon { display: flex; }
+
+  [data-theme="dark"] .theme-icon--sun { display: flex; }
+  [data-theme="dark"] .theme-icon--moon { display: none; }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-icon--sun { display: flex; }
+    :root:not([data-theme="light"]) .theme-icon--moon { display: none; }
+  }
+
+  /* Main content */
   main {
     width: 100%;
-    max-width: var(--max-width-content);
-    margin: 0 auto;
-    padding: var(--space-10) var(--space-4) var(--space-16);
-    min-height: calc(100vh - var(--nav-height) - 120px);
+    min-height: calc(100dvh - var(--nav-height) - 120px);
   }
 
+  /* Footer */
   .site-footer {
-    border-top: 1px solid var(--separator);
-    padding: var(--space-8) var(--space-4);
+    border-top: 1px solid color-mix(in srgb, var(--separator) 50%, transparent);
+    padding: var(--space-8) var(--space-6);
     background: var(--bg-secondary);
-    transition: background-color var(--duration-fast) var(--ease-out);
+    transition:
+      background-color var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out);
   }
 
   .footer-inner {
-    max-width: var(--max-width-content);
+    max-width: var(--max-width-wide);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-1);
   }
 
   .footer-text {
     margin: 0;
     font-size: var(--text-footnote);
+    color: var(--label-secondary);
+  }
+
+  .footer-text.muted {
     color: var(--label-tertiary);
   }
 
   .footer-text a {
-    color: var(--label-secondary);
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 2px;
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      text-decoration-color var(--duration-fast) var(--ease-out);
   }
 
   .footer-text a:hover {
     color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
     opacity: 1;
   }
 
-  .footer-text code {
-    font-family: var(--font-mono);
-    font-size: 0.86em;
-    background: var(--fill-tertiary);
-    padding: 0.08em 0.34em;
-    border-radius: 5px;
-  }
-
   @media (max-width: 600px) {
-    .nav-links { gap: 0; }
-    .nav-link { padding: var(--space-1) var(--space-2); }
+    .site-nav { padding: 0 var(--space-4); gap: var(--space-2); }
+    .nav-link { padding: 5px var(--space-2); font-size: var(--text-footnote); }
   }
 </style>

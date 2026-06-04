@@ -10,19 +10,34 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const { Content } = await article.render();
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+function fmtDate(d: string | Date | undefined) {
+  if (!d) return '';
+  const str = String(d);
+  if (/^\d{4}-\d{2}-\d{2}/.test(str)) {
+    const [y, m, day] = str.split('-');
+    return new Date(Number(y), Number(m) - 1, Number(day))
+      .toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+  return str;
+}
 ---
 
 <Layout title={`${article.data.title} — kb`} description={article.data.summary}>
-  <article>
+  <div class="post-main">
     <a href={`${base}/articles`} class="back-link">← Articles</a>
 
     <header class="post-header">
+      <div class="post-accent"></div>
       <div class="post-meta">
-        <span class="meta-tag">{article.data.category}</span>
-        <span class="meta-date">Updated {article.data.updated}</span>
+        {article.data.category && <span class="meta-tag">{article.data.category}</span>}
+        {article.data.category && article.data.updated && <span class="meta-dot">·</span>}
+        {article.data.updated && <span class="meta-date">{fmtDate(article.data.updated)}</span>}
       </div>
       <h1 class="post-title">{article.data.title}</h1>
-      <p class="post-description">{article.data.summary}</p>
+      {article.data.summary && (
+        <p class="post-description">{article.data.summary}</p>
+      )}
     </header>
 
     <div class="post-divider"></div>
@@ -31,37 +46,48 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <Content />
     </div>
 
-    {article.data.tags && article.data.tags.length > 0 && (
-      <footer class="post-footer">
-        <div class="tag-list">
-          {article.data.tags.map(t => (
-            <span class="tag">{t}</span>
-          ))}
+    <div class="post-footer-meta">
+      {article.data.tags && article.data.tags.length > 0 && (
+        <div class="footer-block">
+          <p class="footer-label">Tags</p>
+          <div class="tag-list">
+            {article.data.tags.map(t => (
+              <span class="tag">{t}</span>
+            ))}
+          </div>
         </div>
-      </footer>
-    )}
+      )}
 
-    {article.data.links && article.data.links.length > 0 && (
-      <footer class="post-footer">
-        <h3 class="footer-heading">Related</h3>
-        <div class="tag-list">
-          {article.data.links.map(l => (
-            <code class="related-link">{l}</code>
-          ))}
+      {article.data.links && article.data.links.length > 0 && (
+        <div class="footer-block">
+          <p class="footer-label">Related</p>
+          <div class="tag-list">
+            {article.data.links.map(l => (
+              <span class="tag tag--muted">{l.replace(/^\[\[|\]\]$/g, '')}</span>
+            ))}
+          </div>
         </div>
-      </footer>
-    )}
-  </article>
+      )}
+    </div>
+  </div>
 </Layout>
 
 <style>
+  .post-main {
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    padding: var(--space-10) var(--space-6) var(--space-24);
+  }
+
   .back-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     font-size: var(--text-footnote);
     font-weight: var(--weight-medium);
     color: var(--label-tertiary);
     text-decoration: none;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-10);
+    letter-spacing: 0.01em;
     transition: color var(--duration-fast) var(--ease-out);
   }
 
@@ -70,17 +96,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     opacity: 1;
   }
 
-  .post-header {
-    margin-bottom: var(--space-2);
+  .post-accent {
+    width: 28px;
+    height: 3px;
+    background: var(--color-accent);
+    border-radius: 99px;
+    margin-bottom: var(--space-6);
   }
 
   .post-meta {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
-    margin-bottom: var(--space-4);
+    gap: var(--space-2);
     font-size: var(--text-footnote);
     color: var(--label-tertiary);
+    margin-bottom: var(--space-5);
+    font-variant-numeric: tabular-nums;
   }
 
   .meta-tag {
@@ -91,44 +122,62 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     color: var(--color-accent);
   }
 
+  .meta-dot {
+    color: var(--label-quaternary);
+  }
+
   .meta-date {
-    font-variant-numeric: tabular-nums;
+    color: var(--label-tertiary);
   }
 
   .post-title {
-    font-size: var(--text-title-1);
-    font-weight: 650;
-    letter-spacing: var(--tracking-tight);
-    line-height: 1.16;
-    margin-bottom: var(--space-3);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    margin: 0 0 var(--space-5);
+    color: var(--label-primary);
   }
 
   .post-description {
     font-size: var(--text-callout);
     color: var(--label-secondary);
-    line-height: var(--leading-normal);
+    font-weight: 400;
+    line-height: 1.64;
     margin: 0;
+    max-width: 520px;
+    border-left: 2px solid var(--separator);
+    padding-left: var(--space-4);
   }
 
   .post-divider {
     height: 1px;
     background: var(--separator);
-    margin: var(--space-8) 0;
+    margin: var(--space-8) 0 var(--space-10);
   }
 
-  .post-footer {
-    margin-top: var(--space-12);
-    padding-top: var(--space-6);
+  .post-footer-meta {
+    margin-top: var(--space-16);
+    padding-top: var(--space-8);
     border-top: 1px solid color-mix(in srgb, var(--separator) 50%, transparent);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
   }
 
-  .footer-heading {
-    font-size: var(--text-footnote);
+  .footer-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .footer-label {
+    margin: 0;
+    font-size: var(--text-caption-1);
     font-weight: var(--weight-semibold);
-    color: var(--label-tertiary);
-    text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-bottom: var(--space-3);
+    text-transform: uppercase;
+    color: var(--label-quaternary);
   }
 
   .tag-list {
@@ -139,17 +188,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   .tag {
     font-size: var(--text-footnote);
-    color: var(--label-secondary);
-    background: var(--fill-tertiary);
-    padding: 0.15em 0.55em;
-    border-radius: var(--radius-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-accent);
+    background: var(--fill-secondary);
+    padding: 0.18em 0.6em;
+    border-radius: 99px;
   }
 
-  .related-link {
-    font-size: var(--text-footnote);
-    color: var(--label-tertiary);
+  .tag--muted {
+    color: var(--label-secondary);
     background: var(--fill-tertiary);
-    padding: 0.15em 0.5em;
-    border-radius: var(--radius-sm);
+  }
+
+  @media (max-width: 600px) {
+    .post-main {
+      padding: var(--space-8) var(--space-4) var(--space-16);
+    }
+
+    .post-title {
+      font-size: 1.75rem;
+    }
   }
 </style>
