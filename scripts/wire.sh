@@ -1,18 +1,23 @@
 #!/usr/bin/env bash
-# Wire the kb reflex into the global agent config so EVERY Claude Code / Codex
-# session reads the brain on start. Adds a small MARKED block to ~/.claude/CLAUDE.md
-# and ~/.claude/AGENTS.md — idempotent (re-run safe), and fully removable
-# (`wire.sh off` strips exactly the block, leaving the rest of your config intact).
+# Wire the kb reflex into global agent config so EVERY session (Claude Code,
+# Codex, opencode) reads the brain on start. Adds a small MARKED block to each
+# tool's global instruction file — idempotent (re-run safe) and fully removable
+# (`wire.sh off` strips exactly the block, leaving the rest of the file intact).
 #   wire.sh on | off    (default: on)
 set -euo pipefail
 
 KB_DIR="${KB_DIR:-$(cd -P "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
-CFG_DIR="${CLAUDE_CFG_DIR:-$HOME/.claude}"
+HOME_BASE="${KB_HOME:-$HOME}"          # override in tests for isolation
 action="${1:-on}"
 
-# Tidy reference: show ~/kb when it resolves to this repo, else the real path.
+# Tidy reference: ~/kb when it resolves to this repo, else the real path.
 REF="$KB_DIR"
 if [ -d "$HOME/kb" ] && [ "$(cd -P "$HOME/kb" 2>/dev/null && pwd)" = "$KB_DIR" ]; then REF="~/kb"; fi
+
+# Targets: always wire Claude Code (.claude); wire Codex/opencode only if present.
+targets=( "$HOME_BASE/.claude/CLAUDE.md" "$HOME_BASE/.claude/AGENTS.md" )
+[ -d "$HOME_BASE/.codex" ]          && targets+=( "$HOME_BASE/.codex/AGENTS.md" )
+[ -d "$HOME_BASE/.config/opencode" ] && targets+=( "$HOME_BASE/.config/opencode/AGENTS.md" )
 
 BLOCK="<!-- kb:start (managed by kb wire; remove with: kb wire off) -->
 # Knowledge Base — shared brain ($REF)
@@ -21,7 +26,6 @@ Capture rough notes with \`kb capture \"...\"\`; write durable, public facts as 
 Full protocol: \`$REF/AGENTS.md\`. Consolidate via \`$REF/DREAM.md\`. Public repo — never store secrets.
 <!-- kb:end -->"
 
-# Print $1 with any existing managed block removed.
 strip_block() { [ -f "$1" ] && awk '/<!-- kb:start/{s=1} s!=1{print} /<!-- kb:end/{s=0}' "$1" || true; }
 
 wire_one() {
@@ -35,5 +39,4 @@ wire_one() {
   fi
 }
 
-wire_one "$CFG_DIR/CLAUDE.md"
-wire_one "$CFG_DIR/AGENTS.md"
+for t in "${targets[@]}"; do wire_one "$t"; done
