@@ -16,13 +16,14 @@ device can use it.
 
 ## Design philosophy
 
-Inspired by Karpathy's "keep it simple and hackable" ethos and the Zettelkasten
-method:
+Keep it simple and hackable, following the Zettelkasten method:
 
 - **Plain markdown, no database.** An agent can `grep`/`glob` the whole thing.
 - **Atomic notes.** One fact per file under `memory/`. Small, composable, linkable.
 - **Index-first.** `MEMORY.md` is a table of contents loaded *before* anything
   else, so agents pull only the few files they need into context.
+- **Linked & visual.** Notes connect via `[[wikilinks]]` and `tags`, so the whole
+  brain is browsable as a graph in Obsidian (this repo lives in the vault).
 - **Self-healing.** A periodic "dream" pass (see `DREAM.md`) compacts, dedupes,
   and re-files notes so retrieval stays sharp as the KB grows.
 
@@ -74,12 +75,25 @@ git clone git@github.com:duyet/kb.git ~/kb
 cat ~/kb/MEMORY.md     # should list the current memories
 ```
 
-That's it. The agent now shares the brain. Anything it writes back, commit and
-push so other devices pick it up:
+That's it. The agent now shares the brain.
+
+## Auto-sync
+
+`scripts/sync.sh` keeps this device and the `duyet/kb` remote in sync: it pulls
+(rebase + autostash), commits any local edits, and pushes — safe to run anytime.
 
 ```bash
-cd ~/kb && git add -A && git commit -m "memory: <what changed>" && git push
+~/kb/scripts/sync.sh            # one-off sync
 ```
+
+Run it on a schedule so every device stays current:
+
+```bash
+# every 15 min via cron
+*/15 * * * * /Users/duet/kb/scripts/sync.sh >> ~/.kb-sync.log 2>&1
+```
+
+Agents should also sync at the end of any session where they wrote a note.
 
 ## Scope
 

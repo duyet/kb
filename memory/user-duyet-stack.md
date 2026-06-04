@@ -1,8 +1,13 @@
 ---
 name: user-duyet-stack
+title: Duyet — tech stack
 description: Languages, tools, and platforms Duyet works in (public, from blog + GitHub)
-metadata:
-  type: user
+type: user
+category: stack
+tags: [user, duyet, stack, tooling, data-engineering]
+related: ["[[user-duyet-profile]]", "[[user-duyet-web-presence]]"]
+created: 2026-06-04
+updated: 2026-06-04
 ---
 
 Technical stack for [[user-duyet-profile]], drawn from public blog & GitHub.

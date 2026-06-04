@@ -40,17 +40,29 @@ future agent (any tool, any repo) would benefit from.
 
 ### Frontmatter (required on every note)
 
+All fields are **top-level** (not nested) so Obsidian surfaces them as Properties
+and uses `tags`/`related` for the graph view.
+
 ```markdown
 ---
-name: <short-kebab-case-slug>   # matches the [[slug]] used to link it
+name: <short-kebab-case-slug>     # MUST equal the filename stem; this is the [[link]] target
+title: <human-readable title>     # optional, shown in Obsidian
 description: <one line — used to judge relevance during recall>
-metadata:
-  type: user | feedback | project | reference | tech
+type: user | feedback | project | reference | tech
+category: <finer grouping>        # e.g. profile, stack, style, infra, clickhouse
+tags: [tag-one, tag-two]          # lowercase-kebab; drives Obsidian graph clustering
+aliases: [alt-name]               # optional; alternative [[link]] targets
+related: ["[[other-slug]]", "[[another-slug]]"]   # explicit graph edges
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
 ---
 
 <the fact. For feedback/project, follow with **Why:** and **How to apply:** lines.
-Link related notes with [[their-slug]].>
+Link related notes inline with [[their-slug]] too.>
 ```
+
+Required: `name`, `description`, `type`, `tags`, `created`, `updated`. The rest are
+optional but encouraged. `title`, `category`, `aliases`, `related` improve Obsidian.
 
 ### Memory types
 
@@ -61,6 +73,45 @@ Link related notes with [[their-slug]].>
 | `project`   | durable context about ongoing work (public, non-confidential) |
 | `reference` | pointers to external resources (URLs, dashboards, docs)     |
 | `tech`      | reusable technical knowledge / patterns                     |
+
+### Linking & tagging rules (for Obsidian graph)
+
+Two things drive the graph; use both.
+
+1. **Wikilinks `[[slug]]`** create edges between notes. Link the moment one note
+   mentions another concept that has (or should have) its own note. Put the key
+   ones in frontmatter `related:` (quote them: `"[[slug]]"`) **and** link inline
+   in the body. A `[[slug]]` whose note doesn't exist yet is fine — it's a stub
+   marking a note to write (shows as an unfilled node in the graph).
+2. **Tags** create tag-nodes that cluster related notes. Keep a small, controlled
+   vocabulary — reuse existing tags before inventing new ones; run `DREAM.md` to
+   merge tag sprawl.
+   - Always include the `type` as a tag (e.g. `user`, `tech`).
+   - Add 1–4 topic tags, lowercase-kebab: a person/entity (`duyet`), a domain
+     (`data-engineering`, `clickhouse`, `rust`, `llm-agents`, `infra`), and/or a
+     facet (`profile`, `workflow`, `tooling`).
+   - Don't tag with one-off words; a tag is only useful if ≥2 notes will share it.
+
+`name` must equal the filename stem so `[[name]]` resolves. Use `aliases` for
+other names a note might be linked by.
+
+### Note quality (compact · correct · retrievable · Obsidian-friendly)
+
+Every note must satisfy all four:
+
+- **Compact.** Shortest form that stays correct. One fact per note. Prefer
+  tables/lists over prose; cut filler ("comprehensive", "in order to"). If a note
+  passes ~25 lines, it probably holds >1 fact — split it.
+- **Correct.** Evidence over assumption. Cite the source (a `[[link]]`, URL, or
+  `llms.txt`) for non-obvious facts. Stamp `updated:` when you change a note.
+  Never record a guess as fact — mark uncertainty inline ("(unverified)"). If a
+  note conflicts with newer truth, fix or delete it, don't append.
+- **Retrievable.** `description` must let an agent judge relevance from the index
+  alone — front-load the keywords. Reuse the controlled tag/`[[link]]` vocabulary
+  so related notes co-locate. Title and filename should be searchable terms.
+- **Obsidian-friendly.** Top-level frontmatter only (no nesting). Filename ==
+  `name`. Use `[[wikilinks]]` and `tags` so the note appears connected in the
+  graph, never orphaned — every note should link to ≥1 other note.
 
 ## 3. Do NOT store
 
@@ -74,12 +125,21 @@ Link related notes with [[their-slug]].>
 If unsure whether something is public, leave it out — or keep it in that repo's
 local kb / the agent's private per-project memory instead of here.
 
-## 4. Dream protocol
+## 4. Auto-dream
 
 Memory degrades as it grows: duplicates, verbose notes, stale facts, broken
-links. Periodically run the consolidation ("dream") pass defined in `DREAM.md`
-to keep retrieval sharp. Trigger it manually, on a `/loop`, or whenever you
-notice the KB drifting.
+links, tag sprawl. The "dream" pass — full steps in `DREAM.md` — consolidates it
+back into compact, correct, well-linked notes.
+
+Run it:
+- **Manually:** "run kb dream" → execute `DREAM.md` end to end.
+- **Recurring (autopilot):** `/loop 1d "run ~/kb/DREAM.md consolidation"`.
+- **Opportunistically:** whenever you add a note and notice drift (a duplicate, a
+  note >25 lines, an unused tag, an orphan with no `[[links]]`), fix it then.
+
+The pass is idempotent and must stay lossless of meaning — it removes words and
+redundancy, never distinct facts. It always ends by rebuilding `MEMORY.md` and
+committing.
 
 ---
 

@@ -1,8 +1,13 @@
 ---
 name: user-duyet-profile
+title: Duyet Le — profile
 description: Duyet Le (@duyet) — senior data engineer in Vietnam, the owner of this shared brain
-metadata:
-  type: user
+type: user
+category: profile
+tags: [user, duyet, profile]
+related: ["[[user-duyet-web-presence]]", "[[user-duyet-stack]]", "[[feedback-working-style]]"]
+created: 2026-06-04
+updated: 2026-06-04
 ---
 
 **Duyet Le** (handle `@duyet`) — senior data engineer and technology enthusiast,
