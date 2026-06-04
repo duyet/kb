@@ -17,6 +17,13 @@ The repo is **public**. Only write general, durable, public-facing facts.
    was true when written — if a note names a file/flag/host, verify it still
    exists before acting on it.
 
+### Ingesting raw sources (Layer 1 → Layer 2)
+
+`raw/` holds immutable, **read-only** ground-truth sources (PDFs, articles,
+snapshots). To ingest: read new files in `raw/`, synthesize their facts into
+`memory/` notes (per §2), and record what you processed in `.agent/state.json`
+(`processed` map) so re-runs only handle new sources. Never edit files in `raw/`.
+
 ## 2. Write protocol
 
 Write a note when you learn something **durable, general, and public** that a

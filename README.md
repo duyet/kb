@@ -36,16 +36,32 @@ kb/
 ├── CLAUDE.md     ← thin pointer to AGENTS.md for Claude Code
 ├── DREAM.md      ← the memory-consolidation ("dream") protocol
 ├── MEMORY.md     ← master index, one line per memory — load this first
-└── memory/       ← atomic notes, one fact per file
-    ├── user-*.md       who the user is (public profile, stack, web presence)
-    ├── feedback-*.md   how agents should work (style, corrections)
-    ├── project-*.md    durable context about ongoing work
-    ├── reference-*.md  pointers to external resources
-    └── tech-*.md       reusable technical knowledge
+├── raw/          ← immutable ground-truth sources (agents read-only)
+├── memory/       ← agent-managed notes, one fact per file
+│   ├── user-*.md       who the user is (public profile, stack, web presence)
+│   ├── feedback-*.md   how agents should work (style, corrections)
+│   ├── project-*.md    durable context about ongoing work
+│   ├── reference-*.md  pointers to external resources
+│   └── tech-*.md       reusable technical knowledge
+└── .agent/       ← agent scratchpad (state.json: ingested files + tasks)
 ```
 
-Each note carries frontmatter (`name`, `description`, `metadata.type`) so it is
-self-describing and searchable. See `AGENTS.md` for the exact format.
+Each note carries frontmatter (`name`, `description`, `type`, `tags`, `related`)
+so it is self-describing, searchable, and linked. See `AGENTS.md` for the format.
+
+### Reference: Karpathy's LLM-Wiki model
+
+This repo follows Andrej Karpathy's three-layer LLM-Wiki pattern — *the note app
+is the IDE, the LLM is the programmer, the wiki is the codebase*:
+
+| Layer | Karpathy | Here |
+|-------|----------|------|
+| 1 — Raw sources (immutable, read-only) | `raw/` | `raw/` |
+| 2 — Synthesized, interlinked notes (AI writes) | `wiki/` | `memory/` + `MEMORY.md` |
+| 3 — Schema/config (rules for the AI) | `CLAUDE.md` | `AGENTS.md` (+ `CLAUDE.md`) |
+
+Agents read `raw/`, synthesize linked notes into `memory/`, and follow the rules
+in `AGENTS.md`. `.agent/state.json` tracks what's been ingested.
 
 ## How to use
 
