@@ -6,7 +6,6 @@ set -euo pipefail
 
 KB_DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 HOME_BASE="${KB_HOME:-$HOME}"
-SKILLS_DIR="${CLAUDE_SKILLS_DIR:-$HOME_BASE/.claude/skills}"
 
 # Remove a symlink only if it resolves into KB_DIR (never touch real files).
 rm_link() {
@@ -19,9 +18,16 @@ rm_link() {
   fi
 }
 
+AGENT_SKILLS_DIRS=(
+  "${CLAUDE_SKILLS_DIR:-$HOME_BASE/.claude/skills}"
+  "$HOME_BASE/.agents/skills"
+)
 shopt -s nullglob
-for s in "$KB_DIR"/skills/*/; do
-  rm_link "$SKILLS_DIR/$(basename "$s")"
+for dir in "${AGENT_SKILLS_DIRS[@]}"; do
+  [ -d "$dir" ] || continue
+  for s in "$KB_DIR"/skills/*/; do
+    rm_link "$dir/$(basename "$s")"
+  done
 done
 shopt -u nullglob
 
