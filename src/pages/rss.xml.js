@@ -7,6 +7,8 @@ export async function GET(context) {
   const all = [...notes.map(n => ({ ...n, type: 'note' })), ...articles.map(a => ({ ...a, type: 'article' }))]
     .sort((a, b) => new Date(b.data.updated).getTime() - new Date(a.data.updated).getTime());
 
+  const base = import.meta.env.BASE_URL;
+
   return rss({
     title: 'kb.duyet.net',
     site: context.site,
@@ -15,7 +17,7 @@ export async function GET(context) {
       title: item.data.title || item.data.name,
       pubDate: new Date(item.data.updated),
       description: item.data.summary || item.data.description,
-      link: item.type === 'note' ? `/memory/${item.slug}/` : `/articles/${item.slug}/`,
+      link: item.type === 'note' ? `${base}memory/${item.slug}/` : `${base}articles/${item.slug}/`,
     })),
   });
 }
