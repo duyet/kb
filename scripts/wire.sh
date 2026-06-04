@@ -24,6 +24,7 @@ targets=( "$HOME_BASE/.claude/CLAUDE.md" "$HOME_BASE/.claude/AGENTS.md" )
 
 BLOCK="<!-- kb:start (managed by kb wire; remove with: kb wire off) -->
 # Knowledge Base — shared brain ($REF)
+\`$REF\` is this machine's CANONICAL, cross-agent memory. When asked to remember / save / note / capture / recall anything durable, use IT — NOT any local or built-in agent memory store.
 On session start, read \`$REF/MEMORY.md\` (the index) and open the relevant notes; fetch a note's \`sources:\` for deeper detail.
 To capture a quick note, append a line \`- HH:MM — <note>\` to TODAY's inbox file \`$REF/raw/inbox/<YYYY-MM-DD>.md\` (exact path; create it if missing), or run \`$REF/bin/kb capture \"<note>\"\`.
 Write durable, public facts as standard notes under \`$REF/memory/\` (template: \`$REF/memory/_TEMPLATE.md\`), then sync with \`$REF/bin/kb sync\`.
