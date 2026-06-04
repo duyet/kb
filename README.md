@@ -116,6 +116,24 @@ Skills (installed to `~/.claude/skills/`, usable by Claude Code & others):
 `kb-memory` (read/write protocol) and `kb-dream` (consolidation). Both resolve
 the KB location from `$KB_DIR` / `kb root`, so they work wherever kb is cloned.
 
+### Distributing the skills
+
+The skills live here in `skills/` and are **canonical in this repo** — they
+version alongside the protocol they describe. Install them via the symlink
+installer (`install.sh`), not by copying: a symlink stays live and auto-updates
+on `git pull`.
+
+| Goal | Where the skill lives | Install |
+|------|-----------------------|---------|
+| Your own machines, skills track the kb protocol | this repo `skills/` | `bootstrap.sh` / `install.sh` → symlink |
+| Share publicly **without** shipping your memory | a plugins marketplace repo | `npx skills add …` |
+
+Note: pointing a skills installer at a git repo (`npx skills add duyet/kb`)
+fetches the **whole** repo and *copies* the skill (so it won't auto-update). For
+your own use the symlink install is better. To share just the skill, mirror the
+`skills/` folders into a separate plugins repo — they're path-agnostic (`KB_DIR`),
+so they still work as long as the kb repo is cloned somewhere and `kb` is on PATH.
+
 ## Auto-sync
 
 `scripts/sync.sh` keeps each machine and the `duyet/kb` remote in sync: pull
