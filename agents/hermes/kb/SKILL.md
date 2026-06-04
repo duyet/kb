@@ -50,7 +50,8 @@ After any write, `read_file` the target back and confirm your exact line/note is
 present. **Never claim a write you have not verified by reading it back.** If it
 is not there, fix the path and retry.
 
-## Sync (optional)
+## Sync — you must trigger it
 
-`terminal: <kb>/bin/kb sync` — commit + push. Public repo — never store secrets
-(API keys, hosts, internal/confidential details).
+Sync does not happen automatically. After verifying a write, run
+`terminal: <kb>/bin/kb sync` (commit + push) so other agents and machines see it.
+Public repo — never store secrets (API keys, hosts, internal/confidential details).

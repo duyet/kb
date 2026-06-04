@@ -26,7 +26,7 @@ case "$cmd" in
     f="$(inbox)"; mkdir -p "$(dirname "$f")"
     [[ -f "$f" ]] || printf '# Inbox — %s\n\n' "$(date +%F)" > "$f"
     printf -- '- %s — %s\n' "$(date +%H:%M)" "$text" >> "$f"
-    echo "captured → ${f#$KB_DIR/}" ;;
+    echo "captured → ${f#$KB_DIR/}  (run 'kb sync' to push)" ;;
   ingest|i)
     [[ -f "${1:-}" ]] || { echo "usage: kb ingest <file>  (adds a source doc to raw/)"; exit 1; }
     mkdir -p "$KB_DIR/raw"; cp "$1" "$KB_DIR/raw/"

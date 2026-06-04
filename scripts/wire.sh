@@ -27,8 +27,8 @@ BLOCK="<!-- kb:start (managed by kb wire; remove with: kb wire off) -->
 \`$REF\` is this machine's CANONICAL, cross-agent memory. When asked to remember / save / note / capture / recall anything durable, use IT — NOT any local or built-in agent memory store.
 On session start, read \`$REF/MEMORY.md\` (the index) and open the relevant notes; fetch a note's \`sources:\` for deeper detail.
 To capture a quick note, append a line \`- HH:MM — <note>\` to TODAY's inbox file \`$REF/raw/inbox/<YYYY-MM-DD>.md\` (exact path; create it if missing), or run \`$REF/bin/kb capture \"<note>\"\`.
-Write durable, public facts as standard notes under \`$REF/memory/\` (template: \`$REF/memory/_TEMPLATE.md\`), then sync with \`$REF/bin/kb sync\`.
-After ANY write, read the file back to confirm your line/note is present before reporting success — never claim an unverified write.
+Write durable, public facts as standard notes under \`$REF/memory/\` (template: \`$REF/memory/_TEMPLATE.md\`).
+After ANY write (capture or note): read the file back to confirm it, then run \`$REF/bin/kb sync\` to share it — never claim an unverified write. (Sync does not happen on its own; you must trigger it.)
 Full protocol: \`$REF/AGENTS.md\`. Consolidate via \`$REF/DREAM.md\`. Public repo — never store secrets.
 <!-- kb:end -->"
 
