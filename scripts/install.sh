@@ -23,7 +23,8 @@ done
 # Auto-sync cron (every 15 min). Skip with KB_NO_CRON=1. Idempotent.
 if [[ -z "${KB_NO_CRON:-}" ]] && command -v crontab >/dev/null 2>&1; then
   line="*/15 * * * * $KB_DIR/scripts/sync.sh >> \$HOME/.kb-sync.log 2>&1"
-  ( crontab -l 2>/dev/null | grep -vF "$KB_DIR/scripts/sync.sh"; echo "$line" ) | crontab -
+  # Drop any prior kb sync line (any path representation) before re-adding.
+  ( crontab -l 2>/dev/null | grep -v '/scripts/sync\.sh'; echo "$line" ) | crontab -
   echo "cron    */15m auto-sync installed (KB_NO_CRON=1 to skip)"
 fi
 
