@@ -14,8 +14,11 @@ SKILLS_DIR="${CLAUDE_SKILLS_DIR:-$HOME_BASE/.claude/skills}"
 AGENT_SKILLS_DIRS=(
   "${CLAUDE_SKILLS_DIR:-$HOME_BASE/.claude/skills}"
   "$HOME_BASE/.agents/skills"
+  "$HOME_BASE/.codex/skills"
+  "$HOME_BASE/.config/opencode/skills"
   "$HOME_BASE/.gemini/antigravity-cli/skills"
   "$HOME_BASE/.gemini/skills"
+  "$HOME_BASE/.hermes/skills"
 )
 shopt -s nullglob
 for dir in "${AGENT_SKILLS_DIRS[@]}"; do
