@@ -17,3 +17,10 @@ Claude-specific note: your per-project memory under
 `~/.claude/projects/<project>/memory/` is a private scratchpad. When a fact
 there is **general and public**, promote it into this repo's `memory/` so Codex,
 Hermes, OpenClaw, and every device share it too. Then commit and push.
+
+## ⚠️ Security — this repo is PUBLIC
+
+**Never commit:** credentials, hostnames, IPs, machine names, SSH endpoints,
+internal project names, locations, or anything not already on the user's public
+GitHub/blog/CV. Full list in [`AGENTS.md` §3](./AGENTS.md). If you wouldn't put
+it on a public README, don't put it here.

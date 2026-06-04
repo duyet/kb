@@ -29,7 +29,7 @@ On session start, read \`$REF/MEMORY.md\` (the index) and open the relevant note
 To capture a quick note, append a line \`- HH:MM — <note>\` to TODAY's inbox file \`$REF/raw/inbox/<YYYY-MM-DD>.md\` (exact path; create it if missing), or run \`$REF/bin/kb capture \"<note>\"\`.
 Write durable, public facts as standard notes under \`$REF/memory/\` (template: \`$REF/memory/_TEMPLATE.md\`).
 After ANY write (capture or note): read the file back to confirm it, then run \`$REF/bin/kb sync\` to share it — never claim an unverified write. (Sync does not happen on its own; you must trigger it.)
-Full protocol: \`$REF/AGENTS.md\`. Consolidate via \`$REF/DREAM.md\`. Public repo — never store secrets.
+Full protocol: \`$REF/AGENTS.md\`. Consolidate via \`$REF/DREAM.md\`. Public repo — never store secrets, hostnames, IPs, machine names, locations, or anything not already public on the user's blog/CV/GitHub (see AGENTS.md §3).
 <!-- kb:end -->"
 
 strip_block() { [ -f "$1" ] && awk '/<!-- kb:start/{s=1} s!=1{print} /<!-- kb:end/{s=0}' "$1" || true; }
