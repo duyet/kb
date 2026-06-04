@@ -15,9 +15,10 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 ## Reference
 - [Web presence](memory/user-duyet-web-presence.md) — blog/CV/GitHub/socials + llms.txt sources
 - [Blog content & themes](memory/reference-duyet-blog.md) — digital garden: ClickHouse, Rust, AI agents, data eng
+- [GitHub projects](memory/reference-duyet-github.md) — ClickHouse tooling, Rust data tools, AI-agent repos, infra
 
 ## Project
 _(none yet)_
 
 ## Tech
-_(none yet)_
+- [AI agent stack](memory/tech-ai-agent-stack.md) — LangGraph/AI SDK/Agents SDK/MCP + what Duyet uses
