@@ -5,7 +5,7 @@ description: How Duyet wants agents to work — concise English, semantic commit
 type: feedback
 category: workflow
 tags: [feedback, duyet, workflow]
-related: ["[[user-duyet-profile]]"]
+related: ["[[user-duyet-profile]]", "[[tech-codebase-maintenance-loop]]"]
 created: 2026-06-04
 updated: 2026-06-04
 ---

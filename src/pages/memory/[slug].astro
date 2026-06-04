@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('memory');
+  return notes.map(note => ({ params: { slug: note.slug } }));
+}
+
+const { slug } = Astro.params;
+const allNotes = await getCollection('memory');
+const note = allNotes.find(n => n.slug === slug);
+if (!note) return Astro.redirect('/memory');
+
+const { Content } = await note.render();
+---
+
+<Layout title={`${note.data.title || note.data.name} — kb`}>
+  <p class="meta"><a href="/memory">← Memory</a> • {note.data.type} • {note.data.updated}</p>
+  <h1>{note.data.title || note.data.name}</h1>
+  <p class="meta">{note.data.description}</p>
+  <hr />
+  <Content />
+</Layout>
+
+<style>
+  :global(code) { background: var(--muted); padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+</style>

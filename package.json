@@ -1,0 +1,15 @@
+{
+  "name": "kb",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "prebuild": "mkdir -p src/content/memory src/content/articles && cp -r memory/*.md src/content/memory/ && cp -r raw/kb-content/**/*.md src/content/articles/ 2>/dev/null || true",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.11",
+    "astro": "^4.16.17"
+  }
+}

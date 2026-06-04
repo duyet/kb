@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const notes = await getCollection('memory');
+const articles = await getCollection('articles');
+---
+
+<Layout title="kb.duyet.net — shared brain">
+  <h1>kb.duyet.net</h1>
+  <p class="meta">Duyet Le — shared knowledge base</p>
+
+  <section>
+    <h2>Memory ({notes.length})</h2>
+    <ul>
+      {notes.map(n => (
+        <li><a href={`/memory/${n.slug}`}>{n.data.title || n.data.name}</a> — {n.data.description}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h2>Articles ({articles.length})</h2>
+    <ul>
+      {articles.map(a => (
+        <li><a href={`/articles/${a.slug}`}>{a.data.title}</a> — {a.data.summary}</li>
+      ))}
+    </ul>
+  </section>
+
+  <hr />
+
+  <p class="meta">
+    <a href="https://github.com/duyet/kb">GitHub</a> •
+    curl -fsSL https://raw.githubusercontent.com/duyet/kb/main/scripts/bootstrap.sh | bash
+  </p>
+</Layout>

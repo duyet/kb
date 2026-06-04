@@ -1,0 +1,46 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'kb.duyet.net' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <style is:global>
+      :root {
+        --bg: #fff;
+        --fg: #1a1a1a;
+        --muted: #666;
+        --link: #2563eb;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #0a0a0a; --fg: #e5e5e5; --muted: #999; }
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        line-height: 1.6;
+      }
+      a { color: var(--link); }
+      h1 { font-size: 1.8rem; font-weight: 600; }
+      h2 { font-size: 1.4rem; margin-top: 2rem; }
+      .meta { font-size: 0.875rem; color: var(--muted); }
+      ul { padding-left: 1.2rem; }
+      li { margin: 0.3rem 0; }
+      hr { border: none; border-top: 1px solid var(--muted); margin: 2rem 0; opacity: 0.2; }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

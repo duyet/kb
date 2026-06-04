@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map(article => ({ params: { slug: article.slug } }));
+}
+
+const { slug } = Astro.params;
+const allArticles = await getCollection('articles');
+const article = allArticles.find(a => a.slug === slug);
+if (!article) return Astro.redirect('/articles');
+
+const { Content } = await article.render();
+---
+
+<Layout title={`${article.data.title} — kb`}>
+  <p class="meta"><a href="/articles">← Articles</a> • {article.data.category} • {article.data.updated}</p>
+  <h1>{article.data.title}</h1>
+  <p class="meta">{article.data.summary}</p>
+  <hr />
+  <Content />
+</Layout>
+
+<style>
+  :global(pre) { background: var(--muted); padding: 1rem; border-radius: 5px; overflow-x: auto; }
+  :global(code) { background: var(--muted); padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+</style>

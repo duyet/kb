@@ -18,7 +18,15 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [GitHub projects](memory/reference-duyet-github.md) — ClickHouse tooling, Rust data tools, AI-agent repos, infra
 
 ## Project
-_(none yet)_
+- [duyet.net monorepo](memory/project-duyet-net.md) — Bun + Turborepo, ~9 apps, TanStack Start SSG on Cloudflare Pages
+- [duyetbot](memory/project-duyetbot.md) — autonomous agent maintaining the monorepo: scope, loop, memory hierarchy
+- [LLM Timeline app](memory/project-llm-timeline.md) — 3700+ SSG pages, shadcn UI, dual data sources (1950–2026)
+- [kb.duyet.net](memory/project-kb-duyet-net.md) — public KB site migrating from monorepo app to this shared-brain repo
 
 ## Tech
 - [AI agent stack](memory/tech-ai-agent-stack.md) — LangGraph/AI SDK/Agents SDK/MCP + what Duyet uses
+- [TanStack Start SSG](memory/tech-tanstack-start-ssg.md) — prerender Vite app to survive CF Rocket Loader; migration recipe
+- [Rust→WASM strategy](memory/tech-rust-wasm-prerender.md) — WASM only beats TS >1ms; the silent-prerender CI trap
+- [Flat design system](memory/tech-flat-design-system.md) — hairline borders, lucide, shadcn + semantic tokens, dark mode
+- [Cloudflare Pages deploy](memory/tech-cloudflare-pages-deploy.md) — commit→push→background-deploy; parallel-deploy hazard
+- [Codebase maintenance loop](memory/tech-codebase-maintenance-loop.md) — improvement cycles, safe dead-code removal, tests
