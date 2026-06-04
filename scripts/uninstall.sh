@@ -26,7 +26,7 @@ done
 shopt -u nullglob
 
 # hermes-native skill link.
-rm_link "$HOME_BASE/.hermes/skills/knowledge-base/kb"
+rm_link "$HOME_BASE/.hermes/skills/kb"
 
 # Drop the legacy CLI symlink from older installs, if present.
 rm_link "${BIN_DIR:-$HOME/.local/bin}/kb"
