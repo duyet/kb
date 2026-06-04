@@ -1,8 +1,13 @@
 ---
 name: user-duyet-web-presence
+title: Duyet — web presence & llms.txt sources
 description: Duyet's public sites, profiles, and LLM-friendly (llms.txt) knowledge sources
-metadata:
-  type: reference
+type: reference
+category: profile
+tags: [reference, duyet, profile, links]
+related: ["[[user-duyet-profile]]", "[[user-duyet-stack]]"]
+created: 2026-06-04
+updated: 2026-06-04
 ---
 
 Public web presence for [[user-duyet-profile]]. Sites ending in `/llms.txt`

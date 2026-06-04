@@ -1,8 +1,13 @@
 ---
 name: feedback-working-style
+title: Working style preferences
 description: How Duyet wants agents to work — concise English, semantic commits, simple solutions
-metadata:
-  type: feedback
+type: feedback
+category: workflow
+tags: [feedback, duyet, workflow]
+related: ["[[user-duyet-profile]]"]
+created: 2026-06-04
+updated: 2026-06-04
 ---
 
 Working preferences for agents collaborating with [[user-duyet-profile]].
