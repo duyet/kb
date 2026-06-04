@@ -37,6 +37,7 @@ case "$cmd" in
   sync|s)   exec "$KB_DIR/scripts/sync.sh" ;;
   lint|l)   exec "$KB_DIR/scripts/lint.sh" ;;
   test|t)   exec "$KB_DIR/scripts/test.sh" ;;
+  wire|w)   exec "$KB_DIR/scripts/wire.sh" "${1:-on}" ;;
   index)    cat "$KB_DIR/MEMORY.md" ;;
   root|path) echo "$KB_DIR" ;;
   autosync)
@@ -63,6 +64,7 @@ kb — shared-brain CLI   (KB_DIR=$KB_DIR)
   kb index              print MEMORY.md
   kb root               print the resolved KB location
   kb autosync on|off|status   opt-in */15min sync cron (not installed by default)
+  kb wire on|off              add/remove the kb reflex in ~/.claude/CLAUDE.md + AGENTS.md
 EOF
     ;;
   *) echo "kb: unknown command '$cmd' (try: kb help)"; exit 1 ;;

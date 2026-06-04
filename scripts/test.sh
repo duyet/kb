@@ -9,6 +9,7 @@ SRC="$(cd -P "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 TMP="$(mktemp -d)"
 export KB_DIR="$TMP/kb"
 export CLAUDE_SKILLS_DIR="$TMP/skills"
+export CLAUDE_CFG_DIR="$TMP/claude"     # isolate global-config wiring from your real ~/.claude
 CRON_BAK="$(crontab -l 2>/dev/null || true)"
 pass=0; fail=0
 ok() { echo "  ok   $1"; pass=$((pass+1)); }
@@ -28,6 +29,9 @@ echo "[install]"
 "$KB_DIR/scripts/install.sh" >/dev/null
 [ -L "$CLAUDE_SKILLS_DIR/kb-memory" ] && [ -L "$CLAUDE_SKILLS_DIR/kb-dream" ] \
   && ok "skills linked" || no "skills linked"
+grep -q "kb:start" "$CLAUDE_CFG_DIR/CLAUDE.md" 2>/dev/null \
+  && grep -q "kb:start" "$CLAUDE_CFG_DIR/AGENTS.md" 2>/dev/null \
+  && ok "config wired" || no "config wired"
 
 echo "[verify]"
 [ "$("$KB" root)" = "$KB_DIR" ] && ok "kb root = KB_DIR" || no "kb root = KB_DIR"
@@ -47,6 +51,8 @@ echo "[uninstall]"
 "$KB_DIR/scripts/uninstall.sh" >/dev/null
 [ ! -e "$CLAUDE_SKILLS_DIR/kb-memory" ] && [ ! -e "$CLAUDE_SKILLS_DIR/kb-dream" ] \
   && ok "skills unlinked" || no "skills unlinked"
+grep -q "kb:start" "$CLAUDE_CFG_DIR/CLAUDE.md" 2>/dev/null \
+  && no "config unwired" || ok "config unwired"
 [ -d "$KB_DIR/.git" ] && ok "repo intact" || no "repo intact"
 
 echo
