@@ -36,18 +36,21 @@ kb/
 ├── CLAUDE.md     ← thin pointer to AGENTS.md for Claude Code
 ├── DREAM.md      ← the memory-consolidation ("dream") protocol
 ├── MEMORY.md     ← master index, one line per memory — load this first
-├── raw/          ← immutable ground-truth sources (agents read-only)
-├── memory/       ← agent-managed notes, one fact per file
+├── raw/          ← Layer 1: capture inbox + ground-truth sources
+│   └── inbox/          daily quick-captures (dream distills → memory/, then clears)
+├── memory/       ← Layer 2: agent-managed notes, one fact per file
+│   ├── _TEMPLATE.md    the standard every note follows
 │   ├── user-*.md       who the user is (public profile, stack, web presence)
 │   ├── feedback-*.md   how agents should work (style, corrections)
 │   ├── project-*.md    durable context about ongoing work
 │   ├── reference-*.md  pointers to external resources
 │   └── tech-*.md       reusable technical knowledge
+├── scripts/      ← sync.sh (pull/commit/push), lint.sh (enforce the standard)
 └── .agent/       ← agent scratchpad (state.json: ingested files + tasks)
 ```
 
-Each note carries frontmatter (`name`, `description`, `type`, `tags`, `related`)
-so it is self-describing, searchable, and linked. See `AGENTS.md` for the format.
+Every note follows `memory/_TEMPLATE.md` and must pass `scripts/lint.sh` (required
+frontmatter, `name` == filename, links resolve). See `AGENTS.md` for the format.
 
 ### Reference: Karpathy's LLM-Wiki model
 

@@ -1,14 +1,26 @@
-# raw/ — ground-truth sources (read-only for agents)
+# raw/ — capture inbox + ground-truth sources (Layer 1)
 
-Drop immutable source material here: PDFs, articles, exported notes, transcripts,
-`llms.txt` snapshots, anything an agent should summarize **from** but never edit.
+Raw material that the **dream** pass (`../DREAM.md`) consumes into clean,
+linked notes under `../memory/`. Two kinds of content live here:
 
-Rules:
-- Agents have **read-only** access to this folder. They never modify these files.
-- Agents synthesize facts from here into atomic notes under `../memory/`, then
-  link them in `../MEMORY.md`.
-- `.agent/state.json` tracks which raw files have been ingested, so re-runs only
-  process what's new.
+## `inbox/` — daily quick-capture (writable, ephemeral)
 
-This mirrors the Karpathy LLM-Wiki layering — see the model in `../README.md`.
-Keep only **public** sources here (this repo is public).
+Agents (Claude Code, Codex, …) **append** rough observations here as they work —
+no frontmatter, no ceremony. One file per day: `inbox/YYYY-MM-DD.md`, timestamped
+bullets. This is a scratch journal, not the final memory.
+
+The dream pass **consumes** these: it promotes durable, general, public facts into
+`memory/` notes, then **deletes the processed inbox file** (it's been distilled).
+So `inbox/` stays small and self-cleaning — capture freely, dream tidies up.
+
+## source docs — immutable ground truth (read-only)
+
+Drop PDFs, articles, transcripts, `llms.txt` snapshots directly in `raw/` (not in
+`inbox/`). Agents read these to synthesize notes but **never edit them**. Dream
+records each in `.agent/state.json` (`processed`) so it's ingested once, and
+**keeps** the file (it's permanent ground truth, unlike the inbox).
+
+---
+
+Public material only — this repo is public. See the Karpathy LLM-Wiki model in
+`../README.md`.

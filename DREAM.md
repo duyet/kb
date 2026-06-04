@@ -16,9 +16,14 @@ on a `/loop`, or whenever the KB feels noisy (duplicates, sprawl, stale facts).
 
 ## The pass
 
-1. **Load.** Read `MEMORY.md`, then every `memory/*.md`. Read `.agent/state.json`.
-2. **Ingest raw.** For any file in `raw/` not in `state.json.processed`, synthesize
-   its facts into notes (per `AGENTS.md` §2) and record it in `processed`.
+1. **Load.** Read `MEMORY.md`, every `memory/*.md`, `raw/inbox/*.md`, the `raw/`
+   source docs, and `.agent/state.json`.
+2. **Ingest & rewrite.** Read `raw/inbox/*` (daily captures) and any `raw/` source
+   doc not in `state.json.processed`. Promote durable, general, public facts into
+   `memory/` — **create new notes or rewrite/merge existing ones** to absorb them
+   (per `AGENTS.md` §2 + the standard). Then clean up:
+   - **inbox files:** once distilled, **delete** them (they're ephemeral).
+   - **source docs:** **keep** them (immutable ground truth); record in `processed`.
 3. **Dedupe & merge.** Fold duplicate/overlapping notes into one. Keep the
    clearest, most recent phrasing. Lossless of meaning, not of words.
 4. **Split.** If a note holds multiple facts, split into atomic notes.
