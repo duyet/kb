@@ -12,8 +12,8 @@ const memory = defineCollection({
     aliases: z.array(z.string()).optional(),
     related: z.array(z.string()).optional(),
     sources: z.array(z.string()).optional(),
-    created: z.string().optional(),
-    updated: z.string(),
+    created: z.coerce.string().optional(),
+    updated: z.coerce.string(),
   }),
 });
 
@@ -25,7 +25,7 @@ const articles = defineCollection({
     tags: z.array(z.string()).optional(),
     links: z.array(z.string()).optional(),
     summary: z.string(),
-    updated: z.string(),
+    updated: z.coerce.string(),
   }),
 });
 
