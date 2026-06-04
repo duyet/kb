@@ -21,10 +21,10 @@ done
 shopt -u nullglob
 
 # hermes-native skill — file-tool oriented — into hermes's own skills dir.
+# Only wired if hermes is installed (dir exists).
 if [ -d "$HOME_BASE/.hermes/skills" ]; then
-  mkdir -p "$HOME_BASE/.hermes/skills/knowledge-base"
-  ln -sfn "$KB_DIR/agents/hermes/kb" "$HOME_BASE/.hermes/skills/knowledge-base/kb"
-  echo "+ link  $HOME_BASE/.hermes/skills/knowledge-base/kb"
+  ln -sfn "$KB_DIR/agents/hermes/kb" "$HOME_BASE/.hermes/skills/kb"
+  echo "+ link  $HOME_BASE/.hermes/skills/kb"
 fi
 
 # Wire the reflex into global agent config (Claude Code / Codex / opencode).
