@@ -21,6 +21,8 @@ rm_link() {
 AGENT_SKILLS_DIRS=(
   "${CLAUDE_SKILLS_DIR:-$HOME_BASE/.claude/skills}"
   "$HOME_BASE/.agents/skills"
+  "$HOME_BASE/.gemini/antigravity-cli/skills"
+  "$HOME_BASE/.gemini/skills"
 )
 shopt -s nullglob
 for dir in "${AGENT_SKILLS_DIRS[@]}"; do
