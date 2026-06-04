@@ -26,9 +26,20 @@ snapshots). To ingest: read new files in `raw/`, synthesize their facts into
 
 ## 2. Write protocol
 
-Write a note when you learn something **durable, general, and public** that a
-future agent (any tool, any repo) would benefit from.
+Two ways to write, depending on certainty:
 
+- **Quick-capture (daily, low ceremony):** jot rough observations into
+  `raw/inbox/YYYY-MM-DD.md` as you work — append a `- HH:MM — note` bullet, no
+  frontmatter. Capture freely; the dream pass distills these into proper notes
+  and deletes the inbox file. Use this when you're not sure a fact is durable yet.
+- **Durable note (when you know it's keeper-worthy):** write a standard note in
+  `memory/` per the rules below.
+
+Write a durable note when you learn something **durable, general, and public**
+that a future agent (any tool, any repo) would benefit from.
+
+- **Standard:** every note follows the template `memory/_TEMPLATE.md` and must
+  pass `scripts/lint.sh` (required fields, `name` == filename, links resolve).
 - **Atomic:** one fact per file. If a fact needs an `and`, it's probably two notes.
 - **Check first:** search `memory/` for an existing note that covers it. **Update
   that note** instead of creating a duplicate.
@@ -37,8 +48,8 @@ future agent (any tool, any repo) would benefit from.
 - **Index:** add/refresh a one-line pointer in `MEMORY.md`. Never put note content
   in `MEMORY.md`.
 - **Prune:** if a note turns out wrong, delete the file and its index line.
-- **Commit & push** so other devices/agents pick it up:
-  `git add -A && git commit -m "memory: <what>" && git push`
+- **Lint, then sync:** run `scripts/lint.sh`, then `scripts/sync.sh` (pull, commit,
+  push) so other devices/agents pick it up.
 
 ### File naming
 
