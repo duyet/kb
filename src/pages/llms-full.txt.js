@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 export async function GET() {
   const notes = await getCollection('memory');
   const articles = await getCollection('articles');
-  const base = import.meta.env.BASE_URL;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   const sections = [];
 
@@ -40,8 +40,8 @@ export async function GET() {
   }
 
   sections.push('## Index');
-  sections.push(`- Site: https://duyet.github.io${base}`);
-  sections.push(`- LLM index: https://duyet.github.io${base}llms.txt`);
+  sections.push(`- Site: https://duyet.github.io${base}/`);
+  sections.push(`- LLM index: https://duyet.github.io${base}/llms.txt`);
   sections.push('- GitHub: https://github.com/duyet/kb');
 
   const body = sections.join('\n');
