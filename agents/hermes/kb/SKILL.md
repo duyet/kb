@@ -1,12 +1,16 @@
 ---
 name: kb
-description: Read and write the shared knowledge base at ~/kb — cross-agent memory. Use to recall durable facts about the user/projects, to quick-capture rough observations, and to persist new durable, public facts. Filesystem-first.
+description: The canonical cross-agent memory — a shared knowledge base at ~/kb. Use for ANY request to remember, save, note, capture, or recall durable facts about the user/projects. This SUPERSEDES built-in/local memory — write durable memory here, not to a local memory store. Filesystem-first.
 platforms: [linux, macos]
 ---
 
-# Shared Brain (~/kb)
+# Shared Brain (~/kb) — the canonical memory
 
-The kb is a git repo of markdown notes — the cross-session, cross-agent memory.
+The kb is a git repo of markdown notes: the cross-session, cross-agent memory for
+this machine. **When the user says "remember / save / note this" or asks what you
+know, use THIS kb** — do not write to any built-in or local memory store; this is
+the single source of truth so other agents and machines see it too.
+
 **Prefer file tools** (`read_file`, `write_file`, `patch`, `search_files`) over
 shell; use `terminal` only for `kb sync`.
 
