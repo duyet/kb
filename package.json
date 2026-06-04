@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "mkdir -p src/content/memory src/content/articles && cp -r memory/*.md src/content/memory/ && cp -r raw/kb-content/**/*.md src/content/articles/ 2>/dev/null || true",
+    "prebuild": "mkdir -p src/content/memory src/content/articles && cp memory/*.md src/content/memory/ && find raw/kb-content -name '*.md' -exec cp {} src/content/articles/ \\;",
     "build": "astro build",
     "preview": "astro preview"
   },

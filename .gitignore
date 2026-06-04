@@ -1,5 +1,6 @@
 node_modules
 dist
 .astro
-src/content/
+src/content/*
+!src/content/config.ts
 src/env.d.ts
