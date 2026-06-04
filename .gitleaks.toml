@@ -1,0 +1,45 @@
+title = "kb — secret & PII scanner"
+
+[extend]
+useDefault = true
+
+# Too noisy in markdown prose
+disabledRules = ["generic-api-key"]
+
+# --- Custom rules for hostnames, IPs, internal names ---
+
+[[rules]]
+id = "private-ip-address"
+description = "Private/internal IP address"
+regex = '''(?:(?:10\.\d{1,3}\.\d{1,3}\.\d{1,3})|(?:172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3})|(?:192\.168\.\d{1,3}\.\d{1,3}))'''
+tags = ["ip", "network"]
+
+[[rules]]
+id = "ssh-user-host"
+description = "SSH user@host pattern"
+regex = '''[a-z_][a-z0-9_-]*@[a-z0-9][a-z0-9.-]+\.[a-z]{2,}'''
+tags = ["ssh", "hostname"]
+  [[rules.allowlists]]
+  regexTarget = "line"
+  # Allow public GitHub commits (author emails) and public URLs in sources:
+  regexes = [
+    '''github\.com''',
+    '''gitlab\.com''',
+    '''npmjs\.com''',
+    '''pypi\.org''',
+    '''crates\.io''',
+    '''duyet\.net''',
+    '''duyet\.dev''',
+  ]
+
+[[rules]]
+id = "aws-access-key"
+description = "AWS Access Key ID"
+regex = '''AKIA[0-9A-Z]{16}'''
+tags = ["aws", "key"]
+
+[[rules]]
+id = "location-coordinates"
+description = "GPS coordinates (lat/lng with 4+ decimal precision)"
+regex = '''[-+]?\d{1,3}\.\d{4,}\s*,\s*[-+]?\d{1,3}\.\d{4,}'''
+tags = ["location", "pii"]
