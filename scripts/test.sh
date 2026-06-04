@@ -10,7 +10,7 @@ TMP="$(mktemp -d)"
 export KB_DIR="$TMP/kb"
 export CLAUDE_SKILLS_DIR="$TMP/skills"
 export KB_HOME="$TMP/home"              # isolate global-config wiring from your real $HOME
-mkdir -p "$KB_HOME/.config/opencode"    # so the opencode wire target is exercised too
+mkdir -p "$KB_HOME/.config/opencode" "$KB_HOME/.hermes"   # exercise opencode + hermes targets
 CRON_BAK="$(crontab -l 2>/dev/null || true)"
 pass=0; fail=0
 ok() { echo "  ok   $1"; pass=$((pass+1)); }
@@ -32,7 +32,8 @@ echo "[install]"
   && ok "skills linked" || no "skills linked"
 grep -q "kb:start" "$KB_HOME/.claude/CLAUDE.md" 2>/dev/null \
   && grep -q "kb:start" "$KB_HOME/.config/opencode/AGENTS.md" 2>/dev/null \
-  && ok "config wired (claude + opencode)" || no "config wired"
+  && grep -q "kb:start" "$KB_HOME/.hermes/SOUL.md" 2>/dev/null \
+  && ok "config wired (claude+opencode+hermes)" || no "config wired"
 
 echo "[verify]"
 [ "$("$KB" root)" = "$KB_DIR" ] && ok "kb root = KB_DIR" || no "kb root = KB_DIR"
