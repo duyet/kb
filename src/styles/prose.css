@@ -1,0 +1,159 @@
+/* ============================================================
+   Prose — markdown content styling (from astro-tone)
+   ============================================================ */
+.prose {
+  --inline-code-bg: color-mix(in srgb, var(--color-accent) 7%, transparent);
+  --inline-code-fg: color-mix(in srgb, var(--label-primary) 88%, var(--color-accent) 12%);
+  --prose-muted: var(--label-secondary);
+  --prose-soft: var(--label-tertiary);
+  --prose-rule: color-mix(in srgb, var(--separator) 72%, transparent);
+  --prose-marker: color-mix(in srgb, var(--color-accent) 70%, var(--label-secondary) 30%);
+
+  font-size: clamp(1rem, 0.99rem + 0.04vw, 1.0156rem);
+  line-height: 1.76;
+  color: var(--label-primary);
+}
+
+.prose > * { margin-block: 0; }
+.prose > * + * { margin-block-start: var(--space-6); }
+
+.prose p,
+.prose li {
+  line-height: 1.76;
+}
+
+.prose h1, .prose h2, .prose h3,
+.prose h4, .prose h5, .prose h6 {
+  position: relative;
+  scroll-margin-top: calc(var(--nav-height) + var(--space-6));
+  text-wrap: pretty;
+}
+
+.prose h2 {
+  font-size: var(--text-title-2);
+  font-weight: 650;
+  line-height: 1.24;
+  margin-block-start: var(--space-12);
+}
+
+.prose h3 {
+  font-size: var(--text-title-3);
+  font-weight: 600;
+  line-height: 1.24;
+  margin-block-start: var(--space-8);
+}
+
+.prose h4 {
+  font-size: var(--text-headline);
+  font-weight: 600;
+  margin-block-start: var(--space-6);
+}
+
+.prose h1 + *, .prose h2 + *, .prose h3 + * { margin-block-start: var(--space-3); }
+
+.prose ul, .prose ol { padding-left: var(--space-6); }
+.prose li { padding-left: var(--space-1); }
+.prose li + li { margin-block-start: var(--space-2); }
+.prose li::marker { color: var(--prose-marker); }
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+.prose a:hover {
+  text-decoration-color: var(--color-accent);
+  opacity: 1;
+}
+
+.prose strong { font-weight: 600; }
+
+.prose blockquote {
+  padding: var(--space-2) 0 var(--space-2) var(--space-5);
+  border-left: 2px solid var(--color-accent);
+  background: transparent;
+  color: var(--label-primary);
+  font-size: var(--text-callout);
+  font-style: normal;
+  line-height: 1.72;
+}
+
+.prose blockquote p:last-child { margin: 0; }
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--prose-rule);
+  margin-block: var(--space-12);
+}
+
+.prose img {
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--prose-rule);
+  margin-inline: auto;
+  max-width: 100%;
+}
+
+/* Inline code */
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--inline-code-bg);
+  color: var(--inline-code-fg);
+  padding: 0.08em 0.34em;
+  border-radius: 5px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Code blocks */
+.prose pre {
+  background: #1c2029;
+  color: #deebf8;
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  font-size: var(--text-footnote);
+  line-height: 1.62;
+  margin-block: var(--space-8);
+}
+
+.prose pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  font-size: var(--text-callout);
+  border-collapse: collapse;
+}
+
+.prose th {
+  font-size: var(--text-footnote);
+  font-weight: 600;
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--prose-rule);
+  color: var(--prose-muted);
+}
+
+.prose td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--prose-rule);
+}
+
+@media (prefers-color-scheme: dark) {
+  .prose pre {
+    background: #0d1117;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}

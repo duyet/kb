@@ -1,0 +1,159 @@
+/* ============================================================
+   Design Tokens — adapted from astro-tone
+   ============================================================ */
+:root {
+  /* Font Families */
+  --font-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+  --font-mono: ui-monospace, Menlo, Consolas, monospace;
+
+  /* Type Scale */
+  --text-large-title: 2.125rem;
+  --text-title-1: 1.75rem;
+  --text-title-2: 1.375rem;
+  --text-title-3: 1.25rem;
+  --text-headline: 1.0625rem;
+  --text-body: 1.0625rem;
+  --text-callout: 1rem;
+  --text-subheadline: 0.9375rem;
+  --text-footnote: 0.8125rem;
+  --text-caption-1: 0.75rem;
+  --text-caption-2: 0.6875rem;
+
+  /* Font Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+
+  /* Letter Spacing */
+  --tracking-tight: -0.022em;
+  --tracking-normal: 0em;
+
+  /* Accent */
+  --color-accent: #197ca8;
+
+  /* Label Colors */
+  --label-primary: rgba(0, 0, 0, 1);
+  --label-secondary: rgba(24, 31, 36, 0.72);
+  --label-tertiary: rgba(24, 31, 36, 0.56);
+  --label-quaternary: rgba(24, 31, 36, 0.34);
+
+  /* Background */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7fbfd;
+
+  /* Fill */
+  --fill-primary: rgba(25, 124, 168, 0.14);
+  --fill-secondary: rgba(25, 124, 168, 0.1);
+  --fill-tertiary: rgba(25, 124, 168, 0.07);
+
+  /* Separator */
+  --separator: rgba(60, 60, 67, 0.29);
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.06);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-out: cubic-bezier(0, 0, 0.58, 1);
+
+  /* Layout */
+  --max-width-content: 784px;
+  --nav-height: 52px;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --label-primary: rgba(255, 255, 255, 1);
+    --label-secondary: rgba(239, 247, 250, 0.76);
+    --label-tertiary: rgba(239, 247, 250, 0.56);
+    --label-quaternary: rgba(239, 247, 250, 0.38);
+
+    --bg-primary: #000000;
+    --bg-secondary: #101416;
+
+    --fill-primary: rgba(116, 199, 220, 0.18);
+    --fill-secondary: rgba(116, 199, 220, 0.13);
+    --fill-tertiary: rgba(116, 199, 220, 0.09);
+
+    --separator: rgba(84, 84, 88, 0.65);
+
+    --color-accent: #74c7dc;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--label-primary);
+  background-color: var(--bg-primary);
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--label-primary);
+}
+
+h1 { font-size: var(--text-large-title); }
+h2 { font-size: var(--text-title-1); }
+h3 { font-size: var(--text-title-2); }
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+a:hover { opacity: 0.75; }
+
+strong, b { font-weight: var(--weight-semibold); }

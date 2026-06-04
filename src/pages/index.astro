@@ -4,34 +4,177 @@ import { getCollection } from 'astro:content';
 
 const notes = await getCollection('memory');
 const articles = await getCollection('articles');
+
+const notesSorted = notes.sort((a, b) => String(a.data.name).localeCompare(String(b.data.name)));
+const articlesSorted = articles.sort((a, b) => String(a.data.title).localeCompare(String(b.data.title)));
 ---
 
 <Layout title="kb.duyet.net — shared brain">
-  <h1>kb.duyet.net</h1>
-  <p class="meta">Duyet Le — shared knowledge base</p>
+  <section class="hero">
+    <h1 class="hero-title">kb.duyet.net</h1>
+    <p class="hero-desc">Shared knowledge base for Duyet Le — durable notes on data engineering, Rust, AI agents, and infrastructure.</p>
+    <div class="hero-divider"></div>
+  </section>
 
-  <section>
-    <h2>Memory ({notes.length})</h2>
-    <ul>
-      {notes.map(n => (
-        <li><a href={`/memory/${n.slug}`}>{n.data.title || n.data.name}</a> — {n.data.description}</li>
+  <section class="content-section">
+    <div class="section-header">
+      <h2 class="section-title">Memory <span class="count">{notes.length}</span></h2>
+    </div>
+    <ul class="item-list">
+      {notesSorted.map(n => (
+        <li class="item">
+          <a href={`/memory/${n.slug}`} class="item-link">
+            <span class="item-title">{n.data.title || n.data.name}</span>
+            <span class="item-arrow">→</span>
+          </a>
+          <span class="item-desc">{n.data.description}</span>
+        </li>
       ))}
     </ul>
   </section>
 
-  <section>
-    <h2>Articles ({articles.length})</h2>
-    <ul>
-      {articles.map(a => (
-        <li><a href={`/articles/${a.slug}`}>{a.data.title}</a> — {a.data.summary}</li>
+  <section class="content-section">
+    <div class="section-header">
+      <h2 class="section-title">Articles <span class="count">{articles.length}</span></h2>
+    </div>
+    <ul class="item-list">
+      {articlesSorted.map(a => (
+        <li class="item">
+          <a href={`/articles/${a.slug}`} class="item-link">
+            <span class="item-title">{a.data.title}</span>
+            <span class="item-arrow">→</span>
+          </a>
+          <span class="item-desc">{a.data.summary}</span>
+        </li>
       ))}
     </ul>
   </section>
-
-  <hr />
-
-  <p class="meta">
-    <a href="https://github.com/duyet/kb">GitHub</a> •
-    curl -fsSL https://raw.githubusercontent.com/duyet/kb/main/scripts/bootstrap.sh | bash
-  </p>
 </Layout>
+
+<style>
+  .hero {
+    padding: var(--space-10) 0 var(--space-8);
+  }
+
+  .hero-title {
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 650;
+    letter-spacing: -0.024em;
+    line-height: 1.02;
+    margin: 0 0 var(--space-4);
+  }
+
+  .hero-desc {
+    font-size: var(--text-title-3);
+    color: var(--label-secondary);
+    margin: 0;
+    line-height: var(--leading-snug);
+    max-width: min(460px, 100%);
+  }
+
+  .hero-divider {
+    height: 1px;
+    background: var(--separator);
+    margin-top: var(--space-10);
+  }
+
+  .content-section {
+    margin-top: var(--space-12);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-4);
+  }
+
+  .section-title {
+    font-size: var(--text-title-2);
+    font-weight: 650;
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .count {
+    font-size: var(--text-footnote);
+    font-weight: var(--weight-medium);
+    color: var(--label-tertiary);
+    vertical-align: super;
+    margin-left: var(--space-1);
+  }
+
+  .item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .item {
+    padding: var(--space-2) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .item + .item {
+    border-top: 1px solid color-mix(in srgb, var(--separator) 40%, transparent);
+  }
+
+  .item-link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    color: var(--label-primary);
+    text-decoration: none;
+    font-size: var(--text-callout);
+    font-weight: var(--weight-medium);
+    transition:
+      color var(--duration-fast) var(--ease-out);
+  }
+
+  .item-link:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .item-title {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 4px;
+    transition: text-decoration-color var(--duration-fast) var(--ease-out);
+  }
+
+  .item-link:hover .item-title {
+    text-decoration-color: currentColor;
+  }
+
+  .item-arrow {
+    color: var(--label-tertiary);
+    font-size: var(--text-footnote);
+    font-weight: var(--weight-semibold);
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out);
+  }
+
+  .item-link:hover .item-arrow {
+    color: var(--color-accent);
+    transform: translate(2px, -1px);
+  }
+
+  .item-desc {
+    font-size: var(--text-footnote);
+    color: var(--label-tertiary);
+    line-height: var(--leading-normal);
+    padding-left: 0;
+  }
+
+  @media (max-width: 600px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+    .hero-desc {
+      font-size: var(--text-callout);
+    }
+  }
+</style>

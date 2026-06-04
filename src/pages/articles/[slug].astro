@@ -4,26 +4,151 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
-  return articles.map(article => ({ params: { slug: article.slug } }));
+  return articles.map(article => ({ params: { slug: article.slug }, props: { article } }));
 }
 
-const { slug } = Astro.params;
-const allArticles = await getCollection('articles');
-const article = allArticles.find(a => a.slug === slug);
-if (!article) return Astro.redirect('/articles');
-
+const { article } = Astro.props;
 const { Content } = await article.render();
 ---
 
-<Layout title={`${article.data.title} — kb`}>
-  <p class="meta"><a href="/articles">← Articles</a> • {article.data.category} • {article.data.updated}</p>
-  <h1>{article.data.title}</h1>
-  <p class="meta">{article.data.summary}</p>
-  <hr />
-  <Content />
+<Layout title={`${article.data.title} — kb`} description={article.data.summary}>
+  <article>
+    <a href="/articles" class="back-link">← Articles</a>
+
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="meta-tag">{article.data.category}</span>
+        <span class="meta-date">Updated {article.data.updated}</span>
+      </div>
+      <h1 class="post-title">{article.data.title}</h1>
+      <p class="post-description">{article.data.summary}</p>
+    </header>
+
+    <div class="post-divider"></div>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {article.data.tags && article.data.tags.length > 0 && (
+      <footer class="post-footer">
+        <div class="tag-list">
+          {article.data.tags.map(t => (
+            <span class="tag">{t}</span>
+          ))}
+        </div>
+      </footer>
+    )}
+
+    {article.data.links && article.data.links.length > 0 && (
+      <footer class="post-footer">
+        <h3 class="footer-heading">Related</h3>
+        <div class="tag-list">
+          {article.data.links.map(l => (
+            <code class="related-link">{l}</code>
+          ))}
+        </div>
+      </footer>
+    )}
+  </article>
 </Layout>
 
 <style>
-  :global(pre) { background: var(--muted); padding: 1rem; border-radius: 5px; overflow-x: auto; }
-  :global(code) { background: var(--muted); padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+  .back-link {
+    display: inline-block;
+    font-size: var(--text-footnote);
+    font-weight: var(--weight-medium);
+    color: var(--label-tertiary);
+    text-decoration: none;
+    margin-bottom: var(--space-6);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .post-header {
+    margin-bottom: var(--space-2);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-footnote);
+    color: var(--label-tertiary);
+  }
+
+  .meta-tag {
+    font-size: var(--text-caption-1);
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .meta-date {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .post-title {
+    font-size: var(--text-title-1);
+    font-weight: 650;
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.16;
+    margin-bottom: var(--space-3);
+  }
+
+  .post-description {
+    font-size: var(--text-callout);
+    color: var(--label-secondary);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
+  .post-divider {
+    height: 1px;
+    background: var(--separator);
+    margin: var(--space-8) 0;
+  }
+
+  .post-footer {
+    margin-top: var(--space-12);
+    padding-top: var(--space-6);
+    border-top: 1px solid color-mix(in srgb, var(--separator) 50%, transparent);
+  }
+
+  .footer-heading {
+    font-size: var(--text-footnote);
+    font-weight: var(--weight-semibold);
+    color: var(--label-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-3);
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tag {
+    font-size: var(--text-footnote);
+    color: var(--label-secondary);
+    background: var(--fill-tertiary);
+    padding: 0.15em 0.55em;
+    border-radius: var(--radius-sm);
+  }
+
+  .related-link {
+    font-size: var(--text-footnote);
+    color: var(--label-tertiary);
+    background: var(--fill-tertiary);
+    padding: 0.15em 0.5em;
+    border-radius: var(--radius-sm);
+  }
 </style>

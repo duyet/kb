@@ -4,25 +4,162 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const notes = await getCollection('memory');
-  return notes.map(note => ({ params: { slug: note.slug } }));
+  return notes.map(note => ({ params: { slug: note.slug }, props: { note } }));
 }
 
-const { slug } = Astro.params;
-const allNotes = await getCollection('memory');
-const note = allNotes.find(n => n.slug === slug);
-if (!note) return Astro.redirect('/memory');
-
+const { note } = Astro.props;
 const { Content } = await note.render();
 ---
 
-<Layout title={`${note.data.title || note.data.name} — kb`}>
-  <p class="meta"><a href="/memory">← Memory</a> • {note.data.type} • {note.data.updated}</p>
-  <h1>{note.data.title || note.data.name}</h1>
-  <p class="meta">{note.data.description}</p>
-  <hr />
-  <Content />
+<Layout title={`${note.data.title || note.data.name} — kb`} description={note.data.description}>
+  <article>
+    <a href="/memory" class="back-link">← Memory</a>
+
+    <header class="post-header">
+      <div class="post-meta">
+        {note.data.type && <span class="meta-tag">{note.data.type}</span>}
+        <span class="meta-date">Updated {note.data.updated}</span>
+      </div>
+      <h1 class="post-title">{note.data.title || note.data.name}</h1>
+      <p class="post-description">{note.data.description}</p>
+    </header>
+
+    <div class="post-divider"></div>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {note.data.sources && note.data.sources.length > 0 && (
+      <footer class="post-footer">
+        <h3 class="footer-heading">Sources</h3>
+        <ul class="source-list">
+          {note.data.sources.map(s => (
+            <li><a href={s} class="source-link">{s}</a></li>
+          ))}
+        </ul>
+      </footer>
+    )}
+
+    {note.data.related && note.data.related.length > 0 && (
+      <footer class="post-footer">
+        <h3 class="footer-heading">Related</h3>
+        <ul class="source-list">
+          {note.data.related.map(r => (
+            <li><code class="related-link">{r}</code></li>
+          ))}
+        </ul>
+      </footer>
+    )}
+  </article>
 </Layout>
 
 <style>
-  :global(code) { background: var(--muted); padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+  .back-link {
+    display: inline-block;
+    font-size: var(--text-footnote);
+    font-weight: var(--weight-medium);
+    color: var(--label-tertiary);
+    text-decoration: none;
+    margin-bottom: var(--space-6);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .post-header {
+    margin-bottom: var(--space-2);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-footnote);
+    color: var(--label-tertiary);
+  }
+
+  .meta-tag {
+    font-size: var(--text-caption-1);
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .meta-date {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .post-title {
+    font-size: var(--text-title-1);
+    font-weight: 650;
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.16;
+    margin-bottom: var(--space-3);
+  }
+
+  .post-description {
+    font-size: var(--text-callout);
+    color: var(--label-secondary);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
+  .post-divider {
+    height: 1px;
+    background: var(--separator);
+    margin: var(--space-8) 0;
+  }
+
+  .post-footer {
+    margin-top: var(--space-12);
+    padding-top: var(--space-6);
+    border-top: 1px solid color-mix(in srgb, var(--separator) 50%, transparent);
+  }
+
+  .footer-heading {
+    font-size: var(--text-footnote);
+    font-weight: var(--weight-semibold);
+    color: var(--label-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-3);
+  }
+
+  .source-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .source-list li {
+    margin: 0;
+  }
+
+  .source-link {
+    font-size: var(--text-footnote);
+    color: var(--label-secondary);
+    word-break: break-all;
+  }
+
+  .source-link:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .related-link {
+    font-size: var(--text-footnote);
+    color: var(--label-tertiary);
+    background: var(--fill-tertiary);
+    padding: 0.15em 0.5em;
+    border-radius: var(--radius-sm);
+  }
 </style>

@@ -1,46 +1,175 @@
 ---
+import '../styles/tokens.css';
+import '../styles/prose.css';
+
 interface Props {
   title?: string;
+  description?: string;
 }
 
-const { title = 'kb.duyet.net' } = Astro.props;
+const { title = 'kb.duyet.net', description = 'Duyet Le — shared knowledge base' } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <style is:global>
-      :root {
-        --bg: #fff;
-        --fg: #1a1a1a;
-        --muted: #666;
-        --link: #2563eb;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root { --bg: #0a0a0a; --fg: #e5e5e5; --muted: #999; }
-      }
-      body {
-        font-family: system-ui, sans-serif;
-        background: var(--bg);
-        color: var(--fg);
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem 1rem;
-        line-height: 1.6;
-      }
-      a { color: var(--link); }
-      h1 { font-size: 1.8rem; font-weight: 600; }
-      h2 { font-size: 1.4rem; margin-top: 2rem; }
-      .meta { font-size: 0.875rem; color: var(--muted); }
-      ul { padding-left: 1.2rem; }
-      li { margin: 0.3rem 0; }
-      hr { border: none; border-top: 1px solid var(--muted); margin: 2rem 0; opacity: 0.2; }
-    </style>
+    <meta name="description" content={description} />
+    <link rel="alternate" type="application/rss+xml" title="kb.duyet.net RSS" href={Astro.resolve('/rss.xml')} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
-    <slot />
+    <header class="site-header">
+      <nav class="site-nav">
+        <a href="/" class="logo">
+          <span class="logo-mark">◆</span>
+          <span class="logo-label">kb</span>
+        </a>
+        <div class="nav-links">
+          <a href="/" class:list={['nav-link', { active: currentPath === '/' || currentPath === '/kb/' || currentPath === '/kb' }]}>Home</a>
+          <a href="/memory" class:list={['nav-link', { active: currentPath.includes('/memory') }]}>Memory</a>
+          <a href="/articles" class:list={['nav-link', { active: currentPath.includes('/articles') }]}>Articles</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-text">
+          <a href="https://github.com/duyet/kb">GitHub</a> ·
+          <a href="/rss.xml">RSS</a> ·
+          <a href="/llms.txt">llms.txt</a>
+        </p>
+        <p class="footer-text">
+          <code>curl -fsSL https://raw.githubusercontent.com/duyet/kb/main/scripts/bootstrap.sh | bash</code>
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--separator);
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .site-nav {
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    color: var(--label-primary);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-callout);
+  }
+
+  .logo:hover { opacity: 1; }
+
+  .logo-mark {
+    font-size: 0.9em;
+    color: var(--color-accent);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .nav-link {
+    font-size: var(--text-subheadline);
+    font-weight: var(--weight-medium);
+    color: var(--label-secondary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out);
+  }
+
+  .nav-link:hover {
+    color: var(--label-primary);
+    background: var(--fill-tertiary);
+    opacity: 1;
+  }
+
+  .nav-link.active {
+    color: var(--color-accent);
+  }
+
+  main {
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    padding: var(--space-10) var(--space-4) var(--space-16);
+    min-height: calc(100vh - var(--nav-height) - 120px);
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--separator);
+    padding: var(--space-8) var(--space-4);
+    background: var(--bg-secondary);
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .footer-inner {
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .footer-text {
+    margin: 0;
+    font-size: var(--text-footnote);
+    color: var(--label-tertiary);
+  }
+
+  .footer-text a {
+    color: var(--label-secondary);
+  }
+
+  .footer-text a:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .footer-text code {
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+    background: var(--fill-tertiary);
+    padding: 0.08em 0.34em;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { gap: 0; }
+    .nav-link { padding: var(--space-1) var(--space-2); }
+  }
+</style>
