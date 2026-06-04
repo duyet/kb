@@ -9,7 +9,7 @@ interface Props {
 
 const { title = 'kb.duyet.net', description = 'Duyet Le — shared knowledge base' } = Astro.props;
 const currentPath = Astro.url.pathname;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
@@ -19,20 +19,20 @@ const base = import.meta.env.BASE_URL;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="alternate" type="application/rss+xml" title="kb.duyet.net RSS" href={`${base}rss.xml`} />
-    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="kb.duyet.net RSS" href={`${base}/rss.xml`} />
+    <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
   </head>
   <body>
     <header class="site-header">
       <nav class="site-nav">
-        <a href={base} class="logo">
+        <a href={`${base}/`} class="logo">
           <span class="logo-mark">◆</span>
           <span class="logo-label">kb</span>
         </a>
         <div class="nav-links">
-          <a href={base} class:list={['nav-link', { active: currentPath === base || currentPath === base.replace(/\/$/, '') }]}>Home</a>
-          <a href={`${base}memory`} class:list={['nav-link', { active: currentPath.includes('/memory') }]}>Memory</a>
-          <a href={`${base}articles`} class:list={['nav-link', { active: currentPath.includes('/articles') }]}>Articles</a>
+          <a href={`${base}/`} class:list={['nav-link', { active: currentPath === `${base}/` || currentPath === base }]}>Home</a>
+          <a href={`${base}/memory`} class:list={['nav-link', { active: currentPath.includes('/memory') }]}>Memory</a>
+          <a href={`${base}/articles`} class:list={['nav-link', { active: currentPath.includes('/articles') }]}>Articles</a>
         </div>
       </nav>
     </header>
@@ -45,8 +45,8 @@ const base = import.meta.env.BASE_URL;
       <div class="footer-inner">
         <p class="footer-text">
           <a href="https://github.com/duyet/kb">GitHub</a> ·
-          <a href={`${base}rss.xml`}>RSS</a> ·
-          <a href={`${base}llms.txt`}>llms.txt</a>
+          <a href={`${base}/rss.xml`}>RSS</a> ·
+          <a href={`${base}/llms.txt`}>llms.txt</a>
         </p>
         <p class="footer-text">
           <code>curl -fsSL https://raw.githubusercontent.com/duyet/kb/main/scripts/bootstrap.sh | bash</code>

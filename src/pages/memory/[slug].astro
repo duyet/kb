@@ -9,12 +9,12 @@ export async function getStaticPaths() {
 
 const { note } = Astro.props;
 const { Content } = await note.render();
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title={`${note.data.title || note.data.name} — kb`} description={note.data.description}>
   <article>
-    <a href={`${base}memory`} class="back-link">← Memory</a>
+    <a href={`${base}/memory`} class="back-link">← Memory</a>
 
     <header class="post-header">
       <div class="post-meta">

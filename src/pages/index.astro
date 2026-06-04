@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const notes = await getCollection('memory');
 const articles = await getCollection('articles');
 
@@ -24,7 +24,7 @@ const articlesSorted = articles.sort((a, b) => String(a.data.title).localeCompar
     <ul class="item-list">
       {notesSorted.map(n => (
         <li class="item">
-          <a href={`${base}memory/${n.slug}`} class="item-link">
+          <a href={`${base}/memory/${n.slug}`} class="item-link">
             <span class="item-title">{n.data.title || n.data.name}</span>
             <span class="item-arrow">→</span>
           </a>
@@ -41,7 +41,7 @@ const articlesSorted = articles.sort((a, b) => String(a.data.title).localeCompar
     <ul class="item-list">
       {articlesSorted.map(a => (
         <li class="item">
-          <a href={`${base}articles/${a.slug}`} class="item-link">
+          <a href={`${base}/articles/${a.slug}`} class="item-link">
             <span class="item-title">{a.data.title}</span>
             <span class="item-arrow">→</span>
           </a>
