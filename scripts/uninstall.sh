@@ -31,7 +31,12 @@ rm_link "${BIN_DIR:-$HOME/.local/bin}/kb"
 "$KB_DIR/bin/kb" autosync off >/dev/null 2>&1 || true
 echo "- autosync off"
 
+# Show a tidy ~/kb path in the hint if it resolves to this repo.
+BIN_HINT="$KB_DIR/bin"
+if [ -d "$HOME/kb" ] && [ "$(cd -P "$HOME/kb" 2>/dev/null && pwd)" = "$KB_DIR" ]; then
+  BIN_HINT="\$HOME/kb/bin"
+fi
 echo
 echo "removed. If you added it, drop this line from your shell rc:"
-echo "    export PATH=\"$KB_DIR/bin:\$PATH\""
+echo "    export PATH=\"$BIN_HINT:\$PATH\""
 echo "the repo is untouched at $KB_DIR (delete it manually if you want it gone)."
