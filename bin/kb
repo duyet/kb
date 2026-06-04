@@ -36,6 +36,7 @@ case "$cmd" in
     echo "(or in an agent: \"run ~/kb/DREAM.md consolidation\")" ;;
   sync|s)   exec "$KB_DIR/scripts/sync.sh" ;;
   lint|l)   exec "$KB_DIR/scripts/lint.sh" ;;
+  test|t)   exec "$KB_DIR/scripts/test.sh" ;;
   index)    cat "$KB_DIR/MEMORY.md" ;;
   root|path) echo "$KB_DIR" ;;
   autosync)
@@ -58,6 +59,7 @@ kb — shared-brain CLI   (KB_DIR=$KB_DIR)
   kb dream              how to run the consolidation pass (agent task)
   kb sync               pull + commit + push
   kb lint               validate notes against the standard
+  kb test               isolated self-test (install→verify→uninstall)
   kb index              print MEMORY.md
   kb root               print the resolved KB location
   kb autosync on|off|status   opt-in */15min sync cron (not installed by default)
