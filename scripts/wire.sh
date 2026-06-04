@@ -14,10 +14,13 @@ action="${1:-on}"
 REF="$KB_DIR"
 if [ -d "$HOME/kb" ] && [ "$(cd -P "$HOME/kb" 2>/dev/null && pwd)" = "$KB_DIR" ]; then REF="~/kb"; fi
 
-# Targets: always wire Claude Code (.claude); wire Codex/opencode only if present.
+# Targets: always wire Claude Code (.claude); wire other agents only if present.
+# Each agent's global, always-loaded instruction file:
 targets=( "$HOME_BASE/.claude/CLAUDE.md" "$HOME_BASE/.claude/AGENTS.md" )
-[ -d "$HOME_BASE/.codex" ]          && targets+=( "$HOME_BASE/.codex/AGENTS.md" )
+[ -d "$HOME_BASE/.codex" ]           && targets+=( "$HOME_BASE/.codex/AGENTS.md" )
 [ -d "$HOME_BASE/.config/opencode" ] && targets+=( "$HOME_BASE/.config/opencode/AGENTS.md" )
+[ -d "$HOME_BASE/.hermes" ]          && targets+=( "$HOME_BASE/.hermes/SOUL.md" )      # hermes (loaded each msg)
+[ -d "$HOME_BASE/.openclaw" ]        && targets+=( "$HOME_BASE/.openclaw/CLAUDE.md" )
 
 BLOCK="<!-- kb:start (managed by kb wire; remove with: kb wire off) -->
 # Knowledge Base — shared brain ($REF)
