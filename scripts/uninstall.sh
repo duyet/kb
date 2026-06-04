@@ -18,9 +18,11 @@ rm_link() {
   fi
 }
 
+shopt -s nullglob
 for s in "$KB_DIR"/skills/*/; do
   rm_link "$SKILLS_DIR/$(basename "$s")"
 done
+shopt -u nullglob
 
 # Drop the legacy CLI symlink from older installs, if present.
 rm_link "${BIN_DIR:-$HOME/.local/bin}/kb"
