@@ -9,7 +9,7 @@ aliases: [kb-duyet-net]
 related: ["[[project-duyet-net]]", "[[feedback-docs-driven-development]]", "[[project-duyetbot]]", "[[user-duyet-web-presence]]"]
 sources: ["https://kb.duyet.net/llms.txt"]
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-05
 ---
 
 kb.duyet.net — Duyet's public knowledge base, the rendered front-end of this
@@ -19,7 +19,8 @@ shared brain.
   with frontmatter (category/tags/links/summary), graph view at `/graph`, machine
   index at `/llms.txt` + `/llms-full.txt`, raw article at `/k/<slug>.md`.
 - **Now:** that monorepo app is being **replaced by THIS repo** (the shared brain).
-  The site renders the kb and also serves `/scripts/bootstrap.sh` for new-device setup.
+  The site renders the kb (including client-side full-text search, RSS, and sitemap)
+  and also serves `/scripts/bootstrap.sh` for new-device setup.
 
 Embodies [[feedback-docs-driven-development]]: synthesized, graph-connected,
 grep-able notes — the durable form of agent memory, distinct from point-in-time
