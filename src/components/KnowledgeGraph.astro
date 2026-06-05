@@ -26,7 +26,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </div>
 
 <script type="module" is:inline define:vars={{ base }}>
-  import * as THREE from 'https://esm.sh/three@0.163.0';
   import ForceGraph3D from 'https://esm.sh/3d-force-graph@1.73.4';
   import SpriteText from 'https://esm.sh/three-spritetext@1.9.4';
 
@@ -192,15 +191,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       .onNodeHover((n) => { mount.style.cursor = n ? 'pointer' : 'grab'; })
       .onBackgroundClick(closePanel);
 
-    // spread the layout a little and cool faster for a stable result
-    Graph.d3Force('charge').strength(-120);
+    // Compact layout: cap repulsion range so disconnected nodes don't fly off
+    // and balloon the bounding box (keeps zoom-to-fit tight).
+    Graph.d3Force('charge').strength(-90).distanceMax(220);
     Graph.cooldownTicks(prefersReduced ? 0 : 120);
 
-    // subtle depth fog — only the very farthest nodes fade for an ambient feel
-    const scene = Graph.scene();
-    const fog = new THREE.Fog(new THREE.Color(C.bg).getHex(), 600, 2200);
-    scene.fog = fog;
-    Graph.__fog = fog;
+    // frame the connected cluster to fill the viewport once the layout settles
+    // (ignore unconnected outliers so they don't shrink everything else)
+    const fitFilter = (n) => (n.degree || 0) > 0;
+    Graph.onEngineStop(() => Graph.zoomToFit(700, 40, fitFilter));
+    Graph.__fitFilter = fitFilter;
 
     // gentle auto-rotation (AIHero feel); off for reduced-motion
     const controls = Graph.controls();
@@ -210,14 +210,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     controls.dampingFactor = 0.12;
     controls.enableZoom = false; // page scrolls instead of zooming the graph
 
-    sizeToContainer();
-    window.addEventListener('resize', sizeToContainer);
+    sizeToContainer(false);
+    window.addEventListener('resize', () => sizeToContainer(true));
 
     // theme changes -> re-read tokens, re-tint nodes/labels/links
     new MutationObserver(() => {
       C = colors();
       Graph.nodeColor(Graph.nodeColor()).linkColor(Graph.linkColor());
-      if (Graph.__fog) Graph.__fog.color.set(new THREE.Color(C.bg).getHex());
       for (const n of nodeById.values()) {
         if (n.__label) n.__label.color = selected && isNear(n) ? C.accent : C.label;
       }
@@ -234,9 +233,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   function idOf(ref) { return typeof ref === 'object' ? ref.id : ref; }
 
-  function sizeToContainer() {
+  function sizeToContainer(fit) {
     const r = root.getBoundingClientRect();
-    if (Graph) Graph.width(r.width).height(r.height);
+    if (Graph) {
+      Graph.width(r.width).height(r.height);
+      if (fit) Graph.zoomToFit(400, 40, Graph.__fitFilter);
+    }
   }
 
   boot();
