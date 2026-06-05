@@ -4,3 +4,4 @@ dist
 src/content/*
 !src/content/config.ts
 src/env.d.ts
+package-lock.json
