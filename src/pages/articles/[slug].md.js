@@ -7,7 +7,7 @@ export async function getStaticPaths() {
 
 export async function GET({ props }) {
   const { article } = props;
-  const { body } = await article.render();
+  const body = article.body;
 
   // Reconstruct frontmatter as YAML
   const frontmatter = Object.entries(article.data)

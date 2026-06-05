@@ -7,7 +7,7 @@ export async function getStaticPaths() {
 
 export async function GET({ props }) {
   const { note } = props;
-  const { body } = await note.render();
+  const body = note.body;
 
   // Reconstruct frontmatter as YAML
   const frontmatter = Object.entries(note.data)

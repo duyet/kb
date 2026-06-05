@@ -55,6 +55,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <a href={`${base}/memory`} class:list={['nav-link', { active: currentPath.includes('/memory') }]}>Memory</a>
           <a href={`${base}/articles`} class:list={['nav-link', { active: currentPath.includes('/articles') }]}>Articles</a>
         </div>
+        <button class="search-toggle" id="search-toggle" aria-label="Search site" title="Search (/)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" title="Toggle dark/light mode">
           <span class="theme-icon theme-icon--sun" aria-hidden="true">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -116,6 +122,231 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       btn?.addEventListener('click', () => {
         setTheme(resolvedTheme() === 'dark' ? 'light' : 'dark');
+      });
+    </script>
+
+    <!-- Search Modal -->
+    <div class="search-overlay" id="search-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="search-dialog" id="search-dialog">
+        <div class="search-header">
+          <svg class="search-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="search" id="search-input" placeholder="Search notes and articles..." autocomplete="off" spellcheck="false" />
+          <button class="search-close-btn" id="search-close" aria-label="Close search">Esc</button>
+        </div>
+        <div class="search-results-wrap">
+          <div class="search-status" id="search-status">Type to search...</div>
+          <div class="search-results-list" id="search-results"></div>
+        </div>
+        <div class="search-footer">
+          <span class="search-hint"><kbd>↑↓</kbd> Navigate</span>
+          <span class="search-hint"><kbd>Enter</kbd> Select</span>
+          <span class="search-hint"><kbd>Esc</kbd> Close</span>
+        </div>
+      </div>
+    </div>
+
+    <script define:vars={{ base }}>
+      // Search functionality
+      const searchToggle = document.getElementById('search-toggle');
+      const searchOverlay = document.getElementById('search-overlay');
+      const searchDialog = document.getElementById('search-dialog');
+      const searchInput = document.getElementById('search-input');
+      const searchClose = document.getElementById('search-close');
+      const searchResults = document.getElementById('search-results');
+      const searchStatus = document.getElementById('search-status');
+
+      let searchIndex = null;
+      let selectedIndex = -1;
+      let currentItems = [];
+
+      async function ensureSearchIndex() {
+        if (searchIndex !== null) return;
+        searchStatus.textContent = 'Loading index...';
+        try {
+          const res = await fetch(`${base}/search-index.json`);
+          searchIndex = await res.json();
+          searchStatus.textContent = 'Type to search...';
+        } catch (err) {
+          searchStatus.textContent = 'Failed to load search index.';
+          console.error(err);
+        }
+      }
+
+      function openSearch() {
+        searchOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        searchInput.focus();
+        ensureSearchIndex();
+      }
+
+      function closeSearch() {
+        searchOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+        searchStatus.style.display = 'block';
+        searchStatus.textContent = 'Type to search...';
+        selectedIndex = -1;
+        currentItems = [];
+      }
+
+      function highlight(text, query) {
+        if (!query) return text;
+        const q = query.toLowerCase();
+        const index = text.toLowerCase().indexOf(q);
+        if (index === -1) return text;
+        return text.substring(0, index) + '<mark>' + text.substring(index, index + query.length) + '</mark>' + text.substring(index + query.length);
+      }
+
+      function getBodySnippet(body, query) {
+        if (!body || !query) return '';
+        const q = query.toLowerCase();
+        const bodyLower = body.toLowerCase();
+        const index = bodyLower.indexOf(q);
+        if (index === -1) return body.substring(0, 100) + '...';
+        
+        const start = Math.max(0, index - 40);
+        const end = Math.min(body.length, index + query.length + 60);
+        let snippet = body.substring(start, end);
+        if (start > 0) snippet = '...' + snippet;
+        if (end < body.length) snippet = snippet + '...';
+        return highlight(snippet, query);
+      }
+
+      function performSearch() {
+        const query = searchInput.value.trim();
+        if (!query) {
+          searchResults.innerHTML = '';
+          searchStatus.style.display = 'block';
+          searchStatus.textContent = 'Type to search...';
+          selectedIndex = -1;
+          currentItems = [];
+          return;
+        }
+
+        if (!searchIndex) return;
+
+        const q = query.toLowerCase();
+        const results = searchIndex.map(item => {
+          let score = 0;
+          const titleL = item.title.toLowerCase();
+          const descL = item.description ? item.description.toLowerCase() : '';
+          const bodyL = item.body.toLowerCase();
+          
+          if (titleL === q) score += 100;
+          else if (titleL.startsWith(q)) score += 80;
+          else if (titleL.includes(q)) score += 50;
+
+          if (descL.includes(q)) score += 20;
+          if (bodyL.includes(q)) score += 5;
+
+          item.tags.forEach(t => {
+            const tl = t.toLowerCase();
+            if (tl === q) score += 30;
+            else if (tl.includes(q)) score += 10;
+          });
+
+          return { ...item, score };
+        })
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 10);
+
+        currentItems = results;
+        selectedIndex = -1;
+
+        if (results.length === 0) {
+          searchResults.innerHTML = '';
+          searchStatus.style.display = 'block';
+          searchStatus.textContent = 'No results found.';
+          return;
+        }
+
+        searchStatus.style.display = 'none';
+        searchResults.innerHTML = results.map((item, idx) => {
+          const titleHtml = highlight(item.title, query);
+          let snippet = '';
+          if (item.description && item.description.toLowerCase().includes(q)) {
+            snippet = highlight(item.description, query);
+          } else {
+            snippet = getBodySnippet(item.body, query);
+          }
+
+          return `
+            <a href="${item.url}" class="search-item" data-index="${idx}">
+              <div class="search-item-meta">
+                <span class="search-item-type">${item.type}</span>
+                <span class="search-item-category">${item.category}</span>
+              </div>
+              <div class="search-item-title">${titleHtml}</div>
+              <div class="search-item-snippet">${snippet}</div>
+            </a>
+          `;
+        }).join('');
+      }
+
+      function updateSelection() {
+        const items = searchResults.querySelectorAll('.search-item');
+        items.forEach((item, idx) => {
+          if (idx === selectedIndex) {
+            item.classList.add('selected');
+            item.scrollIntoView({ block: 'nearest' });
+          } else {
+            item.classList.remove('selected');
+          }
+        });
+      }
+
+      // Event Listeners
+      searchToggle?.addEventListener('click', openSearch);
+      searchClose?.addEventListener('click', closeSearch);
+      searchOverlay?.addEventListener('click', (e) => {
+        if (e.target === searchOverlay) closeSearch();
+      });
+
+      searchInput?.addEventListener('input', performSearch);
+
+      window.addEventListener('keydown', (e) => {
+        // Press / to open, but ignore if inside inputs/textareas
+        if (e.key === '/' && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          openSearch();
+        }
+
+        if (!searchOverlay?.classList.contains('active')) return;
+
+        if (e.key === 'Escape') {
+          closeSearch();
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (currentItems.length > 0) {
+            selectedIndex = (selectedIndex + 1) % currentItems.length;
+            updateSelection();
+          }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (currentItems.length > 0) {
+            selectedIndex = (selectedIndex - 1 + currentItems.length) % currentItems.length;
+            updateSelection();
+          }
+        } else if (e.key === 'Enter') {
+          if (selectedIndex >= 0 && selectedIndex < currentItems.length) {
+            e.preventDefault();
+            window.location.href = currentItems[selectedIndex].url;
+          }
+        }
+      });
+
+      // Handle hover trigger selection index sync
+      searchResults?.addEventListener('mouseover', (e) => {
+        const item = e.target.closest('.search-item');
+        if (item) {
+          selectedIndex = parseInt(item.getAttribute('data-index') || '-1', 10);
+          updateSelection();
+        }
       });
     </script>
   </body>
@@ -309,8 +540,234 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     opacity: 1;
   }
 
+  /* Search toggle button */
+  .search-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: var(--label-tertiary);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    padding: 0;
+    margin-right: var(--space-1);
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out);
+    flex-shrink: 0;
+  }
+
+  .search-toggle:hover {
+    color: var(--label-primary);
+    background: var(--fill-tertiary);
+  }
+
+  /* Search Overlay & Dialog */
+  .search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 12vh var(--space-4) var(--space-4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+
+  .search-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .search-dialog {
+    background: var(--bg-primary);
+    width: 100%;
+    max-width: 580px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--separator);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-12px);
+    transition: transform var(--duration-normal) var(--ease-spring);
+  }
+
+  .search-overlay.active .search-dialog {
+    transform: translateY(0);
+  }
+
+  .search-header {
+    display: flex;
+    align-items: center;
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--separator);
+    gap: var(--space-3);
+  }
+
+  .search-input-icon {
+    color: var(--label-tertiary);
+    flex-shrink: 0;
+  }
+
+  #search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--label-primary);
+    font-size: var(--text-headline);
+    font-family: var(--font-sans);
+    outline: none;
+    padding: 0;
+  }
+
+  #search-input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  .search-close-btn {
+    font-size: var(--text-caption-1);
+    font-family: var(--font-sans);
+    color: var(--label-tertiary);
+    background: var(--fill-tertiary);
+    border: 1px solid var(--separator);
+    padding: 3px 6px;
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out);
+  }
+
+  .search-close-btn:hover {
+    color: var(--label-primary);
+    background: var(--fill-secondary);
+  }
+
+  .search-results-wrap {
+    max-height: 380px;
+    overflow-y: auto;
+    background: var(--bg-primary);
+  }
+
+  .search-status {
+    padding: var(--space-6) var(--space-5);
+    text-align: center;
+    font-size: var(--text-subheadline);
+    color: var(--label-tertiary);
+  }
+
+  .search-results-list {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-2);
+  }
+
+  .search-item {
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: background var(--duration-fast) var(--ease-out);
+  }
+
+  .search-item.selected {
+    background: var(--fill-tertiary);
+  }
+
+  .search-item-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .search-item-type {
+    font-size: var(--text-caption-2);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+  }
+
+  .search-item-category {
+    font-size: var(--text-caption-2);
+    color: var(--label-quaternary);
+  }
+
+  .search-item-title {
+    font-size: var(--text-subheadline);
+    font-weight: var(--weight-semibold);
+    color: var(--label-primary);
+  }
+
+  .search-item-snippet {
+    font-size: var(--text-footnote);
+    color: var(--label-tertiary);
+    line-height: var(--leading-normal);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .search-item-snippet mark {
+    background: color-mix(in srgb, var(--color-accent) 25%, transparent);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  .search-item-title mark {
+    background: color-mix(in srgb, var(--color-accent) 25%, transparent);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  .search-footer {
+    padding: var(--space-3) var(--space-5);
+    border-top: 1px solid var(--separator);
+    background: var(--bg-secondary);
+    display: flex;
+    gap: var(--space-4);
+    font-size: var(--text-caption-2);
+    color: var(--label-quaternary);
+  }
+
+  .search-hint {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .search-hint kbd {
+    background: var(--fill-quaternary);
+    border: 1px solid var(--separator);
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: var(--font-mono);
+    color: var(--label-tertiary);
+  }
+
   @media (max-width: 600px) {
     .site-nav { padding: 0 var(--space-4); gap: var(--space-2); }
     .nav-link { padding: 5px var(--space-2); font-size: var(--text-footnote); }
+    .search-toggle { margin-right: 0; }
+    .search-overlay { padding-top: 5vh; }
   }
 </style>
