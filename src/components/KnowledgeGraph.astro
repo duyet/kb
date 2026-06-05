@@ -1,0 +1,396 @@
+---
+// Interactive 3D knowledge graph using the `3d-force-graph` library (loaded from
+// a CDN as an ES module — no build/npm change). Nodes = memory notes + articles;
+// edges from frontmatter links + shared tags. Data is fetched client-side from
+// /graph-data.json (built by graph-data.json.js).
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<div class="kgraph" id="kgraph">
+  <div class="kgraph-canvas" id="kgraph-canvas"></div>
+
+  <!-- Detail drawer (AIHero-style), hidden until a node is clicked -->
+  <aside class="kgraph-panel" id="kgraph-panel" aria-hidden="true">
+    <button class="kgraph-panel-close" id="kgraph-panel-close" aria-label="Close detail">×</button>
+    <span class="kgraph-panel-kind" id="kgraph-panel-kind"></span>
+    <h3 class="kgraph-panel-title" id="kgraph-panel-title"></h3>
+    <p class="kgraph-panel-desc" id="kgraph-panel-desc"></p>
+    <div class="kgraph-panel-connects" id="kgraph-panel-connects-wrap">
+      <span class="kgraph-panel-label">Connects to</span>
+      <div class="kgraph-panel-chips" id="kgraph-panel-chips"></div>
+    </div>
+    <a class="kgraph-panel-link" id="kgraph-panel-link" href="#">Read full entry →</a>
+  </aside>
+
+  <p class="kgraph-hint" id="kgraph-hint">drag to rotate · click a node</p>
+</div>
+
+<script type="module" is:inline define:vars={{ base }}>
+  import * as THREE from 'https://esm.sh/three@0.163.0';
+  import ForceGraph3D from 'https://esm.sh/3d-force-graph@1.73.4';
+  import SpriteText from 'https://esm.sh/three-spritetext@1.9.4';
+
+  const root = document.getElementById('kgraph');
+  const mount = document.getElementById('kgraph-canvas');
+  const hint = document.getElementById('kgraph-hint');
+
+  const panel = document.getElementById('kgraph-panel');
+  const panelKind = document.getElementById('kgraph-panel-kind');
+  const panelTitle = document.getElementById('kgraph-panel-title');
+  const panelDesc = document.getElementById('kgraph-panel-desc');
+  const panelChips = document.getElementById('kgraph-panel-chips');
+  const panelConnectsWrap = document.getElementById('kgraph-panel-connects-wrap');
+  const panelLink = document.getElementById('kgraph-panel-link');
+  const panelClose = document.getElementById('kgraph-panel-close');
+
+  const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- Theme colours from CSS tokens ----------------------------------------
+  function colors() {
+    const cs = getComputedStyle(document.documentElement);
+    const get = (v, f) => (cs.getPropertyValue(v).trim() || f);
+    return {
+      node: get('--label-primary', '#111'),     // articles
+      memory: get('--color-accent', '#197ca8'),  // memory notes
+      label: get('--label-secondary', '#555'),
+      accent: get('--color-accent', '#197ca8'),
+      edge: get('--separator', 'rgba(120,120,120,0.4)'),
+      bg: get('--bg-primary', '#ffffff'),
+    };
+  }
+
+  const baseColor = (n) => (n.type === 'memory' ? C.memory : C.node);
+
+  let Graph = null;
+  let C = colors();
+  let nodeById = new Map();
+  let adjacency = new Map();
+  let selected = null;
+
+  // ---- Detail panel ---------------------------------------------------------
+  function openPanel(node) {
+    selected = node;
+    panelKind.textContent = node.type === 'memory' ? 'Memory' : 'Article';
+    panelTitle.textContent = node.label;
+    panelDesc.textContent = node.desc || '';
+    panelLink.href = node.url;
+    const neigh = [...(adjacency.get(node.id) || [])].map((id) => nodeById.get(id)).filter(Boolean);
+    panelConnectsWrap.style.display = neigh.length ? '' : 'none';
+    panelChips.innerHTML = '';
+    for (const m of neigh) {
+      const chip = document.createElement('button');
+      chip.className = 'kgraph-chip';
+      chip.type = 'button';
+      chip.textContent = m.label;
+      chip.addEventListener('click', () => focusNode(m));
+      panelChips.appendChild(chip);
+    }
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+    root.classList.add('has-panel');
+    refreshPaint();
+  }
+
+  function closePanel() {
+    selected = null;
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+    root.classList.remove('has-panel');
+    if (Graph && !prefersReduced) Graph.controls().autoRotate = true;
+    refreshPaint();
+  }
+
+  // Aim the camera at a node and open its panel.
+  function focusNode(node) {
+    selected = node;
+    if (Graph) {
+      Graph.controls().autoRotate = false;
+      const d = 140;
+      const dist = Math.hypot(node.x, node.y, node.z) || 1;
+      const r = 1 + d / dist;
+      Graph.cameraPosition(
+        { x: node.x * r, y: node.y * r, z: node.z * r },
+        node,
+        900
+      );
+    }
+    openPanel(node);
+  }
+
+  panelClose.addEventListener('click', closePanel);
+
+  // Force a repaint of node/link styling (used on select + theme change).
+  function refreshPaint() {
+    if (!Graph) return;
+    Graph.nodeColor(Graph.nodeColor());
+    Graph.linkColor(Graph.linkColor());
+  }
+
+  // ---- Boot -----------------------------------------------------------------
+  async function boot() {
+    let data;
+    try {
+      const res = await fetch(`${base}/graph-data.json`);
+      data = await res.json();
+    } catch {
+      hint.textContent = 'graph unavailable';
+      return;
+    }
+
+    const nodes = data.nodes.map((n) => ({ ...n }));
+    const links = data.edges.map((e) => ({ source: e.source, target: e.target, strong: e.strong }));
+    nodeById = new Map(nodes.map((n) => [n.id, n]));
+    adjacency = new Map(nodes.map((n) => [n.id, new Set()]));
+    for (const e of data.edges) {
+      adjacency.get(e.source)?.add(e.target);
+      adjacency.get(e.target)?.add(e.source);
+    }
+
+    // descriptions for the panel (search index already carries them)
+    try {
+      const sidx = await (await fetch(`${base}/search-index.json`)).json();
+      const dmap = new Map(sidx.map((s) => [s.slug, s.description]));
+      for (const n of nodes) n.desc = dmap.get(n.id) || '';
+    } catch {}
+
+    const isNear = (node) =>
+      selected && (node.id === selected.id || adjacency.get(selected.id)?.has(node.id));
+
+    Graph = ForceGraph3D({ controlType: 'orbit' })(mount)
+      .graphData({ nodes, links })
+      .backgroundColor('rgba(0,0,0,0)')
+      .showNavInfo(false)
+      .nodeRelSize(5)
+      .nodeVal((n) => 1 + n.degree * 1.4)
+      .nodeResolution(16)
+      .nodeOpacity(0.95)
+      .nodeColor((n) => {
+        if (selected) return isNear(n) ? C.accent : baseColor(n);
+        return baseColor(n);
+      })
+      .nodeThreeObjectExtend(true)
+      .nodeThreeObject((n) => {
+        const showAlways = (n.degree || 0) >= 4;
+        const sprite = new SpriteText(n.label.toUpperCase());
+        sprite.material.depthWrite = false;
+        sprite.color = selected && isNear(n) ? C.accent : C.label;
+        sprite.textHeight = 4;
+        sprite.fontFace = 'JetBrains Mono, monospace';
+        sprite.fontWeight = '600';
+        sprite.position.y = -8 - (1 + (n.degree || 0) * 1.4);
+        sprite.visible = showAlways || (selected && isNear(n));
+        n.__label = sprite;
+        return sprite;
+      })
+      .linkColor((l) => {
+        const lit = selected && (idOf(l.source) === selected.id || idOf(l.target) === selected.id);
+        return lit ? C.accent : C.edge;
+      })
+      .linkOpacity(0.34)
+      .linkWidth((l) => (l.strong ? 0.6 : 0.3))
+      .onNodeClick((n) => focusNode(n))
+      .onNodeHover((n) => { mount.style.cursor = n ? 'pointer' : 'grab'; })
+      .onBackgroundClick(closePanel);
+
+    // spread the layout a little and cool faster for a stable result
+    Graph.d3Force('charge').strength(-120);
+    Graph.cooldownTicks(prefersReduced ? 0 : 120);
+
+    // subtle depth fog — only the very farthest nodes fade for an ambient feel
+    const scene = Graph.scene();
+    const fog = new THREE.Fog(new THREE.Color(C.bg).getHex(), 600, 2200);
+    scene.fog = fog;
+    Graph.__fog = fog;
+
+    // gentle auto-rotation (AIHero feel); off for reduced-motion
+    const controls = Graph.controls();
+    controls.autoRotate = !prefersReduced;
+    controls.autoRotateSpeed = 0.6;
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.12;
+    controls.enableZoom = false; // page scrolls instead of zooming the graph
+
+    sizeToContainer();
+    window.addEventListener('resize', sizeToContainer);
+
+    // theme changes -> re-read tokens, re-tint nodes/labels/links
+    new MutationObserver(() => {
+      C = colors();
+      Graph.nodeColor(Graph.nodeColor()).linkColor(Graph.linkColor());
+      if (Graph.__fog) Graph.__fog.color.set(new THREE.Color(C.bg).getHex());
+      for (const n of nodeById.values()) {
+        if (n.__label) n.__label.color = selected && isNear(n) ? C.accent : C.label;
+      }
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    // pause render when the graph scrolls out of view (perf)
+    new IntersectionObserver((entries) => {
+      for (const en of entries) {
+        if (en.isIntersecting) Graph.resumeAnimation();
+        else Graph.pauseAnimation();
+      }
+    }, { threshold: 0 }).observe(root);
+  }
+
+  function idOf(ref) { return typeof ref === 'object' ? ref.id : ref; }
+
+  function sizeToContainer() {
+    const r = root.getBoundingClientRect();
+    if (Graph) Graph.width(r.width).height(r.height);
+  }
+
+  boot();
+</script>
+
+<style>
+  .kgraph {
+    position: relative;
+    width: 100%;
+    height: var(--kgraph-height, clamp(420px, 78vh, 760px));
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  .kgraph-canvas {
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+  }
+  .kgraph-canvas :global(canvas) { display: block; }
+  .kgraph-canvas:active { cursor: grabbing; }
+
+  .kgraph-hint {
+    position: absolute;
+    left: var(--space-2);
+    bottom: var(--space-2);
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-caption-2);
+    letter-spacing: 0.04em;
+    color: var(--label-quaternary);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* Detail drawer ---------------------------------------------------------- */
+  .kgraph-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(360px, 86%);
+    height: 100%;
+    padding: var(--space-8) var(--space-6) var(--space-6);
+    background: color-mix(in srgb, var(--bg-primary) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-left: 1px solid color-mix(in srgb, var(--separator) 40%, transparent);
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform var(--duration-normal) var(--ease-spring),
+      opacity var(--duration-normal) var(--ease-out),
+      visibility 0s linear var(--duration-normal);
+    overflow-y: auto;
+  }
+
+  .kgraph-panel.open {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    transition:
+      transform var(--duration-normal) var(--ease-spring),
+      opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .kgraph-panel-close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: var(--fill-secondary);
+    color: var(--label-secondary);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background var(--duration-fast) var(--ease-out);
+  }
+  .kgraph-panel-close:hover { background: var(--fill-primary); }
+
+  .kgraph-panel-kind {
+    font-size: var(--text-caption-1);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .kgraph-panel-title {
+    font-size: var(--text-title-2);
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.02em;
+    margin: var(--space-2) 0 var(--space-4);
+    color: var(--label-primary);
+  }
+
+  .kgraph-panel-desc {
+    font-size: var(--text-subheadline);
+    line-height: var(--leading-normal);
+    color: var(--label-secondary);
+    margin: 0 0 var(--space-6);
+  }
+
+  .kgraph-panel-label {
+    display: block;
+    font-size: var(--text-caption-1);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--label-tertiary);
+    margin-bottom: var(--space-3);
+  }
+
+  .kgraph-panel-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .kgraph-chip {
+    font-family: var(--font-sans);
+    font-size: var(--text-caption-1);
+    font-weight: var(--weight-medium);
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid color-mix(in srgb, var(--separator) 50%, transparent);
+    border-radius: var(--radius-lg);
+    background: transparent;
+    color: var(--label-secondary);
+    cursor: pointer;
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out),
+      background var(--duration-fast) var(--ease-out);
+  }
+  .kgraph-chip:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: var(--fill-tertiary);
+  }
+
+  .kgraph-panel-link {
+    display: inline-block;
+    font-size: var(--text-subheadline);
+    font-weight: var(--weight-semibold);
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 600px) {
+    .kgraph-panel { width: 100%; }
+  }
+</style>
