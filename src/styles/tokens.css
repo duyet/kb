@@ -1,17 +1,21 @@
 /* ============================================================
-   Design Tokens — aligned with astro-tone
+   Design Tokens — Anthropic Brand Identity
+   Colors: #141413 (dark) / #faf9f5 (light) / #d97757 (accent)
+   Typography: Poppins (headings) + Lora (body)
    ============================================================ */
 
-/* Google Fonts — Inter (variable weight) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Google Fonts — Poppins (headings), Lora (body), JetBrains Mono (code) */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ------------------------------------------------------------
    1. TYPOGRAPHY
    ------------------------------------------------------------ */
 :root {
-  --font-sans:
-    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+  --font-heading:
+    'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
     Arial, sans-serif;
+  --font-sans:
+    'Lora', Georgia, 'Times New Roman', Times, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
 
   /* Type Scale */
@@ -38,7 +42,7 @@
   --leading-tight: 1.2;
   --leading-snug: 1.375;
   --leading-normal: 1.5;
-  --leading-relaxed: 1.625;
+  --leading-relaxed: 1.7;
 
   /* Letter Spacing */
   --tracking-tight: -0.022em;
@@ -49,32 +53,36 @@
      2. COLOR — Light Mode (default)
      ------------------------------------------------------------ */
 
-  /* Brand */
-  --color-blue: #197ca8;
-  --color-accent: var(--color-blue);
+  /* Brand Palette */
+  --color-orange: #d97757;
+  --color-blue: #6a9bcc;
+  --color-green: #788c5d;
+  --color-accent: var(--color-orange);
+  --color-secondary: var(--color-blue);
+  --color-tertiary: var(--color-green);
 
-  /* Label Colors — RGBA opacity hierarchy */
-  --label-primary: rgba(0, 0, 0, 1);
-  --label-secondary: rgba(24, 31, 36, 0.72);
-  --label-tertiary: rgba(24, 31, 36, 0.56);
-  --label-quaternary: rgba(24, 31, 36, 0.34);
+  /* Label Colors — warm-tinted hierarchy */
+  --label-primary: rgba(20, 20, 19, 1);
+  --label-secondary: rgba(20, 20, 19, 0.72);
+  --label-tertiary: rgba(20, 20, 19, 0.56);
+  --label-quaternary: rgba(20, 20, 19, 0.34);
 
   /* Background */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f7fbfd;
+  --bg-primary: #faf9f5;
+  --bg-secondary: #f2f0ea;
 
   /* Fill */
-  --fill-primary: rgba(25, 124, 168, 0.14);
-  --fill-secondary: rgba(25, 124, 168, 0.10);
-  --fill-tertiary: rgba(25, 124, 168, 0.07);
-  --fill-quaternary: rgba(25, 124, 168, 0.04);
+  --fill-primary: rgba(217, 119, 87, 0.14);
+  --fill-secondary: rgba(217, 119, 87, 0.10);
+  --fill-tertiary: rgba(217, 119, 87, 0.07);
+  --fill-quaternary: rgba(217, 119, 87, 0.04);
 
   /* Separator */
-  --separator: rgba(60, 60, 67, 0.29);
+  --separator: rgba(176, 174, 165, 0.42);
 
   /* Shadow */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 2px rgba(20, 20, 19, 0.04), 0 1px 4px rgba(20, 20, 19, 0.06);
+  --shadow-md: 0 4px 12px rgba(20, 20, 19, 0.08), 0 1px 3px rgba(20, 20, 19, 0.06);
 
   /* ------------------------------------------------------------
      3. SPACING
@@ -118,26 +126,27 @@
 }
 
 /* ------------------------------------------------------------
-   Dark Mode — triggered via [data-theme="dark"] on <html>
+   Dark Mode — warm darks
    ------------------------------------------------------------ */
 [data-theme="dark"] {
-  --color-blue: #60c4e8;
-  --color-accent: var(--color-blue);
+  --color-accent: var(--color-orange);
+  --color-secondary: var(--color-blue);
+  --color-tertiary: var(--color-green);
 
-  --label-primary: rgba(255, 255, 255, 1);
-  --label-secondary: rgba(239, 247, 250, 0.76);
-  --label-tertiary: rgba(239, 247, 250, 0.56);
-  --label-quaternary: rgba(239, 247, 250, 0.38);
+  --label-primary: rgba(250, 249, 245, 1);
+  --label-secondary: rgba(250, 249, 245, 0.74);
+  --label-tertiary: rgba(250, 249, 245, 0.54);
+  --label-quaternary: rgba(250, 249, 245, 0.34);
 
-  --bg-primary: #0c0e10;
-  --bg-secondary: #111518;
+  --bg-primary: #1a1918;
+  --bg-secondary: #222120;
 
-  --fill-primary: rgba(96, 196, 232, 0.18);
-  --fill-secondary: rgba(96, 196, 232, 0.13);
-  --fill-tertiary: rgba(96, 196, 232, 0.09);
-  --fill-quaternary: rgba(96, 196, 232, 0.05);
+  --fill-primary: rgba(217, 119, 87, 0.18);
+  --fill-secondary: rgba(217, 119, 87, 0.13);
+  --fill-tertiary: rgba(217, 119, 87, 0.09);
+  --fill-quaternary: rgba(217, 119, 87, 0.05);
 
-  --separator: rgba(84, 84, 88, 0.65);
+  --separator: rgba(176, 174, 165, 0.28);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -146,23 +155,24 @@
 /* Fallback: system prefers-color-scheme when no data-theme is set */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-blue: #60c4e8;
-    --color-accent: var(--color-blue);
+    --color-accent: var(--color-orange);
+    --color-secondary: var(--color-blue);
+    --color-tertiary: var(--color-green);
 
-    --label-primary: rgba(255, 255, 255, 1);
-    --label-secondary: rgba(239, 247, 250, 0.76);
-    --label-tertiary: rgba(239, 247, 250, 0.56);
-    --label-quaternary: rgba(239, 247, 250, 0.38);
+    --label-primary: rgba(250, 249, 245, 1);
+    --label-secondary: rgba(250, 249, 245, 0.74);
+    --label-tertiary: rgba(250, 249, 245, 0.54);
+    --label-quaternary: rgba(250, 249, 245, 0.34);
 
-    --bg-primary: #0c0e10;
-    --bg-secondary: #111518;
+    --bg-primary: #1a1918;
+    --bg-secondary: #222120;
 
-    --fill-primary: rgba(96, 196, 232, 0.18);
-    --fill-secondary: rgba(96, 196, 232, 0.13);
-    --fill-tertiary: rgba(96, 196, 232, 0.09);
-    --fill-quaternary: rgba(96, 196, 232, 0.05);
+    --fill-primary: rgba(217, 119, 87, 0.18);
+    --fill-secondary: rgba(217, 119, 87, 0.13);
+    --fill-tertiary: rgba(217, 119, 87, 0.09);
+    --fill-quaternary: rgba(217, 119, 87, 0.05);
 
-    --separator: rgba(84, 84, 88, 0.65);
+    --separator: rgba(176, 174, 165, 0.28);
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.4);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -203,6 +213,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
   margin: 0;
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
