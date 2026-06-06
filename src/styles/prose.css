@@ -10,7 +10,7 @@
   --prose-marker: color-mix(in srgb, var(--color-accent) 70%, var(--label-secondary) 30%);
 
   font-size: clamp(1rem, 0.98rem + 0.08vw, 1.0625rem);
-  line-height: 1.78;
+  line-height: 1.82;
   color: var(--label-primary);
 }
 
@@ -19,7 +19,7 @@
 
 .prose p,
 .prose li {
-  line-height: 1.78;
+  line-height: 1.82;
 }
 
 /* Headings */
@@ -120,7 +120,7 @@
 
 /* Code blocks */
 .prose pre {
-  background: #161b22;
+  background: #232120;
   color: #e6edf3;
   padding: var(--space-5) var(--space-6);
   border-radius: var(--radius-md);
@@ -190,7 +190,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .prose pre,
   [data-theme="dark"] .prose pre {
-    background: #0d1117;
+    background: #141312;
     border-color: rgba(255, 255, 255, 0.08);
   }
 }
