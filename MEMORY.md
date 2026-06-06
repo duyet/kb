@@ -11,6 +11,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 ## Feedback
 - [Working style](memory/feedback-working-style.md) — concise English, simple code, semantic commits
 - [Docs-Driven Development](memory/feedback-docs-driven-development.md) — tiny router + kb brain, auto read-in/write-out
+- [Cheap models for sub-agents](memory/feedback-cheap-models-subagents.md) — default fan-out agents to Sonnet/Haiku, not Opus, to control cost
 
 ## Reference
 - [Web presence](memory/user-duyet-web-presence.md) — blog/CV/GitHub/socials + llms.txt sources
