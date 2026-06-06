@@ -83,6 +83,13 @@ wherever kb is cloned. They're **canonical in this repo** — install via the sy
 installer (auto-updates on `git pull`). To share a skill without shipping your
 memory, mirror `skills/` into a separate plugins repo (path-agnostic via `KB_DIR`).
 
+## Website
+
+The knowledge base website at [kb.duyet.net](https://kb.duyet.net) is rendered
+by the [`apps/kb/`](https://github.com/duyet/monorepo/tree/master/apps/kb) app
+in the monorepo, which consumes this repo as a git submodule. No website code
+lives here — only `.md` knowledge files and agent skills.
+
 ## Scope
 
 Public, general, durable knowledge only. **Never** here: secrets, SSH hosts,
