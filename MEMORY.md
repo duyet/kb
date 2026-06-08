@@ -31,3 +31,4 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [Flat design system](memory/tech-flat-design-system.md) — hairline borders, lucide, shadcn + semantic tokens, dark mode
 - [Cloudflare Pages deploy](memory/tech-cloudflare-pages-deploy.md) — commit→push→background-deploy; parallel-deploy hazard
 - [Codebase maintenance loop](memory/tech-codebase-maintenance-loop.md) — improvement cycles, safe dead-code removal, tests
+- [Cloudflare AI Gateway proxy](memory/tech-cloudflare-ai-gateway-proxy.md) — AIG doesn't validate model ids; "invalid model ID" is the upstream rejecting, not CF
