@@ -26,9 +26,14 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 
 ## Tech
 - [AI agent stack](memory/tech-ai-agent-stack.md) — LangGraph/AI SDK/Agents SDK/MCP + what Duyet uses
+<<<<<<< Updated upstream
 - [TanStack Start SSG](memory/tech-tanstack-start-ssg.md) — prerender Vite app to survive CF Rocket Loader; migration recipe
 - [Rust→WASM strategy](memory/tech-rust-wasm-prerender.md) — WASM only beats TS >1ms; the silent-prerender CI trap
 - [Flat design system](memory/tech-flat-design-system.md) — hairline borders, lucide, shadcn + semantic tokens, dark mode
 - [Cloudflare Pages deploy](memory/tech-cloudflare-pages-deploy.md) — commit→push→background-deploy; parallel-deploy hazard
 - [Codebase maintenance loop](memory/tech-codebase-maintenance-loop.md) — improvement cycles, safe dead-code removal, tests
 - [Cloudflare AI Gateway proxy](memory/tech-cloudflare-ai-gateway-proxy.md) — AIG doesn't validate model ids; "invalid model ID" is the upstream rejecting, not CF
+=======
+- [Traefik forwardAuth + OAuth2 Proxy](memory/tech-traefik-forwardauth-oauth2-proxy.md) — ErrorPages keeps original status, need nginx redirector for 302
+- [Hermes agent custom provider](memory/tech-hermes-agent-custom-provider.md) — custom_providers registration, provider:custom, steer mode
+>>>>>>> Stashed changes
