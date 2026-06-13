@@ -36,3 +36,4 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [Cloudflare AI Gateway proxy](memory/tech-cloudflare-ai-gateway-proxy.md) — AIG doesn't validate model ids; "invalid model ID" is the upstream rejecting, not CF
 - [Traefik forwardAuth + OAuth2 Proxy](memory/tech-traefik-forwardauth-oauth2-proxy.md) — ErrorPages keeps original status, need nginx redirector for 302
 - [Hermes agent custom provider](memory/tech-hermes-agent-custom-provider.md) — custom_providers registration, provider:custom, steer mode
+- [release-please squash pipeline](memory/tech-release-please-squash-pipeline.md) — squash-merge PR titles drive versioning; pre-1.0 bump trap; PR-title commitlint guard
