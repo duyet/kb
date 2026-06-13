@@ -23,6 +23,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [duyetbot](memory/project-duyetbot.md) — autonomous agent maintaining the monorepo: scope, loop, memory hierarchy
 - [LLM Timeline app](memory/project-llm-timeline.md) — 3700+ SSG pages, shadcn UI, dual data sources (1950–2026)
 - [kb.duyet.net](memory/project-kb-duyet-net.md) — public KB site migrating from monorepo app to this shared-brain repo
+- [Infra optimization baseline](memory/project-infra-optimization.md) — k3s resource tuning, security hardening, host cleanup (2026-06-13)
 
 ## Tech
 - [AI agent stack](memory/tech-ai-agent-stack.md) — LangGraph/AI SDK/Agents SDK/MCP + what Duyet uses
