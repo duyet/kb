@@ -24,6 +24,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [LLM Timeline app](memory/project-llm-timeline.md) — 3700+ SSG pages, shadcn UI, dual data sources (1950–2026)
 - [kb.duyet.net](memory/project-kb-duyet-net.md) — public KB site migrating from monorepo app to this shared-brain repo
 - [Infra optimization baseline](memory/project-infra-optimization.md) — k3s resource tuning, security hardening, host cleanup (2026-06-13)
+- [Self-driving homelab](memory/project-self-driven-homelab.md) — AI agent (Minh/Hermes) manages its own k3s cluster via Telegram
 
 ## Tech
 - [AI agent stack](memory/tech-ai-agent-stack.md) — LangGraph/AI SDK/Agents SDK/MCP + what Duyet uses
