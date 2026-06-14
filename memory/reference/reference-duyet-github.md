@@ -8,14 +8,15 @@ tags: [reference, duyet, github, projects]
 related: ["[[user-duyet-stack]]", "[[user-duyet-ai-stance]]", "[[reference-duyet-blog]]"]
 sources: ["https://github.com/duyet", "https://duyet.net/llms.txt"]
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-14
 timestamp: 2026-06-04T00:00:00Z
 ---
 
 github.com/duyet — ~100 non-fork repos. Notable ones by area:
 
-- **ClickHouse:** `clickhouse-monitoring` (flagship, ~240★, Next.js UI over system
-  tables), `clickhouse-udf-rs` (Rust UDFs).
+- **ClickHouse:** `clickhouse-monitoring` (flagship, ~240★, TanStack Start dashboard
+  at dash.chmonitor.dev; Astro landing/docs — see [[project-clickhouse-monitor]]),
+  `clickhouse-udf-rs` (Rust UDFs).
 - **Rust data/infra tooling (GitOps style):** `grant-rs` (Redshift/Postgres
   privileges), `athena-rs` (AWS Athena schema), `glossary-rs` (actix API),
   `cov-rs` (coverage).

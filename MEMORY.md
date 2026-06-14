@@ -19,6 +19,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [GitHub projects](memory/reference/reference-duyet-github.md) — ClickHouse tooling, Rust data tools, AI-agent repos, infra
 
 ## Project
+- [ClickHouse Monitor (chmonitor)](memory/projects/project-clickhouse-monitor.md) — 4 CF workers: Astro landing/docs + TanStack dashboard + MCP; zinc/amber design system
 - [duyet.net monorepo](memory/projects/project-duyet-net.md) — Bun + Turborepo, ~9 apps, TanStack Start SSG on Cloudflare Pages
 - [duyetbot](memory/projects/project-duyetbot.md) — autonomous agent maintaining the monorepo: scope, loop, memory hierarchy
 - [LLM Timeline app](memory/projects/project-llm-timeline.md) — 3700+ SSG pages, shadcn UI, dual data sources (1950–2026)
