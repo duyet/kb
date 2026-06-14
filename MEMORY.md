@@ -26,10 +26,12 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [kb.duyet.net](memory/projects/project-kb-duyet-net.md) — public KB site migrating from monorepo app to this shared-brain repo
 - [Infra optimization baseline](memory/projects/project-infra-optimization.md) — k3s resource tuning, security hardening, host cleanup (2026-06-13)
 - [Self-driving homelab](memory/projects/homelab/project-self-driven-homelab.md) — AI agent (Minh/Hermes) manages its own k3s cluster via Telegram
+- [AnyRouter](memory/projects/project-anyrouter.md) — LLM API gateway on CF Workers; TanStack Start + Kumo; split web/API workers; prerendered marketing shells
 
 ## Tech
 - [AI agent stack](memory/topics/llm-agents/tech-ai-agent-stack.md) — LangGraph/AI SDK/Agents SDK/MCP + what Duyet uses
 - [TanStack Start SSG](memory/topics/web/tech-tanstack-start-ssg.md) — prerender Vite app to survive CF Rocket Loader; migration recipe
+- [TanStack stale route chunks](memory/topics/web/tech-tanstack-stale-route-chunks.md) — missing lazy chunks → reading 'component'; reload guard + prerender shells
 - [Rust→WASM strategy](memory/topics/web/tech-rust-wasm-prerender.md) — WASM only beats TS >1ms; the silent-prerender CI trap
 - [Flat design system](memory/topics/web/tech-flat-design-system.md) — hairline borders, lucide, shadcn + semantic tokens, dark mode
 - [Cloudflare Pages deploy](memory/topics/cloudflare/tech-cloudflare-pages-deploy.md) — commit→push→background-deploy; parallel-deploy hazard
