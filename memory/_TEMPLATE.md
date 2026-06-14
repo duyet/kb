@@ -10,6 +10,7 @@ related: ["[[some-other-note]]"]
 sources: ["https://example.com/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 The fact(s), compact. One entity/topic per file, ≤~25 lines. Prefer lists/tables
