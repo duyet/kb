@@ -18,17 +18,24 @@ as a graph in Obsidian); **self-healing** via the `DREAM.md` consolidation pass.
 
 ```
 kb/
-├── AGENTS.md   ← canonical protocol for ALL agents (read/write/dream rules)
-├── CLAUDE.md   ← thin pointer to AGENTS.md
-├── DREAM.md    ← memory-consolidation ("dream") protocol
-├── MEMORY.md   ← master index, one line per note — load first
-├── raw/        ← capture inbox (raw/inbox/<date>.md) + ground-truth sources
-├── memory/     ← agent-managed notes (_TEMPLATE.md = the standard; user-/feedback-/
-│                 project-/reference-/tech- by type)
-├── skills/     ← kb-memory, kb-dream (installable Claude Code skills)
-├── scripts/    ← bootstrap / install / kb CLI / sync / lint
-└── .agent/     ← state.json (ingested files + tasks)
+├── AGENTS.md      ← canonical protocol for ALL agents (read/write/dream rules)
+├── CLAUDE.md      ← thin pointer to AGENTS.md
+├── DREAM.md       ← memory-consolidation ("dream") protocol
+├── MEMORY.md      ← master index, one line per note — load first
+├── raw/           ← capture inbox (raw/inbox/<date>.md) + ground-truth sources
+├── memory/        ← the OKF v0.1 bundle: notes nested under <group>/…
+│   ├── index.md   ← generated OKF listing (okf_version: "0.1") — run `kb gen`
+│   ├── log.md     ← generated change history (newest-first)
+│   ├── _TEMPLATE.md  ← the note standard
+│   ├── user/ feedback/ reference/ projects/[homelab/]  ← memory-layer groups
+│   └── topics/<domain>/  ← cloudflare, llm-agents, web, ci, workflow, standards
+├── skills/        ← kb-memory, kb-dream (installable Claude Code skills)
+├── scripts/       ← bootstrap / install / kb CLI / sync / lint / okf_gen.py
+├── viz.html       ← generated self-contained graph viewer — run `kb viz`
+└── .agent/        ← state.json (ingested files + tasks)
 ```
+
+This repo **is a conformant [OKF v0.1](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) bundle** — `memory/` is the bundle root; each concept is one `.md` carrying `type` (an OKF custom field). `index.md`/`log.md`/`viz.html` are generated; re-run `kb gen` (or `kb viz` to also open the viewer) after writing notes. See [[tech-okf-open-knowledge-format]] for the full alignment.
 
 Every note follows `memory/_TEMPLATE.md` and must pass `kb lint`. Format spec in
 `AGENTS.md`.
@@ -38,7 +45,8 @@ Every note follows `memory/_TEMPLATE.md` and must pass `kb lint`. Format spec in
 - **Read in:** `kb index` (= `MEMORY.md`), open the relevant notes; fetch a note's
   `sources:` (`llms.txt`) for deeper detail.
 - **Write out:** unsure it's durable → `kb capture "note"` (lands in `raw/inbox/`);
-  known keeper → a standard note in `memory/`. Then `kb lint && kb sync`.
+  known keeper → a standard note in `memory/<group>/…`. Then
+  `kb lint && kb gen && kb sync` (regenerate the OKF `index.md`/`viz.html`).
 - **Dream:** periodically (or `/loop`) run `DREAM.md` — it ingests the inbox + raw
   sources into clean notes, dedupes, refreshes stale notes from `sources:`, rebuilds
   the index, and syncs.

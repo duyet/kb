@@ -39,6 +39,10 @@ case "$cmd" in
   test|t)   exec "$KB_DIR/scripts/test.sh" ;;
   wire|w)   exec "$KB_DIR/scripts/wire.sh" "${1:-on}" ;;
   index)    cat "$KB_DIR/MEMORY.md" ;;
+  gen)      python3 "$KB_DIR/scripts/okf_gen.py" "$KB_DIR" ;;
+  viz)      python3 "$KB_DIR/scripts/okf_gen.py" "$KB_DIR"
+            if command -v open >/dev/null 2>&1; then open "$KB_DIR/viz.html"
+            else echo "viz.html → $KB_DIR/viz.html"; fi ;;
   root|path) echo "$KB_DIR" ;;
   autosync)
     command -v crontab >/dev/null 2>&1 || { echo "crontab not available"; exit 1; }
@@ -62,6 +66,8 @@ kb — shared-brain CLI   (KB_DIR=$KB_DIR)
   kb lint               validate notes against the standard
   kb test               isolated self-test (install→verify→uninstall)
   kb index              print MEMORY.md
+  kb gen                regenerate OKF index.md files + viz.html
+  kb viz                regenerate + open the graph viewer
   kb root               print the resolved KB location
   kb autosync on|off|status   opt-in */15min sync cron (not installed by default)
   kb wire on|off              add/remove the kb reflex in ~/.claude/CLAUDE.md + AGENTS.md

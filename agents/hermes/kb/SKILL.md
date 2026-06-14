@@ -24,7 +24,10 @@ resolved root `<kb>` below.
 ## Read (recall) — on session start
 
 1. `read_file <kb>/MEMORY.md` — the index, one line per note.
-2. Open the `<kb>/memory/<slug>.md` notes whose hook matches the task.
+2. Open the `<kb>/memory/<group>/[<sub>/]<type>-<slug>.md` notes whose hook
+   matches the task (recursive — `<group>` ∈ user, feedback, reference, projects,
+   or topics/<domain>). Skip reserved files (`index.md`, `log.md`,
+   `_TEMPLATE.md`) — they are not concept notes.
 3. For fresher/deeper detail, fetch a note's `sources:` URLs.
 
 ## Capture a quick note
@@ -38,11 +41,14 @@ Append exactly one line to **today's** inbox file:
 
 ## Write a durable, public fact
 
-Create or update a standard note `<kb>/memory/<type>-<slug>.md` following the
-template `<kb>/memory/_TEMPLATE.md`: top-level frontmatter (`name` == filename,
+Create or update a standard note
+`<kb>/memory/<group>/[<sub>/]<type>-<slug>.md` (group ∈ user, feedback,
+reference, projects, or topics/<domain>) following the template
+`<kb>/memory/_TEMPLATE.md`: top-level frontmatter (`name` == filename,
 `description`, `type` ∈ user|feedback|project|reference|tech, `tags`, `created`,
-`updated`), link related notes with `[[slug]]`, then add a one-line pointer to
-`<kb>/MEMORY.md`.
+`updated`, `timestamp` ISO 8601), link related notes with `[[slug]]`, then add a
+one-line pointer to `<kb>/MEMORY.md`. Reserved filenames (`index.md`, `log.md`,
+`_TEMPLATE.md`) are not concept notes — never write a fact to them.
 
 ## ALWAYS verify before reporting success
 
@@ -52,6 +58,8 @@ is not there, fix the path and retry.
 
 ## Sync — you must trigger it
 
-Sync does not happen automatically. After verifying a write, run
-`terminal: <kb>/bin/kb sync` (commit + push) so other agents and machines see it.
-Public repo — never store secrets (API keys, hosts, internal/confidential details).
+Sync does not happen automatically. After verifying a write, regenerate the OKF
+index/graph, then sync: run `terminal: <kb>/bin/kb gen` (rebuilds every
+`memory/**/index.md` + `viz.html`) and then `terminal: <kb>/bin/kb sync`
+(commit + push) so other agents and machines see it. Public repo — never store
+secrets (API keys, hosts, internal/confidential details).

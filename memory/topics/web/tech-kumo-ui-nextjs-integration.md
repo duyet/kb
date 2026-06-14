@@ -10,6 +10,7 @@ related: ["[[tech-flat-design-system]]", "[[tech-tanstack-start-ssg]]"]
 sources: ["https://kumo-ui.com/installation.md"]
 created: 2026-06-14
 updated: 2026-06-14
+timestamp: 2026-06-14T00:00:00Z
 ---
 
 Hard-won facts from migrating the AgentState dashboard (Next 16 + Turbopack + `output:"export"`) to `@cloudflare/kumo@2.5` from shadcn/ui. See [[project-agentstate-kumo-rebuild]].

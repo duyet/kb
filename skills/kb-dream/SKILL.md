@@ -12,7 +12,8 @@ Run the memory-consolidation pass. Location is configurable: use `$KB_DIR` or
 
 Read `$KB_DIR/DREAM.md` and execute it end to end. In summary:
 
-1. Load `MEMORY.md`, all `memory/*.md`, `raw/inbox/*`, `raw/` source docs, and
+1. Load `MEMORY.md`, all `memory/**/*.md` (recursive — **excluding** reserved
+   `index.md`, `log.md`, `_TEMPLATE.md`), `raw/inbox/*`, `raw/` source docs, and
    `.agent/state.json`.
 2. **Ingest & rewrite:** promote durable/general/public facts from the inbox and
    un-processed `raw/` docs into `memory/` — create new notes or rewrite/merge
@@ -20,10 +21,13 @@ Read `$KB_DIR/DREAM.md` and execute it end to end. In summary:
    record them in `state.json.processed`.
 3. Dedupe & merge; split multi-fact notes; validate frontmatter against the
    standard (`kb lint`); compact to ≤~25 lines.
-4. **Refresh:** for notes with `sources:` whose `updated:` is stale (>~30 days),
-   fetch the source (prefer `llms.txt`) and update the note + `updated:`.
+4. **Refresh:** for notes with `sources:` whose `timestamp`/`updated:` is stale
+   (>~30 days), fetch the source (prefer `llms.txt`) and update the note +
+   `updated:` + `timestamp`.
 5. Relink (no orphans), merge tag sprawl, prune wrong/obsolete/now-private notes.
-6. Rebuild `MEMORY.md`; verify scope (no secrets).
+6. Rebuild `MEMORY.md`; run **`kb gen`** to regenerate every `memory/**/index.md`
+   (OKF listings) + `viz.html`; append a dated entry to `memory/log.md`; verify
+   scope (no secrets).
 7. Set `state.json.last_dream` to today; run `kb sync`.
 
 ## Principles

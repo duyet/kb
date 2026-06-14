@@ -9,7 +9,7 @@ stored, and the dream/consolidation pass.
 
 Quick map:
 - [`MEMORY.md`](./MEMORY.md) — master index, read first.
-- [`memory/`](./memory/) — atomic notes, one fact per file.
+- [`memory/`](./memory/) — atomic notes, one fact per file; OKF v0.1 bundle (nested `<group>/…` topics).
 - [`DREAM.md`](./DREAM.md) — memory-consolidation protocol.
 - [`README.md`](./README.md) — human onboarding & new-device setup.
 

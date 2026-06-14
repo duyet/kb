@@ -1,7 +1,7 @@
 ---
 name: tech-okf-open-knowledge-format
 title: Open Knowledge Format (OKF) — the spec this KB already implements
-description: OKF v0.1 (Google, 2026-06) formalizes the markdown+frontmatter "LLM-wiki" pattern this repo already uses; this repo is conformant, missing only an ISO-8601 timestamp
+description: OKF v0.1 (Google, 2026-06) formalizes the markdown+frontmatter "LLM-wiki" pattern; this repo is now a strict-conformant bundle — nested topics, ISO-8601 timestamp, reserved index.md/log.md
 type: tech
 category: standards
 tags: [tech, okf, knowledge-format, llm-agents, docs-driven, spec]
@@ -57,28 +57,26 @@ enrichment agent (producer) + a self-contained static HTML graph visualizer
 
 ## How this repo aligns
 
-This repo is **already an OKF bundle** by the prose spec — `memory/*.md` are
-concept docs, each carrying `type`. Field map:
+This repo **is** a strict-conformant OKF v0.1 bundle. `memory/` is the bundle
+root; each concept is one `.md` carrying the required `type`. Field map:
 
 | OKF field | this repo | status |
 |-----------|-----------|--------|
 | `type` | `type` (user/feedback/project/reference/tech) | ✅ |
-| `title` | `title` | ✅ |
-| `description` | `description` | ✅ |
+| `title` / `description` | same | ✅ |
 | `tags` | `tags` | ✅ |
-| `resource` | `sources` (array of URLs vs singular URI) | ≈ |
-| `timestamp` | `created` / `updated` — **date-only, not ISO 8601 datetime** | ⚠️ |
-| path = ID | `name:` field (== filename) — a permitted custom key | ✅ (extension) |
-| `index.md` | `MEMORY.md` (root, custom name) | ≈ |
-| `log.md` | — | ❌ (none yet) |
+| `resource` | `sources` (URL array vs singular URI) | ≈ |
+| `timestamp` | `timestamp` (ISO 8601) + `created`/`updated` (dates) | ✅ |
+| path = ID | `name:` field (= filename) — permitted custom key | ✅ |
+| `index.md` | `memory/index.md` (generated) + `MEMORY.md` (root index) | ✅ |
+| `log.md` | `memory/log.md` (change history, newest-first) | ✅ |
 
-**Only strict gap:** no ISO 8601 `timestamp` (e.g. `2026-06-14T14:30:00Z`). Adding
-it makes this repo pass the reference validator. `[[wikilinks]]` are an
-OKF-compatible custom convention (Obsidian also resolves standard md links).
-The monorepo `apps/kb` app is a live **consumer** of this bundle — see
-[[project-kb-duyet-net]].
-
-**How to apply:** add an ISO 8601 `timestamp` to the template + new notes;
-keep `[[wikilinks]]` (Obsidian-native) — do NOT rewrite to plain md links (would
-break the graph + lint + skills). The repo's dynamic-frontmatter consumers make
-the addition non-breaking.
+Concepts are grouped into **nested topic dirs** by domain
+(`topics/cloudflare/`, `topics/llm-agents/`, `topics/web/`, `topics/ci/`, …)
+alongside the memory-layer dirs (`user/`, `feedback/`, `reference/`,
+`projects/`). Cross-links use Obsidian wikilinks (the double-bracket form) — an
+OKF-compatible producer convention; the structured graph also rides in `related:`
+frontmatter. The official validator treats non-`/path.md` text as plain prose, so
+this is conformant with zero warnings. The monorepo `apps/kb` app is a live
+**consumer** — see [[project-kb-duyet-net]]; `kb viz` renders a self-contained
+graph viewer (the OKF reference consumer pattern).
