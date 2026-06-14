@@ -7,15 +7,21 @@ set -euo pipefail
 
 REPO="${KB_DIR:-$HOME/kb}"
 cd "$REPO"
-REQUIRED=(name description type tags created updated)
+# `timestamp` (ISO 8601) is required by our lint — stricter than the OKF spec
+# (which only mandates `type`), matching Google's reference validator, which
+# rejects a concept missing type/title/description/timestamp.
+REQUIRED=(name description type tags created updated timestamp)
 fail=0
 
-shopt -s nullglob
+# Recursive discovery: notes now live under memory/<group>/[…]/<slug>.md.
+# Skip the OKF reserved filenames (index.md, log.md) and the _TEMPLATE.
 notes=()
-for f in memory/*.md; do
-  [[ "$(basename "$f")" == _* ]] && continue
+while IFS= read -r f; do
+  b="$(basename "$f")"
+  [[ "$b" == _* ]] && continue
+  [[ "$b" == "index.md" || "$b" == "log.md" ]] && continue
   notes+=("$f")
-done
+done < <(find memory -type f -name '*.md' | sort)
 
 # Build the set of valid note slugs (for link resolution).
 slugs=" "

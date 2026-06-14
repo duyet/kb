@@ -8,6 +8,7 @@ tags: [tech, ai-agents, llm-agents, frameworks]
 related: ["[[user-duyet-ai-stance]]", "[[user-duyet-stack]]"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 The 2026 stack for building LLM agents, by layer:

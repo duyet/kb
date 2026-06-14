@@ -9,6 +9,7 @@ related: ["[[user-duyet-profile]]", "[[user-duyet-web-presence]]"]
 sources: ["https://cv.duyet.net/llms.txt", "https://blog.duyet.net/llms.txt", "https://github.com/duyet"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 Technical stack for [[user-duyet-profile]], drawn from public blog & GitHub.

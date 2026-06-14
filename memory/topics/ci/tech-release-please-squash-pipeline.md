@@ -10,6 +10,7 @@ related: ["[[tech-tanstack-start-ssg]]", "[[tech-cloudflare-pages-deploy]]"]
 sources: ["https://github.com/duyet/clickhouse-monitoring/blob/main/.github/workflows/release-please.yml"]
 created: 2026-06-13
 updated: 2026-06-13
+timestamp: 2026-06-13T00:00:00Z
 ---
 
 Pattern used in chmonitor (clickhouse-monitoring) to fully automate releases.

@@ -10,6 +10,7 @@ related: ["[[project-duyet-net]]", "[[tech-flat-design-system]]", "[[tech-tansta
 sources: ["https://kb.duyet.net/llms.txt", "https://llm-timeline.duyet.net"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 `apps/llm-timeline` ([[project-duyet-net]]) — timeline of LLM models 1950–2026,

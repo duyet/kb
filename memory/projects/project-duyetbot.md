@@ -10,6 +10,7 @@ related: ["[[project-duyet-net]]", "[[user-duyet-ai-stance]]", "[[feedback-docs-
 sources: ["https://kb.duyet.net/llms.txt", "https://agents.duyet.net"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 duyetbot — the autonomous Claude Code agent persona that maintains [[project-duyet-net]].

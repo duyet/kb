@@ -10,6 +10,7 @@ related: ["[[project-duyet-net]]", "[[feedback-docs-driven-development]]", "[[pr
 sources: ["https://kb.duyet.net/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-05
+timestamp: 2026-06-05T00:00:00Z
 ---
 
 kb.duyet.net — Duyet's public knowledge base, the rendered front-end of this

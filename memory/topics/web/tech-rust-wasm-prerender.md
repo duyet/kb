@@ -9,6 +9,7 @@ related: ["[[project-duyet-net]]", "[[tech-tanstack-start-ssg]]", "[[tech-cloudf
 sources: ["https://kb.duyet.net/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 7 Rust crates compiled to WASM (`crate-type=["cdylib"]`) replace TS in

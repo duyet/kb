@@ -10,6 +10,7 @@ related: ["[[user-duyet-profile]]", "[[reference-duyet-github]]", "[[tech-tansta
 sources: ["https://kb.duyet.net/llms.txt", "https://github.com/duyet/monorepo"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 `duyet/monorepo` — Bun + Turborepo hosting all of [[user-duyet-profile]]'s public

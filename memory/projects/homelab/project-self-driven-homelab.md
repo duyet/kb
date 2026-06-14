@@ -1,8 +1,16 @@
 ---
 name: project-self-driven-homelab
+title: The Self-Driving Homelab
 description: self-driving k3s homelab with Hermes/Minh — an AI agent that manages its own infrastructure
-metadata:
-  type: project
+type: project
+category: homelab
+tags: [project, homelab, k3s, ai-agents, infra]
+aliases: [self-driving-homelab]
+related: ["[[project-duyetbot]]", "[[tech-hermes-agent-custom-provider]]", "[[project-infra-optimization]]"]
+sources: []
+created: 2026-06-13
+updated: 2026-06-13
+timestamp: 2026-06-13T00:00:00Z
 ---
 
 # The Self-Driving Homelab

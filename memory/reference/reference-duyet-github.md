@@ -9,6 +9,7 @@ related: ["[[user-duyet-stack]]", "[[user-duyet-ai-stance]]", "[[reference-duyet
 sources: ["https://github.com/duyet", "https://duyet.net/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 github.com/duyet — ~100 non-fork repos. Notable ones by area:

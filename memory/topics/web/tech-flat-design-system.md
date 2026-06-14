@@ -9,6 +9,7 @@ related: ["[[project-duyet-net]]", "[[project-llm-timeline]]", "[[tech-tanstack-
 sources: ["https://kb.duyet.net/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 Flat editorial visual language across [[project-duyet-net]] (xAI-style reference,

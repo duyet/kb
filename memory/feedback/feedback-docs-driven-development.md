@@ -8,6 +8,7 @@ tags: [feedback, duyet, workflow, docs-driven, kb]
 related: ["[[feedback-working-style]]", "[[user-duyet-profile]]"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 Duyet's core agent-collaboration pattern (from his blog, "Docs-Driven Development"):
