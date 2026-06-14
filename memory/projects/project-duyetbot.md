@@ -20,9 +20,9 @@ layout, components, design tokens, deps, build/deploy config, landing-page copy.
 **Out of scope (needs human direction):** blog post content (`apps/blog/_posts/**`)
 and LLM Timeline curated data — those are Duyet's authored words/research facts.
 
-**Autonomous loop** (`/loop` or one-shot `claude -p`): measure → fix top-priority
-issue → verify (lint+test+build) → commit → background-deploy → log. Priority order:
-build > tests > lint > deploy > code quality > features. See [[tech-cloudflare-pages-deploy]].
+**Autonomous loops:**
+- **Improvement loop** (`/loop` or one-shot `claude -p`): measure → fix top-priority issue → verify (lint+test+build) → commit → background-deploy → log. Priority order: build > tests > lint > deploy > code quality > features. See [[tech-cloudflare-pages-deploy]].
+- **PR management loop** (`/agent-loop:resume`): runs continuously every 15 min, triages all open PRs, dispatches cheap subagents (Sonnet/Haiku) for reviews/fixes/merges. See [[tech-agent-loop-autonomous-pr-management]].
 
 **Memory hierarchy** (most→least durable): commit messages → kb articles → durable
 findings doc → session memory `.md` snapshots → transcript. Memory files are
