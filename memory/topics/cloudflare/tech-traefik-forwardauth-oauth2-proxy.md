@@ -8,6 +8,7 @@ tags: [tech, infra, traefik, oauth2, k8s, auth]
 related: ["[[user-duyet-stack]]"]
 created: 2026-06-09
 updated: 2026-06-09
+timestamp: 2026-06-09T00:00:00Z
 ---
 
 Pattern for protecting k8s services behind GitHub OAuth2 via Traefik forwardAuth.

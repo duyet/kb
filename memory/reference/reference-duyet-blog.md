@@ -9,6 +9,7 @@ related: ["[[user-duyet-web-presence]]", "[[user-duyet-ai-stance]]"]
 sources: ["https://blog.duyet.net/llms.txt", "https://blog.duyet.net/feed"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 blog.duyet.net — Duyet runs it as a **digital garden** (evolving notes, not

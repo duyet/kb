@@ -1,8 +1,16 @@
 ---
 name: project-infra-optimization
+title: Infra Optimization Baseline (2026-06-13)
 description: k3s cluster resource optimization, security hardening, and host cleanup — baseline for future tuning
-metadata:
-  type: project
+type: project
+category: infra
+tags: [project, infra, k3s, homelab, optimization]
+aliases: []
+related: ["[[project-self-driven-homelab]]"]
+sources: []
+created: 2026-06-13
+updated: 2026-06-13
+timestamp: 2026-06-13T00:00:00Z
 ---
 
 # Infra Optimization Baseline (2026-06-13)

@@ -9,6 +9,7 @@ related: ["[[project-duyet-net]]", "[[tech-cloudflare-pages-deploy]]", "[[tech-r
 sources: ["https://kb.duyet.net/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 **Problem:** Cloudflare Rocket Loader rewrites `<script type="module">` to a

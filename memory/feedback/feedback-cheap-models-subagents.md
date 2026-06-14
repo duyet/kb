@@ -10,6 +10,7 @@ related: ["[[feedback-working-style]]"]
 sources: []
 created: 2026-06-06
 updated: 2026-06-06
+timestamp: 2026-06-06T00:00:00Z
 ---
 
 When dispatching sub-agents (Agent tool) or Workflow agents — especially in

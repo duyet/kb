@@ -9,6 +9,7 @@ related: ["[[project-duyetbot]]", "[[feedback-working-style]]", "[[tech-cloudfla
 sources: ["https://kb.duyet.net/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 How [[project-duyetbot]] keeps [[project-duyet-net]] low-debt — extends

@@ -8,6 +8,7 @@ tags: [feedback, duyet, workflow]
 related: ["[[user-duyet-profile]]", "[[tech-codebase-maintenance-loop]]"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 Working preferences for agents collaborating with [[user-duyet-profile]].

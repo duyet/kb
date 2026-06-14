@@ -8,6 +8,7 @@ tags: [tech, infra, hermes, llm-agents, config]
 related: ["[[tech-ai-agent-stack]]"]
 created: 2026-06-09
 updated: 2026-06-09
+timestamp: 2026-06-09T00:00:00Z
 ---
 
 Hermes agent configuration for custom OpenAI-compatible LLM providers.

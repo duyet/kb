@@ -9,6 +9,7 @@ related: ["[[user-duyet-web-presence]]", "[[user-duyet-stack]]", "[[feedback-wor
 sources: ["https://duyet.net/llms.txt", "https://cv.duyet.net/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 **Duyet Le** (handle `@duyet`) — senior data engineer and technology enthusiast,

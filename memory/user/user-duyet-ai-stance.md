@@ -9,6 +9,7 @@ related: ["[[user-duyet-stack]]", "[[feedback-docs-driven-development]]", "[[use
 sources: ["https://blog.duyet.net/llms.txt", "https://blog.duyet.net/feed"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 Duyet's current AI practice (from his blog, ~2026):

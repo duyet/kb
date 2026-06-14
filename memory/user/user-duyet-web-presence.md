@@ -9,6 +9,7 @@ related: ["[[user-duyet-profile]]", "[[user-duyet-stack]]"]
 sources: ["https://duyet.net/llms.txt", "https://blog.duyet.net/llms.txt", "https://cv.duyet.net/llms.txt"]
 created: 2026-06-04
 updated: 2026-06-04
+timestamp: 2026-06-04T00:00:00Z
 ---
 
 Public web presence for [[user-duyet-profile]]. Sites ending in `/llms.txt`
