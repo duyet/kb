@@ -37,6 +37,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [Flat design system](memory/topics/web/tech-flat-design-system.md) — hairline borders, lucide, shadcn + semantic tokens, dark mode
 - [Cloudflare Pages deploy](memory/topics/cloudflare/tech-cloudflare-pages-deploy.md) — commit→push→background-deploy; parallel-deploy hazard
 - [Codebase maintenance loop](memory/topics/workflow/tech-codebase-maintenance-loop.md) — improvement cycles, safe dead-code removal, tests
+- [Agent-loop autonomous PR management](memory/topics/workflow/tech-agent-loop-autonomous-pr-management.md) — 15-min cycle triages all PRs, cheap subagents fix/review/merge, reduces context overhead
 - [Cloudflare AI Gateway proxy](memory/topics/cloudflare/tech-cloudflare-ai-gateway-proxy.md) — AIG doesn't validate model ids; "invalid model ID" is the upstream rejecting, not CF
 - [Traefik forwardAuth + OAuth2 Proxy](memory/topics/cloudflare/tech-traefik-forwardauth-oauth2-proxy.md) — ErrorPages keeps original status, need nginx redirector for 302
 - [Hermes agent custom provider](memory/topics/llm-agents/tech-hermes-agent-custom-provider.md) — custom_providers registration, provider:custom, steer mode
