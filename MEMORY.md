@@ -31,6 +31,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 ## Tech
 - [AI agent stack](memory/topics/llm-agents/tech-ai-agent-stack.md) — LangGraph/AI SDK/Agents SDK/MCP + what Duyet uses
 - [TanStack Start SSG](memory/topics/web/tech-tanstack-start-ssg.md) — prerender Vite app to survive CF Rocket Loader; migration recipe
+- [Per-page OG images (static prerender)](memory/topics/web/tech-og-images-static-prerender.md) — build-time Satori cards from one registry feeding generator + route head; meta must be in prerendered HTML for crawlers
 - [TanStack stale route chunks](memory/topics/web/tech-tanstack-stale-route-chunks.md) — missing lazy chunks → reading 'component'; reload guard + prerender shells
 - [Rust→WASM strategy](memory/topics/web/tech-rust-wasm-prerender.md) — WASM only beats TS >1ms; the silent-prerender CI trap
 - [Flat design system](memory/topics/web/tech-flat-design-system.md) — hairline borders, lucide, shadcn + semantic tokens, dark mode
