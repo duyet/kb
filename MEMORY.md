@@ -43,5 +43,6 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [Hermes agent custom provider](memory/topics/llm-agents/tech-hermes-agent-custom-provider.md) — custom_providers registration, provider:custom, steer mode
 - [release-please squash pipeline](memory/topics/ci/tech-release-please-squash-pipeline.md) — squash-merge PR titles drive versioning; pre-1.0 bump trap; PR-title commitlint guard
 - [Pin GitHub Actions (supply chain)](memory/topics/ci/tech-supply-chain-pin-github-actions.md) — trivy-action had 75 tags force-pushed (Mar 2026); pin Actions to SHA/version; two-phase Trivy scan (report then fail)
+- [Tmux dynamic pane status labels](memory/topics/workflow/tech-tmux-pane-status-labels.md) — pane-current-command→icon mapping for agent/idle/editor at a glance; script + gpakosz automatic-rename-format
 - [Open Knowledge Format (OKF)](memory/topics/standards/tech-okf-open-knowledge-format.md) — Google's open markdown+frontmatter "LLM-wiki" spec; this repo is now a strict-conformant bundle (nested topics, ISO-8601 timestamp, index.md/log.md)
 - [Kumo UI + Next.js integration](memory/topics/web/tech-kumo-ui-nextjs-integration.md) — Kumo+Phosphor crash RSC via createContext (every importer "use client"); Button no render, Tabs array, no Chart; token names; Tailwind v4 @source
