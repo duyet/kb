@@ -42,6 +42,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [Cloudflare AI Gateway proxy](memory/topics/cloudflare/tech-cloudflare-ai-gateway-proxy.md) — AIG doesn't validate model ids; "invalid model ID" is the upstream rejecting, not CF
 - [Traefik forwardAuth + OAuth2 Proxy](memory/topics/cloudflare/tech-traefik-forwardauth-oauth2-proxy.md) — ErrorPages keeps original status, need nginx redirector for 302
 - [Hermes agent custom provider](memory/topics/llm-agents/tech-hermes-agent-custom-provider.md) — custom_providers registration, provider:custom, steer mode
+- [Hermes dashboard auth gate](memory/topics/llm-agents/tech-hermes-dashboard-auth.md) — nous OAuth plugin, insecure/loopback gate precedence, localhost-allowlist gotcha
 - [release-please squash pipeline](memory/topics/ci/tech-release-please-squash-pipeline.md) — squash-merge PR titles drive versioning; pre-1.0 bump trap; PR-title commitlint guard
 - [Pin GitHub Actions (supply chain)](memory/topics/ci/tech-supply-chain-pin-github-actions.md) — trivy-action had 75 tags force-pushed (Mar 2026); pin Actions to SHA/version; two-phase Trivy scan (report then fail)
 - [Tmux dynamic pane status labels](memory/topics/workflow/tech-tmux-pane-status-labels.md) — pane-current-command→icon mapping for agent/idle/editor at a glance; script + gpakosz automatic-rename-format
