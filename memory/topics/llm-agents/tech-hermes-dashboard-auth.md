@@ -22,10 +22,18 @@ Source of truth when docs are scarce: read the bundled plugin at
   + `insecure`/`--insecure` → off**; **non-loopback + not insecure → ON**. A
   registered provider (nous/OIDC/basic) is only *consulted* when the gate is ON.
   `allow_public` = `HERMES_DASHBOARD_INSECURE=1`.
-- **nous activation:** registers only when a client_id is set — env
+- **nous activation — two gates, both required (on the `main` build):**
+  (1) **opt-in allow-list** — `main` made bundled plugins opt-in; `nous` loads
+  only if listed in `plugins.enabled` (config.yaml; set via `hermes plugins enable`
+  OR, for chart-managed deploys, in `config.values`). (2) **client_id** — env
   `HERMES_DASHBOARD_OAUTH_CLIENT_ID` (chart `dashboard.auth.oauthClientId`) wins
-  over config.yaml `dashboard.oauth.client_id`. client_id shape `agent:{instance_id}`.
-  Empty client_id → plugin is a no-op. See [[tech-hermes-agent-custom-provider]].
+  over config.yaml `dashboard.oauth.client_id`; shape `agent:{instance_id}`; empty
+  → provider skipped (no-op). See [[tech-hermes-agent-custom-provider]].
+- **Overwrite trap:** the chart's `config.overwrite: true` rewrites config.yaml
+  from the ConfigMap every boot, so a runtime `hermes plugins enable` is wiped on
+  restart. Put `plugins.enabled: [nous]` in `config.values` instead (deep-merge
+  keeps it over the default `[]`). Verified: log line
+  `dashboard-auth-nous: registered provider (client_id=…, portal=https://portal.nousresearch.com)`.
 - **Redirect-URI tiers** (`dashboard_auth/routes.py:_redirect_uri`):
   `dashboard.public_url`/`HERMES_DASHBOARD_PUBLIC_URL` → else `X-Forwarded-Host`+`Proto`
   → else request URL. The **Portal allowlist is authoritative** (plugin's local
