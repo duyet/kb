@@ -30,6 +30,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 
 ## Tech
 - [AI agent stack](memory/topics/llm-agents/tech-ai-agent-stack.md) — LangGraph/AI SDK/Agents SDK/MCP + what Duyet uses
+- [eve framework](memory/topics/llm-agents/tech-eve-framework.md) — Vercel filesystem-first durable agents; file layout, MCP connections, the Node-24 .ts-import gotcha
 - [TanStack Start SSG](memory/topics/web/tech-tanstack-start-ssg.md) — prerender Vite app to survive CF Rocket Loader; migration recipe
 - [Per-page OG images (static prerender)](memory/topics/web/tech-og-images-static-prerender.md) — build-time Satori cards from one registry feeding generator + route head; meta must be in prerendered HTML for crawlers
 - [TanStack stale route chunks](memory/topics/web/tech-tanstack-stale-route-chunks.md) — missing lazy chunks → reading 'component'; reload guard + prerender shells
