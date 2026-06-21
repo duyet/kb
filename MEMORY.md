@@ -17,6 +17,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [Web presence](memory/user/user-duyet-web-presence.md) — blog/CV/GitHub/socials + llms.txt sources
 - [Blog content & themes](memory/reference/reference-duyet-blog.md) — digital garden: ClickHouse, Rust, AI agents, data eng
 - [GitHub projects](memory/reference/reference-duyet-github.md) — ClickHouse tooling, Rust data tools, AI-agent repos, infra
+- [Cloudflare acquired Astro](memory/cloudflare-acquires-astro.md) — Jan 2026; Astro team (Fred Schott) now at CF, ships Flue agent framework
 
 ## Project
 - [ClickHouse Monitor (chmonitor)](memory/projects/project-clickhouse-monitor.md) — 4 CF workers: Astro landing/docs + TanStack dashboard + MCP; zinc/amber design system
