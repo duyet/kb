@@ -18,6 +18,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [Blog content & themes](memory/reference/reference-duyet-blog.md) — digital garden: ClickHouse, Rust, AI agents, data eng
 - [GitHub projects](memory/reference/reference-duyet-github.md) — ClickHouse tooling, Rust data tools, AI-agent repos, infra
 - [Cloudflare acquired Astro](memory/cloudflare-acquires-astro.md) — Jan 2026; Astro team (Fred Schott) now at CF, ships Flue agent framework
+- [AI SDK history → UIMessage mapping](memory/reference/reference-ai-sdk-history-uimessage-mapping.md) — persisted tool/chart parts vanish on reload unless translated to native dynamic-tool shape
 
 ## Project
 - [ClickHouse Monitor (chmonitor)](memory/projects/project-clickhouse-monitor.md) — 4 CF workers: Astro landing/docs + TanStack dashboard + MCP; zinc/amber design system
