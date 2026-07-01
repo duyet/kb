@@ -8,8 +8,8 @@ tags: [clickhouse, homelab, infra, machines, connectivity]
 related: ["[[project-clickhouse-monitor]]", "[[project-self-driven-homelab]]"]
 sources: []
 created: 2026-06-30
-updated: 2026-06-30
-timestamp: 2026-06-30T17:50:00Z
+updated: 2026-07-01
+timestamp: 2026-07-01T12:30:00Z
 ---
 
 # ClickHouse Machine Inventory
@@ -30,7 +30,7 @@ Three ClickHouse instances, all reachable via Tailscale from the development lap
 | **Password source** | k3s Secret `chmonitor` (file: `homelab/chmonitor/secrets.local.yaml`) |
 | **Config** | Helm values in k3s cluster |
 | **Dashboard host name** | `duet-ubuntu` |
-| **Notes** | Primary instance, most data, serves as cloud demo host (`CHM_CLOUD_DEMO_HOSTS=duet-ubuntu`) |
+| **Notes** | Primary instance, most data. Also serves as cloud demo host for dash.chmonitor.dev |
 
 ## 2. clickhouse-aws (EC2 t3a.small)
 
@@ -41,24 +41,39 @@ Three ClickHouse instances, all reachable via Tailscale from the development lap
 | **HTTP port** | 8123 |
 | **Version** | 26.3.17 |
 | **Deployment** | Native installation via `apt` on Amazon Linux |
-| **Data** | ~62 MiB (minimal) |
+| **Data** | ~700 MiB compressed (50 tables cloned from duet-ubuntu duyet_analytics) |
 | **Resources** | 1.9 GiB RAM, 2 vCPUs (Xeon Platinum 8259CL), 50 GB disk (12G used), 8 GiB swap |
 | **Password** | Reset to `CLICKHOUSE_PASSWORD_REDACTED` (original SHA256 hash replaced in `users.xml`) |
-| **Memory config** | `/etc/clickhouse-server/config.d/memory.xml` — max_server_memory_usage=1073741824 (1 GiB), max_concurrent_queries=10 |
+| **Memory config** | `/etc/clickhouse-server/config.d/memory.xml` — max_server_memory_usage=1610612736 (1.5 GiB) |
 | **Network config** | `/etc/clickhouse-server/config.d/listen.xml` — listen on 0.0.0.0 |
 | **Dashboard host name** | `clickhouse-aws` |
 | **SSH key** | `~/.ssh/clickhouse-aws.pem` (ec2-user) |
-| **Notes** | Was hitting MEMORY_LIMIT_EXCEEDED at default 700 MiB limit. Increased to 1 GiB (leaves ~800 MiB for OS/page cache). t3a.small is memory-constrained — avoid large analytical queries against this instance. |
+| **Notes** | Clone target from duet-ubuntu. Memory tuned for 1.5GiB limit (t3a.small is memory-constrained). Avoid heavy analytical queries — use openclaw (8GB) instead. |
 
-### Memory optimization applied (2026-06-30)
+### Clone from duet-ubuntu (2026-07-01)
+
+All 50 tables from `duyet_analytics` cloned from duet-ubuntu via HTTP Native streaming. 34 tables have data (2.44M rows total), 16 are empty.
+
+**Large tables:**
+| Table | Rows | Batch strategy |
+|-------|------|----------------|
+| power_usage | 777,355 | Direct stream |
+| homelab_ubuntu_sensors | 739,425 | 20k-10k batches (large `raw_data` String caused OOM at 50k) |
+| duyet_redirect | 418,507 | 50k batches (+47k dups from retry, ReplacingMergeTree cleans up) |
+| events | 100,209 | 50k → 20k batches (hit memory at 50k, finished at 20k) |
+
+**Method:** Python script on dev laptop → `curl duet-ubuntu (HTTP Native)` → `ssh | clickhouse-client (clickhouse-aws)`. Explicit column lists to skip MATERIALIZED columns. Batched with LIMIT/OFFSET for large tables.
+
+### Memory tuning
 
 `/etc/clickhouse-server/config.d/memory.xml`:
 ```xml
 <clickhouse>
-    <max_server_memory_usage>1073741824</max_server_memory_usage>
-    <max_concurrent_queries>10</max_concurrent_queries>
+    <max_server_memory_usage>1610612736</max_server_memory_usage>
 </clickhouse>
 ```
+- **2026-06-30:** Default 700 MiB → 1 GiB (1073741824) for cloning headroom
+- **2026-07-01:** After clone completed, attempted 1 GiB → hit MEMORY_LIMIT_EXCEEDED at RSS 1.06GiB on restart. Settled at 1.5 GiB (1610612736) which leaves ~400 MiB for OS.
 
 ## 3. openclaw (Contabo VPS)
 
@@ -98,6 +113,14 @@ CLICKHOUSE_NAME=duet-ubuntu,clickhouse-aws,openclaw
 ```
 
 Single credential pair applies to all hosts (when arrays length = 1). The multi-host parser in `clickhouse-config.ts` maps them by index.
+
+### Production demo allowlist (`.env.production`)
+
+All 3 hosts are listed as public demo hosts for anonymous visitors on dash.chmonitor.dev:
+```
+CHM_CLOUD_DEMO_HOSTS=duet-ubuntu,clickhouse-aws,openclaw
+```
+Note: clickhouse-aws and openclaw use Tailscale internal IPs (`100.x.x.x`). They are reachable from Cloudflare Workers only if behind Tailscale Funnel or a public endpoint. duet-ubuntu already has a Tailscale Funnel HTTPS URL.
 
 ## Connection Quick Reference
 
