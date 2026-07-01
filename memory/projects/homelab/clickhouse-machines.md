@@ -14,7 +14,7 @@ timestamp: 2026-07-01T12:30:00Z
 
 # ClickHouse Machine Inventory
 
-Three ClickHouse instances, all reachable via Tailscale from the development laptop, all using shared password `CLICKHOUSE_PASSWORD_REDACTED`.
+Three ClickHouse instances, all reachable via Tailscale from the development laptop, all using a shared password.
 
 ## 1. duet-ubuntu (k3s cluster)
 
@@ -36,18 +36,18 @@ Three ClickHouse instances, all reachable via Tailscale from the development lap
 
 | Field | Value |
 |-------|-------|
-| **Access** | `http://CLICKHOUSE_AWS_TAILSCALE_IP:8123` (Tailscale HTTP) |
+| **Access** | Internal Tailscale HTTP |
 | **Native port** | 9000 |
 | **HTTP port** | 8123 |
 | **Version** | 26.3.17 |
 | **Deployment** | Native installation via `apt` on Amazon Linux |
 | **Data** | ~700 MiB compressed (50 tables cloned from duet-ubuntu duyet_analytics) |
 | **Resources** | 1.9 GiB RAM, 2 vCPUs (Xeon Platinum 8259CL), 50 GB disk (12G used), 8 GiB swap |
-| **Password** | Reset to `CLICKHOUSE_PASSWORD_REDACTED` (original SHA256 hash replaced in `users.xml`) |
+| **Password** | Set to the shared password |
 | **Memory config** | `/etc/clickhouse-server/config.d/memory.xml` — max_server_memory_usage=1610612736 (1.5 GiB) |
 | **Network config** | `/etc/clickhouse-server/config.d/listen.xml` — listen on 0.0.0.0 |
 | **Dashboard host name** | `clickhouse-aws` |
-| **SSH key** | `~/.ssh/clickhouse-aws.pem` (ec2-user) |
+| **SSH key** | Private key in `~/.ssh/` |
 | **Notes** | Clone target from duet-ubuntu. Memory tuned for 1.5GiB limit (t3a.small is memory-constrained). Avoid heavy analytical queries — use openclaw (8GB) instead. |
 
 ### Clone from duet-ubuntu (2026-07-01)
@@ -79,7 +79,7 @@ All 50 tables from `duyet_analytics` cloned from duet-ubuntu via HTTP Native str
 
 | Field | Value |
 |-------|-------|
-| **Access** | `http://OPENCLAW_TAILSCALE_IP:8124` (Tailscale HTTP) **note non-default port** |
+| **Access** | Internal Tailscale HTTP (port 8124, non-default) |
 | **Native port** | 9000 |
 | **HTTP port** | 8124 (custom, not 8123) |
 | **Public IP** | 178.18.253.241 |
@@ -87,11 +87,11 @@ All 50 tables from `duyet_analytics` cloned from duet-ubuntu via HTTP Native str
 | **Deployment** | Native installation, installed via ClickHouse official `.deb` package |
 | **Data** | ~2.5 GiB |
 | **Resources** | 8 GiB RAM, 4 CPUs, ~145 GiB disk (71G used, 74G free) |
-| **Password** | `CLICKHOUSE_PASSWORD_REDACTED` |
+| **Password** | Set to the shared password |
 | **Config special** | `/etc/clickhouse-server/config.d/openclaw-lite.xml` — sets http_port=8124, memory/log settings |
 | **Uptime** | 1+ month |
 | **Dashboard host name** | `openclaw` |
-| **Notes** | HTTP on port 8124 (not default 8123). Accessible over Tailscale at `OPENCLAW_TAILSCALE_IP:8124`. Most performant instance (8GB RAM) — good for heavy queries. |
+| **Notes** | HTTP on port 8124 (not default 8123). Accessible over Tailscale at `<redacted-ip>:8124`. Most performant instance (8GB RAM) — good for heavy queries. |
 
 ### Custom port config (`openclaw-lite.xml`)
 ```xml
@@ -101,31 +101,6 @@ All 50 tables from `duyet_analytics` cloned from duet-ubuntu via HTTP Native str
 </clickhouse>
 ```
 
-## Multi-host Dashboard Configuration
 
-The local development `.env.local` uses comma-separated multi-host format:
 
-```
-CLICKHOUSE_HOST=https://duet-ubuntu.dingo-mora.ts.net:8443,http://CLICKHOUSE_AWS_TAILSCALE_IP:8123,http://OPENCLAW_TAILSCALE_IP:8124
-CLICKHOUSE_USER=default
-CLICKHOUSE_PASSWORD=CLICKHOUSE_PASSWORD_REDACTED
-CLICKHOUSE_NAME=duet-ubuntu,clickhouse-aws,openclaw
-```
 
-Single credential pair applies to all hosts (when arrays length = 1). The multi-host parser in `clickhouse-config.ts` maps them by index.
-
-### Production demo allowlist (`.env.production`)
-
-All 3 hosts are listed as public demo hosts for anonymous visitors on dash.chmonitor.dev:
-```
-CHM_CLOUD_DEMO_HOSTS=duet-ubuntu,clickhouse-aws,openclaw
-```
-Note: clickhouse-aws and openclaw use Tailscale internal IPs (`100.x.x.x`). They are reachable from Cloudflare Workers only if behind Tailscale Funnel or a public endpoint. duet-ubuntu already has a Tailscale Funnel HTTPS URL.
-
-## Connection Quick Reference
-
-| Host | URL | Password | Since |
-|------|-----|----------|-------|
-| duet-ubuntu | `https://duet-ubuntu.dingo-mora.ts.net:8443` | `CLICKHOUSE_PASSWORD_REDACTED` | Original |
-| clickhouse-aws | `http://CLICKHOUSE_AWS_TAILSCALE_IP:8123` | `CLICKHOUSE_PASSWORD_REDACTED` | Reset 2026-06-30 |
-| openclaw | `http://OPENCLAW_TAILSCALE_IP:8124` | `CLICKHOUSE_PASSWORD_REDACTED` | Original |

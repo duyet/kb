@@ -198,6 +198,13 @@ personal site, or published blog:
 it here. When in doubt, leave it out — keep it in the agent's private
 per-project memory instead.
 
+**Githook enforcement:** This repo has a pre-commit hook at `.git/hooks/pre-commit`
+that blocks commits containing common sensitive patterns (passwords, IPs, keys,
+connection strings, SSH keys). If a legitimate change is blocked, update the
+patterns array in the hook — but think hard before you do. The hook is NOT
+symlinked automatically; if you clone fresh, copy it via `cp .git/hooks/pre-commit
+.sample .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit`.
+
 ## 4. Auto-dream
 
 Memory degrades as it grows: duplicates, verbose notes, stale facts, broken

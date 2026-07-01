@@ -25,8 +25,8 @@ Investigate and fix ClickHouse connectivity across 3 machines (duet-ubuntu k3s c
 | Host | Version | URL | Status | Notes |
 |------|---------|-----|--------|-------|
 | duet-ubuntu (k3s) | 26.4.3.37 | `https://duet-ubuntu.dingo-mora.ts.net:8443` | ✅ Working | Already configured, Tailscale HTTPS Funnel |
-| clickhouse-aws (EC2 t3a.small) | 26.3.17.4 | `http://CLICKHOUSE_AWS_TAILSCALE_IP:8123` | ✅ Working after fixes | Password unknown, memory limit too low |
-| openclaw (Contabo VPS) | 26.5.1.882 | `http://OPENCLAW_TAILSCALE_IP:8124` | ✅ Working | HTTP on port 8124 (not default 8123) |
+| clickhouse-aws (EC2 t3a.small) | 26.3.17.4 | Internal Tailscale HTTP | ✅ Working after fixes | Password unknown, memory limit too low |
+| openclaw (Contabo VPS) | 26.5.1.882 | Internal Tailscale HTTP (non-default port) | ✅ Working | HTTP on port 8124 (not default 8123) |
 
 All three verified with `SELECT 1` and version queries.
 
@@ -34,7 +34,7 @@ All three verified with `SELECT 1` and version queries.
 
 **Password reset**
 - The `users.d/` directory was empty; default user had unknown SHA256 hash `ebcfa138f951243998ae0de4ad20a20b4794a5e5daf3360c7d2ab87948dd248e`
-- Replaced the password hash with SHA256 of shared password `CLICKHOUSE_PASSWORD_REDACTED`
+- Replaced the password hash with SHA256 of shared password `<redacted>`
 - Verified connection: `SELECT 1` returned `1`
 
 **Memory optimization**
@@ -43,18 +43,9 @@ All three verified with `SELECT 1` and version queries.
 - Updated to `1073741824` (1 GB) with `max_concurrent_queries=10`
 - Restarted ClickHouse, verified `system.server_settings` shows new value
 
-### 3. Updated multi-host `.env.local`
+### 3. Updated multi-host config
 
-File: `/Users/duet/project/chmonitor/chmonitor/apps/dashboard/.env.local`
-
-```
-CLICKHOUSE_HOST=https://duet-ubuntu.dingo-mora.ts.net:8443,http://CLICKHOUSE_AWS_TAILSCALE_IP:8123,http://OPENCLAW_TAILSCALE_IP:8124
-CLICKHOUSE_USER=default
-CLICKHOUSE_PASSWORD=CLICKHOUSE_PASSWORD_REDACTED
-CLICKHOUSE_NAME=duet-ubuntu,clickhouse-aws,openclaw
-```
-
-Single credential pair applies to all hosts in the multi-host parser.
+All 3 hosts added to `.env.local` (comma-separated multi-host format), single credential pair shared across them.
 
 ### 4. Cloning `duyet_analytics` from duet-ubuntu to clickhouse-aws
 
@@ -109,18 +100,15 @@ Only duet-ubuntu is accessible from Cloudflare Workers via Tailscale Funnel. cli
 ## Commands used (for reference)
 
 ```bash
-# Test connectivity
-curl -s -u "default:CLICKHOUSE_PASSWORD_REDACTED" "https://duet-ubuntu.dingo-mora.ts.net:8443/" -d "SELECT 1"
-curl -s -u "default:CLICKHOUSE_PASSWORD_REDACTED" "http://CLICKHOUSE_AWS_TAILSCALE_IP:8123/" -d "SELECT 1"
-curl -s -u "default:CLICKHOUSE_PASSWORD_REDACTED" "http://OPENCLAW_TAILSCALE_IP:8124/" -d "SELECT 1"
-
-# SSH to clickhouse-aws
-ssh -i ~/.ssh/clickhouse-aws.pem ec2-user@CLICKHOUSE_AWS_TAILSCALE_IP
+# Test connectivity (pass from env var or --password flag)
+clickhouse-client --query "SELECT 1"
 
 # Check memory settings
-clickhouse-client -u default --password CLICKHOUSE_PASSWORD_REDACTED \
-  --query "SELECT name, value FROM system.server_settings WHERE name='max_server_memory_usage'"
+clickhouse-client --query "SELECT name, value FROM system.server_settings WHERE name='max_server_memory_usage'"
 
 # Get DDLs
 clickhouse-client --query "SELECT create_table_query FROM system.tables WHERE database='duyet_analytics'"
+
+# Clone data between hosts via HTTP Native + clickhouse-client pipe
+# See clone script in ~/scripts/ for current implementation
 ```
