@@ -82,7 +82,7 @@ All 50 tables from `duyet_analytics` cloned from duet-ubuntu via HTTP Native str
 | **Access** | Internal Tailscale HTTP (port 8124, non-default) |
 | **Native port** | 9000 |
 | **HTTP port** | 8124 (custom, not 8123) |
-| **Public IP** | 178.18.253.241 |
+| **Public IP** | 178.18.253.241 <!-- REVIEW: public VPS IP, inherently internet-facing. Keep or redact? --> |
 | **Version** | 26.5.1 |
 | **Deployment** | Native installation, installed via ClickHouse official `.deb` package |
 | **Data** | ~2.5 GiB |
