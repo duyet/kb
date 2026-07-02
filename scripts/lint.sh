@@ -67,7 +67,7 @@ done < <(grep -oE '\(memory/[^)]+\.md\)' "$INDEX" | tr -d '()')
 while read -r target; do
   [[ -z "$target" ]] && continue
   [[ "$slugs" == *" $target "* ]] || { echo "✗ broken link: [[$target]] has no note (stub — create it or fix)"; fail=1; }
-done < <(grep -rho '\[\[[^]]*\]\]' "${notes[@]}" 2>/dev/null | sed 's/\[\[//;s/\]\]//' | sort -u)
+done < <(grep -rho '\[\[[^]]*\]\]' "${notes[@]}" 2>/dev/null | sed 's/\[\[//;s/\]\]//;s/|.*//' | sort -u)
 
 # Security leak check (AGENTS.md §3 — public repo).
 # Scans notes plus the always-public entry points: MEMORY.md and the raw/inbox.
@@ -78,9 +78,9 @@ while IFS= read -r line; do
   echo "✗ security: $line"
   fail=1
 done < <(grep -rhE \
-  '(sk-[a-zA-Z0-9]{20,}|ghp_[a-zA-Z0-9]{36}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA |EC )?PRIVATE KEY-----|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|ssh://|[a-z0-9-]+\.ts\.net|@?[a-z0-9-]+\.internal\b|[a-z0-9-]+\.lan\b|[a-z0-9-]+\.local:[0-9]|\.onion|password\s*[:=]|secret\s*[:=]|token\s*[:=])' \
+  '(sk-[a-zA-Z0-9]{20,}|ghp_[a-zA-Z0-9]{36}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA |EC )?PRIVATE KEY-----|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|ssh://|[a-z0-9-]+\.ts\.net|@?[a-z0-9-]+\.internal\b|[a-z0-9-]+\.lan\b|[a-z0-9-]+\.local(:[0-9]+)?\b|\.onion|password\s*[:=]|secret\s*[:=]|token\s*[:=])' \
   "${scan_files[@]}" 2>/dev/null \
   | grep -v '^---' | grep -v '^sources:' \
-  | grep -vE 'cluster\.local')
+  | grep -vE 'cluster\.local|\.env\.local|\.conf\.local|/\.local/|\.local\.deploy')
 
 if [[ $fail -eq 0 ]]; then echo "✓ ${#notes[@]} notes pass the standard"; else echo "lint failed"; exit 1; fi
