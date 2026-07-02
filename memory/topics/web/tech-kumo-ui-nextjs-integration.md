@@ -13,7 +13,7 @@ updated: 2026-06-14
 timestamp: 2026-06-14T00:00:00Z
 ---
 
-Hard-won facts from migrating the AgentState dashboard (Next 16 + Turbopack + `output:"export"`) to `@cloudflare/kumo@2.5` from shadcn/ui. See [[project-agentstate-kumo-rebuild]].
+Hard-won facts from migrating the AgentState dashboard (Next 16 + Turbopack + `output:"export"`) to `@cloudflare/kumo@2.5` from shadcn/ui.
 
 **`createContext is not a function` is THE blocker.** Kumo (base-ui) AND `@phosphor-icons/react` (`IconContext`) call `React.createContext` at module top-level. RSC pre-render has no `createContext`, so **every file importing either must start with `"use client"`** — not just the obvious ones. `transpilePackages: ["@cloudflare/kumo","@base-ui/react","@phosphor-icons/react","echarts"]` is necessary but NOT sufficient.
 
