@@ -1,0 +1,32 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    env:
+      GITLEAKS_VERSION: "8.18.4"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: kb lint (frontmatter, links, index, secret scan)
+        run: KB_DIR="$PWD" bash scripts/lint.sh
+
+      - name: Install gitleaks
+        run: |
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            | tar -xz gitleaks
+          ./gitleaks version
+
+      # Scan the working tree (not git history): the tree is the source of truth
+      # for the current state, and historical secret scrubbing is tracked
+      # separately (git-history rewrite is out of scope for this gate).
+      - name: gitleaks secret scan
+        run: ./gitleaks detect --no-git --redact --config .gitleaks.toml --verbose

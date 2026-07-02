@@ -198,12 +198,20 @@ personal site, or published blog:
 it here. When in doubt, leave it out — keep it in the agent's private
 per-project memory instead.
 
-**Githook enforcement:** This repo has a pre-commit hook at `.git/hooks/pre-commit`
-that blocks commits containing common sensitive patterns (passwords, IPs, keys,
-connection strings, SSH keys). If a legitimate change is blocked, update the
-patterns array in the hook — but think hard before you do. The hook is NOT
-symlinked automatically; if you clone fresh, copy it via `cp .git/hooks/pre-commit
-.sample .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit`.
+**Githook enforcement:** This repo ships a **committed** pre-commit hook at
+`githooks/pre-commit` that runs `scripts/lint.sh` (frontmatter/link/index checks
+plus the §3 secret/PII scan: keys, IPs, `*.ts.net`/`.internal`/`.lan`/`.local`
+hostnames, private keys, connection strings) and blocks the commit on any match.
+Enable it once per clone (it is versioned, not auto-installed):
+
+```sh
+git config core.hooksPath githooks
+```
+
+If a legitimate change is blocked, adjust the patterns in `scripts/lint.sh`
+(and `.gitleaks.toml`) — but think hard before you do. The same checks also run
+in CI (`.github/workflows/lint.yml`, which additionally runs
+`gitleaks detect --no-git`).
 
 ## 4. Auto-dream
 

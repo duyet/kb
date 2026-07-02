@@ -91,6 +91,27 @@ wherever kb is cloned. They're **canonical in this repo** — install via the sy
 installer (auto-updates on `git pull`). To share a skill without shipping your
 memory, mirror `skills/` into a separate plugins repo (path-agnostic via `KB_DIR`).
 
+## Quality gates (lint + secret scan)
+
+`scripts/lint.sh` validates every note (required frontmatter, `name`==filename,
+type-token filename prefix, `[[wikilink]]` resolution, `MEMORY.md` index
+coverage) and runs the public-repo secret/PII scan from `AGENTS.md` §3 over the
+notes, `raw/inbox/`, and `MEMORY.md`. Run it directly with `kb lint` (or
+`KB_DIR=$PWD bash scripts/lint.sh`).
+
+Two enforcement points share it:
+
+- **Local pre-commit hook** (committed, opt-in per clone):
+
+  ```bash
+  git config core.hooksPath githooks
+  ```
+
+  `githooks/pre-commit` then runs the lint and blocks any commit that fails.
+
+- **CI** — `.github/workflows/lint.yml` runs `scripts/lint.sh` and
+  `gitleaks detect --no-git --config .gitleaks.toml` on every push and PR.
+
 ## Website
 
 The knowledge base website at [kb.duyet.net](https://kb.duyet.net) is rendered

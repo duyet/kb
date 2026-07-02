@@ -6,7 +6,7 @@ type: project
 category: homelab
 tags: [homelab, k3s, argocd, oma, open-managed-agents, agents, anyrouter, kubernetes]
 aliases: [openma, open-managed-agents]
-related: ["[[tech-hermes-agent-custom-provider]]", "[[chmonitor-one-codebase-saas]]"]
+related: ["[[tech-hermes-agent-custom-provider]]", "[[project-chmonitor-one-codebase-saas]]"]
 sources: ["https://openma.dev", "https://docs.openma.dev", "https://github.com/openma-ai/open-managed-agents"]
 created: 2026-07-02
 updated: 2026-07-02

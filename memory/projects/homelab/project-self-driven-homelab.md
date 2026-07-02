@@ -19,7 +19,7 @@ A single-node k3s cluster that largely runs itself. An AI agent named Minh lives
 
 ## The Setup
 
-**Hardware**: One machine — `duet-ubuntu`, 16 CPU, 13Gi RAM, 457G NVMe. Sitting in a home in Vietnam.
+**Hardware**: One self-hosted machine — 16 CPU, 13Gi RAM, 457G NVMe.
 
 **Stack**: k3s (single-node, containerd), Traefik ingress, Let's Encrypt TLS via Cloudflare DNS-01, GitHub OAuth for auth. 15 services across 14 namespaces. All config versioned in git.
 
