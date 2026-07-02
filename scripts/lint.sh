@@ -11,6 +11,14 @@ set -euo pipefail
 
 REPO="${KB_DIR:-$HOME/kb}"
 cd "$REPO"
+# Fail fast if run from the wrong place: a missing memory/ dir would otherwise
+# make `find memory` (inside a process substitution) fail silently — `set -e`
+# does not propagate out of process substitution — and the script would report
+# "✓ 0 notes pass" with exit 0.
+if [[ ! -d memory ]]; then
+  echo "✗ 'memory' directory not found in '$REPO' (set KB_DIR to the repo root)" >&2
+  exit 1
+fi
 # `timestamp` (ISO 8601) is required by our lint — stricter than the OKF spec
 # (which only mandates `type`), matching Google's reference validator, which
 # rejects a concept missing type/title/description/timestamp.
@@ -63,7 +71,7 @@ done
 while read -r target; do
   [[ -z "$target" ]] && continue
   [[ "$slugs" == *" $target "* ]] || { echo "✗ broken link: [[$target]] has no note (stub — create it or fix)"; fail=1; }
-done < <(grep -rho '\[\[[^]]*\]\]' "${notes[@]}" 2>/dev/null | sed 's/\[\[//;s/\]\]//' | sort -u)
+done < <(grep -rho '\[\[[^]]*\]\]' "${notes[@]}" 2>/dev/null | sed 's/\[\[//;s/\]\]//;s/|.*//' | sort -u)
 
 # Index coverage: every note has a pointer line in MEMORY.md, and every
 # MEMORY.md pointer resolves to a real file.
@@ -85,17 +93,20 @@ while IFS= read -r f; do sec_files+=("$f"); done < <(find raw/inbox -type f -nam
 
 # Patterns: cloud/API keys, private keys, IPv4, ssh://, Tailscale MagicDNS
 # (*.ts.net), mDNS/private DNS (.internal/.lan/.local), .onion, and
-# password/secret/token assignments. The `.local` family is deliberately broad,
-# so legit dev-file names (.env.local, ~/.local/, *.cluster.local, *.conf.local)
-# are allow-listed on the trailing grep -vE.
+# password/secret/token assignments. `grep -inE` gives case-insensitive matching
+# (catches `Password:`/`Secret:`) plus file:line context; the trailing /dev/null
+# guarantees grep has an input arg so it never hangs on stdin when sec_files is
+# empty. The `.local` family is deliberately broad, so legit dev-file names
+# (.env.local, ~/.local/, *.cluster.local, *.conf.local) — and frontmatter/sources
+# lines — are allow-listed on the trailing greps.
 while IFS= read -r line; do
   [[ -z "$line" ]] && continue
   echo "✗ security: $line"
   fail=1
-done < <(grep -rhE \
+done < <(grep -inE \
   '(sk-[a-zA-Z0-9]{20,}|ghp_[a-zA-Z0-9]{36}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA |EC )?PRIVATE KEY-----|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|ssh://|\.ts\.net\b|\.internal\b|\.lan\b|\.local\b|\.onion|password\s*[:=]|secret\s*[:=]|token\s*[:=])' \
-  "${sec_files[@]}" 2>/dev/null \
-  | grep -v '^---' | grep -v '^sources:' \
-  | grep -vE '(\.env\.local|\.local/|cluster\.local|conf\.local|secrets\.local|settings\.local)')
+  "${sec_files[@]}" /dev/null 2>/dev/null \
+  | grep -vE '^[^:]+:[0-9]+:(---|sources:)' \
+  | grep -viE '(\.env\.local|\.local/|cluster\.local|conf\.local|secrets\.local|settings\.local)')
 
 if [[ $fail -eq 0 ]]; then echo "✓ ${#notes[@]} notes pass the standard"; else echo "lint failed"; exit 1; fi

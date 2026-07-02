@@ -6,7 +6,21 @@ useDefault = true
 # Too noisy in markdown prose
 disabledRules = ["generic-api-key"]
 
-# --- Custom rules for hostnames, IPs, internal names ---
+# --- Global allowlist ---------------------------------------------------------
+# Files that legitimately contain the very tokens the custom rules below match:
+# the scanner/hook sources that DEFINE the patterns, and viz.html — a generated
+# artifact rebuilt from the memory notes (which ARE scanned as the source of
+# truth, so scanning the derived single-line blob only produces noise).
+[allowlist]
+paths = [
+  '''\.gitleaks\.toml''',
+  '''scripts/lint\.sh''',
+  '''scripts/bootstrap\.sh''',
+  '''githooks/pre-commit''',
+  '''viz\.html''',
+]
+
+# --- Custom rules for hostnames, IPs, internal names --------------------------
 
 [[rules]]
 id = "private-ip-address"
@@ -19,9 +33,12 @@ id = "ssh-user-host"
 description = "SSH user@host pattern"
 regex = '''[a-z_][a-z0-9_-]*@[a-z0-9][a-z0-9.-]+\.[a-z]{2,}'''
 tags = ["ssh", "hostname"]
-  [[rules.allowlists]]
+  # NOTE: gitleaks 8.18 uses the SINGULAR [rules.allowlist] table; the plural
+  # [[rules.allowlists]] array is 8.19+ and is silently ignored on 8.18, which
+  # is why these allow-lists must stay singular to match the pinned CI version.
+  [rules.allowlist]
   regexTarget = "line"
-  # Allow public GitHub commits (author emails) and public URLs in sources:
+  # Allow public GitHub commit author emails and public source URLs:
   regexes = [
     '''github\.com''',
     '''gitlab\.com''',
@@ -47,11 +64,12 @@ tags = ["location", "pii"]
 [[rules]]
 id = "tailscale-magicdns-host"
 description = "Tailscale MagicDNS / private DNS hostname (*.ts.net, .internal, .lan, .local)"
-regex = '''[a-z0-9]([a-z0-9-]*[a-z0-9])?\.(ts\.net|internal|lan|local)\b'''
+regex = '''(?i)[a-z0-9]([a-z0-9-]*[a-z0-9])?\.(ts\.net|internal|lan|local)\b'''
 tags = ["hostname", "network", "tailscale"]
-  [[rules.allowlists]]
+  [rules.allowlist]
   regexTarget = "line"
-  # Legit dev-file names that end in a private-DNS-looking suffix.
+  # Legit dev-file names / standard DNS suffixes that end in a private-DNS-looking
+  # token (Kubernetes `*.svc.cluster.local`, `.env.local`, `~/.local/`, …).
   regexes = [
     '''\.env\.local''',
     '''\.local/''',
