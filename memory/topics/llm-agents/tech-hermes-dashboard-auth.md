@@ -10,6 +10,7 @@ related: ["[[tech-hermes-agent-custom-provider]]", "[[tech-traefik-forwardauth-o
 sources: []
 created: 2026-06-18
 updated: 2026-06-18
+timestamp: 2026-06-18T00:00:00Z
 ---
 
 Hermes (`nousresearch/hermes-agent`) ships a bundled **`nous`** dashboard-auth
