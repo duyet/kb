@@ -32,7 +32,20 @@ Anthropic-compatible; auth via `x-api-key`. Route models through AnyRouter with 
 2. `POST /v1/agents` — create the agent (OMA-specific fields like `harness`/`runtime_binding` nest under `_oma:` so stock Anthropic SDKs ignore them).
 3. `POST /v1/sessions`, then post a message → SSE stream of the turn. That spawns the agent run.
 
-## Gotchas
-- The real harness contract is a class `implements HarnessInterface` (`apps/agent/src/harness/interface.ts`), NOT the README's unimplemented `defineHarness`.
-- Sandbox port `SandboxExecutor.exec` returns a **string** with an `[exit N]` suffix (not a structured result) — matters when adapting OMA sandboxes to another framework. Provider adapters live in `packages/sandbox/src/adapters/`.
+## Verified run flow + gotchas (node self-host)
+Order that actually works against a live node self-host:
+1. **Bootstrap a user** — no default admin; email/password signup requires verification but self-host has no SMTP (`sendEmail` no-ops when `SEND_EMAIL` unset — the code isn't even logged). Seed one: POST `/auth/sign-up/email`, then set `emailVerified=1` in `/app/data/auth.db` (`node:sqlite`, table `user`). Then sign-in works.
+2. **Mint an API key** — POST `/v1/api_keys` with the better-auth session cookie → returns an `oma_…` key once. Use it as `x-api-key` for `/v1/*`.
+3. **Create agent** — POST `/v1/agents` `{name,model,system,tools}`; OMA-only fields nest under `_oma:` (e.g. `runtime_binding`).
+4. **Create session** — body field is **`agent`** (not `agent_id`, despite older self-host.md), and a non-local-runtime agent needs **`environment_id`** — main-node accepts ANY id (returns a synthetic local-runtime env), e.g. `"env-local-runtime"`.
+5. **Drive** — POST `/v1/sessions/:id/events` `{events:[{type:"user.message",content:[{type:"text",text:"…"}]}]}`; read `/v1/sessions/:id/trajectory` or `/events/stream`.
+
+Bugs / friction found (improvement candidates):
+- **`POST /v1/model_cards` returns 404** `{"error":"not found"}` (GET works) — routing swallows the POST via the integrations route in the built image. Blocks registering BYOK oai-compatible (free) models.
+- Harness `streamText` sets no `maxOutputTokens` → provider default **4096**. With a low-balance AnyRouter/OpenRouter-BYOK account this 402s ("can only afford N tokens"). Same model works at `max_tokens≤budget`. Fix = add credits, or cap output tokens.
+- Default provider uses AnyRouter's Anthropic-native `/messages` → only `anthropic/*` models route cleanly; non-anthropic model ids get their `provider/` prefix mangled. Use `/chat/completions` via an oai-compatible model card for free models (blocked by the POST bug above).
+
+## Flue / sandbox interop
+- The real harness contract is a class `implements HarnessInterface` (`apps/agent/src/harness/interface.ts`), NOT the README's unimplemented `defineHarness`. Register with `registerHarness("name", …)`; mirror the `AcpProxyHarness` meta-harness pattern to embed another framework's loop.
+- Sandbox port `SandboxExecutor.exec` returns a **string** with an `[exit N]` suffix (not structured) — parse it when adapting to a framework that wants `{stdout,stderr,exitCode}`. Adapters live in `packages/sandbox/src/adapters/`.
 - k8s agent code-exec sandboxes: the kubernetes-sigs **agent-sandbox** CRD (Sandbox/SandboxWarmPool/SandboxClaim) is the standard building block; pair with gVisor/Kata for untrusted-code isolation.
