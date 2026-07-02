@@ -3,9 +3,14 @@
 #   git config core.hooksPath githooks
 #
 # Runs the memory lint (required frontmatter, name==filename, resolvable
-# wikilinks, and the AGENTS.md §3 security-leak scan) against the repo and
-# blocks the commit if anything fails — so secrets/IPs/hosts or malformed
-# notes never land in this PUBLIC repo.
+# wikilinks, and the AGENTS.md §3 security-leak scan) against the STAGED
+# content and blocks the commit if anything fails — so secrets/IPs/hosts or
+# malformed notes never land in this PUBLIC repo.
+#
+# The scan runs against a snapshot of the git index (staged content), NOT the
+# working directory, so that:
+#   * unstaged edits elsewhere can't cause a false block on a clean commit, and
+#   * a staged secret can't be masked by an unstaged removal in the worktree.
 set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
@@ -15,9 +20,21 @@ if [[ ! -f "$REPO_ROOT/scripts/lint.sh" ]]; then
   exit 0
 fi
 
-if ! KB_DIR="$REPO_ROOT" bash "$REPO_ROOT/scripts/lint.sh"; then
+# Materialize the staged index into a throwaway tree and lint that.
+STAGED_DIR="$(mktemp -d)"
+trap 'rm -rf "$STAGED_DIR"' EXIT
+git checkout-index -a --prefix="$STAGED_DIR/"
+
+# lint.sh is tracked, so checkout-index writes it; fall back to the worktree
+# copy only if it isn't in the index for some reason.
+if [[ ! -f "$STAGED_DIR/scripts/lint.sh" ]]; then
+  mkdir -p "$STAGED_DIR/scripts"
+  cp "$REPO_ROOT/scripts/lint.sh" "$STAGED_DIR/scripts/lint.sh"
+fi
+
+if ! KB_DIR="$STAGED_DIR" bash "$STAGED_DIR/scripts/lint.sh"; then
   echo "" >&2
-  echo "pre-commit: lint failed — commit blocked. Fix the ✗ lines above." >&2
+  echo "pre-commit: lint failed on STAGED content — commit blocked. Fix the ✗ lines above." >&2
   echo "(secrets/IPs/hosts, missing frontmatter, or broken [[wikilinks]])" >&2
   exit 1
 fi
