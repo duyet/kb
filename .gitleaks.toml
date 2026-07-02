@@ -33,6 +33,22 @@ tags = ["ssh", "hostname"]
   ]
 
 [[rules]]
+id = "tailscale-magicdns-hostname"
+description = "Tailscale MagicDNS / internal hostname (ts.net, .internal, .lan, .local)"
+regex = '''([a-z0-9-]+\.ts\.net|[a-z0-9-]+\.internal\b|[a-z0-9-]+\.lan\b|[a-z0-9-]+\.local(?::[0-9]+)?)'''
+tags = ["hostname", "tailscale", "network"]
+  [[rules.allowlists]]
+  regexTarget = "line"
+  # k8s cluster domain + common local-file suffixes are not host leaks.
+  regexes = [
+    '''cluster\.local''',
+    '''\.env\.local''',
+    '''\.conf\.local''',
+    '''/\.local/''',
+    '''\.local\.deploy''',
+  ]
+
+[[rules]]
 id = "aws-access-key"
 description = "AWS Access Key ID"
 regex = '''AKIA[0-9A-Z]{16}'''
