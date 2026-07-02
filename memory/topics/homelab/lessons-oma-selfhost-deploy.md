@@ -39,6 +39,18 @@ Lesson: pin `packageManager` AND keep `allowBuilds` complete, or the image build
 - Initial deploy used **locally-built images imported to containerd** (`k3s ctr images import`) with `imagePullPolicy: Never`. Fast to bootstrap, but every code change then needs a rebuild+reimport. Migrating to `ghcr.io` pull (CI-published) removes that, at the cost of an image-source + pullPolicy change in the deployment.
 - Building images on the Mac (OrbStack buildx) then `docker save | ssh | ctr import` **filled the node disk** once and restarted OrbStack mid-cleanup. Build only the image you need, prune aggressively, prefer CI→registry over local→ctr for anything repeated.
 
+## 4b. LIVE WIN — Phase-E tool-use demonstrated
+Achieved a green agentic completion on k3s: an OMA agent on `google/gemini-2.5-flash` routed through **AnyRouter `/chat/completions`**, executed a **bash tool** (`echo … && uname -sm` → `hello-from-OMA / Linux x86_64`), and returned a final message — trajectory `is_error:false`, `finish_reason:tool-calls` then `stop`, billed to AnyRouter credit (used +$0.45). What unblocked it:
+- **BYOK is a dead end for Anthropic here.** All `anthropic/*` route to `openrouter-byok` (exhausted → 502); AnyRouter's $160 credit does NOT cover BYOK. Only non-Anthropic models (gemini/deepseek) work, via `/chat/completions`, on credit.
+- **Node self-host was hardwired to Anthropic `/messages`** (`buildModel` in `apps/main-node/src/index.ts` passed `compat=undefined`). Added env `OMA_API_COMPAT=oai` (duet PR #6) so it uses the OpenAI-compatible wire format; also had to keep the FULL `provider/model` id (not strip the prefix) for the oai branch, else AnyRouter 404s `model_unavailable`.
+
+## 4c. Building the image ourselves (no CI) — gotchas
+Built `openma/main-node:dev` locally and imported to k3s (docker on the node is **masked** deliberately; OrbStack on the Mac was down — `orb start`).
+- **Cross-arch (ARM Mac → amd64 node) via qemu emulation is flaky:** the console `vite build` fails `MODULE_NOT_FOUND` under emulation → use `--build-arg SKIP_CONSOLE=1` for an API-only bridge image (CI on native amd64 doesn't hit this). apt-get in the runtime stage also intermittently fails — just retry.
+- **`--load` into the docker daemon can OOM/crash OrbStack** on a big emulated image → export straight to a tar: `--output type=docker,dest=img.tar`, and pass `-t name:tag` or the tar's `RepoTags` is null and `ctr import` lands it unnamed.
+- Import: `scp` the tar, then `k3s ctr -n k8s.io images import img.tar` (k8s.io namespace, needs sudo).
+- **THE BIG TRAP — `imagePullPolicy: Never` + a mutable tag caches the OLD image.** After re-importing `:dev`, `ctr images ls` shows the new digest but **`crictl images` (what kubelet uses) still maps the tag to the old config digest**, so `rollout restart` keeps launching the old code. `scale 0` + `crictl rmi` + re-import didn't fully clear it either. **What worked:** import under a NEW unique tag (`:v5`) and `kubectl set image deploy/oma main-node=…:v5` — a fresh tag has no stale kubelet cache. (For real, use CI→ghcr with immutable/digest tags and `pullPolicy: IfNotPresent`.)
+
 ## 5. Process / guardrail lessons
 - The auto-mode classifier blocks: materializing secrets into tool output (print response bodies, never key bytes — use `node -e` with the key kept in `process.env`), self-merging your own fresh PRs with `--admin`, and shared-cluster mutations. Don't launder around these — surface and hand off.
 - Verify credentials/plumbing with the **smallest** possible direct call (`max_tokens:16`) before blaming credit/quota — it isolates "key works" from "request too big for budget".
