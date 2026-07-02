@@ -28,6 +28,8 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [kb.duyet.net](memory/projects/project-kb-duyet-net.md) — public KB site migrating from monorepo app to this shared-brain repo
 - [Infra optimization baseline](memory/projects/project-infra-optimization.md) — k3s resource tuning, security hardening, host cleanup (2026-06-13)
 - [Self-driving homelab](memory/projects/homelab/project-self-driven-homelab.md) — AI agent (Minh/Hermes) manages its own k3s cluster via Telegram
+- [ClickHouse machine inventory](memory/projects/homelab/clickhouse-machines.md) — three ClickHouse instances (primary/clone/perf) over Tailscale, shared password, ports & memory tuning
+- [ClickHouse multi-host setup session](memory/projects/homelab/sessions/2026-06-30-clickhouse-machines-setup.md) — connectivity fixes, memory tuning, and duyet_analytics clone across the three instances
 - [AnyRouter](memory/projects/project-anyrouter.md) — LLM API gateway on CF Workers; TanStack Start + Kumo; split web/API workers; prerendered marketing shells
 
 ## Tech

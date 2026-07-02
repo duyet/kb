@@ -98,6 +98,17 @@ by the [`apps/kb/`](https://github.com/duyet/monorepo/tree/master/apps/kb) app
 in the monorepo, which consumes this repo as a git submodule. No website code
 lives here — only `.md` knowledge files and agent skills.
 
+## Pre-commit hook (secret scan)
+
+This repo ships a version-controlled hook at [`githooks/pre-commit`](githooks/pre-commit)
+that runs `scripts/lint.sh` (required frontmatter, `name==filename`, resolvable
+`[[wikilinks]]`, and the AGENTS.md §3 security-leak scan) and blocks any commit
+carrying secrets, IPs, hosts, or malformed notes. Enable it once per clone:
+
+```bash
+git config core.hooksPath githooks
+```
+
 ## Scope
 
 Public, general, durable knowledge only. **Never** here: secrets, SSH hosts,

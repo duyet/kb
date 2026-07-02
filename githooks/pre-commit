@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Version-controlled pre-commit hook — enable once with:
+#   git config core.hooksPath githooks
+#
+# Runs the memory lint (required frontmatter, name==filename, resolvable
+# wikilinks, and the AGENTS.md §3 security-leak scan) against the repo and
+# blocks the commit if anything fails — so secrets/IPs/hosts or malformed
+# notes never land in this PUBLIC repo.
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+if [[ ! -f "$REPO_ROOT/scripts/lint.sh" ]]; then
+  echo "pre-commit: scripts/lint.sh not found — skipping lint" >&2
+  exit 0
+fi
+
+if ! KB_DIR="$REPO_ROOT" bash "$REPO_ROOT/scripts/lint.sh"; then
+  echo "" >&2
+  echo "pre-commit: lint failed — commit blocked. Fix the ✗ lines above." >&2
+  echo "(secrets/IPs/hosts, missing frontmatter, or broken [[wikilinks]])" >&2
+  exit 1
+fi
