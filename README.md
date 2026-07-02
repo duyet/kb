@@ -76,6 +76,20 @@ No cron, no other edits. Opt in to background sync with `kb autosync on`. Remove
 everything with `scripts/uninstall.sh` (unlinks + unwires; repo untouched). Env:
 `KB_DIR`, `KB_REPO`, `CLAUDE_SKILLS_DIR`. Verify: `kb root`.
 
+### Pre-commit guardrail (recommended)
+
+This repo is public, so a committed pre-commit hook runs `scripts/lint.sh` (note
+standard + secret/PII scan) and blocks any commit that fails. Enable it once per
+clone:
+
+```bash
+git config core.hooksPath githooks
+```
+
+The same lint runs in CI (`.github/workflows/lint.yml`) and inside `scripts/sync.sh`
+(which refuses to commit if lint fails), so leaks are caught locally, on sync, and
+on push. See [`AGENTS.md` §3](./AGENTS.md) for the banned-data list.
+
 ## CLI
 
 ```bash

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Committed pre-commit hook — blocks commits that fail the kb standard/security
+# lint (AGENTS.md §2/§3). Enable once per clone with:
+#   git config core.hooksPath githooks
+set -euo pipefail
+
+# Resolve the repo root so the hook works regardless of cwd.
+REPO="$(git rev-parse --show-toplevel)"
+export KB_DIR="$REPO"
+
+if ! bash "$REPO/scripts/lint.sh"; then
+  echo "✗ pre-commit: lint failed — fix the issues above or commit is blocked." >&2
+  exit 1
+fi
