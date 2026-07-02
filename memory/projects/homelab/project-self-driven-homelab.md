@@ -19,7 +19,7 @@ A single-node k3s cluster that largely runs itself. An AI agent named Minh lives
 
 ## The Setup
 
-**Hardware**: One machine — `duet-ubuntu`, 16 CPU, 13Gi RAM, 457G NVMe. Sitting in a home in Vietnam.
+**Hardware**: One self-hosted machine — 16 CPU, 13Gi RAM, 457G NVMe.
 
 **Stack**: k3s (single-node, containerd), Traefik ingress, Let's Encrypt TLS via Cloudflare DNS-01, GitHub OAuth for auth. 15 services across 14 namespaces. All config versioned in git.
 
@@ -31,7 +31,7 @@ Nothing exotic. Standard homelab stuff. The interesting part is *who runs it*.
 
 Minh is an instance of [Hermes](https://github.com/duyet/charts) — an open-source AI agent framework packaged as a Helm chart. She runs as a pod in the cluster with two containers: the agent itself and a Chromium sidecar for browser automation.
 
-**Reach**: You talk to Minh via Telegram (`@minh_duni_bot`). She speaks Vietnamese by default, switches to English when you write in English. One language per reply.
+**Reach**: You talk to Minh via a private Telegram bot. She speaks Vietnamese by default, switches to English when you write in English. One language per reply.
 
 **Brain**: Backed by `@preset/hermes-agent` through [AnyRouter](https://anyrouter.dev), with fallback to Gemini Flash and Claude Sonnet via OpenRouter. She has persistent memory (SOUL.md + session state on a PVC), so she remembers conversations and learns preferences.
 
