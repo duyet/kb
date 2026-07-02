@@ -1,12 +1,12 @@
 ---
-name: chmonitor-one-codebase-saas
+name: project-chmonitor-one-codebase-saas
 title: chmonitor — one codebase for OSS + Cloud SaaS, single-source env
 description: How chmonitor ships self-hosted (OSS) and hosted SaaS from one codebase; the single-source .env env pattern that keeps Wrangler/Docker/K8s in sync
 type: project
 category: architecture
 tags: [chmonitor, clickhouse, saas, cloudflare-workers, env-config, astro]
-aliases: [dash.chmonitor.dev]
-related: []
+aliases: [dash.chmonitor.dev, chmonitor-one-codebase-saas]
+related: ["[[project-clickhouse-monitor]]"]
 sources: ["https://github.com/chmonitor/chmonitor"]
 created: 2026-06-29
 updated: 2026-06-29
