@@ -45,6 +45,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [Agent-loop autonomous PR management](memory/topics/workflow/tech-agent-loop-autonomous-pr-management.md) — 15-min cycle triages all PRs, cheap subagents fix/review/merge, reduces context overhead
 - [Cloudflare AI Gateway proxy](memory/topics/cloudflare/tech-cloudflare-ai-gateway-proxy.md) — AIG doesn't validate model ids; "invalid model ID" is the upstream rejecting, not CF
 - [Traefik forwardAuth + OAuth2 Proxy](memory/topics/cloudflare/tech-traefik-forwardauth-oauth2-proxy.md) — ErrorPages keeps original status, need nginx redirector for 302
+- [Cloudflare Workers Cache](memory/topics/cloudflare/tech-cloudflare-workers-cache.md) — per-worker tiered cache in front of the Worker; `cache.enabled` + `Cache-Control`/SWR/`Cache-Tag`; HIT skips Worker (0 CPU), authed requests auto-bypass
 - [Hermes agent custom provider](memory/topics/llm-agents/tech-hermes-agent-custom-provider.md) — custom_providers registration, provider:custom, steer mode
 - [Hermes dashboard auth gate](memory/topics/llm-agents/tech-hermes-dashboard-auth.md) — nous OAuth plugin, insecure/loopback gate precedence, localhost-allowlist gotcha
 - [release-please squash pipeline](memory/topics/ci/tech-release-please-squash-pipeline.md) — squash-merge PR titles drive versioning; pre-1.0 bump trap; PR-title commitlint guard
