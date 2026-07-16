@@ -1,47 +1,39 @@
 ---
 name: project-clickhouse-monitor
 title: ClickHouse Monitor (chmonitor)
-description: Open-source ClickHouse monitoring dashboard — monorepo topology, domains, marketing/docs apps, design system
+description: Open-source ClickHouse monitoring dashboard — monorepo topology (7 apps on Cloudflare Workers), OSS + Cloud SaaS split, AI agent, alerting, design system
 type: project
 category: projects
-tags: [project, clickhouse, chmonitor, cloudflare, astro, tanstack]
+tags: [project, clickhouse, chmonitor, cloudflare, tanstack, pnpm, ai-agent]
 aliases: [chmonitor, clickhouse-monitoring]
-related: ["[[reference-duyet-github]]", "[[user-duyet-stack]]", "[[tech-cloudflare-pages-deploy]]"]
-sources: ["https://github.com/duyet/clickhouse-monitoring", "https://chmonitor.dev", "https://docs.chmonitor.dev"]
+related: ["[[project-chmonitor-one-codebase-saas]]", "[[reference-duyet-github]]", "[[user-duyet-stack]]", "[[tech-tanstack-start-ssg]]"]
+sources: ["https://github.com/chmonitor/chmonitor", "https://chmonitor.dev", "https://docs.chmonitor.dev"]
 created: 2026-06-14
-updated: 2026-06-14
-timestamp: 2026-06-14T23:55:00Z
+updated: 2026-07-16
+timestamp: 2026-07-16T15:10:00Z
 ---
 
-github.com/duyet/clickhouse-monitoring — flagship ClickHouse ops UI (~240★, GPL-3.0).
+github.com/chmonitor/chmonitor (moved from duyet/clickhouse-monitoring) — flagship ClickHouse ops UI. Monorepo on **pnpm 10** with isolated per-app workspaces (root workspace covers only `apps/mcp` + `packages/*`); **bun is the test runner only**, never the package manager.
 
-## Domains (Cloudflare Workers)
+## Apps (Cloudflare Workers)
 
-| Worker | App | URL |
-|--------|-----|-----|
-| `chmonitor-landing` | `apps/landing` (Astro static) | chmonitor.dev |
-| `chmonitor-dash` | `apps/dashboard` (TanStack Start) | dash.chmonitor.dev |
-| `chmonitor-docs` | `apps/docs` (Astro custom theme) | docs.chmonitor.dev |
-| `chmonitor-mcp` | `apps/mcp` | dash.chmonitor.dev/api/mcp* |
+| App | Role | URL |
+|-----|------|-----|
+| `apps/dashboard` | TanStack Start dashboard (the product) | dash.chmonitor.dev |
+| `apps/landing` | marketing site | chmonitor.dev |
+| `apps/docs` | **Fumadocs** on TanStack Start (content synced from `docs/content/`) | docs.chmonitor.dev |
+| `apps/blog` | blog | blog.chmonitor.dev |
+| `apps/mcp` | MCP server | dash.chmonitor.dev/api/mcp |
+| `apps/bug-handler` | Email Worker: Sentry alert emails → GitHub issues | bug@chmonitor.dev |
+| `apps/cloud-hooks` | Cloud ops Worker: Polar webhook + Telegram notifications + crons | hooks.chmonitor.dev |
 
-PR previews: `preview.chmonitor.dev`, `preview.docs.chmonitor.dev`, `preview.dash.chmonitor.dev`.
+## Current state (2026-07)
 
-`apps/landing` and `apps/docs` are **outside** the root bun workspace (isolated installs).
+- **Cloud SaaS live**: Clerk auth, per-user D1 connections, Polar billing, `CHM_DEPLOYMENT_MODE=oss|cloud` (fail-closed to OSS) — see [[project-chmonitor-one-codebase-saas]].
+- **AI agent**: Vercel AI SDK (not LangGraph), ~29 lean tools + skill recipes; AI Insights engine (collect→enrich→persist, stable-key dismissal).
+- **Health alerting**: dual dispatch worlds (client polling + server cron sweep), adapters (webhook/Slack/PagerDuty/Opsgenie/email), D1 routing/maintenance/ack/history; expansion epic chmonitor#2669 (Telegram/ntfy/Teams/quiet-hours/digest/smart rule suggestions).
+- **Design system**: OKLCH tokens + shadcn (Base UI), `product-design` project skill is the source of truth; smart-detection "section-returns-null" pattern for conditional dashboard sections.
+- Dev knowledge lives in-repo at `docs/knowledge/` (linked knowledge graph, ~25 notes) — read that first when working in the repo.
 
-## Marketing design system (2026-06-14)
-
-Shared landing + docs vibe:
-- **Display:** Bricolage Grotesque · **Body:** Source Sans 3 · **Mono:** JetBrains Mono
-- **Palette:** zinc fg (`#09090b`), amber `#f59e0b` → orange `#f97316` accent
-- **CTA copy:** nav/buttons say **Dashboard** / **Open dashboard** (not "Open Cloud")
-- Landing hero: browser-frame dashboard carousel + stats strip + lazy-loaded gallery marquee
-
-Docs: custom Astro theme (not Starlight); Pagefind search; versioned via `scripts/sync-docs.mjs`.
-
-## CI gotcha
-
-`component-test` (Cypress) fails on main when no `src/**/*.cy.{ts,tsx}` specs exist — needs `supportFile: false` in `cypress.config.ts` component block or actual component specs.
-
-**Why:** Agents editing marketing/docs need the right app paths and shared tokens — not the dashboard TanStack app.
-
-**How to apply:** Landing/docs changes → `apps/landing` + `apps/docs` only; build with `bun run build:landing` and `cd apps/docs && bun run build`; deploy via `landing.yml` / `docs.yml` / `cloudflare.yml`.
+**Why:** agents touching chmonitor need the right app paths, package manager, and the OSS/Cloud invariant before editing.
+**How to apply:** dashboard work → `apps/dashboard` (see its CLAUDE.md); `pnpm` for everything except `bun test`; never gate core monitoring features behind cloud mode; verify with `pnpm run build` + `pnpm run lint`.
