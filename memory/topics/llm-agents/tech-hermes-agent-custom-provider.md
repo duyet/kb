@@ -22,12 +22,12 @@ Two-part config in `hermes.yaml`:
 
 ```yaml
 model:
-  api_key: ${API_KEY}
+  api_key : ${API_KEY}
   base_url: ${API_BASE}
   default: 'provider-name/model-name'
   provider: custom          # <-- required to use custom_providers
 custom_providers:
-  - api_key: ${API_KEY}
+  - api_key : ${API_KEY}
     base_url: https://example.com/api/v1
     model: actual-model-id
     name: provider-name     # referenced in default as "provider-name/model"

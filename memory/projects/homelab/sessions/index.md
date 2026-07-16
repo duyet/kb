@@ -2,4 +2,4 @@
 
 ## Concepts
 
-- [Session Log — ClickHouse Multi-Host Setup](2026-06-30-clickhouse-machines-setup.md) — Investigation, connectivity fixes, optimization, and partial data clone across duet-ubuntu, clickhouse-aws, and openclaw
+- [Session Log — ClickHouse Multi-Host Setup](2026-06-30-clickhouse-machines-setup.md) — Investigation, connectivity fixes, optimization, and partial data clone across three self-hosted ClickHouse instances

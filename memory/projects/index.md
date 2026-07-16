@@ -6,7 +6,7 @@
 
 ## Concepts
 
-- [AnyRouter](project-anyrouter.md) — Universal LLM API gateway at anyrouter.dev — TanStack Start on CF Workers, Kumo UI, split web/API workers, prerendered marketing shells
+- [AnyRouter](project-anyrouter.md) — Universal LLM API gateway at anyrouter.dev — TanStack Start on CF Workers, shadcn/ui, hub-and-spoke multi-worker, prerendered marketing shells
 - [chmonitor — one codebase for OSS + Cloud SaaS, single-source env](project-chmonitor-one-codebase-saas.md) — How chmonitor ships self-hosted (OSS) and hosted SaaS from one codebase; deployment-mode flag fail-closed to OSS; the single-source .env pattern that keeps Wrangler/Docker/K8s in sync
 - [ClickHouse Monitor (chmonitor)](project-clickhouse-monitor.md) — Open-source ClickHouse monitoring dashboard — monorepo topology (7 apps on Cloudflare Workers), OSS + Cloud SaaS split, AI agent, alerting, design system
 - [duyet.net monorepo](project-duyet-net.md) — Bun + Turborepo monorepo behind duyet.net — ~9 web apps on TanStack Start SSG, deployed to Cloudflare Pages
