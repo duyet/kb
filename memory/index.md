@@ -15,3 +15,7 @@ Agent-facing index: `MEMORY.md`. Graph viewer: `kb viz`.
 - [`reference/`](reference/)
 - [`topics/`](topics/)
 - [`user/`](user/)
+
+## Concepts
+
+- [Cloudflare acquired Astro (January 2026)](cloudflare-acquires-astro.md) — Cloudflare acquired The Astro Technology Company in Jan 2026; the Astro team (Fred Schott) now ships agent tooling like Flue on Cloudflare
