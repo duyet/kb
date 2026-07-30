@@ -14,3 +14,4 @@
 - [Infra Optimization Baseline (2026-06-13)](project-infra-optimization.md) — k3s cluster resource optimization, security hardening, and host cleanup — baseline for future tuning
 - [kb.duyet.net knowledge base](project-kb-duyet-net.md) — kb.duyet.net — public KB site; migrating from the old monorepo app to this shared-brain repo, also serves bootstrap.sh
 - [LLM Timeline app](project-llm-timeline.md) — llm-timeline.duyet.net — TanStack Start SSG timeline of LLM models 1950–2026, shadcn UI, dual data sources
+- [Open Managed Agents (OMA)](project-open-managed-agents.md) — OSS self-hostable Claude Managed Agents API — CF Workers/DO + self-host Node; meta-harness; pnpm monorepo; prod app.oma.duyet.net
