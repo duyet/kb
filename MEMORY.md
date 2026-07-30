@@ -25,6 +25,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [chmonitor — one codebase OSS + Cloud SaaS](memory/projects/project-chmonitor-one-codebase-saas.md) — CHM_DEPLOYMENT_MODE fail-closed to OSS; single-source .env pattern keeps Wrangler/Docker/K8s in sync
 - [duyet.net monorepo](memory/projects/project-duyet-net.md) — Bun + Turborepo, ~9 apps, TanStack Start SSG on Cloudflare Pages
 - [duyetbot](memory/projects/project-duyetbot.md) — autonomous agent maintaining the monorepo: scope, loop, memory hierarchy
+- [Open Managed Agents (OMA)](memory/projects/project-open-managed-agents.md) — OSS Claude Managed Agents API reimpl; CF Workers/DO + self-host Node; prod app.oma.duyet.net; autonomous issue-run maintenance
 - [LLM Timeline app](memory/projects/project-llm-timeline.md) — 3700+ SSG pages, shadcn UI, dual data sources (1950–2026)
 - [kb.duyet.net](memory/projects/project-kb-duyet-net.md) — public KB site migrating from monorepo app to this shared-brain repo
 - [Infra optimization baseline](memory/projects/project-infra-optimization.md) — k3s resource tuning, security hardening, host cleanup (2026-06-13)
@@ -58,3 +59,5 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 - [Flue provider registration timing](memory/topics/llm-agents/tech-flue-provider-registration.md) — register custom gateways (AnyRouter) in the agent initializer from ctx.env; process.env is empty at module load; workerd hides errors, use --target node
 - [OMA on k3s via ArgoCD](memory/topics/homelab/tech-oma-k3s-deploy.md) — deploy + drive self-hosted Open Managed Agents; verified run flow; BYOK model card → AnyRouter; self-host bugs (model_cards write path, uncapped max_tokens)
 - [Lessons — OMA self-host deploy](memory/topics/homelab/lessons-oma-selfhost-deploy.md) — what bit us: main-node ≠ main (stubbed routes), BYOK+4096-tokens→502, pnpm v11 strictDepBuilds CI break, ConfigMap needs rollout restart
+- [RAG retrieval pollution](memory/topics/llm-agents/tech-rag-retrieval-pollution.md) — TOC docs poison vector search; citation guards pass real-but-irrelevant URLs; metadata key drift; registry embed model
+- [Unit suffix vs scale](memory/topics/standards/tech-unit-suffix-vs-scale.md) — chart units never convert, pair with explicit multiplier; impossible-60-minutes formatter diagnostic
