@@ -1,32 +1,24 @@
 ---
 name: tech-ai-agent-stack
-title: AI agent building — tech stack
-description: Frameworks/SDKs for building LLM agents (LangGraph, AI SDK, Claude/OpenAI Agents SDK, MCP) + what Duyet uses
+title: AI agent stack map
+description: Map of common agent frameworks and what they are for
 type: tech
-category: ai
-tags: [tech, ai-agents, llm-agents, frameworks]
-related: ["[[user-duyet-ai-stance]]", "[[user-duyet-stack]]"]
-created: 2026-06-04
-updated: 2026-06-04
-timestamp: 2026-06-04T00:00:00Z
+category: agents
+tags: [tech, llm-agents, stack]
+related: ["[[user-duyet-ai-stance]]", "[[project-anyrouter]]", "[[tech-ai-sdk-uimessage-native-tools]]"]
+created: 2026-08-10
+updated: 2026-08-10
+timestamp: 2026-08-10T12:00:00Z
 ---
 
-The 2026 stack for building LLM agents, by layer:
+Common public stack pieces:
 
-- **Orchestration (Python):** LangGraph (graph/state machines), LlamaIndex
-  (RAG + agents), PydanticAI, CrewAI, AutoGen, OpenAI Agents SDK, Google ADK.
-- **Orchestration (TS/JS):** Vercel **AI SDK** (streaming, tools, `ToolLoopAgent`),
-  Mastra, LangGraph.js, Cloudflare Agents (Durable Objects), OpenAI Agents SDK,
-  Claude Agent SDK.
-- **Model gateways:** OpenRouter, AnyRouter, LiteLLM — swap providers without code churn.
-- **Interop protocol:** **MCP** (Model Context Protocol) for tools/resources; A2A
-  for agent-to-agent.
-- **Memory / RAG:** vector stores (Qdrant, pgvector), LlamaIndex; explicit
-  short/long-term + reflection memory for agentic loops.
-- **Eval / observability:** LangSmith, Langfuse, Braintrust.
-- **Runtime / deploy:** Cloudflare Workers + Durable Objects, Vercel.
+| Piece | Role |
+|-------|------|
+| Vercel AI SDK | streaming UI + tools |
+| LangGraph / LangChain | graphs & chains |
+| Cloudflare Agents SDK | Workers + DO agents |
+| MCP | tool servers |
+| Flue / Hermes | agent runtimes |
 
-**Duyet uses** (see [[user-duyet-ai-stance]]): Claude Code as driver; Claude Agent
-SDK, OpenAI Agents SDK, Cloudflare Agents, Vercel AI SDK, LlamaIndex, LangChain;
-OpenRouter/AnyRouter for routing; MCP (mcp.duyet.net). Core pattern: plan →
-execute → test → reflect with persistent memory.
+Stance: [[user-duyet-ai-stance]]. Runtimes: [[tech-eve-filesystem-agents]], [[tech-hermes-custom-provider]], [[tech-hermes-steer-mode]], [[tech-hermes-dashboard-auth-gate]]. Projects: [[project-anyrouter]], [[project-open-managed-agents]], [[project-duyetbot]].

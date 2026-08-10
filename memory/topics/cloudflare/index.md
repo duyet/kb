@@ -2,7 +2,10 @@
 
 ## Concepts
 
-- [Cloudflare AI Gateway is a transparent proxy for model names](tech-cloudflare-ai-gateway-proxy.md) — AI Gateway does not validate model ids; it forwards them to the upstream — "invalid model ID" comes from the provider, not CF
-- [Cloudflare Pages deploy workflow](tech-cloudflare-pages-deploy.md) — Commit→push→background-deploy convention for duyet.net apps on Cloudflare Pages, plus the parallel-deploy hazard
-- [Cloudflare Workers Cache sits in front of your Worker](tech-cloudflare-workers-cache.md) — Per-worker tiered cache enabled by one wrangler line and driven by standard Cache-Control headers; a HIT skips the Worker (no CPU billing)
-- [Traefik forwardAuth + OAuth2 Proxy + nginx redirector pattern](tech-traefik-forwardauth-oauth2-proxy.md) — Traefik ErrorPages middleware preserves original status (won't pass 302 through), so forwardAuth with OAuth2 needs an nginx redirector to convert 401→302
+- [AI Gateway is transparent on model ids](tech-cloudflare-ai-gateway-transparent.md) — Cloudflare AI Gateway does not validate model names; upstream does
+- [Cache HIT skips Worker CPU](tech-workers-cache-hit-skips-cpu.md) — On HIT the Worker does not run — no CPU billing for that request
+- [Cache-Control stale-while-revalidate](tech-workers-cache-swr.md) — SWR serves stale instantly while background refresh runs
+- [Cache-Tag purge](tech-workers-cache-tags.md) — Tag responses for targeted purge instead of purge-everything
+- [Cloudflare Pages deploy habit](tech-cloudflare-pages-deploy.md) — Semantic commit → push → deploy changed app; avoid parallel deploys that share env files
+- [forwardAuth must preserve status](tech-forwardauth-preserve-status.md) — Error pages middleware can rewrite 302 challenges into 401/500 and break OAuth
+- [Workers Cache enable flag](tech-workers-cache-enabled.md) — Enable per-worker cache with cache.enabled; only public Cache-Control is stored

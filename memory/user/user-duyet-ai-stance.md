@@ -1,28 +1,23 @@
 ---
 name: user-duyet-ai-stance
-title: Duyet — AI & coding-agent stance
-description: How Duyet works with AI today — vibe-codes production, Claude Code as daily driver, fast-moving-field view
+title: AI stance (index)
+description: How public AI practice is structured — agents over hand-writing
 type: user
 category: ai
-tags: [user, duyet, coding-agents, llm-agents]
-related: ["[[user-duyet-stack]]", "[[feedback-docs-driven-development]]", "[[user-duyet-profile]]"]
-sources: ["https://blog.duyet.net/llms.txt", "https://blog.duyet.net/feed"]
-created: 2026-06-04
-updated: 2026-06-04
-timestamp: 2026-06-04T00:00:00Z
+tags: [user, duyet, llm-agents, coding-agents]
+related: ["[[user-duyet-ai-vibe-codes]]", "[[user-duyet-ai-claude-code]]", "[[tech-ai-agent-stack]]"]
+sources: ["https://blog.duyet.net/llms.txt"]
+created: 2026-08-10
+updated: 2026-08-10
+timestamp: 2026-08-10T12:00:00Z
 ---
 
-Duyet's current AI practice (from his blog, ~2026):
+AI practice index:
 
-- **Vibe-codes for production.** Top Wakatime language is now **Markdown** —
-  he drives agents more than he hand-writes code.
-- **Claude Code is his daily driver** and stated favorite ("king") after trying
-  100+ tools (Cursor, Codex, Copilot, Windsurf, Antigravity, opencode, etc.). He
-  treats specific tools as disposable — the field moves too fast to pick "the best".
-- **Builds with agent SDKs:** OpenAI Agents SDK, Claude Agent SDK, Cloudflare
-  Agents, Vercel AI SDK, LlamaIndex, LangChain. Deploys RAG for enterprise.
-- **Recurring interests:** self-improving/agentic loops (plan→execute→test→reflect),
-  agent memory & consolidation, privacy-first personal agents, personal analytics
-  / life-logging. Personal agent project: `duyetbot`.
+- [[user-duyet-ai-vibe-codes]] — agents drive production work
+- [[user-duyet-ai-claude-code]] — Claude Code as daily driver
+- [[user-duyet-ai-tools-disposable]] — tools change; don't lock dogma
+- [[tech-ai-agent-stack]] — SDK ecosystem
+- [[project-duyetbot]] — autonomous monorepo agent persona
 
-See [[user-duyet-stack]] for the broader toolset.
+Related: [[user-duyet-focus-llm-agents]], [[feedback-docs-driven-development]].
