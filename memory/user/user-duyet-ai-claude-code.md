@@ -4,7 +4,7 @@ title: Claude Code daily driver
 description: Claude Code is the stated daily coding-agent driver
 type: user
 category: ai
-tags: [user, duyet, claude-code, coding-agents]
+tags: [user, duyet, coding-agents]
 related: ["[[user-duyet-ai-stance]]", "[[user-duyet-ai-tools-disposable]]"]
 created: 2026-08-10
 updated: 2026-08-10

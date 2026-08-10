@@ -4,7 +4,7 @@ title: Dashboard auth gate precedence
 description: Insecure/loopback allowlists can bypass OAuth if ordered wrong
 type: tech
 category: agents
-tags: [tech, llm-agents, auth, security]
+tags: [tech, llm-agents, security]
 related: ["[[tech-forwardauth-preserve-status]]", "[[feedback-public-kb-only]]"]
 created: 2026-08-10
 updated: 2026-08-10

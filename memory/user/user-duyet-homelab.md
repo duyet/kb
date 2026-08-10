@@ -9,15 +9,12 @@ related: ["[[project-homelab]]", "[[project-charts]]", "[[user-duyet-infra-kuber
 sources: ["https://github.com/duyet/homelab"]
 created: 2026-08-10
 updated: 2026-08-10
-timestamp: 2026-08-10T18:00:00Z
+timestamp: 2026-08-10T20:00:00Z
 ---
 
-Duyet runs a **personal homelab** (self-hosted labs for learning and side infra).
+Duyet runs a **personal homelab** for self-host experiments and ops practice.
 
-Public surface only:
-- Repo: [[project-homelab]] (`duyet/homelab`)
-- Charts: [[project-charts]]
-- Site: [[user-duyet-site-homelab]]
-- Stack overlap: [[user-duyet-infra-kubernetes]], [[user-duyet-data-clickhouse]]
+Public surface: [[project-homelab]] · [[project-charts]] · [[user-duyet-site-homelab]].
+Stack overlap: [[user-duyet-infra-kubernetes]], [[user-duyet-data-clickhouse]].
 
-**Do not store** hosts, IPs, VPN endpoints, kubeconfigs, or topology in this kb ([[feedback-public-kb-only]]).
+**Never store** hosts, IPs, VPN endpoints, or topology here ([[feedback-public-kb-only]]).

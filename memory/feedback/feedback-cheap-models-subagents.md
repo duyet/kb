@@ -4,7 +4,7 @@ title: Cheap models for sub-agents
 description: Fan-out sub-agents to cheaper models by default
 type: feedback
 category: agents
-tags: [feedback, agents, cost, orchestration]
+tags: [feedback, agents, cost]
 related: ["[[tech-agent-loop-cheap-subagents]]", "[[feedback-working-style]]"]
 created: 2026-08-10
 updated: 2026-08-10

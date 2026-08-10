@@ -27,7 +27,7 @@ kb/
 │   ├── index.md   ← generated OKF listing (okf_version: "0.1") — run `kb gen`
 │   ├── log.md     ← generated change history (newest-first)
 │   ├── _TEMPLATE.md  ← the note standard
-│   ├── user/ feedback/ reference/ projects/[homelab/]  ← memory-layer groups
+│   ├── user/ feedback/ reference/ projects/  ← memory-layer groups
 │   └── topics/<domain>/  ← cloudflare, llm-agents, web, ci, workflow, standards
 ├── skills/        ← kb-memory, kb-dream (installable Claude Code skills)
 ├── scripts/       ← bootstrap / install / kb CLI / sync / lint / okf_gen.py
@@ -35,7 +35,7 @@ kb/
 └── .agent/        ← state.json (ingested files + tasks)
 ```
 
-This repo **is a conformant [OKF v0.1](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) bundle** — `memory/` is the bundle root; each concept is one `.md` carrying `type` (an OKF custom field). `index.md`/`log.md`/`viz.html` are generated; re-run `kb gen` (or `kb viz` to also open the viewer) after writing notes. See [[tech-okf-open-knowledge-format]] for the full alignment.
+This repo **is a conformant [OKF v0.1](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) bundle** — `memory/` is the bundle root; each concept is one `.md` carrying `type` (an OKF custom field). `index.md`/`log.md`/`viz.html` are generated; re-run `kb gen` (or `kb viz` to also open the viewer) after writing notes. See `tech-okf-bundle` note / OKF layout for the full alignment.
 
 Every note follows `memory/_TEMPLATE.md` and must pass `kb lint`. Format spec in
 `AGENTS.md`.

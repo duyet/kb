@@ -4,7 +4,7 @@ title: AI Gateway is transparent on model ids
 description: Cloudflare AI Gateway does not validate model names; upstream does
 type: tech
 category: cloudflare
-tags: [tech, cloudflare, ai-gateway, llm]
+tags: [tech, cloudflare, llm]
 related: ["[[project-anyrouter]]", "[[tech-llm-gateway-quota-as-retryable]]"]
 sources: ["https://developers.cloudflare.com/ai-gateway/"]
 created: 2026-08-10

@@ -4,7 +4,7 @@ title: Semantic design tokens
 description: Use semantic tokens (bg-card, foreground) not ad-hoc color utilities
 type: tech
 category: design
-tags: [tech, web, design, css]
+tags: [tech, web, design]
 related: ["[[tech-flat-design-hairline]]", "[[tech-shadcn-base]]"]
 created: 2026-08-10
 updated: 2026-08-10

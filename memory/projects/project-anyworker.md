@@ -6,21 +6,16 @@ type: project
 category: agents
 tags: [project, anyworker, llm-agents, cloudflare]
 aliases: [anyworker]
-related: ["[[project-agentstate]]", "[[project-anyrouter]]", "[[tech-tanstack-start-ssg]]", "[[user-duyet-active-projects]]"]
+related: ["[[project-anyworker-local-agent]]", "[[project-agentstate]]", "[[project-anyrouter]]", "[[user-duyet-active-projects]]"]
 sources: ["https://github.com/duyet/anyworker", "https://anyworker.dev"]
 created: 2026-08-10
 updated: 2026-08-10
-timestamp: 2026-08-10T18:00:00Z
+timestamp: 2026-08-10T20:00:00Z
 ---
 
 github.com/duyet/anyworker · https://anyworker.dev
 
-Open “AI that does the work” product (Cowork/OpenWorker-style alternative).
+Open “AI that does the work” product. Split: marketing Worker vs local agent+GUI ([[project-anyworker-local-agent]]).
 
-| App | Role |
-|-----|------|
-| `apps/web` | Marketing (TanStack Start → Cloudflare Workers) |
-| `apps/anyworker` | Local agent (Python + agent SDKs) + React GUI |
-
-pnpm monorepo; release-please for web/app. Related: [[project-agentstate]], [[project-anyrouter]], [[tech-tanstack-start-ssg]], [[user-duyet-active-projects]].
-Release rule: [[feedback-never-auto-merge-release-please]].
+pnpm monorepo; TanStack Start web ([[tech-tanstack-start-ssg]]). Related: [[project-agentstate]], [[project-anyrouter]].
+Release: [[feedback-never-auto-merge-release-please]]. Portfolio: [[user-duyet-active-projects]].

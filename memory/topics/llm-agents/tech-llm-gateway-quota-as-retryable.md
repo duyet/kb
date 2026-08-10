@@ -4,7 +4,7 @@ title: Quota errors may arrive as HTTP 400
 description: Reseller budget errors buried in 400 should failover like 402/429
 type: tech
 category: gateway
-tags: [tech, llm, gateway, resilience]
+tags: [tech, llm, gateway, architecture]
 related: ["[[project-anyrouter]]", "[[tech-llm-gateway-byok-sibling]]", "[[tech-cloudflare-ai-gateway-transparent]]"]
 created: 2026-08-10
 updated: 2026-08-10

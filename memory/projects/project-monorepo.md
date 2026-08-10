@@ -4,7 +4,7 @@ title: duyet/monorepo
 description: Public Bun+Turborepo for personal duyet.net web apps
 type: project
 category: web
-tags: [project, duyet, web, monorepo]
+tags: [project, duyet, web]
 related: ["[[project-llm-timeline]]", "[[project-duyetbot]]", "[[tech-tanstack-start-ssg]]"]
 sources: ["https://github.com/duyet/monorepo"]
 created: 2026-08-10

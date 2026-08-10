@@ -4,7 +4,7 @@ title: OKF-style knowledge bundle
 description: Nested markdown + frontmatter bundle with index.md and log.md
 type: tech
 category: standards
-tags: [tech, standards, kb, okf]
+tags: [tech, standards, kb]
 related: ["[[project-kb]]", "[[feedback-docs-kb-is-brain]]", "[[tech-note-atomic]]"]
 created: 2026-08-10
 updated: 2026-08-10

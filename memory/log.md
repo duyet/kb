@@ -35,3 +35,13 @@
 - Expanded [[project-anyrouter]], [[project-clickhouse-monitoring]], [[project-open-managed-agents]].
 - Product atoms: advisor-only chmonitor, AnyRouter OpenAI compat, AgentState primitives, AnyWorker local agent.
 - Kept public-only (no hosts/IPs/topology).
+
+## 2026-08-10 dream
+
+- Inbox empty; raw/kb-content already in `state.json.processed` — no re-ingest.
+- Compacted oversized hubs (portfolio, web presence, agentstate, chmonitor, anyworker, homelab).
+- Linked graph orphans (AnyRouter API atom, AgentState not-a-framework).
+- Normalized singleton tags into controlled vocabulary.
+- Protocol docs: dropped `projects/homelab/` path example; fixed OKF pointer in README.
+- Removed empty `memory/topics/homelab/`.
+- Scope check: public-only portfolio + generic tech; no hosts/IPs.

@@ -4,7 +4,7 @@ title: Workers Cache enable flag
 description: Enable per-worker cache with cache.enabled; only public Cache-Control is stored
 type: tech
 category: cloudflare
-tags: [tech, cloudflare, workers, cache]
+tags: [tech, cloudflare, cache]
 related: ["[[tech-workers-cache-swr]]", "[[tech-workers-cache-hit-skips-cpu]]", "[[user-duyet-infra-cloudflare]]"]
 sources: ["https://blog.cloudflare.com/workers-cache/"]
 created: 2026-08-10

@@ -6,21 +6,16 @@ type: project
 category: clickhouse
 tags: [project, clickhouse, chmonitor, oss]
 aliases: [chmonitor, clickhouse-monitoring, project-clickhouse-monitor]
-related: ["[[user-duyet-focus-clickhouse]]", "[[tech-one-codebase-oss-saas]]", "[[user-duyet-active-projects]]", "[[user-duyet-data-clickhouse]]"]
+related: ["[[project-chmonitor-advisor]]", "[[user-duyet-focus-clickhouse]]", "[[tech-one-codebase-oss-saas]]", "[[user-duyet-active-projects]]"]
 sources: ["https://github.com/chmonitor/chmonitor", "https://chmonitor.dev", "https://docs.chmonitor.dev"]
 created: 2026-08-10
 updated: 2026-08-10
-timestamp: 2026-08-10T18:00:00Z
+timestamp: 2026-08-10T20:00:00Z
 ---
 
-github.com/chmonitor/chmonitor · https://chmonitor.dev · docs: https://docs.chmonitor.dev
+github.com/chmonitor/chmonitor · https://chmonitor.dev · docs.chmonitor.dev
 
-**chmonitor** — operational advisor for ClickHouse (not only a metrics UI). Reads `system.*`, recommends projections/skip indexes/partitions/MVs (**recommend-only**, never auto-applies DDL). Real-time query/cluster/replication monitoring, MCP server, AI agent chat.
+**chmonitor** — ClickHouse operational advisor + real-time monitoring, MCP, AI chat. Advisor is recommend-only ([[project-chmonitor-advisor]]).
 
-| Edition | Notes |
-|---------|--------|
-| Self-host OSS | Docker/K8s/bare metal/Workers — GPL-3.0 |
-| Cloud SaaS | Hosted dashboard (same product family) |
-
-Patterns: [[tech-one-codebase-oss-saas]], [[tech-single-source-env]], [[tech-tanstack-start-ssg]].
+OSS self-host and hosted Cloud from one product family ([[tech-one-codebase-oss-saas]], [[tech-single-source-env]]).
 Focus: [[user-duyet-focus-clickhouse]]. Portfolio: [[user-duyet-active-projects]].

@@ -18,5 +18,5 @@ https://anyrouter.dev — **universal AI model router**: one API, many providers
 Product traits (public): multi-provider routing, BYOK, pricing/latency comparison, Cloudflare-edge deploy.
 Packages mentioned publicly: `@anyr/sdk`, `@anyr/cli`.
 
-Patterns: [[tech-llm-gateway-byok-sibling]], [[tech-llm-gateway-quota-as-retryable]], [[tech-cloudflare-ai-gateway-transparent]], [[tech-workers-cache-enabled]].
+API shape: [[project-anyrouter-openai-compat]]. Patterns: [[tech-llm-gateway-byok-sibling]], [[tech-llm-gateway-quota-as-retryable]], [[tech-cloudflare-ai-gateway-transparent]], [[tech-workers-cache-enabled]].
 Portfolio: [[user-duyet-active-projects]]. Related products: [[project-agentstate]], [[project-anyworker]].

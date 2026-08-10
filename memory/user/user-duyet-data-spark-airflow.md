@@ -4,7 +4,7 @@ title: Data: Spark & Airflow
 description: Public experience with Apache Spark and Airflow
 type: user
 category: stack
-tags: [user, duyet, spark, airflow, data-engineering]
+tags: [user, duyet, data-engineering]
 related: ["[[user-duyet-focus-data-engineering]]", "[[reference-duyet-blog]]"]
 created: 2026-08-10
 updated: 2026-08-10
