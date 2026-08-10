@@ -11,7 +11,6 @@
 - [AnyWorker local agent + GUI](project-anyworker-local-agent.md) — Product path: Python agent server plus React GUI; web is separate marketing app
 - [chmonitor](project-clickhouse-monitoring.md) — Open-source ClickHouse operational advisor — monitoring + AI recommendations
 - [chmonitor recommends, never auto-DDL](project-chmonitor-advisor.md) — AI/ops advisor suggests CH changes but does not apply DDL automatically
-- [ClickHouse Monitor (chmonitor)](project-clickhouse-monitor.md) — Open-source ClickHouse monitoring dashboard — monorepo topology (7 apps on Cloudflare Workers), OSS + Cloud SaaS split, AI agent, alerting, design system
 - [duyet/agentstate](project-agentstate.md) — State and coordination layer for AI agent fleets (public OSS)
 - [duyet/anyworker](project-anyworker.md) — Open alternative to Claude Cowork-style agents — local agent + marketing site
 - [duyet/charts](project-charts.md) — Public Helm charts repository
