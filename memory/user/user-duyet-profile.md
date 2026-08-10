@@ -1,7 +1,7 @@
 ---
 name: user-duyet-profile
 title: Duyet Le profile
-description: Public identity: Duyet Le (@duyet), senior data engineer
+description: "Public identity: Duyet Le (@duyet), senior data engineer"
 type: user
 category: profile
 tags: [user, duyet, profile]
@@ -9,8 +9,7 @@ related: ["[[user-duyet-stack]]", "[[user-duyet-web-presence]]", "[[feedback-wor
 sources: ["https://duyet.net/llms.txt", "https://cv.duyet.net/llms.txt"]
 created: 2026-08-10
 updated: 2026-08-10
-timestamp: 2026-08-10T12:00:00Z
----
+timestamp: 2026-08-10T12:00:00Z---
 
 **Duyet Le** (handle `@duyet`) — senior data engineer and open-source contributor.
 
