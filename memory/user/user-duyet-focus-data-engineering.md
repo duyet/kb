@@ -8,7 +8,8 @@ tags: [user, duyet, data-engineering]
 related: ["[[user-duyet-profile]]", "[[user-duyet-focus-clickhouse]]", "[[user-duyet-stack]]"]
 created: 2026-08-10
 updated: 2026-08-10
-timestamp: 2026-08-10T12:00:00Z---
+timestamp: 2026-08-10T12:00:00Z
+---
 
 Public focus: large-scale data platforms, real-time analytics, Kafka/Spark/Airflow ecosystems.
 

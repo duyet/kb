@@ -8,7 +8,8 @@ tags: [tech, llm-agents, rag]
 related: ["[[tech-rag-citation-guards]]", "[[tech-rag-metadata-key-drift]]"]
 created: 2026-08-10
 updated: 2026-08-10
-timestamp: 2026-08-10T12:00:00Z---
+timestamp: 2026-08-10T12:00:00Z
+---
 
 TOC/index pages often dominate vector search without answering the question.
 

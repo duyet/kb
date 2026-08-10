@@ -8,7 +8,8 @@ tags: [tech, qdrant, vector, databases]
 related: ["[[tech-qdrant-config-at-create]]", "[[tech-rag-metadata-key-drift]]"]
 created: 2026-08-10
 updated: 2026-08-10
-timestamp: 2026-08-10T12:00:00Z---
+timestamp: 2026-08-10T12:00:00Z
+---
 
 High-dimension float32 collections can devolve to expensive scans. Tune HNSW + consider INT8 quantization.
 
