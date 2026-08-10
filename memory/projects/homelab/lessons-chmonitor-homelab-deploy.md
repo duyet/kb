@@ -6,7 +6,7 @@ type: tech
 category: infra
 tags: [chmonitor, clickhouse, homelab, k3s, traefik, auth, helm]
 aliases: [chmonitor-homelab]
-related: ["[[project-clickhouse-monitor]]", "[[project-chmonitor-one-codebase-saas]]", "[[reference-clickhouse-machines]]", "[[tech-traefik-forwardauth-oauth2-proxy]]", "[[project-self-driven-homelab]]"]
+related: ["[[project-clickhouse-monitoring]]", "[[project-chmonitor-advisor]]", "[[project-homelab]]", "[[tech-forwardauth-preserve-status]]", "[[tech-one-codebase-oss-saas]]", "[[user-duyet-homelab]]"]
 sources: ["https://github.com/chmonitor/chmonitor", "https://dash.chmonitor.dev", "https://charts.chmonitor.dev"]
 created: 2026-08-10
 updated: 2026-08-10
