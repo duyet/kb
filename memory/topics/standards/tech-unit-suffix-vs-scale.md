@@ -4,7 +4,7 @@ title: Chart unit suffix ≠ scale
 description: Display unit labels must not silently convert values; pair with explicit multiplier
 type: tech
 category: standards
-tags: [tech, standards, charts, ui]
+tags: [tech, standards, design]
 related: ["[[tech-flat-design-semantic-tokens]]", "[[feedback-fail-loud]]"]
 created: 2026-08-10
 updated: 2026-08-10

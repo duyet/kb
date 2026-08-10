@@ -4,7 +4,7 @@ title: AnyRouter OpenAI-compatible API
 description: Point existing OpenAI SDKs at AnyRouter base URL; swap model strings
 type: project
 category: llm
-tags: [project, anyrouter, llm, api]
+tags: [project, anyrouter, llm, web]
 related: ["[[project-anyrouter]]", "[[tech-llm-gateway-quota-as-retryable]]"]
 created: 2026-08-10
 updated: 2026-08-10

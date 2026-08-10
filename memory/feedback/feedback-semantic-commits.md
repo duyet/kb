@@ -4,7 +4,7 @@ title: Semantic commits
 description: Use conventional semantic commit messages
 type: feedback
 category: git
-tags: [feedback, git, workflow]
+tags: [feedback, workflow]
 related: ["[[feedback-working-style]]", "[[tech-release-please-pr-title]]"]
 created: 2026-08-10
 updated: 2026-08-10

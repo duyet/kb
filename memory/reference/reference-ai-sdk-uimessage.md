@@ -4,7 +4,7 @@ title: AI SDK UIMessage shape
 description: UIMessage is id+role+parts; unknown part types render as null
 type: reference
 category: ai-sdk
-tags: [reference, ai-sdk, chat, web]
+tags: [reference, ai-sdk, web]
 related: ["[[tech-ai-sdk-history-dto-convert]]", "[[tech-ai-agent-stack]]"]
 sources: ["https://ai-sdk.dev/docs/ai-sdk-ui/chatbot-message-persistence"]
 created: 2026-08-10

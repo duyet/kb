@@ -4,7 +4,7 @@ title: One codebase OSS + SaaS
 description: Ship self-host and cloud from one tree behind a fail-closed mode flag
 type: tech
 category: architecture
-tags: [tech, architecture, saas, oss]
+tags: [tech, architecture, oss]
 related: ["[[project-clickhouse-monitoring]]", "[[tech-single-source-env]]"]
 created: 2026-08-10
 updated: 2026-08-10

@@ -4,7 +4,7 @@ title: forwardAuth must preserve status
 description: Error pages middleware can rewrite 302 challenges into 401/500 and break OAuth
 type: tech
 category: cloudflare
-tags: [tech, traefik, oauth, ingress]
+tags: [tech, infra, security]
 related: ["[[user-duyet-infra-kubernetes]]", "[[tech-cloudflare-pages-deploy]]"]
 created: 2026-08-10
 updated: 2026-08-10

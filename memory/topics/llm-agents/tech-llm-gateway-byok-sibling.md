@@ -4,7 +4,7 @@ title: BYOK sibling before disabling backend
 description: Disabling a platform backend can silently kill BYOK that injected through it
 type: tech
 category: gateway
-tags: [tech, llm, gateway, byok]
+tags: [tech, llm, gateway]
 related: ["[[project-anyrouter]]", "[[tech-llm-gateway-quota-as-retryable]]"]
 created: 2026-08-10
 updated: 2026-08-10

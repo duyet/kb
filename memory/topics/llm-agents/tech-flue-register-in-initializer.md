@@ -4,7 +4,7 @@ title: Flue: register providers in initializer
 description: Custom gateways must register from agent init with ctx.env; module load has empty env
 type: tech
 category: agents
-tags: [tech, llm-agents, flue, cloudflare]
+tags: [tech, llm-agents, cloudflare]
 related: ["[[reference-cloudflare-acquires-astro]]", "[[project-anyrouter]]", "[[tech-cloudflare-ai-gateway-transparent]]"]
 created: 2026-08-10
 updated: 2026-08-10

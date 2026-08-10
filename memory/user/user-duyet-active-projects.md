@@ -4,27 +4,19 @@ title: Active project portfolio (index)
 description: Index of products and repos Duyet actively builds across
 type: user
 category: portfolio
-tags: [user, duyet, projects, portfolio]
+tags: [user, duyet, projects]
 related: ["[[project-clickhouse-monitoring]]", "[[project-anyrouter]]", "[[project-agentstate]]", "[[project-anyworker]]", "[[user-duyet-homelab]]"]
 created: 2026-08-10
 updated: 2026-08-10
-timestamp: 2026-08-10T18:00:00Z
+timestamp: 2026-08-10T20:00:00Z
 ---
 
-Duyet works across **many concurrent products** (not a single-app focus). Portfolio index:
+Duyet builds **many products in parallel** (not single-app focus).
 
-### Data / ClickHouse
-- [[project-clickhouse-monitoring]] — chmonitor (ops advisor for ClickHouse)
+| Area | Projects |
+|------|----------|
+| ClickHouse | [[project-clickhouse-monitoring]] |
+| LLM / agents | [[project-anyrouter]] · [[project-agentstate]] · [[project-anyworker]] · [[project-open-managed-agents]] · [[project-duyetbot]] |
+| Personal / platform | [[project-monorepo]] · [[project-kb]] · [[project-llm-timeline]] · [[user-duyet-homelab]] · [[project-charts]] |
 
-### LLM gateway & agent runtime
-- [[project-anyrouter]] — multi-provider LLM API gateway
-- [[project-agentstate]] — state/coordination layer for agent fleets
-- [[project-anyworker]] — open “does the work” agent product
-- [[project-open-managed-agents]] — OMA managed-agents API reimpl
-- [[project-duyetbot]] — monorepo maintenance agent persona
-
-### Platform / personal
-- [[project-monorepo]] · [[project-kb]] · [[project-llm-timeline]]
-- [[user-duyet-homelab]] · [[project-charts]]
-
-Catalog: [[reference-duyet-github]]. Stance: [[user-duyet-ai-stance]].
+Also: [[user-duyet-multi-project]], [[feedback-disambiguate-repo]], [[reference-duyet-github]], [[user-duyet-ai-stance]].

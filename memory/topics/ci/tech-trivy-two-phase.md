@@ -4,7 +4,7 @@ title: Two-phase Trivy scan
 description: Report job always succeeds; separate fail-on-severity job gates the build
 type: tech
 category: ci
-tags: [tech, ci, security, trivy]
+tags: [tech, ci, security]
 related: ["[[tech-pin-github-actions]]", "[[tech-codebase-maintenance-loop]]"]
 created: 2026-08-10
 updated: 2026-08-10

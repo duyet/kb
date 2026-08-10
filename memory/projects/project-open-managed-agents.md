@@ -4,7 +4,7 @@ title: Open Managed Agents (OMA)
 description: OSS self-hostable Managed Agents API — CF Workers/DO or Docker
 type: project
 category: agents
-tags: [project, agents, oma, cloudflare, self-host]
+tags: [project, agents, cloudflare, infra]
 aliases: [oma, open-managed-agents]
 related: ["[[user-duyet-active-projects]]", "[[tech-oma-credentials-out-of-sandbox]]", "[[tech-ai-agent-stack]]", "[[feedback-never-auto-merge-release-please]]"]
 sources: ["https://github.com/duyet/oma", "https://oma.duyet.net"]

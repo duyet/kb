@@ -4,7 +4,7 @@ title: duyet/charts
 description: Public Helm charts repository
 type: project
 category: infra
-tags: [project, duyet, kubernetes, helm]
+tags: [project, duyet, kubernetes]
 related: ["[[user-duyet-infra-kubernetes]]", "[[reference-duyet-github]]"]
 sources: ["https://github.com/duyet/charts"]
 created: 2026-08-10

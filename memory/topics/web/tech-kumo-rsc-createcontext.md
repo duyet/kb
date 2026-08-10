@@ -4,7 +4,7 @@ title: createContext breaks RSC importers
 description: Libraries that call createContext at module scope force client boundaries
 type: tech
 category: web
-tags: [tech, web, react, rsc, nextjs]
+tags: [tech, web, react]
 related: ["[[tech-shadcn-base]]", "[[user-duyet-lang-typescript]]"]
 created: 2026-08-10
 updated: 2026-08-10

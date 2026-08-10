@@ -4,7 +4,7 @@ title: Single-source env config
 description: One committed non-secret env file feeds client build and server runtime
 type: tech
 category: architecture
-tags: [tech, architecture, env-config]
+tags: [tech, architecture]
 related: ["[[tech-one-codebase-oss-saas]]", "[[feedback-public-kb-only]]"]
 created: 2026-08-10
 updated: 2026-08-10

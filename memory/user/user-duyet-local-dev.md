@@ -4,7 +4,7 @@ title: Local dev preferences
 description: Public local tooling: macOS, bun, uv, neovim, Obsidian
 type: user
 category: stack
-tags: [user, duyet, tooling, workflow]
+tags: [user, duyet, workflow]
 related: ["[[feedback-semantic-commits]]", "[[feedback-concise-english]]", "[[user-duyet-stack]]"]
 created: 2026-08-10
 updated: 2026-08-10

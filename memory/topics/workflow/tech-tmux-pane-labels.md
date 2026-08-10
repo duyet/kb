@@ -4,7 +4,7 @@ title: Tmux pane status labels
 description: Map pane-current-command to short icons for agent vs editor vs idle
 type: tech
 category: workflow
-tags: [tech, workflow, tmux, dx]
+tags: [tech, workflow]
 related: ["[[user-duyet-local-dev]]", "[[user-duyet-ai-claude-code]]"]
 created: 2026-08-10
 updated: 2026-08-10

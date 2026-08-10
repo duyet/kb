@@ -56,12 +56,12 @@ that a future agent (any tool, any repo) would benefit from.
 ### File naming
 
 `memory/<group>/[<sub>/]<type>-<short-kebab-slug>.md`. `<group>` is one of
-`user/`, `feedback/`, `reference/`, `projects/` (with `projects/homelab/`), or a
-topic dir `topics/<domain>/` (`cloudflare`, `llm-agents`, `web`, `ci`, `workflow`,
-`standards`); nest freely. The `<type>-` filename prefix is kept so `type` is
-visible from the path, e.g. `memory/user/user-duyet-stack.md`,
+`user/`, `feedback/`, `reference/`, `projects/`, or a topic dir
+`topics/<domain>/` (`cloudflare`, `llm-agents`, `web`, `ci`, `workflow`,
+`standards`, `databases`, …); nest freely. The `<type>-` filename prefix is kept
+so `type` is visible from the path, e.g. `memory/user/user-duyet-stack.md`,
 `memory/feedback/feedback-working-style.md`,
-`memory/topics/cloudflare/tech-traefik-forwardauth-oauth2-proxy.md`.
+`memory/topics/cloudflare/tech-workers-cache-enabled.md`.
 
 ### Frontmatter (required on every note)
 

@@ -4,7 +4,7 @@ title: duyetbot persona
 description: Autonomous agent persona that maintains public monorepo within clear scope
 type: project
 category: agents
-tags: [project, duyet, llm-agents, autopilot]
+tags: [project, duyet, llm-agents, agents]
 related: ["[[project-monorepo]]", "[[tech-agent-loop-cycle]]", "[[user-duyet-ai-stance]]"]
 sources: ["https://agents.duyet.net"]
 created: 2026-08-10

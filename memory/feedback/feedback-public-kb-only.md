@@ -4,7 +4,7 @@ title: KB stores public generic facts only
 description: No secrets, hosts, internal project names, or adhoc session dumps
 type: feedback
 category: scope
-tags: [feedback, kb, security, scope]
+tags: [feedback, kb, security]
 related: ["[[project-kb]]", "[[feedback-docs-write-on-exit]]"]
 created: 2026-08-10
 updated: 2026-08-10

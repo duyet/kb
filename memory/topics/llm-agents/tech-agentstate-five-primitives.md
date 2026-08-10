@@ -14,4 +14,4 @@ timestamp: 2026-08-10T18:00:00Z
 [[project-agentstate]] exposes five fleet primitives: **states**, **leases**, **claims**, **capability tokens**, **conversations**.
 
 Use when multi-agent systems need shared state/locking/delegation without reinventing a backend.
-Related: [[tech-ai-agent-stack]], [[project-anyworker]].
+See also [[tech-agentstate-not-a-framework]]. Related: [[tech-ai-agent-stack]], [[project-anyworker]].

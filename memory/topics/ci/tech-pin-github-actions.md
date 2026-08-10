@@ -4,7 +4,7 @@ title: Pin GitHub Actions
 description: Pin actions to version or commit SHA; moving major tags can be force-pushed
 type: tech
 category: ci
-tags: [tech, ci, security, supply-chain]
+tags: [tech, ci, security]
 related: ["[[tech-trivy-two-phase]]", "[[feedback-public-kb-only]]"]
 created: 2026-08-10
 updated: 2026-08-10
