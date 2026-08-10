@@ -44,7 +44,7 @@ Homelab is supposed to “show more performance” — that is normal, not a bug
 
 ## Auth (homelab)
 
-- Behind Traefik **forwardAuth** + oauth2-proxy (GitHub via Dex). See [[tech-traefik-forwardauth-oauth2-proxy]].
+- Behind Traefik **forwardAuth** + oauth2-proxy (GitHub via Dex). See [[tech-forwardauth-preserve-status]].
 - chmonitor-scoped middleware stamps a **shared secret** header (`X-Chm-Proxy-Secret`); app trusts identity headers only when secret matches (`CHM_AUTH_PROVIDER=proxy` or `trusted` depending on image).
 - Unauthenticated external hit → **302** to the auth portal is expected.
 
