@@ -59,6 +59,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Web presence (index)](memory/user/user-duyet-web-presence.md) — Index of public sites and llms.txt sources
 
 ## Project
+<<<<<<< Updated upstream
 - [AnyRouter](memory/projects/project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
 - [AnyRouter OpenAI-compatible API](memory/projects/project-anyrouter-openai-compat.md) — Point existing OpenAI SDKs at AnyRouter base URL; swap model strings
 - [AnyWorker local agent + GUI](memory/projects/project-anyworker-local-agent.md) — Product path: Python agent server plus React GUI; web is separate marketing app
@@ -74,6 +75,21 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [KB site front-end](memory/projects/project-kb-site.md) — kb.duyet.net renders the shared-brain notes as a public site
 - [LLM Timeline](memory/projects/project-llm-timeline.md) — Public SSG timeline of LLM models at llm-timeline.duyet.net
 - [Open Managed Agents (OMA)](memory/projects/project-open-managed-agents.md) — OSS self-hostable Managed Agents API — CF Workers/DO or Docker
+=======
+- [ClickHouse Monitor (chmonitor)](memory/projects/project-clickhouse-monitor.md) — 7 CF workers (dashboard/landing/docs/blog/mcp/bug-handler/cloud-hooks); pnpm not bun; Cloud SaaS live (Clerk+D1+Polar); AI agent + alerting; in-repo docs/knowledge graph
+- [chmonitor — one codebase OSS + Cloud SaaS](memory/projects/project-chmonitor-one-codebase-saas.md) — CHM_DEPLOYMENT_MODE fail-closed to OSS; single-source .env pattern keeps Wrangler/Docker/K8s in sync
+- [duyet.net monorepo](memory/projects/project-duyet-net.md) — Bun + Turborepo, ~9 apps, TanStack Start SSG on Cloudflare Pages
+- [duyetbot](memory/projects/project-duyetbot.md) — autonomous agent maintaining the monorepo: scope, loop, memory hierarchy
+- [Open Managed Agents (OMA)](memory/projects/project-open-managed-agents.md) — OSS Claude Managed Agents API reimpl; CF Workers/DO + self-host Node; prod app.oma.duyet.net; autonomous issue-run maintenance
+- [LLM Timeline app](memory/projects/project-llm-timeline.md) — 3700+ SSG pages, shadcn UI, dual data sources (1950–2026)
+- [kb.duyet.net](memory/projects/project-kb-duyet-net.md) — public KB site migrating from monorepo app to this shared-brain repo
+- [Infra optimization baseline](memory/projects/project-infra-optimization.md) — k3s resource tuning, security hardening, host cleanup (2026-06-13)
+- [Self-driving homelab](memory/projects/homelab/project-self-driven-homelab.md) — AI agent (Minh/Hermes) manages its own k3s cluster via Telegram
+- [ClickHouse instance roles & tuning](memory/projects/homelab/reference-clickhouse-machines.md) — three self-hosted instances by role; memory-tuning + clone lessons (non-identifying)
+- [Lessons — chmonitor on homelab k3s](memory/projects/homelab/lessons-chmonitor-homelab-deploy.md) — dash vs full homelab; image chmonitor org; no CH readonly profile; dedicated SELECT user + proxy auth
+- [Session — ClickHouse multi-host setup](memory/projects/homelab/sessions/2026-06-30-clickhouse-machines-setup.md) — connectivity fixes, memory optimization, cross-host clone of an analytics DB
+- [AnyRouter](memory/projects/project-anyrouter.md) — LLM API gateway on CF Workers; TanStack Start + Kumo; split web/API workers; prerendered marketing shells
+>>>>>>> Stashed changes
 
 ## Tech
 - [Agent-loop PR cycle](memory/topics/workflow/tech-agent-loop-cycle.md) — Periodic cycle triages open PRs and dispatches fix/review work
