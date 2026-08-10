@@ -4,7 +4,6 @@
 
 - [AnyRouter](project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
 - [AnyRouter OpenAI-compatible API](project-anyrouter-openai-compat.md) — Point existing OpenAI SDKs at AnyRouter base URL; swap model strings
-- [AnyWorker local agent + GUI](project-anyworker-local-agent.md) — Product path: Python agent server plus React GUI; web is separate marketing app
 - [chmonitor](project-clickhouse-monitoring.md) — Open-source ClickHouse operational advisor — monitoring + AI recommendations
 - [chmonitor recommends, never auto-DDL](project-chmonitor-advisor.md) — AI/ops advisor suggests CH changes but does not apply DDL automatically
 - [duyet/agentstate](project-agentstate.md) — State and coordination layer for AI agent fleets (public OSS)
@@ -17,3 +16,4 @@
 - [KB site front-end](project-kb-site.md) — kb.duyet.net renders the shared-brain notes as a public site
 - [LLM Timeline](project-llm-timeline.md) — Public SSG timeline of LLM models at llm-timeline.duyet.net
 - [Open Managed Agents (OMA)](project-open-managed-agents.md) — OSS self-hostable Managed Agents API — CF Workers/DO or Docker
+- [project-anyworker-local-agent](project-anyworker-local-agent.md)
