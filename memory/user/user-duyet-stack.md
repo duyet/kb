@@ -1,34 +1,21 @@
 ---
 name: user-duyet-stack
-title: Duyet — tech stack
-description: Languages, tools, and platforms Duyet works in (public, from blog + GitHub)
+title: Public tech stack (index)
+description: Index of public languages, data, infra, and AI tools
 type: user
 category: stack
-tags: [user, duyet, stack, tooling, data-engineering]
-related: ["[[user-duyet-profile]]", "[[user-duyet-web-presence]]"]
-sources: ["https://cv.duyet.net/llms.txt", "https://blog.duyet.net/llms.txt", "https://github.com/duyet"]
-created: 2026-06-04
-updated: 2026-06-04
-timestamp: 2026-06-04T00:00:00Z
+tags: [user, duyet, stack]
+related: ["[[user-duyet-profile]]", "[[user-duyet-lang-rust]]", "[[user-duyet-infra-cloudflare]]"]
+sources: ["https://cv.duyet.net/llms.txt", "https://github.com/duyet"]
+created: 2026-08-10
+updated: 2026-08-10
+timestamp: 2026-08-10T12:00:00Z
 ---
 
-Technical stack for [[user-duyet-profile]], drawn from public blog & GitHub.
+Stack index (public blog/GitHub). Drill into atoms:
 
-**Languages:** Rust (extensive), Python, TypeScript/JavaScript, SQL. Also R, PHP
-in older posts. Notably interested in data-engineering tools written in Rust.
-
-**Data & big data:** ClickHouse (deep expertise), Apache Spark, Apache Airflow,
-DuckDB, Kafka; PostgreSQL, MongoDB, Redis.
-
-**Cloud & infra:** Kubernetes, Docker, AWS, GCP, Azure, Cloudflare, GitHub Actions.
-
-**AI/ML:** LLM agents & coding agents (Claude, Codex, Hermes), PyTorch/TensorFlow,
-NLP, MCP servers.
-
-**Frontend/web:** Next.js, React, TypeScript (e.g. `clickhouse-monitoring`).
-
-**Local dev environment:** macOS (Apple Silicon), Homebrew, `bun`, `uv`, neovim,
-Obsidian. Prefers semantic commits and simple, plain English in writing.
-
-Blog series worth knowing: ClickHouse on Kubernetes, Rust Fundamentals, Spark on
-Kubernetes, Apache Airflow, Coding Agents. See [[user-duyet-web-presence]].
+- Languages: [[user-duyet-lang-rust]], [[user-duyet-lang-python]], [[user-duyet-lang-typescript]], [[user-duyet-lang-sql]]
+- Data: [[user-duyet-data-clickhouse]], [[user-duyet-data-spark-airflow]]
+- Infra: [[user-duyet-infra-kubernetes]], [[user-duyet-infra-cloudflare]]
+- AI: [[user-duyet-ai-stance]], [[tech-ai-agent-stack]]
+- Local: [[user-duyet-local-dev]]

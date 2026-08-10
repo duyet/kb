@@ -18,3 +18,12 @@
   supply-chain compromise) into
   `topics/ci/tech-supply-chain-pin-github-actions.md`; cleared the inbox;
   regenerated all `index.md` + `viz.html` via `kb gen`. Bundle now 32 concepts.
+
+## 2026-08-10
+
+- **Rewrite**: broke multi-fact notes into atomic concepts; dense `[[wikilink]]` graph.
+- **Sanitize**: removed homelab sessions, host/machine notes, infra optimization baselines,
+  Telegram/agent-instance ops, and adhoc internal deploy lessons. Kept public `duyet/*`
+  and other public GitHub project pointers only.
+- **Scope**: [[feedback-public-kb-only]] — generic tech patterns + public profile.
+- **Count**: 101 concept notes after rewrite.

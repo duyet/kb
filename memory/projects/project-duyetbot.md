@@ -1,31 +1,18 @@
 ---
 name: project-duyetbot
-title: duyetbot — autonomous agent
-description: Autonomous Claude Code agent that maintains the duyet.net monorepo — scope, autonomous loop, and memory hierarchy
+title: duyetbot persona
+description: Autonomous agent persona that maintains public monorepo within clear scope
 type: project
 category: agents
-tags: [project, duyet, llm-agents, autopilot, agent-memory]
-aliases: [duyetbot]
-related: ["[[project-duyet-net]]", "[[user-duyet-ai-stance]]", "[[feedback-docs-driven-development]]", "[[tech-cloudflare-pages-deploy]]", "[[feedback-working-style]]"]
-sources: ["https://kb.duyet.net/llms.txt", "https://agents.duyet.net"]
-created: 2026-06-04
-updated: 2026-06-04
-timestamp: 2026-06-04T00:00:00Z
+tags: [project, duyet, llm-agents, autopilot]
+related: ["[[project-monorepo]]", "[[tech-agent-loop-cycle]]", "[[user-duyet-ai-stance]]"]
+sources: ["https://agents.duyet.net"]
+created: 2026-08-10
+updated: 2026-08-10
+timestamp: 2026-08-10T12:00:00Z
 ---
 
-duyetbot — the autonomous Claude Code agent persona that maintains [[project-duyet-net]].
+duyetbot maintains [[project-monorepo]] within scope: code, design system, deploy config.
 
-**Scope (can change without asking):** codebase, look-and-feel, deployment —
-layout, components, design tokens, deps, build/deploy config, landing-page copy.
-**Out of scope (needs human direction):** blog post content (`apps/blog/_posts/**`)
-and LLM Timeline curated data — those are Duyet's authored words/research facts.
-
-**Autonomous loops:**
-- **Improvement loop** (`/loop` or one-shot `claude -p`): measure → fix top-priority issue → verify (lint+test+build) → commit → background-deploy → log. Priority order: build > tests > lint > deploy > code quality > features. See [[tech-cloudflare-pages-deploy]].
-- **PR management loop** (`/agent-loop:resume`): runs continuously every 15 min, triages all open PRs, dispatches cheap subagents (Sonnet/Haiku) for reviews/fixes/merges. See [[tech-agent-loop-autonomous-pr-management]].
-
-**Memory hierarchy** (most→least durable): commit messages → kb articles → durable
-findings doc → session memory `.md` snapshots → transcript. Memory files are
-point-in-time, may be stale — verify against code before acting. This is the
-[[feedback-docs-driven-development]] model. Auto-compaction welcomed; save
-to-remember context before it. Commits add a duyetbot co-author trailer.
+Out of scope without human direction: authored blog posts and curated timeline research facts.
+Loops: [[tech-improvement-loop]], [[tech-agent-loop-cycle]]. Memory model: [[feedback-docs-driven-development]].

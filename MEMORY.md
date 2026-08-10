@@ -3,62 +3,115 @@
 Master table of contents. One line per note — read this first, then open only
 the notes relevant to your task. See `AGENTS.md` for the protocol.
 
+Scope: **public, generic, durable** facts only. No secrets, hosts, or internal codenames.
+
 ## User
-- [Duyet Le profile](memory/user/user-duyet-profile.md) — senior data engineer (VN), owner of this brain
-- [Tech stack](memory/user/user-duyet-stack.md) — Rust/Python/TS/SQL, ClickHouse, K8s, data + LLM agents
-- [AI & coding-agent stance](memory/user/user-duyet-ai-stance.md) — vibe-codes prod, Claude Code daily driver, agent SDKs
+- [AI stance (index)](memory/user/user-duyet-ai-stance.md) — How public AI practice is structured — agents over hand-writing
+- [Claude Code daily driver](memory/user/user-duyet-ai-claude-code.md) — Claude Code is the stated daily coding-agent driver
+- [Coding tools are disposable](memory/user/user-duyet-ai-tools-disposable.md) — Treat specific AI coding tools as replaceable; field moves fast
+- [Data: ClickHouse](memory/user/user-duyet-data-clickhouse.md) — ClickHouse as primary analytics engine in public work
+- [Data: Spark & Airflow](memory/user/user-duyet-data-spark-airflow.md) — Public experience with Apache Spark and Airflow
+- [Duyet Le profile](memory/user/user-duyet-profile.md) — Public identity: Duyet Le (@duyet), senior data engineer
+- [Focus: ClickHouse](memory/user/user-duyet-focus-clickhouse.md) — Deep public expertise and writing on ClickHouse
+- [Focus: LLM agents](memory/user/user-duyet-focus-llm-agents.md) — Public work on coding agents, agent SDKs, RAG, agent memory
+- [Focus: data engineering](memory/user/user-duyet-focus-data-engineering.md) — Public focus on large-scale data platforms and DE tooling
+- [GitHub handle @duyet](memory/user/user-duyet-handle.md) — Public handle @duyet on GitHub and personal sites
+- [Infra: Cloudflare](memory/user/user-duyet-infra-cloudflare.md) — Cloudflare Workers/Pages as primary public deploy target
+- [Infra: Kubernetes](memory/user/user-duyet-infra-kubernetes.md) — Kubernetes used in public infra writing and Helm charts
+- [Language: Python](memory/user/user-duyet-lang-python.md) — Python used for data eng, agents, and glue code
+- [Language: Rust](memory/user/user-duyet-lang-rust.md) — Rust is a primary public language (data tooling, WASM, CLI)
+- [Language: SQL](memory/user/user-duyet-lang-sql.md) — SQL is daily language for analytics and ClickHouse work
+- [Language: TypeScript](memory/user/user-duyet-lang-typescript.md) — TypeScript/JavaScript for web apps and Workers
+- [Local dev preferences](memory/user/user-duyet-local-dev.md) — Public local tooling: macOS, bun, uv, neovim, Obsidian
+- [Public tech stack (index)](memory/user/user-duyet-stack.md) — Index of public languages, data, infra, and AI tools
+- [Vibe-codes production](memory/user/user-duyet-ai-vibe-codes.md) — Public stance: agents write most production code; Markdown tops Wakatime
 
 ## Feedback
-- [Working style](memory/feedback/feedback-working-style.md) — concise English, simple code, semantic commits
-- [Docs-Driven Development](memory/feedback/feedback-docs-driven-development.md) — tiny router + kb brain, auto read-in/write-out
-- [Cheap models for sub-agents](memory/feedback/feedback-cheap-models-subagents.md) — default fan-out agents to Sonnet/Haiku, not Opus, to control cost
-- [Logic change → update related tests](memory/feedback/feedback-logic-change-update-related-tests.md) — same change greps/updates related tests; never wait for CI
+- [Cheap models for sub-agents](memory/feedback/feedback-cheap-models-subagents.md) — Fan-out sub-agents to cheaper models by default
+- [Docs-Driven Development (index)](memory/feedback/feedback-docs-driven-development.md) — Tiny router files + versioned kb brain; reflexive read/write
+- [Fail loud; don't hide skips](memory/feedback/feedback-fail-loud.md) — Never claim done if tests/steps were skipped silently
+- [KB is the shared brain](memory/feedback/feedback-docs-kb-is-brain.md) — Versioned, grep-able notes beat rules stuck only in prompts
+- [KB stores public generic facts only](memory/feedback/feedback-public-kb-only.md) — No secrets, hosts, internal project names, or adhoc session dumps
+- [Keep router files tiny](memory/feedback/feedback-docs-router-tiny.md) — CLAUDE.md/AGENTS.md = short stable rules + pointers, not architecture dumps
+- [Logic change → update related tests](memory/feedback/feedback-logic-change-update-tests.md) — Co-update tests in the same change; never wait for CI
+- [Never auto-merge release-please PRs](memory/feedback/feedback-never-auto-merge-release-please.md) — Leave release-please release PRs for human merge
+- [Prefer simple code](memory/feedback/feedback-simple-code.md) — Minimum code that solves the problem; no speculative abstraction
+- [Read MEMORY.md on entry](memory/feedback/feedback-docs-read-on-entry.md) — Before non-trivial work, read the index and relevant notes
+- [Semantic commits](memory/feedback/feedback-semantic-commits.md) — Use conventional semantic commit messages
+- [Surgical changes only](memory/feedback/feedback-surgical-changes.md) — Touch only what the request requires; no drive-by refactors
+- [Working style (index)](memory/feedback/feedback-working-style.md) — Index of agent collaboration preferences
+- [Write concise simple English](memory/feedback/feedback-concise-english.md) — Prefer short plain English in prose and commits
+- [Write memory on the way out](memory/feedback/feedback-docs-write-on-exit.md) — Persist durable public facts before context is lost
 
 ## Reference
-- [Web presence](memory/user/user-duyet-web-presence.md) — blog/CV/GitHub/socials + llms.txt sources
-- [Blog content & themes](memory/reference/reference-duyet-blog.md) — digital garden: ClickHouse, Rust, AI agents, data eng
-- [GitHub projects](memory/reference/reference-duyet-github.md) — ClickHouse tooling, Rust data tools, AI-agent repos, infra
-- [Cloudflare acquired Astro](memory/reference/reference-cloudflare-acquires-astro.md) — Jan 2026; Astro team (Fred Schott) now at CF, ships Flue agent framework
-- [AI SDK history → UIMessage mapping](memory/reference/reference-ai-sdk-history-uimessage-mapping.md) — persisted tool/chart parts vanish on reload unless translated to native dynamic-tool shape
+- [AI SDK UIMessage shape](memory/reference/reference-ai-sdk-uimessage.md) — UIMessage is id+role+parts; unknown part types render as null
+- [Blog themes](memory/reference/reference-duyet-blog.md) — Recurring public blog themes on blog.duyet.net
+- [Cloudflare acquired Astro (2026)](memory/reference/reference-cloudflare-acquires-astro.md) — Jan 2026: Astro team joined Cloudflare; Flue agent framework context
+- [Notable public GitHub repos](memory/reference/reference-duyet-github.md) — Catalog of notable public duyet/* and related OSS repos
+- [Web presence (index)](memory/user/user-duyet-web-presence.md) — Index of public sites and llms.txt sources
+- [blog.duyet.net](memory/user/user-duyet-site-blog.md) — Personal digital garden blog
+- [github.com/duyet](memory/user/user-duyet-github.md) — Public GitHub org/user for open-source work
+- [kb.duyet.net](memory/user/user-duyet-site-kb.md) — Public rendered face of this shared-brain repo
 
 ## Project
-- [ClickHouse Monitor (chmonitor)](memory/projects/project-clickhouse-monitor.md) — 7 CF workers (dashboard/landing/docs/blog/mcp/bug-handler/cloud-hooks); pnpm not bun; Cloud SaaS live (Clerk+D1+Polar); AI agent + alerting; in-repo docs/knowledge graph
-- [chmonitor — one codebase OSS + Cloud SaaS](memory/projects/project-chmonitor-one-codebase-saas.md) — CHM_DEPLOYMENT_MODE fail-closed to OSS; single-source .env pattern keeps Wrangler/Docker/K8s in sync
-- [duyet.net monorepo](memory/projects/project-duyet-net.md) — Bun + Turborepo, ~9 apps, TanStack Start SSG on Cloudflare Pages
-- [duyetbot](memory/projects/project-duyetbot.md) — autonomous agent maintaining the monorepo: scope, loop, memory hierarchy
-- [Open Managed Agents (OMA)](memory/projects/project-open-managed-agents.md) — OSS Claude Managed Agents API reimpl; CF Workers/DO + self-host Node; prod app.oma.duyet.net; autonomous issue-run maintenance
-- [LLM Timeline app](memory/projects/project-llm-timeline.md) — 3700+ SSG pages, shadcn UI, dual data sources (1950–2026)
-- [kb.duyet.net](memory/projects/project-kb-duyet-net.md) — public KB site migrating from monorepo app to this shared-brain repo
-- [Infra optimization baseline](memory/projects/project-infra-optimization.md) — k3s resource tuning, security hardening, host cleanup (2026-06-13)
-- [Self-driving homelab](memory/projects/homelab/project-self-driven-homelab.md) — AI agent (Minh/Hermes) manages its own k3s cluster via Telegram
-- [ClickHouse instance roles & tuning](memory/projects/homelab/reference-clickhouse-machines.md) — three self-hosted instances by role; memory-tuning + clone lessons (non-identifying)
-- [Session — ClickHouse multi-host setup](memory/projects/homelab/sessions/2026-06-30-clickhouse-machines-setup.md) — connectivity fixes, memory optimization, cross-host clone of an analytics DB
-- [AnyRouter](memory/projects/project-anyrouter.md) — LLM API gateway on CF Workers; TanStack Start + Kumo; split web/API workers; prerendered marketing shells
+- [ClickHouse monitoring (chmonitor)](memory/projects/project-clickhouse-monitoring.md) — Public open-source ClickHouse monitoring dashboard
+- [KB site front-end](memory/projects/project-kb-site.md) — kb.duyet.net renders the shared-brain notes as a public site
+- [LLM Timeline](memory/projects/project-llm-timeline.md) — Public SSG timeline of LLM models at llm-timeline.duyet.net
+- [duyet/anyrouter](memory/projects/project-anyrouter.md) — OpenAI-compatible multi-provider LLM API gateway (public)
+- [duyet/charts](memory/projects/project-charts.md) — Public Helm charts repository
+- [duyet/kb shared brain](memory/projects/project-kb.md) — Public shared-brain repo — atomic notes, MEMORY.md index, OKF layout
+- [duyet/monorepo](memory/projects/project-monorepo.md) — Public Bun+Turborepo for personal duyet.net web apps
+- [duyet/open-managed-agents](memory/projects/project-open-managed-agents.md) — OSS Managed Agents API reimplementation (public)
+- [duyetbot persona](memory/projects/project-duyetbot.md) — Autonomous agent persona that maintains public monorepo within clear scope
 
 ## Tech
-- [AI agent stack](memory/topics/llm-agents/tech-ai-agent-stack.md) — LangGraph/AI SDK/Agents SDK/MCP + what Duyet uses
-- [eve framework](memory/topics/llm-agents/tech-eve-framework.md) — Vercel filesystem-first durable agents; file layout, MCP connections, the Node-24 .ts-import gotcha
-- [TanStack Start SSG](memory/topics/web/tech-tanstack-start-ssg.md) — prerender Vite app to survive CF Rocket Loader; migration recipe
-- [Per-page OG images (static prerender)](memory/topics/web/tech-og-images-static-prerender.md) — build-time Satori cards from one registry feeding generator + route head; meta must be in prerendered HTML for crawlers
-- [TanStack stale route chunks](memory/topics/web/tech-tanstack-stale-route-chunks.md) — missing lazy chunks → reading 'component'; reload guard + prerender shells
-- [Rust→WASM strategy](memory/topics/web/tech-rust-wasm-prerender.md) — WASM only beats TS >1ms; the silent-prerender CI trap
-- [Flat design system](memory/topics/web/tech-flat-design-system.md) — hairline borders, lucide, shadcn + semantic tokens, dark mode
-- [Cloudflare Pages deploy](memory/topics/cloudflare/tech-cloudflare-pages-deploy.md) — commit→push→background-deploy; parallel-deploy hazard
-- [Codebase maintenance loop](memory/topics/workflow/tech-codebase-maintenance-loop.md) — improvement cycles, safe dead-code removal, tests
-- [Agent-loop autonomous PR management](memory/topics/workflow/tech-agent-loop-autonomous-pr-management.md) — 15-min cycle triages all PRs, cheap subagents fix/review/merge, reduces context overhead
-- [Cloudflare AI Gateway proxy](memory/topics/cloudflare/tech-cloudflare-ai-gateway-proxy.md) — AIG doesn't validate model ids; "invalid model ID" is the upstream rejecting, not CF
-- [Traefik forwardAuth + OAuth2 Proxy](memory/topics/cloudflare/tech-traefik-forwardauth-oauth2-proxy.md) — ErrorPages keeps original status, need nginx redirector for 302
-- [Cloudflare Workers Cache](memory/topics/cloudflare/tech-cloudflare-workers-cache.md) — per-worker tiered cache in front of the Worker; `cache.enabled` + `Cache-Control`/SWR/`Cache-Tag`; HIT skips Worker (0 CPU), authed requests auto-bypass
-- [Hermes agent custom provider](memory/topics/llm-agents/tech-hermes-agent-custom-provider.md) — custom_providers registration, provider:custom, steer mode
-- [Hermes dashboard auth gate](memory/topics/llm-agents/tech-hermes-dashboard-auth.md) — nous OAuth plugin, insecure/loopback gate precedence, localhost-allowlist gotcha
-- [release-please squash pipeline](memory/topics/ci/tech-release-please-squash-pipeline.md) — squash-merge PR titles drive versioning; pre-1.0 bump trap; PR-title commitlint guard
-- [Pin GitHub Actions (supply chain)](memory/topics/ci/tech-supply-chain-pin-github-actions.md) — trivy-action had 75 tags force-pushed (Mar 2026); pin Actions to SHA/version; two-phase Trivy scan (report then fail)
-- [Tmux dynamic pane status labels](memory/topics/workflow/tech-tmux-pane-status-labels.md) — pane-current-command→icon mapping for agent/idle/editor at a glance; script + gpakosz automatic-rename-format
-- [Open Knowledge Format (OKF)](memory/topics/standards/tech-okf-open-knowledge-format.md) — Google's open markdown+frontmatter "LLM-wiki" spec; this repo is now a strict-conformant bundle (nested topics, ISO-8601 timestamp, index.md/log.md)
-- [Kumo UI + Next.js integration](memory/topics/web/tech-kumo-ui-nextjs-integration.md) — Kumo+Phosphor crash RSC via createContext (every importer "use client"); Button no render, Tabs array, no Chart; token names; Tailwind v4 @source
-- [Qdrant HNSW + quantization tuning](memory/topics/databases/tech-qdrant-hnsw-tuning.md) — why 4096-d collections time out (full scan over float32); fix = tuned HNSW + INT8 quantization; config only applies at create, retrofit via update_collection
-- [Flue provider registration timing](memory/topics/llm-agents/tech-flue-provider-registration.md) — register custom gateways (AnyRouter) in the agent initializer from ctx.env; process.env is empty at module load; workerd hides errors, use --target node
-- [OMA on k3s via ArgoCD](memory/topics/homelab/tech-oma-k3s-deploy.md) — deploy + drive self-hosted Open Managed Agents; verified run flow; BYOK model card → AnyRouter; self-host bugs (model_cards write path, uncapped max_tokens)
-- [Lessons — OMA self-host deploy](memory/topics/homelab/lessons-oma-selfhost-deploy.md) — what bit us: main-node ≠ main (stubbed routes), BYOK+4096-tokens→502, pnpm v11 strictDepBuilds CI break, ConfigMap needs rollout restart
-- [RAG retrieval pollution](memory/topics/llm-agents/tech-rag-retrieval-pollution.md) — TOC docs poison vector search; citation guards pass real-but-irrelevant URLs; metadata key drift; registry embed model
-- [Unit suffix vs scale](memory/topics/standards/tech-unit-suffix-vs-scale.md) — chart units never convert, pair with explicit multiplier; impossible-60-minutes formatter diagnostic
+- [AI Gateway is transparent on model ids](memory/topics/cloudflare/tech-cloudflare-ai-gateway-transparent.md) — Cloudflare AI Gateway does not validate model names; upstream does
+- [AI SDK native tool parts](memory/topics/llm-agents/tech-ai-sdk-uimessage-native-tools.md) — Persist or convert to dynamic-tool / tool-name parts for history reload
+- [AI agent stack map](memory/topics/llm-agents/tech-ai-agent-stack.md) — Map of common agent frameworks and what they are for
+- [Agent-loop PR cycle](memory/topics/workflow/tech-agent-loop-cycle.md) — Periodic cycle triages open PRs and dispatches fix/review work
+- [Agent-loop uses cheap workers](memory/topics/workflow/tech-agent-loop-cheap-subagents.md) — PR fix/review fan-out should not all run on the most expensive model
+- [Atomic notes](memory/topics/standards/tech-note-atomic.md) — One fact per file; split when a note needs 'and'
+- [Autonomous improvement loop](memory/topics/workflow/tech-improvement-loop.md) — One issue per cycle with full verify before next
+- [BYOK sibling before disabling backend](memory/topics/llm-agents/tech-llm-gateway-byok-sibling.md) — Disabling a platform backend can silently kill BYOK that injected through it
+- [Build-time OG images](memory/topics/web/tech-og-images-build-time.md) — Generate OG cards at build from one registry shared by generator and route head
+- [Cache HIT skips Worker CPU](memory/topics/cloudflare/tech-workers-cache-hit-skips-cpu.md) — On HIT the Worker does not run — no CPU billing for that request
+- [Cache-Control stale-while-revalidate](memory/topics/cloudflare/tech-workers-cache-swr.md) — SWR serves stale instantly while background refresh runs
+- [Cache-Tag purge](memory/topics/cloudflare/tech-workers-cache-tags.md) — Tag responses for targeted purge instead of purge-everything
+- [Chart unit suffix ≠ scale](memory/topics/standards/tech-unit-suffix-vs-scale.md) — Display unit labels must not silently convert values; pair with explicit multiplier
+- [Cloudflare Pages deploy habit](memory/topics/cloudflare/tech-cloudflare-pages-deploy.md) — Semantic commit → push → deploy changed app; avoid parallel deploys that share env files
+- [Codebase maintenance loop](memory/topics/workflow/tech-codebase-maintenance-loop.md) — Measure → fix top issue → verify → commit → deploy → log
+- [Convert history DTO → UIMessage](memory/topics/llm-agents/tech-ai-sdk-history-dto-convert.md) — Keep API neutral; translate tool-call DTOs to AI SDK parts per client
+- [Credentials never enter the sandbox](memory/topics/llm-agents/tech-oma-credentials-out-of-sandbox.md) — Managed-agent platforms should inject secrets via outbound proxy, not into the sandbox FS
+- [Dashboard auth gate precedence](memory/topics/llm-agents/tech-hermes-dashboard-auth-gate.md) — Insecure/loopback allowlists can bypass OAuth if ordered wrong
+- [Filesystem-first durable agents](memory/topics/llm-agents/tech-eve-filesystem-agents.md) — Some frameworks store agent state/layout as files for durability and review
+- [Flat design: hairline borders](memory/topics/web/tech-flat-design-hairline.md) — Prefer hairline borders over heavy shadows for public site UI
+- [Flue: register providers in initializer](memory/topics/llm-agents/tech-flue-register-in-initializer.md) — Custom gateways must register from agent init with ctx.env; module load has empty env
+- [Hermes custom_providers](memory/topics/llm-agents/tech-hermes-custom-provider.md) — Register custom OpenAI-compatible providers by name, base_url, model
+- [Hermes steer mode](memory/topics/llm-agents/tech-hermes-steer-mode.md) — While busy, new user messages can adjust the current task instead of being ignored
+- [Note frontmatter standard](memory/topics/standards/tech-note-frontmatter.md) — Required top-level fields for every concept note
+- [OG meta must be prerendered](memory/topics/web/tech-og-meta-in-prerender.md) — Social crawlers need Open Graph tags in static HTML, not only client head
+- [OKF-style knowledge bundle](memory/topics/standards/tech-okf-bundle.md) — Nested markdown + frontmatter bundle with index.md and log.md
+- [One codebase OSS + SaaS](memory/topics/workflow/tech-one-codebase-oss-saas.md) — Ship self-host and cloud from one tree behind a fail-closed mode flag
+- [Pin GitHub Actions](memory/topics/ci/tech-pin-github-actions.md) — Pin actions to version or commit SHA; moving major tags can be force-pushed
+- [Pre-1.0 feat may only bump patch](memory/topics/ci/tech-release-please-pre1-minor.md) — With bump-patch-for-minor-pre-major, feat in 0.x needs breaking marker for minor
+- [Prompt cache is byte-sensitive](memory/topics/llm-agents/tech-prompt-cache-byte-sensitive.md) — Any prefix byte change can bust LLM prompt cache
+- [Qdrant HNSW config at create](memory/topics/databases/tech-qdrant-config-at-create.md) — Many collection params apply at create; retrofit via update_collection
+- [Qdrant: high-dim full scan timeouts](memory/topics/databases/tech-qdrant-hnsw-timeout.md) — Large float32 collections without HNSW/quantization can time out
+- [Quota errors may arrive as HTTP 400](memory/topics/llm-agents/tech-llm-gateway-quota-as-retryable.md) — Reseller budget errors buried in 400 should failover like 402/429
+- [RAG citation guards](memory/topics/llm-agents/tech-rag-citation-guards.md) — URL-shaped citations can be real yet irrelevant — require passage support
+- [RAG metadata key drift](memory/topics/llm-agents/tech-rag-metadata-key-drift.md) — Inconsistent metadata keys break filters between ingest and query
+- [RAG: TOC docs pollute retrieval](memory/topics/llm-agents/tech-rag-toc-pollution.md) — Table-of-contents pages rank well but answer poorly — filter or downweight
+- [Semantic design tokens](memory/topics/web/tech-flat-design-semantic-tokens.md) — Use semantic tokens (bg-card, foreground) not ad-hoc color utilities
+- [Single-source env config](memory/topics/workflow/tech-single-source-env.md) — One committed non-secret env file feeds client build and server runtime
+- [Squash PR title is the release commit](memory/topics/ci/tech-release-please-pr-title.md) — Under squash-merge, PR title becomes the commit release-please reads
+- [Stale route chunks after deploy](memory/topics/web/tech-tanstack-stale-chunks.md) — Missing lazy chunks throw reading 'component'; add reload guard + prerender shells
+- [TanStack Start SSG](memory/topics/web/tech-tanstack-start-ssg.md) — Prerender Vite/TanStack apps to static HTML for crawlers and edge hosts
+- [Tmux pane status labels](memory/topics/workflow/tech-tmux-pane-labels.md) — Map pane-current-command to short icons for agent vs editor vs idle
+- [Two-phase Trivy scan](memory/topics/ci/tech-trivy-two-phase.md) — Report job always succeeds; separate fail-on-severity job gates the build
+- [WASM prerender CI trap](memory/topics/web/tech-wasm-prerender-ci.md) — Missing wasm build step makes prerender succeed empty or fail late
+- [When Rust WASM is worth it](memory/topics/web/tech-rust-wasm-when.md) — WASM usually wins only when the TS path is >~1ms hot work
+- [Workers Cache enable flag](memory/topics/cloudflare/tech-workers-cache-enabled.md) — Enable per-worker cache with cache.enabled; only public Cache-Control is stored
+- [createContext breaks RSC importers](memory/topics/web/tech-kumo-rsc-createcontext.md) — Libraries that call createContext at module scope force client boundaries
+- [forwardAuth must preserve status](memory/topics/cloudflare/tech-forwardauth-preserve-status.md) — Error pages middleware can rewrite 302 challenges into 401/500 and break OAuth
+- [release-please basics](memory/topics/ci/tech-release-please-basics.md) — Standing release PR + CHANGELOG; merge tags and publishes
+- [shadcn/ui base components](memory/topics/web/tech-shadcn-base.md) — shadcn + CVA + slot pattern as default React component base

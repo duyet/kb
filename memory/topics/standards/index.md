@@ -2,5 +2,7 @@
 
 ## Concepts
 
-- [BI display units never convert — pair suffix with explicit scale](tech-unit-suffix-vs-scale.md) — A chart unit label ("km") is a display suffix only; conversion needs an explicit per-column multiplier, never inferred from the unit string; plus the impossible-60-minutes formatter diagnostic
-- [Open Knowledge Format (OKF) — the spec this KB already implements](tech-okf-open-knowledge-format.md) — OKF v0.1 (Google, 2026-06) formalizes the markdown+frontmatter "LLM-wiki" pattern; this repo is now a strict-conformant bundle — nested topics, ISO-8601 timestamp, reserved index.md/log.md
+- [Atomic notes](tech-note-atomic.md) — One fact per file; split when a note needs 'and
+- [Chart unit suffix ≠ scale](tech-unit-suffix-vs-scale.md) — Display unit labels must not silently convert values; pair with explicit multiplier
+- [Note frontmatter standard](tech-note-frontmatter.md) — Required top-level fields for every concept note
+- [OKF-style knowledge bundle](tech-okf-bundle.md) — Nested markdown + frontmatter bundle with index.md and log.md

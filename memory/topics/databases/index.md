@@ -2,4 +2,5 @@
 
 ## Concepts
 
-- [Qdrant HNSW + quantization tuning for high-dim vectors](tech-qdrant-hnsw-tuning.md) — Why high-dim (e.g. 4096-d) Qdrant collections time out, and the HNSW + INT8 quantization config that fixes it
+- [Qdrant HNSW config at create](tech-qdrant-config-at-create.md) — Many collection params apply at create; retrofit via update_collection
+- [Qdrant: high-dim full scan timeouts](tech-qdrant-hnsw-timeout.md) — Large float32 collections without HNSW/quantization can time out
