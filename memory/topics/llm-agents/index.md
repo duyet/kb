@@ -2,6 +2,8 @@
 
 ## Concepts
 
+- [AgentState five primitives](tech-agentstate-five-primitives.md) — States, leases, claims, capability tokens, conversations — fleet coordination API
+- [AgentState is not an agent framework](tech-agentstate-not-a-framework.md) — Coordination/state API for fleets — bring your own agent loop
 - [AI agent stack map](tech-ai-agent-stack.md) — Map of common agent frameworks and what they are for
 - [AI SDK native tool parts](tech-ai-sdk-uimessage-native-tools.md) — Persist or convert to dynamic-tool / tool-name parts for history reload
 - [BYOK sibling before disabling backend](tech-llm-gateway-byok-sibling.md) — Disabling a platform backend can silently kill BYOK that injected through it

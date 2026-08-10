@@ -14,5 +14,5 @@ timestamp: 2026-08-10T12:00:00Z
 
 **Duyet Le** (handle `@duyet`) — senior data engineer and open-source contributor.
 
-Handle: [[user-duyet-handle]]. Focus areas: [[user-duyet-focus-data-engineering]], [[user-duyet-focus-clickhouse]], [[user-duyet-focus-llm-agents]].
+Handle: [[user-duyet-handle]]. Active portfolio: [[user-duyet-active-projects]]. Homelab: [[user-duyet-homelab]]. Focus areas: [[user-duyet-focus-data-engineering]], [[user-duyet-focus-clickhouse]], [[user-duyet-focus-llm-agents]].
 Stack: [[user-duyet-stack]]. Presence: [[user-duyet-web-presence]]. Style: [[feedback-working-style]].

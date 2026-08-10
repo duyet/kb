@@ -18,4 +18,6 @@ Agent working-style index:
 - [[feedback-docs-driven-development]] · [[feedback-cheap-models-subagents]]
 - [[feedback-logic-change-update-tests]] · [[feedback-never-auto-merge-release-please]]
 
+- [[feedback-disambiguate-repo]] — multi-product sessions
+
 Owner: [[user-duyet-profile]].

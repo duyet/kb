@@ -13,4 +13,4 @@ timestamp: 2026-08-10T12:00:00Z
 
 Recurring public themes: coding agents, agent SDKs, RAG, self-improving loops, agent memory.
 
-Stance: [[user-duyet-ai-stance]]. Stack: [[tech-ai-agent-stack]]. Pattern: [[feedback-docs-driven-development]].
+Products: [[project-anyrouter]], [[project-agentstate]], [[project-anyworker]], [[project-open-managed-agents]]. Stance: [[user-duyet-ai-stance]]. Stack: [[tech-ai-agent-stack]]. Pattern: [[feedback-docs-driven-development]].

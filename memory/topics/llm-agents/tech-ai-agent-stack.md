@@ -21,4 +21,4 @@ Common public stack pieces:
 | MCP | tool servers |
 | Flue / Hermes | agent runtimes |
 
-Stance: [[user-duyet-ai-stance]]. Runtimes: [[tech-eve-filesystem-agents]], [[tech-hermes-custom-provider]], [[tech-hermes-steer-mode]], [[tech-hermes-dashboard-auth-gate]]. Projects: [[project-anyrouter]], [[project-open-managed-agents]], [[project-duyetbot]].
+Stance: [[user-duyet-ai-stance]]. Runtimes: [[tech-eve-filesystem-agents]], [[tech-hermes-custom-provider]], [[tech-hermes-steer-mode]], [[tech-hermes-dashboard-auth-gate]]. Projects: [[project-anyrouter]], [[project-agentstate]], [[project-anyworker]], [[project-open-managed-agents]], [[project-duyetbot]].

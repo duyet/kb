@@ -19,3 +19,5 @@ Stack index (public blog/GitHub). Drill into atoms:
 - Infra: [[user-duyet-infra-kubernetes]], [[user-duyet-infra-cloudflare]]
 - AI: [[user-duyet-ai-stance]], [[tech-ai-agent-stack]]
 - Local: [[user-duyet-local-dev]]
+- Homelab: [[user-duyet-homelab]]
+- Products: [[user-duyet-active-projects]]

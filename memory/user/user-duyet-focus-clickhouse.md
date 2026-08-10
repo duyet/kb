@@ -11,4 +11,4 @@ updated: 2026-08-10
 timestamp: 2026-08-10T12:00:00Z
 ---
 
-ClickHouse is a primary public specialty (blog volume + tooling). See [[project-clickhouse-monitoring]], [[reference-duyet-blog]], [[user-duyet-stack]].
+ClickHouse is a primary public specialty (blog volume + tooling). Flagship: [[project-clickhouse-monitoring]] / [[project-chmonitor-advisor]]. See [[reference-duyet-blog]], [[user-duyet-stack]], [[user-duyet-active-projects]].

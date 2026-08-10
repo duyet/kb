@@ -1,20 +1,26 @@
 ---
 name: project-clickhouse-monitoring
-title: ClickHouse monitoring (chmonitor)
-description: Public open-source ClickHouse monitoring dashboard
+title: chmonitor
+description: Open-source ClickHouse operational advisor — monitoring + AI recommendations
 type: project
 category: clickhouse
 tags: [project, clickhouse, chmonitor, oss]
 aliases: [chmonitor, clickhouse-monitoring, project-clickhouse-monitor]
-related: ["[[tech-one-codebase-oss-saas]]", "[[tech-single-source-env]]", "[[user-duyet-focus-clickhouse]]"]
-sources: ["https://github.com/chmonitor/chmonitor", "https://chmonitor.dev"]
+related: ["[[user-duyet-focus-clickhouse]]", "[[tech-one-codebase-oss-saas]]", "[[user-duyet-active-projects]]", "[[user-duyet-data-clickhouse]]"]
+sources: ["https://github.com/chmonitor/chmonitor", "https://chmonitor.dev", "https://docs.chmonitor.dev"]
 created: 2026-08-10
 updated: 2026-08-10
-timestamp: 2026-08-10T12:00:00Z
+timestamp: 2026-08-10T18:00:00Z
 ---
 
-Public OSS ClickHouse ops UI (historically `duyet/clickhouse-monitoring`; product brand chmonitor).
+github.com/chmonitor/chmonitor · https://chmonitor.dev · docs: https://docs.chmonitor.dev
 
-Deploy targets: Cloudflare Workers apps. Package manager: pnpm for installs; bun for tests only.
+**chmonitor** — operational advisor for ClickHouse (not only a metrics UI). Reads `system.*`, recommends projections/skip indexes/partitions/MVs (**recommend-only**, never auto-applies DDL). Real-time query/cluster/replication monitoring, MCP server, AI agent chat.
+
+| Edition | Notes |
+|---------|--------|
+| Self-host OSS | Docker/K8s/bare metal/Workers — GPL-3.0 |
+| Cloud SaaS | Hosted dashboard (same product family) |
+
 Patterns: [[tech-one-codebase-oss-saas]], [[tech-single-source-env]], [[tech-tanstack-start-ssg]].
-Owner stack: [[user-duyet-focus-clickhouse]].
+Focus: [[user-duyet-focus-clickhouse]]. Portfolio: [[user-duyet-active-projects]].
