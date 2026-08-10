@@ -1,20 +1,22 @@
 ---
 name: project-open-managed-agents
-title: duyet/open-managed-agents
-description: OSS Managed Agents API reimplementation (public)
+title: Open Managed Agents (OMA)
+description: OSS self-hostable Managed Agents API — CF Workers/DO or Docker
 type: project
 category: agents
-tags: [project, agents, cloudflare, self-host]
+tags: [project, agents, oma, cloudflare, self-host]
 aliases: [oma, open-managed-agents]
-related: ["[[tech-oma-credentials-out-of-sandbox]]", "[[tech-ai-agent-stack]]", "[[feedback-never-auto-merge-release-please]]"]
-sources: ["https://github.com/duyet/open-managed-agents"]
+related: ["[[user-duyet-active-projects]]", "[[tech-oma-credentials-out-of-sandbox]]", "[[tech-ai-agent-stack]]", "[[feedback-never-auto-merge-release-please]]"]
+sources: ["https://github.com/duyet/oma", "https://oma.duyet.net"]
 created: 2026-08-10
 updated: 2026-08-10
-timestamp: 2026-08-10T12:00:00Z
+timestamp: 2026-08-10T18:00:00Z
 ---
 
-github.com/duyet/open-managed-agents (OMA) — open reimplementation of a managed-agents style API.
+github.com/duyet/oma · https://oma.duyet.net · docs: https://docs.oma.duyet.net
 
-Runs on Cloudflare (Workers + Durable Objects) and self-host Node from shared business logic.
+Open-source reimplementation of a **Managed Agents**-style API. Meta-harness: platform prepares tools/skills/sandbox/credentials; pluggable harness drives the model loop.
+
+Runs two ways: Cloudflare (Workers + Durable Objects) or self-host Node/`docker compose` — same business logic.
 Invariants: [[tech-oma-credentials-out-of-sandbox]], [[tech-prompt-cache-byte-sensitive]].
-Release rule: [[feedback-never-auto-merge-release-please]].
+Release: [[feedback-never-auto-merge-release-please]]. Portfolio: [[user-duyet-active-projects]].

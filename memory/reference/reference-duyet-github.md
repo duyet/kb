@@ -17,9 +17,9 @@ Notable public repos (non-exhaustive):
 | Area | Repos |
 |------|-------|
 | ClickHouse | [[project-clickhouse-monitoring]], `clickhouse-udf-rs` |
-| LLM / agents | [[project-anyrouter]], [[project-open-managed-agents]], `coding-agent-insights`, `ccr` |
+| LLM / agents | [[project-anyrouter]], [[project-agentstate]], [[project-anyworker]], [[project-open-managed-agents]] |
 | Web | [[project-monorepo]], [[project-kb]] |
-| Infra | [[project-charts]], `gaxy` |
+| Homelab / infra | [[project-homelab]], [[project-charts]], `gaxy` |
 | Older popular | `bruteforce-database`, `pricetrack` |
 
 Hub: [[user-duyet-github]]. Stack: [[user-duyet-stack]].

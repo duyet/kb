@@ -23,6 +23,7 @@ Public sites (prefer `/llms.txt` when present):
 | X | https://x.com/_duyet |
 | LLM Timeline | https://llm-timeline.duyet.net |
 | Agents | https://agents.duyet.net |
+| Homelab | https://homelab.duyet.net |
 | KB | https://kb.duyet.net |
 
-Atoms: [[user-duyet-site-blog]], [[user-duyet-github]], [[user-duyet-site-kb]]. Profile: [[user-duyet-profile]].
+Atoms: [[user-duyet-site-blog]], [[user-duyet-github]], [[user-duyet-site-kb]], [[user-duyet-site-homelab]]. Profile: [[user-duyet-profile]]. Portfolio: [[user-duyet-active-projects]].

@@ -27,3 +27,11 @@
   and other public GitHub project pointers only.
 - **Scope**: [[feedback-public-kb-only]] — generic tech patterns + public profile.
 - **Count**: 101 concept notes after rewrite.
+
+## 2026-08-10 (portfolio + homelab)
+
+- Added public portfolio graph: [[user-duyet-active-projects]], [[user-duyet-multi-project]],
+  [[user-duyet-homelab]], [[project-homelab]], [[project-agentstate]], [[project-anyworker]].
+- Expanded [[project-anyrouter]], [[project-clickhouse-monitoring]], [[project-open-managed-agents]].
+- Product atoms: advisor-only chmonitor, AnyRouter OpenAI compat, AgentState primitives, AnyWorker local agent.
+- Kept public-only (no hosts/IPs/topology).
