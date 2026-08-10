@@ -39,7 +39,7 @@ Each article's `summary` field (≤140 chars) feeds the `/llms.txt` endpoint —
 
 ## Seeding history
 
-The initial KB content was seeded on 2026-05-26 by synthesizing all `.md` files in the agent memory directory (`~/.claude/projects/-Users-duet-project-monorepo/memory/`). Memory files are point-in-time snapshots; KB articles are the distilled, durable form.
+The initial long-form articles were seeded on 2026-05-26 by synthesizing private agent session notes into public articles. Session scratchpads stay private and machine-local; only durable, public facts land in this repo / kb.duyet.net.
 
 ## Who maintains it
 

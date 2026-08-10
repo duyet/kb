@@ -3,13 +3,15 @@ title: "Agent Memory System"
 category: "agents"
 tags: ["memory", "agents", "context", "compaction"]
 links: ["autonomous-workflow", "duyetbot-scope", "about-this-kb"]
-summary: "Agent memory lives in ~/.claude/projects/.../memory/ as point-in-time .md snapshots; the KB is the synthesized durable form."
-updated: "2026-05-26"
+summary: "Per-tool agent memory is a private scratchpad of point-in-time .md snapshots; the public shared KB is the durable form."
+updated: "2026-08-10"
 ---
 
 # Agent Memory System
 
-The Claude Code agent maintains cross-session memory via markdown files in `~/.claude/projects/-Users-duet-project-monorepo/memory/`. These files are point-in-time snapshots — not live state.
+Coding agents may keep **private, per-project scratchpads** as markdown snapshots (tool-local memory dirs). Those files are point-in-time — not live state — and must **not** be published with machine-specific paths.
+
+The **public durable brain** is this shared-brain repo (`duyet/kb` / kb.duyet.net): atomic notes under `memory/`, indexed by `MEMORY.md`.
 
 ## Memory file types
 
