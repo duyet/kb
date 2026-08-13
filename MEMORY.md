@@ -112,6 +112,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Hermes custom_providers](memory/topics/llm-agents/tech-hermes-custom-provider.md) — Register custom OpenAI-compatible providers by name, base_url, model
 - [Hermes steer mode](memory/topics/llm-agents/tech-hermes-steer-mode.md) — While busy, new user messages can adjust the current task instead of being ignored
 - [Note frontmatter standard](memory/topics/standards/tech-note-frontmatter.md) — Required top-level fields for every concept note
+- [npx scoped package bin name](memory/topics/npm/tech-npx-scoped-package-bin.md) — npx @scope/name looks up a bin named after the last path segment
 - [OG meta must be prerendered](memory/topics/web/tech-og-meta-in-prerender.md) — Social crawlers need Open Graph tags in static HTML, not only client head
 - [OKF-style knowledge bundle](memory/topics/standards/tech-okf-bundle.md) — Nested markdown + frontmatter bundle with index.md and log.md
 - [One codebase OSS + SaaS](memory/topics/workflow/tech-one-codebase-oss-saas.md) — Ship self-host and cloud from one tree behind a fail-closed mode flag
