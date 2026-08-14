@@ -105,7 +105,8 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [createContext breaks RSC importers](memory/topics/web/tech-kumo-rsc-createcontext.md) — Libraries that call createContext at module scope force client boundaries
 - [Credentials never enter the sandbox](memory/topics/llm-agents/tech-oma-credentials-out-of-sandbox.md) — Managed-agent platforms should inject secrets via outbound proxy, not into the sandbox FS
 - [Dashboard auth gate precedence](memory/topics/llm-agents/tech-hermes-dashboard-auth-gate.md) — Insecure/loopback allowlists can bypass OAuth if ordered wrong
-- [Filesystem-first durable agents](memory/topics/llm-agents/tech-eve-filesystem-agents.md) — Some frameworks store agent state/layout as files for durability and review
+- [Filesystem-first durable agents](memory/topics/llm-agents/tech-eve-filesystem-agents.md) — Eve authors an agent as agent/ files — instructions, tools, connections
+- [Eve durable runtime is Vercel or Nitro](memory/topics/llm-agents/tech-eve-runtime-vercel-nitro.md) — Eve sessions need Vercel Workflow or a self-hosted Nitro Node server
 - [Flat design: hairline borders](memory/topics/web/tech-flat-design-hairline.md) — Prefer hairline borders over heavy shadows for public site UI
 - [Flue: register providers in initializer](memory/topics/llm-agents/tech-flue-register-in-initializer.md) — Custom gateways must register from agent init with ctx.env; module load has empty env
 - [forwardAuth must preserve status](memory/topics/cloudflare/tech-forwardauth-preserve-status.md) — Error pages middleware can rewrite 302 challenges into 401/500 and break OAuth

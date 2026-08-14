@@ -1,16 +1,24 @@
 ---
 name: tech-eve-filesystem-agents
 title: Filesystem-first durable agents
-description: Some frameworks store agent state/layout as files for durability and review
+description: Eve authors an agent as agent/ files — instructions, tools, connections
 type: tech
 category: agents
-tags: [tech, llm-agents, architecture]
-related: ["[[feedback-docs-driven-development]]", "[[tech-ai-agent-stack]]"]
+tags: [tech, llm-agents, eve, architecture]
+related: ["[[feedback-docs-driven-development]]", "[[tech-ai-agent-stack]]", "[[tech-eve-runtime-vercel-nitro]]"]
+sources: ["https://eve.dev/docs", "https://github.com/vercel/eve"]
 created: 2026-08-10
-updated: 2026-08-10
-timestamp: 2026-08-10T12:00:00Z
+updated: 2026-08-15
+timestamp: 2026-08-15T00:00:00Z
 ---
 
-Filesystem-first agents keep prompts, memory, and tool config as files — greppable and PR-reviewable.
+Vercel [Eve](https://eve.dev/) authors an agent as files under `agent/`:
 
-Aligns with [[feedback-docs-driven-development]]. Stack map: [[tech-ai-agent-stack]].
+| Path | Role |
+|------|------|
+| `instructions.md` | always-on system prompt |
+| `tools/<name>.ts` | tool name = filename |
+| `connections/<name>.ts` | MCP / OpenAPI |
+| `skills/`, `schedules/`, `subagents/` | optional slots |
+
+Identity comes from the path, not a `name` field. Aligns with [[feedback-docs-driven-development]]. Runtime host: [[tech-eve-runtime-vercel-nitro]].
