@@ -117,7 +117,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [OKF-style knowledge bundle](memory/topics/standards/tech-okf-bundle.md) — Nested markdown + frontmatter bundle with index.md and log.md
 - [One codebase OSS + SaaS](memory/topics/workflow/tech-one-codebase-oss-saas.md) — Ship self-host and cloud from one tree behind a fail-closed mode flag
 - [Pin GitHub Actions](memory/topics/ci/tech-pin-github-actions.md) — Pin actions to version or commit SHA; moving major tags can be force-pushed
-- [Pre-1.0 feat may only bump patch](memory/topics/ci/tech-release-please-pre1-minor.md) — With bump-patch-for-minor-pre-major, feat in 0.x needs breaking marker for minor
+- [Pre-1.0 feat may only bump patch](memory/topics/ci/tech-release-please-pre1-minor.md) — bump-patch-for-minor-pre-major true: feat→patch; false: feat→minor in 0.x
 - [Prompt cache is byte-sensitive](memory/topics/llm-agents/tech-prompt-cache-byte-sensitive.md) — Any prefix byte change can bust LLM prompt cache
 - [Qdrant HNSW config at create](memory/topics/databases/tech-qdrant-config-at-create.md) — Many collection params apply at create; retrofit via update_collection
 - [Qdrant: high-dim full scan timeouts](memory/topics/databases/tech-qdrant-hnsw-timeout.md) — Large float32 collections without HNSW/quantization can time out
