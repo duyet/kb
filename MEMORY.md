@@ -78,6 +78,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 
 ## Tech
 - [Agent-loop PR cycle](memory/topics/workflow/tech-agent-loop-cycle.md) — Periodic cycle triages open PRs and dispatches fix/review work
+- [Morning Herdr issue-desk cron](memory/topics/workflow/tech-herdr-morning-issue-desk.md) — Cron starts a Grok manager on main; isolated worktrees; dated run folder left open for review
 - [Agent-loop uses cheap workers](memory/topics/workflow/tech-agent-loop-cheap-subagents.md) — PR fix/review fan-out should not all run on the most expensive model
 - [AgentState five primitives](memory/topics/llm-agents/tech-agentstate-five-primitives.md) — States, leases, claims, capability tokens, conversations — fleet coordination API
 - [AgentState is not an agent framework](memory/topics/llm-agents/tech-agentstate-not-a-framework.md) — Coordination/state API for fleets — bring your own agent loop
