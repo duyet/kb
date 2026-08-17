@@ -59,7 +59,6 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Web presence (index)](memory/user/user-duyet-web-presence.md) — Index of public sites and llms.txt sources
 
 ## Project
-<<<<<<< Updated upstream
 - [AnyRouter](memory/projects/project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
 - [AnyRouter OpenAI-compatible API](memory/projects/project-anyrouter-openai-compat.md) — Point existing OpenAI SDKs at AnyRouter base URL; swap model strings
 - [AnyWorker local agent + GUI](memory/projects/project-anyworker-local-agent.md) — Product path: Python agent server plus React GUI; web is separate marketing app
@@ -73,15 +72,9 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [duyet/monorepo](memory/projects/project-monorepo.md) — Public Bun+Turborepo for personal duyet.net web apps
 - [duyetbot persona](memory/projects/project-duyetbot.md) — Autonomous agent persona that maintains public monorepo within clear scope
 - [KB site front-end](memory/projects/project-kb-site.md) — kb.duyet.net renders the shared-brain notes as a public site
+- [Lessons — chmonitor on homelab k3s](memory/projects/homelab/lessons-chmonitor-homelab-deploy.md) — dash vs full homelab; image chmonitor org; no CH readonly profile; dedicated SELECT user + proxy auth
 - [LLM Timeline](memory/projects/project-llm-timeline.md) — Public SSG timeline of LLM models at llm-timeline.duyet.net
 - [Open Managed Agents (OMA)](memory/projects/project-open-managed-agents.md) — OSS self-hostable Managed Agents API — CF Workers/DO or Docker
-=======
-- [duyetbot](memory/projects/project-duyetbot.md) — autonomous agent maintaining the monorepo: scope, loop, memory hierarchy
-- [Open Managed Agents (OMA)](memory/projects/project-open-managed-agents.md) — OSS Claude Managed Agents API reimpl; CF Workers/DO + self-host Node; prod app.oma.duyet.net; autonomous issue-run maintenance
-- [LLM Timeline app](memory/projects/project-llm-timeline.md) — 3700+ SSG pages, shadcn UI, dual data sources (1950–2026)
-- [Lessons — chmonitor on homelab k3s](memory/projects/homelab/lessons-chmonitor-homelab-deploy.md) — dash vs full homelab; image chmonitor org; no CH readonly profile; dedicated SELECT user + proxy auth
-- [AnyRouter](memory/projects/project-anyrouter.md) — LLM API gateway on CF Workers; TanStack Start + Kumo; split web/API workers; prerendered marketing shells
->>>>>>> Stashed changes
 
 ## Tech
 - [Agent-loop PR cycle](memory/topics/workflow/tech-agent-loop-cycle.md) — Periodic cycle triages open PRs and dispatches fix/review work
