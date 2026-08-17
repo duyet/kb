@@ -94,6 +94,8 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Chart unit suffix ≠ scale](memory/topics/standards/tech-unit-suffix-vs-scale.md) — Display unit labels must not silently convert values; pair with explicit multiplier
 - [Cloudflare Pages deploy habit](memory/topics/cloudflare/tech-cloudflare-pages-deploy.md) — Semantic commit → push → deploy changed app; avoid parallel deploys that share env files
 - [Codebase maintenance loop](memory/topics/workflow/tech-codebase-maintenance-loop.md) — Measure → fix top issue → verify → commit → deploy → log
+- [Host cron as code](memory/topics/workflow/tech-cron-as-code-install-script.md) — Reproducible host jobs are committed crontab snippets plus an idempotent installer
+- [Daily manager leaves worktrees](memory/topics/workflow/tech-daily-manager-leaves-worktrees.md) — Overnight issue-fanout persists worktrees and a dated summary for next-morning review
 - [Convert history DTO → UIMessage](memory/topics/llm-agents/tech-ai-sdk-history-dto-convert.md) — Keep API neutral; translate tool-call DTOs to AI SDK parts per client
 - [createContext breaks RSC importers](memory/topics/web/tech-kumo-rsc-createcontext.md) — Libraries that call createContext at module scope force client boundaries
 - [Credentials never enter the sandbox](memory/topics/llm-agents/tech-oma-credentials-out-of-sandbox.md) — Managed-agent platforms should inject secrets via outbound proxy, not into the sandbox FS
