@@ -42,7 +42,7 @@ about whether it still admits the legitimate client. Check the pair:
 | app credentials, no Access headers | `302` / `403` |
 | app credentials **+** Access headers | `200` |
 
-**Ordering when rotating a token:** create the token → propagate it to every client
+**Ordering when rotating Access credentials:** create them → propagate to every client
 (Worker vars, secrets, `.env`) → **then** create or update the Access application.
 Reversed, every client is locked out for the length of the gap. That matters most
 where the client fails open by design (backup/telemetry sinks that swallow errors):

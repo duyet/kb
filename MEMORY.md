@@ -6,7 +6,7 @@ the notes relevant to your task. See `AGENTS.md` for the protocol.
 Scope: **public, generic, durable** facts only. No secrets, hosts, or internal codenames.
 
 ## User
-- [Active project portfolio (index)](memory/user/user-duyet-active-projects.md) — Index of products and repos Duyet actively builds across
+- [Active project portfolio (index)](memory/user/user-duyet-active-projects.md) — Index of products and repos Duyet actively builds (chmonitor, AnyRouter, OS, AgentState, AnyWorker, …)
 - [AI stance (index)](memory/user/user-duyet-ai-stance.md) — How public AI practice is structured — agents over hand-writing
 - [Claude Code daily driver](memory/user/user-duyet-ai-claude-code.md) — Claude Code is the stated daily coding-agent driver
 - [Coding tools are disposable](memory/user/user-duyet-ai-tools-disposable.md) — Treat specific AI coding tools as replaceable; field moves fast
@@ -60,9 +60,11 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 
 ## Project
 - [AnyRouter](memory/projects/project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
+- [AnyRouter OS](memory/projects/project-anyrouter-os.md) — Browser OS workshop at os.anyrouter.dev — AnyRouter-branded Cloudflare OS
 - [AnyRouter OpenAI-compatible API](memory/projects/project-anyrouter-openai-compat.md) — Point existing OpenAI SDKs at AnyRouter base URL; swap model strings
 - [AnyWorker local agent + GUI](memory/projects/project-anyworker-local-agent.md) — Product path: Python agent server plus React GUI; web is separate marketing app
 - [chmonitor](memory/projects/project-clickhouse-monitoring.md) — Open-source ClickHouse operational advisor — monitoring + AI recommendations
+- [chmonitor paid licenses are self-hosted host-count](memory/projects/project-chmonitor-licenses.md) — Paid chmonitor is honor-system host-count licenses (yearly/lifetime), not hosted SaaS seats
 - [chmonitor recommends, never auto-DDL](memory/projects/project-chmonitor-advisor.md) — AI/ops advisor suggests CH changes but does not apply DDL automatically
 - [duyet/agentstate](memory/projects/project-agentstate.md) — State and coordination layer for AI agent fleets (public OSS)
 - [duyet/anyworker](memory/projects/project-anyworker.md) — Open alternative to Claude Cowork-style agents — local agent + marketing site
@@ -83,6 +85,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [AgentState five primitives](memory/topics/llm-agents/tech-agentstate-five-primitives.md) — States, leases, claims, capability tokens, conversations — fleet coordination API
 - [AgentState is not an agent framework](memory/topics/llm-agents/tech-agentstate-not-a-framework.md) — Coordination/state API for fleets — bring your own agent loop
 - [AI agent stack map](memory/topics/llm-agents/tech-ai-agent-stack.md) — Map of common agent frameworks and what they are for
+- [Cloudflare Access fails OPEN when the app is missing](memory/topics/cloudflare/tech-access-missing-app-fails-open.md) — A service-token-protected origin becomes publicly reachable if the Access application is absent
 - [AI Gateway is transparent on model ids](memory/topics/cloudflare/tech-cloudflare-ai-gateway-transparent.md) — Cloudflare AI Gateway does not validate model names; upstream does
 - [AI SDK native tool parts](memory/topics/llm-agents/tech-ai-sdk-uimessage-native-tools.md) — Persist or convert to dynamic-tool / tool-name parts for history reload
 - [Atomic notes](memory/topics/standards/tech-note-atomic.md) — One fact per file; split when a note needs 'and'
@@ -102,6 +105,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Credentials never enter the sandbox](memory/topics/llm-agents/tech-oma-credentials-out-of-sandbox.md) — Managed-agent platforms should inject secrets via outbound proxy, not into the sandbox FS
 - [Dashboard auth gate precedence](memory/topics/llm-agents/tech-hermes-dashboard-auth-gate.md) — Insecure/loopback allowlists can bypass OAuth if ordered wrong
 - [Disk swap is not extra RAM](memory/topics/linux/tech-disk-swap-not-extra-ram.md) — A huge disk swapfile delays OOM and can hang a headless box; prefer small zram plus kill/evict
+- [An unquoted shell metacharacter in a .env file silently drops every later variable](memory/topics/workflow/tech-dotenv-unquoted-value-kills-source.md) — bash source aborts at the offending line so later vars are empty
 - [Filesystem-first durable agents](memory/topics/llm-agents/tech-eve-filesystem-agents.md) — Eve authors an agent as agent/ files — instructions, tools, connections
 - [Eve durable runtime is Vercel or Nitro](memory/topics/llm-agents/tech-eve-runtime-vercel-nitro.md) — Eve sessions need Vercel Workflow or a self-hosted Nitro Node server
 - [Flat design: hairline borders](memory/topics/web/tech-flat-design-hairline.md) — Prefer hairline borders over heavy shadows for public site UI
@@ -135,4 +139,5 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [WASM prerender CI trap](memory/topics/web/tech-wasm-prerender-ci.md) — Missing wasm build step makes prerender succeed empty or fail late
 - [When Rust WASM is worth it](memory/topics/web/tech-rust-wasm-when.md) — WASM usually wins only when the TS path is >~1ms hot work
 - [Workers Cache enable flag](memory/topics/cloudflare/tech-workers-cache-enabled.md) — Enable per-worker cache with cache.enabled; only public Cache-Control is stored
+- [Moving a CF zone between accounts copies DNS but not Worker routes](memory/topics/cloudflare/tech-zone-account-transfer-breaks-worker-routes.md) — Inter-account zone transfer drops Worker routes; proxied hostnames 403 Error 1000
 

@@ -8,8 +8,10 @@
 
 - [AnyRouter](project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
 - [AnyRouter OpenAI-compatible API](project-anyrouter-openai-compat.md) — Point existing OpenAI SDKs at AnyRouter base URL; swap model strings
+- [AnyRouter OS](project-anyrouter-os.md) — Browser OS workshop at os.anyrouter.dev — AnyRouter-branded Cloudflare OS
 - [AnyWorker local agent + GUI](project-anyworker-local-agent.md) — Product path: Python agent server plus React GUI; web is separate marketing app
 - [chmonitor](project-clickhouse-monitoring.md) — Open-source ClickHouse operational advisor — monitoring + AI recommendations
+- [chmonitor paid licenses are self-hosted host-count](project-chmonitor-licenses.md) — Paid chmonitor is honor-system host-count licenses (yearly/lifetime), not hosted SaaS seats
 - [chmonitor recommends, never auto-DDL](project-chmonitor-advisor.md) — AI/ops advisor suggests CH changes but does not apply DDL automatically
 - [duyet/agentstate](project-agentstate.md) — State and coordination layer for AI agent fleets (public OSS)
 - [duyet/anyworker](project-anyworker.md) — Open alternative to Claude Cowork-style agents — local agent + marketing site
