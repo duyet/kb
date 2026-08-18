@@ -6,7 +6,7 @@ type: project
 category: llm
 tags: [project, anyrouter, llm, gateway, cloudflare]
 aliases: [anyrouter, duyet-anyrouter]
-related: ["[[user-duyet-active-projects]]", "[[project-anyrouter-os]]", "[[tech-llm-gateway-byok-sibling]]", "[[project-agentstate]]", "[[project-anyworker]]"]
+related: ["[[user-duyet-active-projects]]", "[[project-anyrouter-os]]", "[[project-anyrouter-ui-chrome]]", "[[project-anyrouter-unlist-broken-models]]", "[[tech-llm-gateway-byok-sibling]]", "[[project-agentstate]]", "[[project-anyworker]]"]
 sources: ["https://anyrouter.dev", "https://docs.anyrouter.dev", "https://dash.anyrouter.dev"]
 created: 2026-08-10
 updated: 2026-08-18
