@@ -61,7 +61,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 
 ## Project
 - [AnyRouter](memory/projects/project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
-- [AnyRouter OS](memory/projects/project-anyrouter-os.md) — Browser OS workshop at os.anyrouter.dev — repo duyet/anyrouter-os
+- [AnyRouter OS](memory/projects/project-anyrouter-os.md) — Browser OS workshop — repo duyet/anyrouter-os; file bugs on duyet/anyrouter with [os] prefix
 - [AnyRouter public UI chrome](memory/projects/project-anyrouter-ui-chrome.md) — Viewport tokens, 44px targets, semantic dark, compact playground row
 - [Unlist broken AnyRouter models](memory/projects/project-anyrouter-unlist-broken-models.md) — Disable or unlist a broken model from /models and the catalog; do not delete history
 - [AnyRouter OpenAI-compatible API](memory/projects/project-anyrouter-openai-compat.md) — OpenAI-shaped clients; text and embeddings only — image/video generation is gone
@@ -69,6 +69,8 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [chmonitor](memory/projects/project-clickhouse-monitoring.md) — Open-source ClickHouse operational advisor — monitoring + AI recommendations
 - [chmonitor paid licenses are self-hosted host-count](memory/projects/project-chmonitor-licenses.md) — Paid chmonitor is honor-system host-count licenses (yearly/lifetime), not hosted SaaS seats
 - [chmonitor recommends, never auto-DDL](memory/projects/project-chmonitor-advisor.md) — AI/ops advisor suggests CH changes but does not apply DDL automatically
+- [chmonitor Tools sidebar group](memory/projects/project-chmonitor-tools-sidebar.md) — Dashboard Tools group holds SQL Console, Data Explorer, Explain, Advisor, Chart Builder, Schema Compare, Settings Diff
+- [chmonitor menu engine filter](memory/projects/project-chmonitor-menu-engine-filter.md) — Absent engines on a menu item means ClickHouse family; Postgres hosts must not see those items
 - [duyet/agentstate](memory/projects/project-agentstate.md) — State and coordination layer for AI agent fleets (public OSS)
 - [duyet/anyworker](memory/projects/project-anyworker.md) — Open alternative to Claude Cowork-style agents — local agent + marketing site
 - [duyet/charts](memory/projects/project-charts.md) — Public Helm charts repository
