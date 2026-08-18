@@ -107,6 +107,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [createContext breaks RSC importers](memory/topics/web/tech-kumo-rsc-createcontext.md) — Libraries that call createContext at module scope force client boundaries
 - [Credentials never enter the sandbox](memory/topics/llm-agents/tech-oma-credentials-out-of-sandbox.md) — Managed-agent platforms should inject secrets via outbound proxy, not into the sandbox FS
 - [Dashboard auth gate precedence](memory/topics/llm-agents/tech-hermes-dashboard-auth-gate.md) — Insecure/loopback allowlists can bypass OAuth if ordered wrong
+- [Debian 13 apt ships Node 20](memory/topics/linux/tech-debian-13-apt-node-20.md) — Debian 13 nodejs is 20.x; install official 22 LTS to /usr/local and dpkg-divert /usr/bin/node
 - [Disk swap is not extra RAM](memory/topics/linux/tech-disk-swap-not-extra-ram.md) — A huge disk swapfile delays OOM and can hang a headless box; prefer small zram plus kill/evict
 - [An unquoted shell metacharacter in a .env file silently drops every later variable](memory/topics/workflow/tech-dotenv-unquoted-value-kills-source.md) — bash source aborts at the offending line so later vars are empty
 - [Filesystem-first durable agents](memory/topics/llm-agents/tech-eve-filesystem-agents.md) — Eve authors an agent as agent/ files — instructions, tools, connections
