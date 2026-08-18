@@ -61,7 +61,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 
 ## Project
 - [AnyRouter](memory/projects/project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
-- [AnyRouter OS](memory/projects/project-anyrouter-os.md) — Browser OS workshop at os.anyrouter.dev — AnyRouter-branded Cloudflare OS
+- [AnyRouter OS](memory/projects/project-anyrouter-os.md) — Browser OS workshop at os.anyrouter.dev — repo duyet/anyrouter-os
 - [AnyRouter public UI chrome](memory/projects/project-anyrouter-ui-chrome.md) — Viewport tokens, 44px targets, semantic dark, compact playground row
 - [Unlist broken AnyRouter models](memory/projects/project-anyrouter-unlist-broken-models.md) — Disable or unlist a broken model from /models and the catalog; do not delete history
 - [AnyRouter OpenAI-compatible API](memory/projects/project-anyrouter-openai-compat.md) — OpenAI-shaped clients; text and embeddings only — image/video generation is gone
