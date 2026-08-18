@@ -62,7 +62,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 ## Project
 - [AnyRouter](memory/projects/project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
 - [AnyRouter OS](memory/projects/project-anyrouter-os.md) — Browser OS workshop at os.anyrouter.dev — AnyRouter-branded Cloudflare OS
-- [AnyRouter OpenAI-compatible API](memory/projects/project-anyrouter-openai-compat.md) — Point existing OpenAI SDKs at AnyRouter base URL; swap model strings
+- [AnyRouter OpenAI-compatible API](memory/projects/project-anyrouter-openai-compat.md) — OpenAI-shaped clients; text and embeddings only — image/video generation is gone
 - [AnyWorker local agent + GUI](memory/projects/project-anyworker-local-agent.md) — Product path: Python agent server plus React GUI; web is separate marketing app
 - [chmonitor](memory/projects/project-clickhouse-monitoring.md) — Open-source ClickHouse operational advisor — monitoring + AI recommendations
 - [chmonitor paid licenses are self-hosted host-count](memory/projects/project-chmonitor-licenses.md) — Paid chmonitor is honor-system host-count licenses (yearly/lifetime), not hosted SaaS seats
