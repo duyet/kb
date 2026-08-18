@@ -46,7 +46,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Keep main CI green and fast](memory/feedback/feedback-main-ci-green-fast.md) — After merges, tip of main must stay green; no extra hot-path queries or slow tests
 - [Working style (index)](memory/feedback/feedback-working-style.md) — Index of agent collaboration preferences
 - [Write concise simple English](memory/feedback/feedback-concise-english.md) — Prefer short plain English in prose and commits
-- [Write memory on the way out](memory/feedback/feedback-docs-write-on-exit.md) — Persist durable public facts before context is lost
+- [Write memory as you work](memory/feedback/feedback-docs-write-on-exit.md) — Persist durable public facts during work, not only at session end
 
 ## Reference
 - [AI SDK UIMessage shape](memory/reference/reference-ai-sdk-uimessage.md) — UIMessage is id+role+parts; unknown part types render as null
@@ -72,9 +72,9 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [duyet/charts](memory/projects/project-charts.md) — Public Helm charts repository
 - [duyet/homelab](memory/projects/project-homelab.md) — Public personal homelab repo — configs and experiments (no private topology in kb)
 - [duyet/kb shared brain](memory/projects/project-kb.md) — Public shared-brain repo — atomic notes, MEMORY.md index, OKF layout
-- [duyet/monorepo](memory/projects/project-monorepo.md) — Public Bun+Turborepo for personal duyet.net web apps
-- [duyetbot persona](memory/projects/project-duyetbot.md) — Autonomous agent persona that maintains public monorepo within clear scope
-- [KB site front-end](memory/projects/project-kb-site.md) — kb.duyet.net renders the shared-brain notes as a public site
+- [duyet/monorepo](memory/projects/project-monorepo.md) — Public Bun+Turborepo for personal duyet.net web apps including the kb site
+- [duyetbot persona](memory/projects/project-duyetbot.md) — Manager agent for the public product fleet — assigns work, keeps kb current
+- [KB site front-end](memory/projects/project-kb-site.md) — kb.duyet.net renders the shared-brain notes; apps/kb/kb mounts ~/kb
 - [Lessons — chmonitor on homelab k3s](memory/projects/homelab/lessons-chmonitor-homelab-deploy.md) — dash vs full homelab; image chmonitor org; no CH readonly profile; dedicated SELECT user + proxy auth
 - [LLM Timeline](memory/projects/project-llm-timeline.md) — Public SSG timeline of LLM models at llm-timeline.duyet.net
 - [Open Managed Agents (OMA)](memory/projects/project-open-managed-agents.md) — OSS self-hostable Managed Agents API — CF Workers/DO or Docker
