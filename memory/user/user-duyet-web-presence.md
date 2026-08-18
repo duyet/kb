@@ -9,7 +9,7 @@ related: ["[[user-duyet-profile]]", "[[user-duyet-site-blog]]", "[[user-duyet-gi
 sources: ["https://duyet.net/llms.txt"]
 created: 2026-08-10
 updated: 2026-08-18
-timestamp: 2026-08-18T12:00:00Z
+timestamp: 2026-08-18T13:39:00Z
 ---
 
 Public sites (prefer `/llms.txt` when present):
@@ -18,7 +18,7 @@ Public sites (prefer `/llms.txt` when present):
 |------|-----|
 | Profile / blog / CV | https://duyet.net · https://blog.duyet.net · https://cv.duyet.net (+ `/llms.txt`) |
 | GitHub / X | https://github.com/duyet · https://x.com/_duyet |
-| Personal products | https://llm-timeline.duyet.net · https://agents.duyet.net · https://kb.duyet.net · https://homelab.duyet.net |
+| Personal products | https://llm-timeline.duyet.net · https://news.duyet.net · https://agents.duyet.net · https://kb.duyet.net · https://homelab.duyet.net |
 | AnyRouter | https://anyrouter.dev · https://os.anyrouter.dev · https://docs.anyrouter.dev |
 | Agent / CH | https://agentstate.app · https://anyworker.dev · https://chmonitor.dev |
 
