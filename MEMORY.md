@@ -43,6 +43,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Read MEMORY.md on entry](memory/feedback/feedback-docs-read-on-entry.md) — Before non-trivial work, read the index and relevant notes
 - [Semantic commits](memory/feedback/feedback-semantic-commits.md) — Use conventional semantic commit messages
 - [Surgical changes only](memory/feedback/feedback-surgical-changes.md) — Touch only what the request requires; no drive-by refactors
+- [Keep main CI green and fast](memory/feedback/feedback-main-ci-green-fast.md) — After merges, tip of main must stay green; no extra hot-path queries or slow tests
 - [Working style (index)](memory/feedback/feedback-working-style.md) — Index of agent collaboration preferences
 - [Write concise simple English](memory/feedback/feedback-concise-english.md) — Prefer short plain English in prose and commits
 - [Write memory on the way out](memory/feedback/feedback-docs-write-on-exit.md) — Persist durable public facts before context is lost
