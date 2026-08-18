@@ -140,7 +140,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Two-phase Trivy scan](memory/topics/ci/tech-trivy-two-phase.md) — Report job always succeeds; separate fail-on-severity job gates the build
 - [WASM prerender CI trap](memory/topics/web/tech-wasm-prerender-ci.md) — Missing wasm build step makes prerender succeed empty or fail late
 - [When Rust WASM is worth it](memory/topics/web/tech-rust-wasm-when.md) — WASM usually wins only when the TS path is >~1ms hot work
-- [Workflows schedules skip Worker cron slots](memory/topics/cloudflare/tech-workflows-binding-schedules.md) — Attach cron schedules on a Cloudflare Workflow binding so ingest runs without a Worker Cron Trigger
+- [Workflows schedules need a paid Workers plan](memory/topics/cloudflare/tech-workflows-binding-schedules.md) — Workflow binding schedules avoid Worker cron slots but wrangler deploy fails on Free because schedules are paid-only
 - [Workers Cache enable flag](memory/topics/cloudflare/tech-workers-cache-enabled.md) — Enable per-worker cache with cache.enabled; only public Cache-Control is stored
 - [Moving a CF zone between accounts copies DNS but not Worker routes](memory/topics/cloudflare/tech-zone-account-transfer-breaks-worker-routes.md) — Inter-account zone transfer drops Worker routes; proxied hostnames 403 Error 1000
 

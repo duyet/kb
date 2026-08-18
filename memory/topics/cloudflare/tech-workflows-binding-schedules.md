@@ -1,7 +1,7 @@
 ---
 name: tech-workflows-binding-schedules
-title: Workflows schedules skip Worker cron slots
-description: Attach cron schedules on a Cloudflare Workflow binding so ingest runs without a Worker Cron Trigger
+title: Workflows schedules need a paid Workers plan
+description: Workflow binding schedules avoid Worker cron slots but wrangler deploy fails on Free because schedules are paid-only
 type: tech
 category: cloudflare
 tags: [tech, cloudflare, workers, workflows, cron]
@@ -9,11 +9,11 @@ related: ["[[tech-cloudflare-pages-deploy]]", "[[project-news]]", "[[tech-cron-a
 sources: ["https://developers.cloudflare.com/workflows/build/trigger-workflows/"]
 created: 2026-08-18
 updated: 2026-08-18
-timestamp: 2026-08-18T14:30:00Z
+timestamp: 2026-08-18T15:00:00Z
 ---
 
-Cloudflare Workflows can take `schedules` on the binding (`workflows` binding / `workflows[].schedules`). Each tick creates a Workflow instance. No Worker `scheduled()` handler and no `[triggers] crons` required.
+Cloudflare Workflows accept `schedules` on the binding. Each tick starts a Workflow instance. That does **not** use Worker `[triggers] crons` (Free accounts cap those).
 
-Worker Cron Triggers are a separate quota (Free accounts are capped). A Workflow binding schedule does not spend that quota.
+`schedules` itself is paid-only. On a Free plan, `wrangler deploy` can upload the Worker then exit 1 attaching the schedule. The Worker may stay live; CI still goes red.
 
-Use this when a Worker already owns a Workflow (ingest, notify, digest) and adding `[triggers] crons` would fail deploy. Docs: [Trigger Workflows](https://developers.cloudflare.com/workflows/build/trigger-workflows/). Related: [[tech-cloudflare-pages-deploy]], [[project-news]].
+On Free: trigger the Workflow from GitHub Actions (or another external cron), not from `workflows[].schedules` and not from Worker crons. Docs: [Trigger Workflows](https://developers.cloudflare.com/workflows/build/trigger-workflows/). Related: [[tech-cloudflare-pages-deploy]], [[project-news]].
