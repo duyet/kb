@@ -9,10 +9,10 @@ related: ["[[project-clickhouse-monitoring]]", "[[project-chmonitor-advisor]]", 
 sources: ["https://github.com/chmonitor/chmonitor", "https://docs.chmonitor.dev"]
 created: 2026-08-19
 updated: 2026-08-19
-timestamp: 2026-08-19T02:50:00+07:00
+timestamp: 2026-08-19T03:22:00+07:00
 ---
 
-Dashboard sidebar **Tools** (after Overview / Postgres, before AI Agent) is the interactive-utility group:
+Dashboard sidebar **Tools** is last in the main menu (after Logs, before the About footer). Interactive-utility group:
 
 - SQL Console (`/sql`)
 - Data Explorer (`/explorer`)
@@ -29,4 +29,4 @@ Tools is ClickHouse-family only — a Postgres host must not see it ([[project-c
 Hub: [[project-clickhouse-monitoring]].
 
 **Why:** tool pages were scattered under Tables, Queries, Operations, and System.
-**How to apply:** put new interactive utilities in Tools; do not move monitoring views there.
+**How to apply:** put new interactive utilities in Tools; keep Tools last in the main menu; do not move monitoring views there.
