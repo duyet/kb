@@ -101,6 +101,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Cloudflare Pages deploy habit](memory/topics/cloudflare/tech-cloudflare-pages-deploy.md) — Semantic commit → push → deploy changed app; avoid parallel deploys that share env files
 - [Codebase maintenance loop](memory/topics/workflow/tech-codebase-maintenance-loop.md) — Measure → fix top issue → verify → commit → deploy → log
 - [Host cron as code](memory/topics/workflow/tech-cron-as-code-install-script.md) — Reproducible host jobs are committed crontab snippets plus an idempotent installer
+- [Daily digest keys must use the audience timezone](memory/topics/workflow/tech-digest-local-date.md) — A UTC-dated snapshot can miss the local calendar day so the daily digest looks up null and never sends
 - [Daily manager leaves worktrees](memory/topics/workflow/tech-daily-manager-leaves-worktrees.md) — Overnight issue-fanout persists worktrees and a dated summary for next-morning review
 - [Convert history DTO → UIMessage](memory/topics/llm-agents/tech-ai-sdk-history-dto-convert.md) — Keep API neutral; translate tool-call DTOs to AI SDK parts per client
 - [createContext breaks RSC importers](memory/topics/web/tech-kumo-rsc-createcontext.md) — Libraries that call createContext at module scope force client boundaries
