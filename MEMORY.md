@@ -70,6 +70,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [chmonitor paid licenses are self-hosted host-count](memory/projects/project-chmonitor-licenses.md) — Paid chmonitor is honor-system host-count licenses (yearly/lifetime), not hosted SaaS seats
 - [chmonitor recommends, never auto-DDL](memory/projects/project-chmonitor-advisor.md) — AI/ops advisor suggests CH changes but does not apply DDL automatically
 - [chmonitor Tools sidebar group](memory/projects/project-chmonitor-tools-sidebar.md) — Dashboard Tools group holds SQL Console, Data Explorer, Explain, Advisor, Chart Builder, Schema Compare, Settings Diff
+- [chmonitor TTL & Partitions](memory/projects/project-chmonitor-ttl-partitions.md) — System TTL page lists inventory plus part-health charts; never select system.tables.ttl
 - [chmonitor menu engine filter](memory/projects/project-chmonitor-menu-engine-filter.md) — Absent engines on a menu item means ClickHouse family; Postgres hosts must not see those items
 - [duyet/agentstate](memory/projects/project-agentstate.md) — State and coordination layer for AI agent fleets (public OSS)
 - [duyet/anyworker](memory/projects/project-anyworker.md) — Open alternative to Claude Cowork-style agents — local agent + marketing site
