@@ -72,6 +72,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [chmonitor Tools sidebar group](memory/projects/project-chmonitor-tools-sidebar.md) — Dashboard Tools group holds SQL Console, Data Explorer, Explain, Advisor, Chart Builder, Schema Compare, Settings Diff
 - [chmonitor TTL & Partitions](memory/projects/project-chmonitor-ttl-partitions.md) — System TTL page lists inventory plus part-health charts; never select system.tables.ttl
 - [chmonitor menu engine filter](memory/projects/project-chmonitor-menu-engine-filter.md) — Absent engines on a menu item means ClickHouse family; Postgres hosts must not see those items
+- [chmonitor hide sidebar pages](memory/projects/project-chmonitor-hide-menu-item.md) — Hover Hide next to pin hides a sidebar leaf; restore in Settings → Workspace → Navigation
 - [duyet/agentstate](memory/projects/project-agentstate.md) — State and coordination layer for AI agent fleets (public OSS)
 - [duyet/anyworker](memory/projects/project-anyworker.md) — Open alternative to Claude Cowork-style agents — local agent + marketing site
 - [duyet/charts](memory/projects/project-charts.md) — Public Helm charts repository
