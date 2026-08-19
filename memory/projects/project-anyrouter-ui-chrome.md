@@ -8,8 +8,8 @@ tags: [project, anyrouter, ui, web]
 related: ["[[project-anyrouter]]", "[[tech-flat-design-semantic-tokens]]", "[[tech-shadcn-base]]"]
 sources: ["https://anyrouter.dev", "https://docs.anyrouter.dev"]
 created: 2026-08-18
-updated: 2026-08-18
-timestamp: 2026-08-18T17:00:00Z
+updated: 2026-08-19
+timestamp: 2026-08-19T09:00:00Z
 ---
 
 AnyRouter public UI uses one viewport token system: 320 / 375 / 768 / 1024 / 1280. Mobile-first. No `overflow-x` on the page.
@@ -18,6 +18,7 @@ AnyRouter public UI uses one viewport token system: 320 / 375 / 768 / 1024 / 128
 - Color: semantic tokens only (`background`, `foreground`, `border`, `muted`). No raw hex that breaks dark. Test light and dark. Avoid a white flash.
 - Skeletons match the final layout. Do not block first paint on a hung Clerk FAPI.
 - Playground compact chrome is one 44px row at 375; extra actions go in More.
+- Tab, chip, and segmented lists: `h-auto min-h-11`, `overflow-y-hidden`, `scrollbar-width: none`. Horizontal overflow only when chips cannot fit; hide scrollbar chrome.
 - Dashboard sidebar overlays below `lg` and must not crush content. No extra polling. No layout shift from late font/nav.
 
 Hub: [[project-anyrouter]]. Tokens: [[tech-flat-design-semantic-tokens]]. Components: [[tech-shadcn-base]].
