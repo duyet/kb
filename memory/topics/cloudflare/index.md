@@ -11,3 +11,4 @@
 - [forwardAuth must preserve status](tech-forwardauth-preserve-status.md) — Error pages middleware can rewrite 302 challenges into 401/500 and break OAuth
 - [Moving a CF zone between accounts copies DNS but not Worker routes — Error 1000](tech-zone-account-transfer-breaks-worker-routes.md) — Cloudflare inter-account zone/registrar transfer carries DNS records but drops Worker routes and Custom Domains, so every proxied hostname 403s with Error 1000 until routes are recreated
 - [Workers Cache enable flag](tech-workers-cache-enabled.md) — Enable per-worker cache with cache.enabled; only public Cache-Control is stored
+- [Workflows schedules need a paid Workers plan](tech-workflows-binding-schedules.md) — Workflow binding schedules avoid Worker cron slots but wrangler deploy fails on Free because schedules are paid-only

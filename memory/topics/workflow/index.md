@@ -8,6 +8,7 @@
 - [Autonomous improvement loop](tech-improvement-loop.md) — One issue per cycle with full verify before next
 - [Codebase maintenance loop](tech-codebase-maintenance-loop.md) — Measure → fix top issue → verify → commit → deploy → log
 - [Daily coding-agent manager leaves worktrees open for review](tech-daily-manager-leaves-worktrees.md) — Overnight issue-fanout should persist worktrees and a dated summary folder instead of tearing down panes
+- [Daily digest keys must use the audience timezone](tech-digest-local-date.md) — A UTC-dated snapshot can miss the local calendar day so the daily digest looks up null and never sends
 - [Host cron lives in-repo behind an install script](tech-cron-as-code-install-script.md) — Reproducible host jobs are committed crontab snippets plus an idempotent installer, not hand-edited crontab
 - [Morning Herdr issue-desk cron](tech-herdr-morning-issue-desk.md) — Daily cron starts a Grok manager on main; children get isolated git worktrees; dated run folder stays on disk for review
 - [One codebase OSS + SaaS](tech-one-codebase-oss-saas.md) — Ship self-host and cloud from one tree behind a fail-closed mode flag
