@@ -67,7 +67,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [AnyRouter OpenAI-compatible API](memory/projects/project-anyrouter-openai-compat.md) — OpenAI-shaped clients; text and embeddings only — image/video generation is gone
 - [AnyWorker local agent + GUI](memory/projects/project-anyworker-local-agent.md) — Product path: Python agent server plus React GUI; web is separate marketing app
 - [chmonitor](memory/projects/project-clickhouse-monitoring.md) — Open-source ClickHouse operational advisor — monitoring + AI recommendations
-- [chmonitor paid licenses are self-hosted host-count](memory/projects/project-chmonitor-licenses.md) — Paid chmonitor is honor-system host-count licenses (yearly/lifetime), not hosted SaaS seats
+- [chmonitor paid licenses are self-hosted host-count](memory/projects/project-chmonitor-licenses.md) — Honor-system host-count licenses; replicas not counted; not hosted SaaS seats
 - [chmonitor recommends, never auto-DDL](memory/projects/project-chmonitor-advisor.md) — AI/ops advisor suggests CH changes but does not apply DDL automatically
 - [chmonitor Tools sidebar group](memory/projects/project-chmonitor-tools-sidebar.md) — Dashboard Tools group holds SQL Console, Data Explorer, Explain, Advisor, Chart Builder, Schema Compare, Settings Diff
 - [chmonitor TTL & Partitions](memory/projects/project-chmonitor-ttl-partitions.md) — System TTL page lists inventory plus part-health charts; never select system.tables.ttl

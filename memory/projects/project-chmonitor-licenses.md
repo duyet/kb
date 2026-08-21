@@ -8,13 +8,13 @@ tags: [project, chmonitor, clickhouse]
 related: ["[[project-clickhouse-monitoring]]", "[[tech-one-codebase-oss-saas]]", "[[user-duyet-active-projects]]"]
 sources: ["https://chmonitor.dev"]
 created: 2026-08-18
-updated: 2026-08-18
-timestamp: 2026-08-18T12:00:00Z
+updated: 2026-08-21
+timestamp: 2026-08-21T12:00:00Z
 ---
 
-Public paid path for [[project-clickhouse-monitoring]] is **self-hosted host-count licenses** (yearly or lifetime), honor system — not hosted SaaS seat billing.
+Public paid path for [[project-clickhouse-monitoring]] is **self-hosted host-count licenses** (yearly or lifetime), honor system — not hosted SaaS seats. Replicas in the same shard are **not counted**.
 
-Cloud demo remains `dash.chmonitor.dev`. OSS self-host stays the default.
+Cloud demo remains `dash.chmonitor.dev`. OSS self-host stays the default for enterprises (IP allowlists, no metadata leaving the VPC).
 
 **Why:** agents should not design “SaaS seats” as the paid SKU.
-**How to apply:** talk about host-count licenses when discussing commercial chmonitor.
+**How to apply:** talk about host-count licenses + trust model; replicas are free.
