@@ -61,6 +61,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 
 ## Project
 - [AnyRouter](memory/projects/project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
+- [AnyRouter CLI is a native Rust binary](memory/projects/project-anyrouter-cli-native.md) — curl | bash install; `anyr claude --model owner/model`
 - [AnyRouter OS](memory/projects/project-anyrouter-os.md) — Browser OS workshop — repo duyet/anyrouter-os; file bugs on duyet/anyrouter with [os] prefix
 - [AnyRouter public UI chrome](memory/projects/project-anyrouter-ui-chrome.md) — Viewport tokens, 44px targets, semantic dark, compact playground row
 - [Unlist broken AnyRouter models](memory/projects/project-anyrouter-unlist-broken-models.md) — Disable or unlist a broken model from /models and the catalog; do not delete history
@@ -149,6 +150,9 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [WASM prerender CI trap](memory/topics/web/tech-wasm-prerender-ci.md) — Missing wasm build step makes prerender succeed empty or fail late
 - [When Rust WASM is worth it](memory/topics/web/tech-rust-wasm-when.md) — WASM usually wins only when the TS path is >~1ms hot work
 - [Workflows schedules need a paid Workers plan](memory/topics/cloudflare/tech-workflows-binding-schedules.md) — Workflow binding schedules avoid Worker cron slots but wrangler deploy fails on Free because schedules are paid-only
+- [Cloudflare Email Sending is transactional, not marketing bulk](memory/topics/cloudflare/tech-cloudflare-email-transactional-not-bulk.md) — Bulk blasts belong on a dedicated ESP
+- [Updating a Worker resets in-flight Cloudflare Workflows](memory/topics/cloudflare/tech-cloudflare-workflows-reset-on-code-update.md) — Host deploy fails running Workflow Durable Objects
+- [Cloudflare Worker cron triggers cap at five per account](memory/topics/cloudflare/tech-cloudflare-cron-triggers-five-per-account.md) — Cap is account-wide; omit triggers does not clear a cron
 - [Workers Cache enable flag](memory/topics/cloudflare/tech-workers-cache-enabled.md) — Enable per-worker cache with cache.enabled; only public Cache-Control is stored
 - [Moving a CF zone between accounts copies DNS but not Worker routes](memory/topics/cloudflare/tech-zone-account-transfer-breaks-worker-routes.md) — Inter-account zone transfer drops Worker routes; proxied hostnames 403 Error 1000
 
