@@ -64,6 +64,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [AnyRouter CLI is a native Rust binary](memory/projects/project-anyrouter-cli-native.md) — curl | bash install; `anyr claude --model owner/model`
 - [AnyRouter OS](memory/projects/project-anyrouter-os.md) — Browser OS workshop — repo duyet/anyrouter-os; file bugs on duyet/anyrouter with [os] prefix
 - [AnyRouter public UI chrome](memory/projects/project-anyrouter-ui-chrome.md) — Viewport tokens, 44px targets, semantic dark, compact playground row
+- [AnyRouter playground MCP](memory/projects/project-anyrouter-playground-mcp.md) — Playground new chats enable AnyRouter MCP at the documented HTTP endpoint
 - [Unlist broken AnyRouter models](memory/projects/project-anyrouter-unlist-broken-models.md) — Disable or unlist a broken model from /models and the catalog; do not delete history
 - [AnyRouter OpenAI-compatible API](memory/projects/project-anyrouter-openai-compat.md) — OpenAI-shaped clients; text and embeddings only — image/video generation is gone
 - [AnyWorker local agent + GUI](memory/projects/project-anyworker-local-agent.md) — Product path: Python agent server plus React GUI; web is separate marketing app
