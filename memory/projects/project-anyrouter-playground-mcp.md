@@ -18,7 +18,7 @@ AnyRouter playground (`https://anyrouter.dev/playground`) attaches remote HTTP M
 - Default endpoint (from live docs, do not invent): `https://anyrouter.dev/api/v1/mcp`
 - Transport: remote HTTP / Streamable HTTP. No stdio.
 - Users can disable the default (row stays listed) and add more HTTPS MCP servers.
-- Intended auth: a signed-in Clerk session is enough (`POST /api/v1/mcp` kind `session`). Pasted `sk-ar-v1-*` / `ak_*` is an optional override. Signed-out 401 still asks to sign in or add a key. Live 2026-08-27 still showed the red key line + empty tools while signed in (leftover of #2751). Do not invent tools, auth, or prices.
+- Intended auth: a signed-in Clerk session is enough (`POST /api/v1/mcp` kind `session`). Pasted `sk-ar-v1-*` / `ak_*` is an optional override. Signed-out 401 still asks to sign in or add a key. Live 2026-08-27 after #2768 still showed the red key line + empty tools while signed in (leftover #2771). Do not invent tools, auth, or prices.
 
 Hub: [[project-anyrouter]]. Chrome: [[project-anyrouter-ui-chrome]].
 
