@@ -9,8 +9,8 @@ aliases: [anyrouter-playground-mcp]
 related: ["[[project-anyrouter]]", "[[project-anyrouter-ui-chrome]]"]
 sources: ["https://docs.anyrouter.dev/mcp", "https://anyrouter.dev/playground"]
 created: 2026-08-26
-updated: 2026-08-26
-timestamp: 2026-08-26T10:12:00Z
+updated: 2026-08-27
+timestamp: 2026-08-26T17:30:00Z
 ---
 
 AnyRouter playground (`https://anyrouter.dev/playground`) attaches remote HTTP MCP servers. A new conversation already has **AnyRouter MCP enabled**.
@@ -18,7 +18,7 @@ AnyRouter playground (`https://anyrouter.dev/playground`) attaches remote HTTP M
 - Default endpoint (from live docs, do not invent): `https://anyrouter.dev/api/v1/mcp`
 - Transport: remote HTTP / Streamable HTTP. No stdio.
 - Users can disable the default (row stays listed) and add more HTTPS MCP servers.
-- Auth is the playground Bearer key: `sk-ar-v1-*` (`list_models` only) or `ak_*` with scopes. OAuth consent is the other documented path. Do not invent tools, auth, or prices.
+- Intended auth: a signed-in Clerk session is enough (`POST /api/v1/mcp` kind `session`). Pasted `sk-ar-v1-*` / `ak_*` is an optional override. Signed-out 401 still asks to sign in or add a key. Live 2026-08-27 still showed the red key line + empty tools while signed in (leftover of #2751). Do not invent tools, auth, or prices.
 
 Hub: [[project-anyrouter]]. Chrome: [[project-anyrouter-ui-chrome]].
 
