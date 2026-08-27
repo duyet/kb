@@ -107,6 +107,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Cache-Control stale-while-revalidate](memory/topics/cloudflare/tech-workers-cache-swr.md) — SWR serves stale instantly while background refresh runs
 - [Cache-Tag purge](memory/topics/cloudflare/tech-workers-cache-tags.md) — Tag responses for targeted purge instead of purge-everything
 - [Chart unit suffix ≠ scale](memory/topics/standards/tech-unit-suffix-vs-scale.md) — Display unit labels must not silently convert values; pair with explicit multiplier
+- [CLI report assemble from repo root](memory/topics/ci/tech-cli-report-assemble-from-root.md) — Resolve --assemble/--report/--out from the repo root; do not cd into the crate first
 - [Cloudflare Pages deploy habit](memory/topics/cloudflare/tech-cloudflare-pages-deploy.md) — Semantic commit → push → deploy changed app; avoid parallel deploys that share env files
 - [Codebase maintenance loop](memory/topics/workflow/tech-codebase-maintenance-loop.md) — Measure → fix top issue → verify → commit → deploy → log
 - [Host cron as code](memory/topics/workflow/tech-cron-as-code-install-script.md) — Reproducible host jobs are committed crontab snippets plus an idempotent installer
