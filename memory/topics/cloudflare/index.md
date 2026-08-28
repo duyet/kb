@@ -10,6 +10,7 @@
 - [Cloudflare Email Sending is transactional, not marketing bulk](tech-cloudflare-email-transactional-not-bulk.md) — Cloudflare Email Sending is for transactional mail; bulk/marketing campaigns belong on a dedicated ESP
 - [Cloudflare Pages deploy habit](tech-cloudflare-pages-deploy.md) — Semantic commit → push → deploy changed app; avoid parallel deploys that share env files
 - [Cloudflare Worker cron triggers cap at five per account](tech-cloudflare-cron-triggers-five-per-account.md) — Cron triggers are capped at 5 per Cloudflare account, not per Worker
+- [Durable Object alarms are not Worker cron triggers](tech-durable-object-alarms-not-cron.md) — DO alarm() schedules work without using a Worker cron slot
 - [forwardAuth must preserve status](tech-forwardauth-preserve-status.md) — Error pages middleware can rewrite 302 challenges into 401/500 and break OAuth
 - [Moving a CF zone between accounts copies DNS but not Worker routes — Error 1000](tech-zone-account-transfer-breaks-worker-routes.md) — Cloudflare inter-account zone/registrar transfer carries DNS records but drops Worker routes and Custom Domains, so every proxied hostname 403s with Error 1000 until routes are recreated
 - [Updating a Worker resets in-flight Cloudflare Workflows](tech-cloudflare-workflows-reset-on-code-update.md) — Deploying a Worker that hosts a running Workflow resets the Durable Object and fails the instance
