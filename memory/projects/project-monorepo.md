@@ -8,8 +8,8 @@ tags: [project, duyet, web]
 related: ["[[project-llm-timeline]]", "[[project-duyetbot]]", "[[project-kb-site]]", "[[project-news]]", "[[tech-tanstack-start-ssg]]"]
 sources: ["https://github.com/duyet/monorepo"]
 created: 2026-08-10
-updated: 2026-08-18
-timestamp: 2026-08-18T13:39:00Z
+updated: 2026-08-28
+timestamp: 2026-08-28T08:11:00Z
 ---
 
 github.com/duyet/monorepo — public web monorepo (blog, CV, timeline apps, kb site, news, shared packages).
@@ -17,4 +17,5 @@ github.com/duyet/monorepo — public web monorepo (blog, CV, timeline apps, kb s
 Stack: Bun, Turborepo, TanStack Start SSG, Cloudflare Pages / Workers.
 `apps/kb` is the renderer for [[project-kb]] / [[project-kb-site]].
 `apps/news` is [[project-news]] (news.duyet.net).
+`apps/news-tab` is the unpacked Chrome new-tab client for that feed (Load unpacked; not on Pages/Workers).
 Related: [[project-llm-timeline]], [[project-duyetbot]], [[tech-tanstack-start-ssg]], [[tech-flat-design-hairline]].
