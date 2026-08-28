@@ -28,6 +28,6 @@
 - [duyetbot persona](project-duyetbot.md) — Manager agent for the public product fleet — assigns work, keeps kb current
 - [KB site front-end](project-kb-site.md) — kb.duyet.net renders the shared-brain notes; apps/kb/kb mounts ~/kb
 - [LLM Timeline](project-llm-timeline.md) — Public SSG timeline of LLM models at llm-timeline.duyet.net
-- [news.duyet.net](project-news.md) — Personal news feed app in duyet/monorepo — ranking + ingest, live at news.duyet.net
+- [news.duyet.net](project-news.md) — Personal news feed + public digest; homepage AI;DR thumbs; hourly ingest via DO alarm + GitHub watchdog
 - [Open Managed Agents (OMA)](project-open-managed-agents.md) — OSS self-hostable Managed Agents API — CF Workers/DO or Docker
 - [Unlist broken AnyRouter models](project-anyrouter-unlist-broken-models.md) — Disable or unlist a broken model from /models and the catalog; do not delete history

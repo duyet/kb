@@ -82,7 +82,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [duyet/homelab](memory/projects/project-homelab.md) — Public personal homelab repo — configs and experiments (no private topology in kb)
 - [duyet/kb shared brain](memory/projects/project-kb.md) — Public shared-brain repo — atomic notes, MEMORY.md index, OKF layout
 - [duyet/monorepo](memory/projects/project-monorepo.md) — Public Bun+Turborepo for personal duyet.net web apps including news and the kb site
-- [news.duyet.net](memory/projects/project-news.md) — Personal news feed + public digest; homepage AI;DR has compact story thumbs
+- [news.duyet.net](memory/projects/project-news.md) — Personal news feed + public digest; homepage AI;DR thumbs; hourly ingest via DO alarm + GitHub watchdog
 - [duyetbot persona](memory/projects/project-duyetbot.md) — Manager agent for the public product fleet — assigns work, keeps kb current
 - [KB site front-end](memory/projects/project-kb-site.md) — kb.duyet.net renders the shared-brain notes; apps/kb/kb mounts ~/kb
 - [Lessons — chmonitor on homelab k3s](memory/projects/homelab/lessons-chmonitor-homelab-deploy.md) — dash vs full homelab; image chmonitor org; no CH readonly profile; dedicated SELECT user + proxy auth
@@ -153,6 +153,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [WASM prerender CI trap](memory/topics/web/tech-wasm-prerender-ci.md) — Missing wasm build step makes prerender succeed empty or fail late
 - [When Rust WASM is worth it](memory/topics/web/tech-rust-wasm-when.md) — WASM usually wins only when the TS path is >~1ms hot work
 - [Workflows schedules need a paid Workers plan](memory/topics/cloudflare/tech-workflows-binding-schedules.md) — Workflow binding schedules avoid Worker cron slots but wrangler deploy fails on Free because schedules are paid-only
+- [Durable Object alarms are not Worker cron triggers](memory/topics/cloudflare/tech-durable-object-alarms-not-cron.md) — DO alarm() schedules work without using a Worker cron slot
 - [Cloudflare Email Sending is transactional, not marketing bulk](memory/topics/cloudflare/tech-cloudflare-email-transactional-not-bulk.md) — Bulk blasts belong on a dedicated ESP
 - [Updating a Worker resets in-flight Cloudflare Workflows](memory/topics/cloudflare/tech-cloudflare-workflows-reset-on-code-update.md) — Host deploy fails running Workflow Durable Objects
 - [Cloudflare Worker cron triggers cap at five per account](memory/topics/cloudflare/tech-cloudflare-cron-triggers-five-per-account.md) — Cap is account-wide; omit triggers does not clear a cron
