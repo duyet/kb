@@ -6,11 +6,11 @@ type: project
 category: llm
 tags: [project, anyrouter, llm, gateway, cloudflare]
 aliases: [anyrouter, duyet-anyrouter]
-related: ["[[user-duyet-active-projects]]", "[[project-anyrouter-os]]", "[[project-anyrouter-ui-chrome]]", "[[project-anyrouter-playground-mcp]]", "[[project-anyrouter-unlist-broken-models]]", "[[project-anyrouter-cli-native]]", "[[tech-llm-gateway-byok-sibling]]", "[[project-agentstate]]", "[[project-anyworker]]"]
+related: ["[[user-duyet-active-projects]]", "[[project-anyrouter-os]]", "[[project-anyrouter-ui-chrome]]", "[[project-anyrouter-playground-mcp]]", "[[project-anyrouter-catalog-one-id]]", "[[project-anyrouter-unlist-broken-models]]", "[[project-anyrouter-cli-native]]", "[[tech-llm-gateway-byok-sibling]]", "[[project-agentstate]]", "[[project-anyworker]]"]
 sources: ["https://anyrouter.dev", "https://docs.anyrouter.dev", "https://dash.anyrouter.dev"]
 created: 2026-08-10
-updated: 2026-08-26
-timestamp: 2026-08-26T10:12:00Z
+updated: 2026-08-28
+timestamp: 2026-08-28T10:31:00Z
 ---
 
 https://anyrouter.dev — **universal AI model router**: one API, many providers/models, OpenAI Chat Completions + Anthropic Messages compatible.
