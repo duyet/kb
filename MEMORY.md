@@ -81,8 +81,8 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [duyet/charts](memory/projects/project-charts.md) — Public Helm charts repository
 - [duyet/homelab](memory/projects/project-homelab.md) — Public personal homelab repo — configs and experiments (no private topology in kb)
 - [duyet/kb shared brain](memory/projects/project-kb.md) — Public shared-brain repo — atomic notes, MEMORY.md index, OKF layout
-- [duyet/monorepo](memory/projects/project-monorepo.md) — Public Bun+Turborepo for personal duyet.net web apps including news and the kb site
-- [news.duyet.net](memory/projects/project-news.md) — Personal news feed + public digest; homepage AI;DR thumbs; hourly ingest via DO alarm + GitHub watchdog; Chrome new-tab in apps/news-tab
+- [duyet/monorepo](memory/projects/project-monorepo.md) — Public Bun+Turborepo for personal duyet.net web apps; news-tab is its own 0.1.x release line
+- [news.duyet.net](memory/projects/project-news.md) — Personal news feed + public digest; homepage AI;DR thumbs; hourly ingest via DO alarm + GitHub watchdog; news-tab own 0.1.x release
 - [duyetbot persona](memory/projects/project-duyetbot.md) — Manager agent for the public product fleet — assigns work, keeps kb current
 - [KB site front-end](memory/projects/project-kb-site.md) — kb.duyet.net renders the shared-brain notes; apps/kb/kb mounts ~/kb
 - [Lessons — chmonitor on homelab k3s](memory/projects/homelab/lessons-chmonitor-homelab-deploy.md) — dash vs full homelab; image chmonitor org; no CH readonly profile; dedicated SELECT user + proxy auth
