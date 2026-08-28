@@ -8,8 +8,8 @@ tags: [project, anyrouter, ui, web]
 related: ["[[project-anyrouter]]", "[[tech-flat-design-semantic-tokens]]", "[[tech-shadcn-base]]"]
 sources: ["https://anyrouter.dev", "https://docs.anyrouter.dev"]
 created: 2026-08-18
-updated: 2026-08-19
-timestamp: 2026-08-19T09:00:00Z
+updated: 2026-08-28
+timestamp: 2026-08-28T04:16:00Z
 ---
 
 AnyRouter public UI uses one viewport token system: 320 / 375 / 768 / 1024 / 1280. Mobile-first. No `overflow-x` on the page.
@@ -20,6 +20,7 @@ AnyRouter public UI uses one viewport token system: 320 / 375 / 768 / 1024 / 128
 - Playground compact chrome is one 44px row at 375; extra actions go in More.
 - Tab, chip, and segmented lists: `h-auto min-h-11`, `overflow-y-hidden`, `scrollbar-width: none`. Horizontal overflow only when chips cannot fit; hide scrollbar chrome.
 - Dashboard sidebar overlays below `lg` and must not crush content. No extra polling. No layout shift from late font/nav.
+- `/models` listing header: H1 and Learn more / Providers / Apps share one row from `md` (title left, links right); stack below `md`. Same gutter as the explorer. Compact link hits 44px. No extra max-width on that hero.
 
 Hub: [[project-anyrouter]]. Tokens: [[tech-flat-design-semantic-tokens]]. Components: [[tech-shadcn-base]].
 
