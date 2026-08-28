@@ -82,7 +82,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [duyet/homelab](memory/projects/project-homelab.md) — Public personal homelab repo — configs and experiments (no private topology in kb)
 - [duyet/kb shared brain](memory/projects/project-kb.md) — Public shared-brain repo — atomic notes, MEMORY.md index, OKF layout
 - [duyet/monorepo](memory/projects/project-monorepo.md) — Public Bun+Turborepo for personal duyet.net web apps including news and the kb site
-- [news.duyet.net](memory/projects/project-news.md) — Personal news feed app in duyet/monorepo — ranking + ingest, live at news.duyet.net
+- [news.duyet.net](memory/projects/project-news.md) — Personal news feed + public /api/public digest; live at news.duyet.net
 - [duyetbot persona](memory/projects/project-duyetbot.md) — Manager agent for the public product fleet — assigns work, keeps kb current
 - [KB site front-end](memory/projects/project-kb-site.md) — kb.duyet.net renders the shared-brain notes; apps/kb/kb mounts ~/kb
 - [Lessons — chmonitor on homelab k3s](memory/projects/homelab/lessons-chmonitor-homelab-deploy.md) — dash vs full homelab; image chmonitor org; no CH readonly profile; dedicated SELECT user + proxy auth
