@@ -9,7 +9,7 @@ related: ["[[project-anyrouter]]", "[[user-duyet-lang-rust]]"]
 sources: ["https://anyrouter.dev/cli", "https://github.com/anyrouter-dev/cli"]
 created: 2026-08-24
 updated: 2026-08-28
-timestamp: 2026-08-28T04:02:00Z
+timestamp: 2026-08-28T08:06:00Z
 ---
 
 Public AnyRouter CLI is a **native Rust** binary, not the old Node package as the primary path.
@@ -19,5 +19,7 @@ Public AnyRouter CLI is a **native Rust** binary, not the old Node package as th
 - Catalog ids are `owner/model` (e.g. `stealth/ox-alpha`). Model page: `https://anyrouter.dev/model/<owner>/<model>`.
 - Source, issues, and binaries: [anyrouter-dev/cli](https://github.com/anyrouter-dev/cli). Product/catalog issues stay on [[project-anyrouter]] (`duyet/anyrouter`).
 - Smoke: `anyr claude --model owner/model` (example: `stealth/ox-alpha[1m]`).
+- `setup.sh` (stable) probes GitHub `/releases/latest/download/anyr-<os>-<arch>`, then falls back to the newest release that actually has binaries (often a prerelease). A bare `/releases/latest/download/...` URL can still 404 when the latest stable tag has no assets.
+- `anyr update` must not call the GitHub Releases API unauthenticated (shared IPs get 403). Use a token or the public HTML listing.
 
 Hub: [[project-anyrouter]].
