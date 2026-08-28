@@ -9,7 +9,7 @@ related: ["[[project-monorepo]]", "[[user-duyet-web-presence]]", "[[project-duye
 sources: ["https://news.duyet.net", "https://news.duyet.net/api/public"]
 created: 2026-08-18
 updated: 2026-08-28
-timestamp: 2026-08-28T08:42:29Z
+timestamp: 2026-08-28T08:44:00Z
 ---
 
 https://news.duyet.net — feed + ranking app in [[project-monorepo]] (`apps/news`). Cloudflare Worker deploy. Admin ingest is token-gated (`/api/admin/*`); do not put the token in kb.
@@ -20,7 +20,7 @@ Homepage AI;DR (shipped 2026-08-28, #1397): each bullet shows a compact story th
 
 Homepage AI;DR copy (shipped 2026-08-28, #1399): digest prompt targets ~2 sentences / 180–240 chars; homepage clamps to 3 lines with ellipsis and highlights named entities (same topic colors as the feed). Existing snapshots stay one-liners until the next finished ingest writes longer copy. `/api/public` already clips `text` at 400 chars.
 
-Hourly ingest (shipped 2026-08-28, #1400 + #1402 + #1405): primary cadence is a Durable Object alarm, not a Worker cron (account is at the 5-trigger cap; [[tech-cloudflare-cron-triggers-five-per-account]], [[tech-durable-object-alarms-not-cron]]). GitHub Actions is a watchdog with four independent crons per hour. Triggers coalesce if a run started in the last 45 minutes; manual `workflow_dispatch` POSTs `?force=1` to bypass coalesce. Opening a run upserts `workflow_runs` immediately (#1405); score/translate/merge/tldr failures are also caught so `record-run` still writes (`lastRun` / `runsToday` on `/api/system`). First public hit or admin ingest POST arms the alarm. Do not invent a schedule fire just to recert `lastRun`.
+Hourly ingest (shipped 2026-08-28, #1400 + #1402 + #1405): primary cadence is a Durable Object alarm, not a Worker cron (account is at the 5-trigger cap; [[tech-cloudflare-cron-triggers-five-per-account]], [[tech-durable-object-alarms-not-cron]]). GitHub Actions is a watchdog with four independent crons per hour. Triggers coalesce if a run started in the last 45 minutes; manual `workflow_dispatch` POSTs `?force=1` to bypass coalesce. #1405 intended `open-run` to upsert `workflow_runs` immediately and set `GET /api/system` to `Cache-Control: no-store` (no-store is live). Recert lastRun by a force POST, not an invented schedule fire. First public hit or admin ingest POST arms the alarm.
 
 news-tab releases (shipped 2026-08-28, #1406): `apps/news-tab` is its own release-please component — changelog, 0.1.x line, `news-tab-v*` tags — not folded into the root `duyet` release. Leave its release-please PR for human merge ([[feedback-never-auto-merge-release-please]]).
 
