@@ -9,7 +9,7 @@ related: ["[[project-monorepo]]", "[[user-duyet-web-presence]]", "[[project-duye
 sources: ["https://news.duyet.net", "https://news.duyet.net/api/public"]
 created: 2026-08-18
 updated: 2026-08-29
-timestamp: 2026-08-29T03:08:00Z
+timestamp: 2026-08-29T14:36:11Z
 ---
 
 https://news.duyet.net — feed + ranking app in [[project-monorepo]] (`apps/news`). Cloudflare Worker deploy. Admin ingest is token-gated (`/api/admin/*`); do not put the token in kb.
@@ -25,5 +25,7 @@ Hourly ingest (shipped 2026-08-28, #1400 + #1402 + #1405): primary cadence is a 
 #1415 (2026-08-29): persist `workflow_runs` with D1 `.run()` / `batch()`, not `INSERT RETURNING` + `.first()` ([[tech-d1-insert-returning-not-a-write]]). Gate 2xx on the same lastRun SELECT `/api/system` uses. Recert lastRun by a force POST after deploy; do not invent a schedule fire.
 
 news-tab releases (shipped 2026-08-28, #1406): `apps/news-tab` is its own release-please component — changelog, 0.1.x line, `news-tab-v*` tags — not folded into the root `duyet` release. Leave its release-please PR for human merge ([[feedback-never-auto-merge-release-please]]).
+
+Chrome new-tab install (shipped 2026-08-29, #1421 + #1423): public zip at https://news.duyet.net/news-tab.zip (packed at news build from `apps/news-tab`; nested `news-tab/manifest.json`). Guide at https://news.duyet.net/extension ("Tab Chrome" in the primary menu). Chrome cannot Load unpacked a `.zip` — unzip first, then pick the `news-tab` folder. Not on Chrome Web Store. `chrome://extensions` is linked; HTTPS pages may block that navigation so the guide also says to paste the URL.
 
 Product hub: [[project-monorepo]]. Portfolio: [[user-duyet-web-presence]].
