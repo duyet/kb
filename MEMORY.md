@@ -155,6 +155,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [When Rust WASM is worth it](memory/topics/web/tech-rust-wasm-when.md) — WASM usually wins only when the TS path is >~1ms hot work
 - [Workflows schedules need a paid Workers plan](memory/topics/cloudflare/tech-workflows-binding-schedules.md) — Workflow binding schedules avoid Worker cron slots but wrangler deploy fails on Free because schedules are paid-only
 - [Durable Object alarms are not Worker cron triggers](memory/topics/cloudflare/tech-durable-object-alarms-not-cron.md) — DO alarm() schedules work without using a Worker cron slot
+- [D1 INSERT RETURNING is not a write via .first()](memory/topics/cloudflare/tech-d1-insert-returning-not-a-write.md) — Persist D1 writes with .run()/batch(); RETURNING + .first() is empty
 - [Cloudflare Email Sending is transactional, not marketing bulk](memory/topics/cloudflare/tech-cloudflare-email-transactional-not-bulk.md) — Bulk blasts belong on a dedicated ESP
 - [Updating a Worker resets in-flight Cloudflare Workflows](memory/topics/cloudflare/tech-cloudflare-workflows-reset-on-code-update.md) — Host deploy fails running Workflow Durable Objects
 - [Cloudflare Worker cron triggers cap at five per account](memory/topics/cloudflare/tech-cloudflare-cron-triggers-five-per-account.md) — Cap is account-wide; omit triggers does not clear a cron
