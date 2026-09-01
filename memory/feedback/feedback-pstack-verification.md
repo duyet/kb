@@ -6,10 +6,10 @@ type: feedback
 category: working-style
 tags: [feedback, pstack, verification, agents]
 aliases: [pstack-verification, verification-is-infra]
-related: ["[[feedback-working-style]]", "[[feedback-fail-loud]]", "[[user-duyet-ai-vibe-codes]]"]
+related: ["[[feedback-working-style]]", "[[feedback-fail-loud]]", "[[user-duyet-ai-vibe-codes]]", "[[project-chmonitor-verify-skill]]"]
 sources: ["https://x.com/poteto/status/2094457600259842065", "https://github.com/poteto/verification-skill-example"]
 created: 2026-09-01
-updated: 2026-09-01
+updated: 2026-09-02
 timestamp: 2026-09-01T16:50:00Z
 ---
 
