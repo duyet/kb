@@ -77,6 +77,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [chmonitor TTL & Partitions](memory/projects/project-chmonitor-ttl-partitions.md) — System TTL page lists inventory plus part-health charts; never select system.tables.ttl
 - [chmonitor menu engine filter](memory/projects/project-chmonitor-menu-engine-filter.md) — Absent engines on a menu item means ClickHouse family; Postgres hosts must not see those items
 - [chmonitor CLI local named connections](memory/projects/project-chmonitor-cli-local-connections.md) — `chm add`/`ls`/`use`/`rm` save local CH HTTP and postgres:// URLs
+- [templatebot verify skill](memory/projects/project-templatebot-verify-skill.md) — Project-local `.cursor/skills/verify-templatebot`; CDP CLI; browse + Harvey Specter preview
 - [chmonitor verify skill](memory/projects/project-chmonitor-verify-skill.md) — Project-local `.cursor/skills/verify-chmonitor`; CLI-first; identity-only doctor by default
 - [chmonitor hide sidebar pages](memory/projects/project-chmonitor-hide-menu-item.md) — Hover Hide next to pin hides a sidebar leaf; restore in Settings → Workspace → Navigation
 - [duyet/agentstate](memory/projects/project-agentstate.md) — State and coordination layer for AI agent fleets (public OSS)
