@@ -10,7 +10,7 @@ related: ["[[feedback-pstack-verification]]"]
 sources: ["https://github.com/duyet/templatebot"]
 created: 2026-09-02
 updated: 2026-09-02
-timestamp: 2026-09-02T04:22:35Z
+timestamp: 2026-09-02T05:40:21Z
 ---
 
 templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map + one proven drive). Primary surface is the local Vite/Cloudflare marketplace driven over Chrome DevTools Protocol via `control-templatebot.mjs`.
@@ -19,7 +19,7 @@ templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map +
 
 **How to apply:**
 - Use `control-templatebot.mjs` (`launch` / `doctor` / `goto` / drive / `cleanup`; `--json`, `--dry-run` on launch/stop/cleanup).
-- Feature map covers browse, preview (incl. `preview-scroll`), submit, leaderboard, dashboard.
+- Feature map covers browse, preview (incl. `preview-scroll`), submit (incl. resubmit versions, Submit history, X post collect), leaderboard, dashboard.
 - Proven drive: browse → Harvey search → Harvey Specter preview → `Close --exact`, then assert `scrollY` holds (no jump-to-top).
 - `Close` needs `--exact` (Harvey card name includes `disclose`). Hero Browse is role button; clear search via `goto /templates`.
 - Local vite skip HTTP→HTTPS redirect on loopback so doctor sees real HTML.
