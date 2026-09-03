@@ -10,7 +10,7 @@ related: ["[[feedback-pstack-verification]]"]
 sources: ["https://github.com/duyet/templatebot"]
 created: 2026-09-02
 updated: 2026-09-04
-timestamp: 2026-09-03T17:38:31Z
+timestamp: 2026-09-03T19:55:00Z
 ---
 
 templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map + one proven drive). Primary surface is the local Vite/Cloudflare marketplace driven over Chrome DevTools Protocol via `control-templatebot.mjs`.
@@ -19,7 +19,7 @@ templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map +
 
 **How to apply:**
 - Use `control-templatebot.mjs` (`launch` / `doctor` / `goto` / drive / `cleanup`; `--json`, `--dry-run` on launch/stop/cleanup).
-- Feature map covers browse (incl. `browse-page` 30-per-page from D1 on `/` and `/templates`; `browse-marquee` above the footer; coat-blend card surfaces via `surface-bot-card` / `botCardTint` in light+dark), preview (incl. `preview-scroll`), submit (incl. resubmit / history / X collect; post-submit Leaderboard vs Paid Template equal choices), leaderboard, dashboard, unlisted `/data` analytics (`features/data.md`), PostHog official JS funnel (`VITE_POSTHOG_PROJECT_TOKEN` env-only), pay-to-install (Sale; email + `/unlock/{token}`; `paid-demo.sql` / Night Counsel), and MCP publish (`features/mcp-publish.md`). Viewport presets: mobile 375×812 / desktop 1280×800.
+- Feature map covers browse (incl. `browse-page` 30-per-page from D1 on `/` and `/templates`; `browse-marquee` above the footer; coat-blend card surfaces via `surface-bot-card` / `botCardTint` in light+dark), preview (incl. `preview-scroll`), submit (incl. resubmit / history / X collect; post-submit Leaderboard vs Paid Template equal choices), leaderboard, dashboard, unlisted `/data` analytics (`features/data.md`), PostHog official JS funnel (`VITE_POSTHOG_PROJECT_TOKEN` env-only), pay-to-install (Sale; email + `/unlock/{token}`; `paid-demo.sql` / Night Counsel), MCP publish (`features/mcp-publish.md`), and live X embeds with corner clip (`features/on-x-posts.md` `on-x-embed-corners`: `#15202b` fill + 12px `--background` radial `::after` caps). Viewport presets: mobile 375×812 / desktop 1280×800.
 - Proven drive: browse → Harvey search → Harvey Specter preview → `Close --exact`, then assert `scrollY` holds (no jump-to-top).
 - `Close` needs `--exact` (Harvey card name includes `disclose`). Hero Browse is role button; clear search via `goto /templates`.
 - Live paywall copy is `Checkout unlocks the install link` (not `unlock the install link`); `/unlock/{token}` sets `tb_unlock` so unpaid recipes must run first; `/privacy` shares terms email+unlock copy (`docs-terms`).
@@ -38,3 +38,4 @@ Generic loop: [[feedback-pstack-verification]].
 **2026-09-03:** Squash-merged [#88](https://github.com/duyet/templatebot/pull/88) (maintain-verification after live drive on default VM; folds #82 migrate-on-deploy / SQLITE-hide plus post-#78 footer marquee map honesty).
 **2026-09-03:** Squash-merged [#103](https://github.com/duyet/templatebot/pull/103) (`cfcffff`, maintain-verify after #101) — browse paging recipes proven live: verification-only `features/fixtures/browse-page.sql` (31 rows), Next/Previous are links when enabled, page-2 proof via count line / `page=2` (not Harvey text/marquee), out-of-range clamps to last page, invalid `page` omits param.
 **2026-09-03:** Squash-merged [#101](https://github.com/duyet/templatebot/pull/101) (`438429a`) — public `/` and `/templates` page at 30 from D1 (`LIMIT`/`OFFSET` + count); Feature Map `browse-page` shipped in the same PR.
+**2026-09-04:** Squash-merged [#107](https://github.com/duyet/templatebot/pull/107) (`a0cdd78`) — clip X embed rounded-corner canvas leak; Feature Map `on-x-embed-corners` shipped in the same PR.
