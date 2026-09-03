@@ -10,7 +10,7 @@ related: ["[[feedback-pstack-verification]]"]
 sources: ["https://github.com/duyet/templatebot"]
 created: 2026-09-02
 updated: 2026-09-04
-timestamp: 2026-09-03T19:55:00Z
+timestamp: 2026-09-03T19:16:00Z
 ---
 
 templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map + one proven drive). Primary surface is the local Vite/Cloudflare marketplace driven over Chrome DevTools Protocol via `control-templatebot.mjs`.
@@ -39,3 +39,4 @@ Generic loop: [[feedback-pstack-verification]].
 **2026-09-03:** Squash-merged [#103](https://github.com/duyet/templatebot/pull/103) (`cfcffff`, maintain-verify after #101) — browse paging recipes proven live: verification-only `features/fixtures/browse-page.sql` (31 rows), Next/Previous are links when enabled, page-2 proof via count line / `page=2` (not Harvey text/marquee), out-of-range clamps to last page, invalid `page` omits param.
 **2026-09-03:** Squash-merged [#101](https://github.com/duyet/templatebot/pull/101) (`438429a`) — public `/` and `/templates` page at 30 from D1 (`LIMIT`/`OFFSET` + count); Feature Map `browse-page` shipped in the same PR.
 **2026-09-04:** Squash-merged [#107](https://github.com/duyet/templatebot/pull/107) (`a0cdd78`) — clip X embed rounded-corner canvas leak; Feature Map `on-x-embed-corners` shipped in the same PR.
+**2026-09-04:** Squash-merged [#108](https://github.com/duyet/templatebot/pull/108) (`80a4c81`, maintain-verify after #104) — preview dialog locked to `sm:max-w-xl` (576px / ~351px inset at 375); chrome nav MCP leftover corrected to API; demo Buy empty-Dodo alert aligned with pay-to-install.
