@@ -100,6 +100,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [oma-vault OMA_TENANT fails closed across tenants](memory/projects/project-oma-vault-tenant-scope.md) — Unset/empty/* stay wildcard for single-operator; multi-tenant credentials refuse start and same-host matches stay tenant-scoped
 - [oma timing-safe secrets](memory/projects/project-oma-timing-safe-secrets.md) — checkInternalSecret + trusted-proxy share timingSafeEqualStr from @duyet/oma-auth
 - [oma session env_secret persist](memory/projects/project-oma-session-env-secret-persist.md) — POST /v1/sessions writes env_secret via sessionSecrets.put; unwired store 500; DELETE cascades
+- [oma Console session Inject](memory/projects/project-oma-console-session-inject.md) — Operators inject prompts, MCP, tools, and vault credentials into a live session without mutating the agent
 - [oma output_file opt-in](memory/projects/project-oma-output-file-opt-in.md) — output_file is gated like browser tools; marks keep-this files as agent.output_declared for Console Artifacts
 - [oma Console HITL approvals](memory/projects/project-oma-console-hitl-approvals.md) — Console posts user.tool_confirmation from ApprovalCard; session cards + notice bell for mobile-compact HITL
 - [oma verify skill](memory/projects/project-oma-verify-skill.md) — Project-local `.cursor/skills/verify-oma` with `control-oma.mjs` CLI lever and Feature Map for web + Console
