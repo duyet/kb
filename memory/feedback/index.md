@@ -13,6 +13,7 @@
 - [Logic change → update related tests](feedback-logic-change-update-tests.md) — Co-update tests in the same change; never wait for CI
 - [Never auto-merge release-please PRs](feedback-never-auto-merge-release-please.md) — Leave release-please release PRs for human merge
 - [Prefer simple code](feedback-simple-code.md) — Minimum code that solves the problem; no speculative abstraction
+- [pstack verification is infra](feedback-pstack-verification.md) — Agents must close the loop themselves with a project-local verify skill, a CLI lever, a Feature Map, and cloud agents — not worktrees
 - [Read MEMORY.md on entry](feedback-docs-read-on-entry.md) — Before non-trivial work, read the index and relevant notes
 - [Semantic commits](feedback-semantic-commits.md) — Use conventional semantic commit messages
 - [Surgical changes only](feedback-surgical-changes.md) — Touch only what the request requires; no drive-by refactors

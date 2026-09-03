@@ -1,7 +1,7 @@
 ---
 name: project-templatebot-verify-skill
 title: templatebot verify skill
-description: Project-local .cursor/skills/verify-templatebot drives the Vite marketplace over CDP; Feature Map includes landing bot-avatar marquee, pay-to-install, MCP publish, and mobile/desktop viewport presets
+description: Project-local .cursor/skills/verify-templatebot drives the Vite marketplace over CDP; Feature Map includes browse card coat blend, unlisted /data analytics, PostHog funnel, marquee, pay-to-install, MCP publish, viewport presets
 type: project
 category: agents
 tags: [project, templatebot, verification, cli]
@@ -10,7 +10,7 @@ related: ["[[feedback-pstack-verification]]"]
 sources: ["https://github.com/duyet/templatebot"]
 created: 2026-09-02
 updated: 2026-09-03
-timestamp: 2026-09-03T08:16:00Z
+timestamp: 2026-09-03T08:48:00Z
 ---
 
 templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map + one proven drive). Primary surface is the local Vite/Cloudflare marketplace driven over Chrome DevTools Protocol via `control-templatebot.mjs`.
@@ -19,7 +19,7 @@ templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map +
 
 **How to apply:**
 - Use `control-templatebot.mjs` (`launch` / `doctor` / `goto` / drive / `cleanup`; `--json`, `--dry-run` on launch/stop/cleanup).
-- Feature map covers browse (incl. `browse-marquee`: CSS header parade of static 2D bot avatars on `/` only; `/templates` has none; cards stay static), preview (incl. `preview-scroll`), submit (incl. resubmit versions, Submit history, X post collect), leaderboard, dashboard, pay-to-install (Sale listings; unpaid leak checks; email + `/unlock/{token}`; local fixture `paid-demo.sql` / Night Counsel), and MCP publish (`features/mcp-publish.md`; Streamable HTTP `/mcp` + agent HTTP; Free-only over MCP). Viewport presets: `viewport --preset mobile` (375×812) and `--preset desktop` (1280×800); layout proof needs both sizes plus overflow eval.
+- Feature map covers browse (incl. `browse-marquee` on `/` only; coat-blend card surfaces via `surface-bot-card` / `botCardTint` in light+dark), preview (incl. `preview-scroll`), submit (incl. resubmit / history / X collect; post-submit Leaderboard vs Paid Template equal choices), leaderboard, dashboard, unlisted `/data` analytics (`features/data.md`), PostHog official JS funnel (`VITE_POSTHOG_PROJECT_TOKEN` env-only), pay-to-install (Sale; email + `/unlock/{token}`; `paid-demo.sql` / Night Counsel), and MCP publish (`features/mcp-publish.md`). Viewport presets: mobile 375×812 / desktop 1280×800.
 - Proven drive: browse → Harvey search → Harvey Specter preview → `Close --exact`, then assert `scrollY` holds (no jump-to-top).
 - `Close` needs `--exact` (Harvey card name includes `disclose`). Hero Browse is role button; clear search via `goto /templates`.
 - Live paywall copy is `Checkout unlocks the install link` (not `unlock the install link`); `/unlock/{token}` sets `tb_unlock` so unpaid recipes must run first; `/privacy` shares terms email+unlock copy (`docs-terms`).
