@@ -9,8 +9,8 @@ aliases: [verify-templatebot]
 related: ["[[feedback-pstack-verification]]"]
 sources: ["https://github.com/duyet/templatebot"]
 created: 2026-09-02
-updated: 2026-09-03
-timestamp: 2026-09-03T16:53:00Z
+updated: 2026-09-04
+timestamp: 2026-09-03T17:38:31Z
 ---
 
 templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map + one proven drive). Primary surface is the local Vite/Cloudflare marketplace driven over Chrome DevTools Protocol via `control-templatebot.mjs`.
@@ -36,4 +36,5 @@ Generic loop: [[feedback-pstack-verification]].
 **2026-09-03:** Squash-merged [#62](https://github.com/duyet/templatebot/pull/62) (`bcbb2f4`) — indexed Top 5 Grok Bots roundup from kloss_xyz (`/blog/26-grok-bots`); Feature Map `kloss-26-grok-bots.md` shipped in the same PR.
 **2026-09-03:** Squash-merged [#81](https://github.com/duyet/templatebot/pull/81) (`8cc9481`, closes #69) — `/api` and `/mcp` are interactive product pages (try-it route/tool cards, copy curl, live 401 / discovery JSON); Feature Map `docs-api-mcp.md` shipped in the same PR.
 **2026-09-03:** Squash-merged [#88](https://github.com/duyet/templatebot/pull/88) (maintain-verification after live drive on default VM; folds #82 migrate-on-deploy / SQLITE-hide plus post-#78 footer marquee map honesty).
+**2026-09-03:** Squash-merged [#103](https://github.com/duyet/templatebot/pull/103) (`cfcffff`, maintain-verify after #101) — browse paging recipes proven live: verification-only `features/fixtures/browse-page.sql` (31 rows), Next/Previous are links when enabled, page-2 proof via count line / `page=2` (not Harvey text/marquee), out-of-range clamps to last page, invalid `page` omits param.
 **2026-09-03:** Squash-merged [#101](https://github.com/duyet/templatebot/pull/101) (`438429a`) — public `/` and `/templates` page at 30 from D1 (`LIMIT`/`OFFSET` + count); Feature Map `browse-page` shipped in the same PR.
