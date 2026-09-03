@@ -10,7 +10,7 @@ related: ["[[feedback-pstack-verification]]"]
 sources: ["https://github.com/duyet/templatebot"]
 created: 2026-09-02
 updated: 2026-09-03
-timestamp: 2026-09-03T05:40:00Z
+timestamp: 2026-09-03T05:57:00Z
 ---
 
 templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map + one proven drive). Primary surface is the local Vite/Cloudflare marketplace driven over Chrome DevTools Protocol via `control-templatebot.mjs`.
@@ -22,6 +22,7 @@ templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map +
 - Feature map covers browse, preview (incl. `preview-scroll`), submit (incl. resubmit versions, Submit history, X post collect), leaderboard, dashboard, pay-to-install (Sale listings; unpaid leak checks; email + `/unlock/{token}`; local fixture `paid-demo.sql` / Night Counsel), and MCP publish (`features/mcp-publish.md`; Streamable HTTP `/mcp` + agent HTTP; Free-only over MCP). Viewport presets: `viewport --preset mobile` (375×812) and `--preset desktop` (1280×800); layout proof needs both sizes plus overflow eval.
 - Proven drive: browse → Harvey search → Harvey Specter preview → `Close --exact`, then assert `scrollY` holds (no jump-to-top).
 - `Close` needs `--exact` (Harvey card name includes `disclose`). Hero Browse is role button; clear search via `goto /templates`.
+- Live paywall copy is `Checkout unlocks the install link` (not `unlock the install link`); `/unlock/{token}` sets `tb_unlock` so unpaid recipes must run first; `/privacy` shares terms email+unlock copy (`docs-terms`).
 - Local vite skip HTTP→HTTPS redirect on loopback so doctor sees real HTML.
 - Later ships: `/poteto-mode` plus this skill. Refresh with `/maintain-verification-skill` on ship. Cloud agents only; no git worktrees.
 
