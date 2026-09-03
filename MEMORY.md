@@ -78,8 +78,8 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [chmonitor menu engine filter](memory/projects/project-chmonitor-menu-engine-filter.md) — Absent engines on a menu item means ClickHouse family; Postgres hosts must not see those items
 - [chmonitor CLI local named connections](memory/projects/project-chmonitor-cli-local-connections.md) — `chm add`/`ls`/`use`/`rm` save local CH HTTP and postgres:// URLs
 - [codex-claude-plugins verify skill](memory/projects/project-codex-claude-plugins-verify-skill.md) — Project-local `.cursor/skills/verify-marketplace`; catalogs/manifests CLI, not a hosted UI
-- [templatebot verify skill](memory/projects/project-templatebot-verify-skill.md) — Project-local `.cursor/skills/verify-templatebot`; CDP CLI; Feature Map includes pay-to-install
-- [templatebot pay-to-install Sale listings](memory/projects/project-templatebot-pay-to-install.md) — Sale templates require checkout before install; owners see 5% platform fee plus processor estimate and net
+- [templatebot verify skill](memory/projects/project-templatebot-verify-skill.md) — Project-local `.cursor/skills/verify-templatebot`; CDP CLI; Feature Map includes pay-to-install (unlock + email)
+- [templatebot pay-to-install Sale listings](memory/projects/project-templatebot-pay-to-install.md) — Sale templates require checkout before install; delivery is email plus secret unlock URL; owners see 5% platform fee plus processor estimate and net
 - [chmonitor verify skill](memory/projects/project-chmonitor-verify-skill.md) — Project-local `.cursor/skills/verify-chmonitor`; CLI-first; identity-only doctor by default
 - [chmonitor hide sidebar pages](memory/projects/project-chmonitor-hide-menu-item.md) — Hover Hide next to pin hides a sidebar leaf; restore in Settings → Workspace → Navigation
 - [duyet/agentstate](memory/projects/project-agentstate.md) — State and coordination layer for AI agent fleets (public OSS)
