@@ -122,6 +122,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Daily manager leaves worktrees](memory/topics/workflow/tech-daily-manager-leaves-worktrees.md) — Overnight issue-fanout persists worktrees and a dated summary for next-morning review
 - [Convert history DTO → UIMessage](memory/topics/llm-agents/tech-ai-sdk-history-dto-convert.md) — Keep API neutral; translate tool-call DTOs to AI SDK parts per client
 - [createContext breaks RSC importers](memory/topics/web/tech-kumo-rsc-createcontext.md) — Libraries that call createContext at module scope force client boundaries
+- [OMA rewrites bare Claude ids for AnyRouter](memory/topics/llm-agents/tech-oma-bare-claude-gateway-rewrite.md) — Bare claude-* on OAI/AnyRouter fallback becomes anthropic/claude-*; dotted 4.6 is BYOK-only
 - [Credentials never enter the sandbox](memory/topics/llm-agents/tech-oma-credentials-out-of-sandbox.md) — Managed-agent platforms should inject secrets via outbound proxy, not into the sandbox FS
 - [Dashboard auth gate precedence](memory/topics/llm-agents/tech-hermes-dashboard-auth-gate.md) — Insecure/loopback allowlists can bypass OAuth if ordered wrong
 - [Debian 13 apt ships Node 20](memory/topics/linux/tech-debian-13-apt-node-20.md) — Debian 13 nodejs is 20.x; install official 22 LTS to /usr/local and dpkg-divert /usr/bin/node
