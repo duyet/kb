@@ -10,7 +10,7 @@ related: ["[[feedback-pstack-verification]]"]
 sources: ["https://github.com/duyet/templatebot"]
 created: 2026-09-02
 updated: 2026-09-03
-timestamp: 2026-09-03T11:20:50Z
+timestamp: 2026-09-03T11:40:08Z
 ---
 
 templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map + one proven drive). Primary surface is the local Vite/Cloudflare marketplace driven over Chrome DevTools Protocol via `control-templatebot.mjs`.
@@ -31,3 +31,6 @@ Generic loop: [[feedback-pstack-verification]].
 **2026-09-03:** Squash-merged [#65](https://github.com/duyet/templatebot/pull/65) (`fd72151`) after [#45](https://github.com/duyet/templatebot/pull/45) `/data` ship — Feature Map now covers unlisted `/data`, PostHog funnel, multi-bot X collect on main.
 **2026-09-03:** Squash-merged [#83](https://github.com/duyet/templatebot/pull/83) (`827735a`, closes #79) — Collecting N of M / skip-or-claim already-listed; then [#80](https://github.com/duyet/templatebot/pull/80) (`4bed5db`, closes #73) master-detail picker; [#85](https://github.com/duyet/templatebot/pull/85)/[#86](https://github.com/duyet/templatebot/pull/86) folded verify map (Publish N bots, Skip rows, marquee above FOOTER not H1).
 **2026-09-03:** Squash-merged [#76](https://github.com/duyet/templatebot/pull/76) (`4aeac0a`, closes #70) — `/on-x` and homepage On X use official live X/Twitter embeds (`widgets.js`), not homemade URL cards.
+**2026-09-03:** Squash-merged [#82](https://github.com/duyet/templatebot/pull/82) (`e1db213`, closes #74/#75) — Deploy applies remote D1 migrations before wrangler deploy; submit/`/data`/MCP hide SQLITE dumps; Feature Map notes migrate-on-deploy + SQLITE-hide.
+
+**2026-09-03:** Squash-merged [#88](https://github.com/duyet/templatebot/pull/88) (maintain-verification after live drive on default VM; folds #82 migrate-on-deploy / SQLITE-hide plus post-#78 footer marquee map honesty).
