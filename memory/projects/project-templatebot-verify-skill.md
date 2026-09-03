@@ -10,7 +10,7 @@ related: ["[[feedback-pstack-verification]]"]
 sources: ["https://github.com/duyet/templatebot"]
 created: 2026-09-02
 updated: 2026-09-03
-timestamp: 2026-09-03T11:40:08Z
+timestamp: 2026-09-03T11:42:00Z
 ---
 
 templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map + one proven drive). Primary surface is the local Vite/Cloudflare marketplace driven over Chrome DevTools Protocol via `control-templatebot.mjs`.
@@ -33,4 +33,5 @@ Generic loop: [[feedback-pstack-verification]].
 **2026-09-03:** Squash-merged [#76](https://github.com/duyet/templatebot/pull/76) (`4aeac0a`, closes #70) — `/on-x` and homepage On X use official live X/Twitter embeds (`widgets.js`), not homemade URL cards.
 **2026-09-03:** Squash-merged [#82](https://github.com/duyet/templatebot/pull/82) (`e1db213`, closes #74/#75) — Deploy applies remote D1 migrations before wrangler deploy; submit/`/data`/MCP hide SQLITE dumps; Feature Map notes migrate-on-deploy + SQLITE-hide.
 
+**2026-09-03:** Squash-merged [#62](https://github.com/duyet/templatebot/pull/62) (`bcbb2f4`) — indexed Top 5 Grok Bots roundup from kloss_xyz (`/blog/26-grok-bots`); Feature Map `kloss-26-grok-bots.md` shipped in the same PR.
 **2026-09-03:** Squash-merged [#88](https://github.com/duyet/templatebot/pull/88) (maintain-verification after live drive on default VM; folds #82 migrate-on-deploy / SQLITE-hide plus post-#78 footer marquee map honesty).
