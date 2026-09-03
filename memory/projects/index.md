@@ -33,6 +33,7 @@
 - [KB site front-end](project-kb-site.md) — kb.duyet.net renders the shared-brain notes; apps/kb/kb mounts ~/kb
 - [LLM Timeline](project-llm-timeline.md) — Public SSG timeline of LLM models at llm-timeline.duyet.net
 - [news.duyet.net](project-news.md) — Personal news feed + public digest; homepage AI;DR thumbs; news-tab own 0.1.x release line
+- [oma Console Analytics](project-oma-console-analytics.md) — Console /analytics charts cross-agent spend, token mix, and declared delegation
 - [oma Console HITL approvals](project-oma-console-hitl-approvals.md) — Console posts user.tool_confirmation from ApprovalCard; session cards + notice bell
 - [oma output_file opt-in](project-oma-output-file-opt-in.md) — output_file is opt-in declared deliverables for Console Artifacts
 - [oma verify skill](project-oma-verify-skill.md) — Project-local .cursor/skills/verify-oma with control-oma.mjs CLI lever and Feature Map for web + Console
