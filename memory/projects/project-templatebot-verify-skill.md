@@ -10,7 +10,7 @@ related: ["[[feedback-pstack-verification]]"]
 sources: ["https://github.com/duyet/templatebot"]
 created: 2026-09-02
 updated: 2026-09-03
-timestamp: 2026-09-03T08:48:00Z
+timestamp: 2026-09-03T09:38:54Z
 ---
 
 templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map + one proven drive). Primary surface is the local Vite/Cloudflare marketplace driven over Chrome DevTools Protocol via `control-templatebot.mjs`.
@@ -27,3 +27,5 @@ templatebot ships `.cursor/skills/verify-templatebot` (CLI lever + Feature Map +
 - Later ships: `/poteto-mode` plus this skill. Refresh with `/maintain-verification-skill` on ship. Cloud agents only; no git worktrees.
 
 Generic loop: [[feedback-pstack-verification]].
+
+**2026-09-03:** Squash-merged [#65](https://github.com/duyet/templatebot/pull/65) (`fd72151`) after [#45](https://github.com/duyet/templatebot/pull/45) `/data` ship — Feature Map now covers unlisted `/data`, PostHog funnel, multi-bot X collect on main.
