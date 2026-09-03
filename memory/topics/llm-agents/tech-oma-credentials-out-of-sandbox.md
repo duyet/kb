@@ -5,7 +5,7 @@ description: Managed-agent platforms should inject secrets via outbound proxy, n
 type: tech
 category: agents
 tags: [tech, agents, security]
-related: ["[[project-open-managed-agents]]", "[[feedback-public-kb-only]]"]
+related: ["[[project-open-managed-agents]]", "[[tech-gh-token-git-host-alias]]", "[[feedback-public-kb-only]]"]
 created: 2026-08-10
 updated: 2026-08-10
 timestamp: 2026-08-10T12:00:00Z
@@ -13,4 +13,4 @@ timestamp: 2026-08-10T12:00:00Z
 
 Invariant for managed agent runtimes: tool sandboxes must not see raw credentials; an outbound proxy injects them.
 
-Project: [[project-open-managed-agents]]. Related: [[feedback-public-kb-only]].
+Project: [[project-open-managed-agents]]. Git host alias: [[tech-gh-token-git-host-alias]]. Related: [[feedback-public-kb-only]].

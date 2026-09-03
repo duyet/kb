@@ -6,7 +6,7 @@ type: project
 category: agents
 tags: [project, agents, cloudflare, infra]
 aliases: [oma, open-managed-agents]
-related: ["[[user-duyet-active-projects]]", "[[tech-oma-credentials-out-of-sandbox]]", "[[tech-oma-bare-claude-gateway-rewrite]]", "[[tech-ai-agent-stack]]", "[[feedback-never-auto-merge-release-please]]", "[[project-oma-verify-skill]]"]
+related: ["[[user-duyet-active-projects]]", "[[tech-oma-credentials-out-of-sandbox]]", "[[tech-oma-bare-claude-gateway-rewrite]]", "[[tech-gh-token-git-host-alias]]", "[[tech-ai-agent-stack]]", "[[feedback-never-auto-merge-release-please]]", "[[project-oma-verify-skill]]"]
 sources: ["https://github.com/duyet/oma", "https://oma.duyet.net"]
 created: 2026-08-10
 updated: 2026-09-03
@@ -22,3 +22,4 @@ Invariants: [[tech-oma-credentials-out-of-sandbox]], [[tech-prompt-cache-byte-se
 Release: [[feedback-never-auto-merge-release-please]]. Portfolio: [[user-duyet-active-projects]].
 
 Env-fallback Claude routing: [[tech-oma-bare-claude-gateway-rewrite]].
+Bridge git HTTPS with a GitHub CLI credential uses [[tech-gh-token-git-host-alias]].
