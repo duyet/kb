@@ -94,6 +94,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Lessons — chmonitor on homelab k3s](memory/projects/homelab/lessons-chmonitor-homelab-deploy.md) — dash vs full homelab; image chmonitor org; no CH readonly profile; dedicated SELECT user + proxy auth
 - [LLM Timeline](memory/projects/project-llm-timeline.md) — Public SSG timeline of LLM models at llm-timeline.duyet.net
 - [Open Managed Agents (OMA)](memory/projects/project-open-managed-agents.md) — OSS self-hostable Managed Agents API — CF Workers/DO or Docker
+- [oma timing-safe secrets](memory/projects/project-oma-timing-safe-secrets.md) — checkInternalSecret + trusted-proxy share timingSafeEqualStr from @duyet/oma-auth
 - [oma verify skill](memory/projects/project-oma-verify-skill.md) — Project-local `.cursor/skills/verify-oma` with `control-oma.mjs` CLI lever and Feature Map for web + Console
 
 ## Tech
