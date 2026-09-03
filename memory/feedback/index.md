@@ -11,7 +11,7 @@
 - [Keep main CI green, fast, and performant](feedback-main-ci-green-fast.md) — After merges and new features, verify main CI is green; do not add slow tests or extra hot-path queries
 - [Keep router files tiny](feedback-docs-router-tiny.md) — CLAUDE.md/AGENTS.md = short stable rules + pointers, not architecture dumps
 - [Logic change → update related tests](feedback-logic-change-update-tests.md) — Co-update tests in the same change; never wait for CI
-- [Never auto-merge release-please PRs](feedback-never-auto-merge-release-please.md) — Leave release-please release PRs for human merge
+- [Never auto-merge release-please PRs](feedback-never-auto-merge-release-please.md) — Leave release-please and changeset version PRs for human merge
 - [Prefer simple code](feedback-simple-code.md) — Minimum code that solves the problem; no speculative abstraction
 - [pstack verification is infra](feedback-pstack-verification.md) — Agents must close the loop themselves with a project-local verify skill, a CLI lever, a Feature Map, and cloud agents — not worktrees
 - [Read MEMORY.md on entry](feedback-docs-read-on-entry.md) — Before non-trivial work, read the index and relevant notes
