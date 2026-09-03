@@ -96,6 +96,8 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Open Managed Agents (OMA)](memory/projects/project-open-managed-agents.md) — OSS self-hostable Managed Agents API — CF Workers/DO or Docker
 - [oma Console Monitor tab](memory/projects/project-oma-console-monitor.md) — AgentDetail health strip + Monitor tab is the live agent.status heartbeat feed
 - [oma Console Analytics](memory/projects/project-oma-console-analytics.md) — Console /analytics charts cross-agent spend, token mix by kind, and declared delegation
+- [oma Console daily summary for scheduled agent runs](memory/projects/project-oma-console-daily-summary.md) — Agent detail Daily summary tab rolls up schedule firings over 1/7/30 UTC days from agent_schedule_runs
+- [oma-vault OMA_TENANT fails closed across tenants](memory/projects/project-oma-vault-tenant-scope.md) — Unset/empty/* stay wildcard for single-operator; multi-tenant credentials refuse start and same-host matches stay tenant-scoped
 - [oma timing-safe secrets](memory/projects/project-oma-timing-safe-secrets.md) — checkInternalSecret + trusted-proxy share timingSafeEqualStr from @duyet/oma-auth
 - [oma session env_secret persist](memory/projects/project-oma-session-env-secret-persist.md) — POST /v1/sessions writes env_secret via sessionSecrets.put; unwired store 500; DELETE cascades
 - [oma output_file opt-in](memory/projects/project-oma-output-file-opt-in.md) — output_file is gated like browser tools; marks keep-this files as agent.output_declared for Console Artifacts
@@ -130,7 +132,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [createContext breaks RSC importers](memory/topics/web/tech-kumo-rsc-createcontext.md) — Libraries that call createContext at module scope force client boundaries
 - [GitHub CLI tokens need a git host alias](memory/topics/llm-agents/tech-gh-token-git-host-alias.md) — A gh vault token keyed to api.github.com does not match github.com git remotes unless lookup aliases those hosts
 - [CF two-segment package mounts need invokePackage](memory/topics/llm-agents/tech-oma-cf-two-segment-invoke-package.md) — Cloudflare Hono wrappers for /v1/<group>/<name>/* must use invokePackage, not nested fetch on c.req.path
-- [OMA rewrites bare Claude ids for AnyRouter](memory/topics/llm-agents/tech-oma-bare-claude-gateway-rewrite.md) — Bare claude-* on OAI/AnyRouter fallback becomes anthropic/claude-*; dotted 4.6 is BYOK-only
+- [OMA env-fallback Claude uses anyrouter/free on AnyRouter](memory/topics/llm-agents/tech-oma-bare-claude-gateway-rewrite.md) — Bare claude-* rewrites to anthropic/claude-*; AnyRouter env-fallback sonnet sends anyrouter/free (not dotted BYOK 4.6)
 - [Credentials never enter the sandbox](memory/topics/llm-agents/tech-oma-credentials-out-of-sandbox.md) — Managed-agent platforms should inject secrets via outbound proxy, not into the sandbox FS
 - [Dashboard auth gate precedence](memory/topics/llm-agents/tech-hermes-dashboard-auth-gate.md) — Insecure/loopback allowlists can bypass OAuth if ordered wrong
 - [Debian 13 apt ships Node 20](memory/topics/linux/tech-debian-13-apt-node-20.md) — Debian 13 nodejs is 20.x; install official 22 LTS to /usr/local and dpkg-divert /usr/bin/node
