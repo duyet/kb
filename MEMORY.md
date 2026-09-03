@@ -94,6 +94,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Lessons — chmonitor on homelab k3s](memory/projects/homelab/lessons-chmonitor-homelab-deploy.md) — dash vs full homelab; image chmonitor org; no CH readonly profile; dedicated SELECT user + proxy auth
 - [LLM Timeline](memory/projects/project-llm-timeline.md) — Public SSG timeline of LLM models at llm-timeline.duyet.net
 - [Open Managed Agents (OMA)](memory/projects/project-open-managed-agents.md) — OSS self-hostable Managed Agents API — CF Workers/DO or Docker
+- [oma verify skill](memory/projects/project-oma-verify-skill.md) — Project-local `.cursor/skills/verify-oma` with `control-oma.mjs` CLI lever and Feature Map for web + Console
 
 ## Tech
 - [Agent-loop PR cycle](memory/topics/workflow/tech-agent-loop-cycle.md) — Periodic cycle triages open PRs and dispatches fix/review work
@@ -166,4 +167,5 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Cloudflare Worker cron triggers cap at five per account](memory/topics/cloudflare/tech-cloudflare-cron-triggers-five-per-account.md) — Cap is account-wide; omit triggers does not clear a cron
 - [Workers Cache enable flag](memory/topics/cloudflare/tech-workers-cache-enabled.md) — Enable per-worker cache with cache.enabled; only public Cache-Control is stored
 - [Moving a CF zone between accounts copies DNS but not Worker routes](memory/topics/cloudflare/tech-zone-account-transfer-breaks-worker-routes.md) — Inter-account zone transfer drops Worker routes; proxied hostnames 403 Error 1000
+
 
