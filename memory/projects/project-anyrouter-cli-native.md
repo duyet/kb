@@ -8,14 +8,20 @@ tags: [project, anyrouter, cli, rust]
 related: ["[[project-anyrouter]]", "[[user-duyet-lang-rust]]"]
 sources: ["https://anyrouter.dev/cli", "https://github.com/anyrouter-dev/cli"]
 created: 2026-08-24
+<<<<<<< Updated upstream
 updated: 2026-08-28
 timestamp: 2026-08-28T08:06:00Z
+=======
+updated: 2026-09-05
+timestamp: 2026-09-05T01:40:00Z
+>>>>>>> Stashed changes
 ---
 
 Public AnyRouter CLI is a **native Rust** binary, not the old Node package as the primary path.
 
 - Install: `curl -fsSL https://anyrouter.dev/setup.sh | bash`
-- Commands: `anyr` (prose) / `ar` (alias). `anyr login` then `anyr claude --model owner/model` (same for `opencode` / `codex`).
+- First run: `anyr auth login` then `anyr claude`. Claude is the default agent; there is no post-login model/agent wizard.
+- Commands: `anyr` (prose) / `ar` (alias). Pin a model with `anyr claude --model owner/model` (same for `opencode` / `codex`).
 - Catalog ids are `owner/model` (e.g. `stealth/ox-alpha`). Model page: `https://anyrouter.dev/model/<owner>/<model>`.
 - Source, issues, and binaries: [anyrouter-dev/cli](https://github.com/anyrouter-dev/cli). Product/catalog issues stay on [[project-anyrouter]] (`duyet/anyrouter`).
 - Smoke: `anyr claude --model owner/model` (example: `stealth/ox-alpha[1m]`).
