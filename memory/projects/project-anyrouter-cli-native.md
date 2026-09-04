@@ -8,13 +8,8 @@ tags: [project, anyrouter, cli, rust]
 related: ["[[project-anyrouter]]", "[[user-duyet-lang-rust]]"]
 sources: ["https://anyrouter.dev/cli", "https://github.com/anyrouter-dev/cli"]
 created: 2026-08-24
-<<<<<<< Updated upstream
-updated: 2026-08-28
-timestamp: 2026-08-28T08:06:00Z
-=======
 updated: 2026-09-05
 timestamp: 2026-09-05T01:40:00Z
->>>>>>> Stashed changes
 ---
 
 Public AnyRouter CLI is a **native Rust** binary, not the old Node package as the primary path.
