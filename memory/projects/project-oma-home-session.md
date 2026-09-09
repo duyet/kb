@@ -10,12 +10,12 @@ related: ["[[project-open-managed-agents]]", "[[project-oma-verify-skill]]", "[[
 sources: ["https://github.com/duyet/oma", "https://oma.duyet.net"]
 created: 2026-09-09
 updated: 2026-09-09
-timestamp: 2026-09-09T07:01:00Z
+timestamp: 2026-09-09T08:12:00Z
 ---
 
 Product shape shipped in duyet/oma #464 (issues #460–#463): **Agent** is the noun. Each Agent may have one **home session** (metadata `home: true`, title `Home`) — a Bot-like durable inbox. Extra sessions stay ephemeral.
 
-**API:** `POST /v1/sessions/home` get-or-create; `GET /v1/sessions/home?agent_id=`; `POST /v1/sessions` with `metadata.home: true` reuses the same row. Responses include paired **runtime** presence from `/v1/runtimes` heartbeats (`online` | `offline` | `provisioning`; ~90s stale → offline).
+**API:** `POST /v1/sessions/home` get-or-create; `GET /v1/sessions/home?agent_id=` returns **200** `{ session: null | Session, runtime, created: false }` even when no inbox exists (not 404 — so Console can paint presence); `POST /v1/sessions` with `metadata.home: true` reuses the same row. Responses include paired **runtime** presence (`online` | `offline` | `provisioning`; ~90s stale → offline). Console Overview + AgentHealthStrip prefer the home payload runtime and show inbox / **Open home** accordingly (#467/#468).
 
 **Runtime vs sandbox:** Home runtime = long-lived bridge/herdr (OpenShell optional). Session sandboxes stay ephemeral. CLI relay bootstraps only — not an always-on shared VM.
 
