@@ -1,10 +1,12 @@
 # TEAM — duyet fleet (duyetbot Chief of Staff)
 
-Updated: 2026-09-05 ICT
+Updated: 2026-09-09 ICT
 
 ## Reporting
 - All bots report to **duyetbot**. Duyet gets one clear update (results / blockers / decisions).
-- Coding: Cursor cloud on grok-4.6, Fast off. Never Fast, never Grok Build. No inline repo code on manager/engineer bots.
+- Coding: Herdr + **Grok Build CLI** on a local checkout. Never Fast. Never hand-edit/investigate repo code inline in Grok Bot. Engineer bots coordinate / assign / merge / verify only.
+- `anyr claude` is **secondary/fallback only** while anyr CLI is broken (Duyet override 2026-09-09).
+- Cursor CloudAgent is optional secondary.
 - Only scheduled fleet wake: **duyetbot Weekday morning 8:01 ICT**. Engineer bots = GitHub-event only.
 
 ## Bots
@@ -22,7 +24,7 @@ Updated: 2026-09-05 ICT
 | QA | Live prod QA — file unique bugs; no code |
 | growth | AnyRouter growth research/campaigns |
 | writer | X/blog/docs drafts |
-| xops | X schedule/ops for @duyetbot — cadence, checklist, templatebot + anyrouter pulses |
+| xops | X schedule/ops for @_duyet — cadence, checklist, pulses |
 | accounting | Household sheet |
 | Lazy Tom | Minimum / jokes |
 | aidr | duyet/aidr (aidr.today) — CI/UI/responsive |
@@ -43,11 +45,14 @@ Updated: 2026-09-05 ICT
 - Fewer models that **work** > many that fail — LLM question success rate + stability first
 - Simple / easy UX; continuous validate + smoke; close more unique GitHub issues
 - Admin: redesign keys / logs / analytics — fix blank text, cut overcomplicated pages
-- CLI: always-green build + update; launcher improve (Herdr / `anyr claude` OK while cloud exhausted)
+- CLI: always-green build + update; launcher improve
 
-## Coding fallback (Duyet 2026-09-06)
-- Cursor CloudAgent usage-blocked → Herdr + `anyr claude`
-- Prefer `poolside/laguna-s-2.1` and `minimax/m3`; avoid `stealth/ox-alpha[1m]`
+## Coding path (Duyet override 2026-09-09)
+- **Prefer:** Herdr pane + **Grok Build CLI** for all repo ships
+- **Secondary:** `anyr claude` only while anyr CLI is broken / as fallback
+- **Optional:** Cursor CloudAgent
+- Never Fast; never Grok Bot inline repo edits; bots coordinate/merge/verify only
+- On open Herdr jobs, babysit pane state; ping duyetbot if blocked >15m. No new clock wakes for this.
 
 ## Anti-patterns
 - Extra clock wakes / hourly fleets
@@ -55,9 +60,7 @@ Updated: 2026-09-05 ICT
 - Inventing $ or metrics
 - Posting as other bots / AnyRouter X as @_duyet
 - Improver doing product coding
+- Relying on `anyr claude` as primary while anyr CLI is broken
 
 ## Standing
-- **Code path (2026-09-07):** Engineer bots ship **only** via Herdr + `anyr claude` (laguna-s-2.1 → minimax/m3). Never Grok Bot inline repo edits — even small UI. Coordinate/merge only. Leave Dependency Dashboards alone.
-
-
-- **Herdr/anyr babysit (2026-09-07):** On every open Herdr job, engineer bots monitor pane state and restart/retry stuck or slow anyr (`poolside/laguna-s-2.1` → `minimax/m3`). Ping duyetbot if blocked >15m. No new clock wakes for this.
+- Leave Dependency Dashboards alone unless asked.
