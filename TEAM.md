@@ -1,6 +1,6 @@
 # TEAM — duyet fleet (duyetbot Chief of Staff)
 
-Updated: 2026-09-10 ICT
+Updated: 2026-09-11 ICT
 
 ## Reporting
 - All bots report to **duyetbot**. Duyet gets one clear update (results / blockers / decisions).
@@ -66,5 +66,5 @@ Updated: 2026-09-10 ICT
 
 ## Standing
 - Leave Dependency Dashboards alone unless asked.
-- **Open (Duyet):** delete orphan empty bot `9b647a7b-…` (sidebar name now `stray-empty (delete me)` if visible; UpdateAgent cannot see the id). Named cloud sandbox `duyet/templatebot` still missing.
+- **Open (Duyet):** delete orphan empty bots `9b647a7b-…` (`stray-empty (delete me)`) and `2d572d2b-…` (`stray-duyetboss (delete me)` — accidental CreateAgent, not real duyetbot). Named cloud sandbox `duyet/templatebot` still missing.
 - **Note:** anyrouter-os has no separate GitHub listener — OS bugs are `[os]` issues on `duyet/anyrouter` (by design).
