@@ -7,14 +7,17 @@
 - [AI agent stack map](tech-ai-agent-stack.md) — Map of common agent frameworks and what they are for
 - [AI SDK native tool parts](tech-ai-sdk-uimessage-native-tools.md) — Persist or convert to dynamic-tool / tool-name parts for history reload
 - [BYOK sibling before disabling backend](tech-llm-gateway-byok-sibling.md) — Disabling a platform backend can silently kill BYOK that injected through it
+- [CF two-segment package mounts need invokePackage](tech-oma-cf-two-segment-invoke-package.md) — Cloudflare Hono wrappers for /v1/<group>/<name>/* must dispatch via invokePackage, not nested fetch on c.req.path
 - [Convert history DTO → UIMessage](tech-ai-sdk-history-dto-convert.md) — Keep API neutral; translate tool-call DTOs to AI SDK parts per client
 - [Credentials never enter the sandbox](tech-oma-credentials-out-of-sandbox.md) — Managed-agent platforms should inject secrets via outbound proxy, not into the sandbox FS
 - [Dashboard auth gate precedence](tech-hermes-dashboard-auth-gate.md) — Insecure/loopback allowlists can bypass OAuth if ordered wrong
 - [Eve durable runtime is Vercel or Nitro](tech-eve-runtime-vercel-nitro.md) — Eve sessions need Vercel Workflow or a self-hosted Nitro Node server
 - [Filesystem-first durable agents](tech-eve-filesystem-agents.md) — Eve authors an agent as agent/ files — instructions, tools, connections
 - [Flue: register providers in initializer](tech-flue-register-in-initializer.md) — Custom gateways must register from agent init with ctx.env; module load has empty env
+- [GitHub CLI tokens need a git host alias](tech-gh-token-git-host-alias.md) — A gh vault token keyed to api.github.com does not match github.com git remotes unless lookup aliases those hosts
 - [Hermes custom_providers](tech-hermes-custom-provider.md) — Register custom OpenAI-compatible providers by name, base_url, model
 - [Hermes steer mode](tech-hermes-steer-mode.md) — While busy, new user messages can adjust the current task instead of being ignored
+- [OMA env-fallback Claude uses anyrouter/free on AnyRouter](tech-oma-bare-claude-gateway-rewrite.md) — Bare claude-* rewrites to anthropic/claude-*; AnyRouter env-fallback sonnet sends anyrouter/free on both OpenAI and Anthropic wire paths (not dotted BYOK 4.6)
 - [Prompt cache is byte-sensitive](tech-prompt-cache-byte-sensitive.md) — Any prefix byte change can bust LLM prompt cache
 - [Quota errors may arrive as HTTP 400](tech-llm-gateway-quota-as-retryable.md) — Reseller budget errors buried in 400 should failover like 402/429
 - [RAG citation guards](tech-rag-citation-guards.md) — URL-shaped citations can be real yet irrelevant — require passage support

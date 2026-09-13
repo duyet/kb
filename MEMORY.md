@@ -43,6 +43,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Prefer simple code](memory/feedback/feedback-simple-code.md) — Minimum code that solves the problem; no speculative abstraction
 - [Read MEMORY.md on entry](memory/feedback/feedback-docs-read-on-entry.md) — Before non-trivial work, read the index and relevant notes
 - [Semantic commits](memory/feedback/feedback-semantic-commits.md) — Use conventional semantic commit messages
+- [Tailscale Serve for local Vite](memory/feedback/feedback-tailscale-serve-local-vite.md) — When asked for Tailscale/remote access to Vite, bind every interface and Serve; never Funnel unless asked
 - [Surgical changes only](memory/feedback/feedback-surgical-changes.md) — Touch only what the request requires; no drive-by refactors
 - [Keep main CI green and fast](memory/feedback/feedback-main-ci-green-fast.md) — After merges, tip of main must stay green; no extra hot-path queries or slow tests
 - [Working style (index)](memory/feedback/feedback-working-style.md) — Index of agent collaboration preferences

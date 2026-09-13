@@ -33,12 +33,18 @@
 - [KB site front-end](project-kb-site.md) — kb.duyet.net renders the shared-brain notes; apps/kb/kb mounts ~/kb
 - [LLM Timeline](project-llm-timeline.md) — Public SSG timeline of LLM models at llm-timeline.duyet.net
 - [news.duyet.net](project-news.md) — Personal news feed + public digest; homepage AI;DR thumbs; news-tab own 0.1.x release line
-- [oma Console Analytics](project-oma-console-analytics.md) — Console /analytics charts cross-agent spend, token mix, and declared delegation
-- [oma Console HITL approvals](project-oma-console-hitl-approvals.md) — Console posts user.tool_confirmation from ApprovalCard; session cards + notice bell
-- [oma output_file opt-in](project-oma-output-file-opt-in.md) — output_file is opt-in declared deliverables for Console Artifacts
+- [oma Console Agent Monitor tab](project-oma-console-monitor.md) — Console AgentDetail health strip plus Monitor tab is the live agent.status heartbeat feed
+- [oma Console Analytics dashboard](project-oma-console-analytics.md) — Console /analytics charts cross-agent estimated spend, token mix by kind, and declared multiagent delegation from existing usage APIs
+- [oma Console daily summary for scheduled agent runs](project-oma-console-daily-summary.md) — Agent detail Daily summary tab rolls up schedule firings over 1/7/30 UTC days from agent_schedule_runs
+- [OMA Console HITL approvals and notice bell](project-oma-console-hitl-approvals.md) — Console posts user.tool_confirmation from ApprovalCard; session cards + notice bell for mobile-compact HITL
+- [OMA Console session Inject overlay](project-oma-console-session-inject.md) — Operators inject prompts, MCP, tools, and vault credentials into a live session without mutating the agent
+- [oma internal secret uses timing-safe compare](project-oma-timing-safe-secrets.md) — checkInternalSecret and trusted-proxy share timingSafeEqualStr from @duyet/oma-auth/timing-safe-equal
+- [OMA output_file is opt-in declared deliverables](project-oma-output-file-opt-in.md) — output_file is gated like browser tools; marks keep-this files as agent.output_declared for Console Artifacts
+- [oma session create persists env_secret to the secret store](project-oma-session-env-secret-persist.md) — POST /v1/sessions writes env_secret and inline github tokens via sessionSecrets.put; unwired store fails 500; DELETE cascades
 - [oma verify skill](project-oma-verify-skill.md) — Project-local .cursor/skills/verify-oma with control-oma.mjs CLI lever and Feature Map for web + Console
+- [oma-vault OMA_TENANT fails closed across tenants](project-oma-vault-tenant-scope.md) — Unset/empty/* stay wildcard for single-operator; multi-tenant credentials refuse start and same-host matches stay tenant-scoped
 - [One AnyRouter listing id per model](project-anyrouter-catalog-one-id.md) — Catalog id is owner/model; host SKUs (date, vision-exp, fast, casing) are upstream names or aliases
 - [Open Managed Agents (OMA)](project-open-managed-agents.md) — OSS self-hostable Managed Agents API — CF Workers/DO or Docker
 - [templatebot pay-to-install Sale listings](project-templatebot-pay-to-install.md) — Sale templates require checkout before install; delivery is email plus secret unlock URL; owners see 5% platform fee plus processor estimate and net
-- [templatebot verify skill](project-templatebot-verify-skill.md) — Project-local .cursor/skills/verify-templatebot drives the Vite marketplace over CDP; Feature Map includes browse card coat blend, unlisted /data analytics, PostHog funnel, marquee, pay-to-install, MCP publish, viewport presets
+- [templatebot verify skill](project-templatebot-verify-skill.md) — Project-local .cursor/skills/verify-templatebot drives the Vite marketplace over CDP; Feature Map includes 30-per-page D1 browse, browse card coat blend, unlisted /data analytics, PostHog funnel, marquee, pay-to-install, MCP publish, live X embeds, multi-bot collect progress/skip/claim + master-detail publish, viewport presets
 - [Unlist broken AnyRouter models](project-anyrouter-unlist-broken-models.md) — Disable or unlist a broken model from /models and the catalog; do not delete history
