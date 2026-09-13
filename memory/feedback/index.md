@@ -17,6 +17,7 @@
 - [Read MEMORY.md on entry](feedback-docs-read-on-entry.md) — Before non-trivial work, read the index and relevant notes
 - [Semantic commits](feedback-semantic-commits.md) — Use conventional semantic commit messages
 - [Surgical changes only](feedback-surgical-changes.md) — Touch only what the request requires; no drive-by refactors
+- [Tailscale Serve for local Vite](feedback-tailscale-serve-local-vite.md) — When asked for Tailscale or remote access to a local Vite/TanStack app, bind Vite on every interface and add a tailnet-only Serve proxy. Never Funnel unless asked.
 - [Working style (index)](feedback-working-style.md) — Index of agent collaboration preferences
 - [Write concise simple English](feedback-concise-english.md) — Prefer short plain English in prose and commits
 - [Write memory as you work](feedback-docs-write-on-exit.md) — Persist durable public facts during work, not only at session end
