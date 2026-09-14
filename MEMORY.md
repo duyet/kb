@@ -42,6 +42,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [pstack verification is infra](memory/feedback/feedback-pstack-verification.md) — Project-local verify skill + CLI lever + Feature Map; cloud agents, not worktrees
 - [Prefer simple code](memory/feedback/feedback-simple-code.md) — Minimum code that solves the problem; no speculative abstraction
 - [Read MEMORY.md on entry](memory/feedback/feedback-docs-read-on-entry.md) — Before non-trivial work, read the index and relevant notes
+- [Commit and push to deploy](memory/feedback/feedback-commit-push-deploy.md) — After shipping, commit and push so CI deploys
 - [Semantic commits](memory/feedback/feedback-semantic-commits.md) — Use conventional semantic commit messages
 - [Tailscale Serve for local Vite](memory/feedback/feedback-tailscale-serve-local-vite.md) — When asked for Tailscale/remote access to Vite, bind every interface and Serve; never Funnel unless asked
 - [Surgical changes only](memory/feedback/feedback-surgical-changes.md) — Touch only what the request requires; no drive-by refactors
