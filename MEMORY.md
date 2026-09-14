@@ -51,6 +51,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Write memory as you work](memory/feedback/feedback-docs-write-on-exit.md) — Persist durable public facts during work, not only at session end
 
 ## Reference
+- [Generate API markdown from Python docstrings with ast](memory/topics/llm-agents/tech-python-ast-docstring-markdown.md) — Prefer stdlib ast over Sphinx/pdoc when emitting markdown API pages without importing the app
 - [AI SDK UIMessage shape](memory/reference/reference-ai-sdk-uimessage.md) — UIMessage is id+role+parts; unknown part types render as null
 - [Blog themes](memory/reference/reference-duyet-blog.md) — Recurring public blog themes on blog.duyet.net
 - [blog.duyet.net](memory/user/user-duyet-site-blog.md) — Personal digital garden blog
