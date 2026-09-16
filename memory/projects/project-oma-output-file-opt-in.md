@@ -6,7 +6,7 @@ type: project
 category: agents
 tags: [project, oma, agents, console, artifacts]
 aliases: [oma-output-file, oma-declared-outputs]
-related: ["[[project-open-managed-agents]]", "[[project-oma-verify-skill]]"]
+related: ["[[project-open-managed-agents]]", "[[project-oma-console-artifacts]]", "[[project-oma-verify-skill]]"]
 sources: ["https://github.com/duyet/oma", "https://oma.duyet.net"]
 created: 2026-09-04
 updated: 2026-09-16
