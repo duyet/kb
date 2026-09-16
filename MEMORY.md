@@ -105,6 +105,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [oma session env_secret persist](memory/projects/project-oma-session-env-secret-persist.md) — POST /v1/sessions writes env_secret via sessionSecrets.put; unwired store 500; DELETE cascades
 - [oma Console session Inject](memory/projects/project-oma-console-session-inject.md) — Operators inject prompts, MCP, tools, and vault credentials into a live session without mutating the agent
 - [oma output_file opt-in](memory/projects/project-oma-output-file-opt-in.md) — output_file is gated like browser tools; marks keep-this files as agent.output_declared for Console Artifacts
+- [oma Console Artifacts panel](memory/projects/project-oma-console-artifacts.md) — Session detail Inspector Artifacts tab aggregates writes, tool media, uploads, and session outputs from the event log
 - [oma Console HITL approvals](memory/projects/project-oma-console-hitl-approvals.md) — Console posts user.tool_confirmation from ApprovalCard; session cards + notice bell for mobile-compact HITL
 - [oma verify skill](memory/projects/project-oma-verify-skill.md) — Project-local `.cursor/skills/verify-oma` with `control-oma.mjs` CLI lever and Feature Map for web + Console
 - [oma home session and home runtime](memory/projects/project-oma-home-session.md) — Agent durable home inbox + paired long-lived home runtime presence
