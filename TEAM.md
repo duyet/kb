@@ -1,6 +1,6 @@
 # TEAM — duyet fleet (duyetbot Chief of Staff)
 
-Updated: 2026-09-11 ICT
+Updated: 2026-09-16 ICT
 
 ## Reporting
 - All bots report to **duyetbot**. Duyet gets one clear update (results / blockers / decisions).
@@ -66,5 +66,7 @@ Updated: 2026-09-11 ICT
 
 ## Standing
 - Leave Dependency Dashboards alone unless asked.
+- **2026-09-16 improver:** disabled templatebot cron `hunt-x-top-bot-changelog` (Weekday X bot-link hunt, `0 9 * * 1-5`) — unapproved engineer clock wake; profile/TEAM require GitHub-event only. If X→templatebot.lol ingest is still wanted, fold into xops pulse or on-demand — do not re-enable this cron.
+- **Also open:** accidental probe stray `77fe1528-…` (created 2026-09-15; description says delete me).
 - **Open (Duyet):** delete orphan empty bots `9b647a7b-…` (`stray-empty (delete me)`) and `2d572d2b-…` (`stray-duyetboss (delete me)` — accidental CreateAgent, not real duyetbot). Named cloud sandbox `duyet/templatebot` still missing.
 - **Note:** anyrouter-os has no separate GitHub listener — OS bugs are `[os]` issues on `duyet/anyrouter` (by design).

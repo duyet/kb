@@ -6,10 +6,10 @@ type: project
 category: agents
 tags: [project, agents, cloudflare, infra]
 aliases: [oma, open-managed-agents]
-related: ["[[user-duyet-active-projects]]", "[[tech-oma-credentials-out-of-sandbox]]", "[[tech-oma-bare-claude-gateway-rewrite]]", "[[tech-gh-token-git-host-alias]]", "[[tech-ai-agent-stack]]", "[[feedback-never-auto-merge-release-please]]", "[[project-oma-verify-skill]]", "[[project-oma-console-monitor]]", "[[project-oma-output-file-opt-in]]", "[[project-oma-console-hitl-approvals]]", "[[project-oma-session-env-secret-persist]]", "[[project-oma-home-session]]"]
+related: ["[[user-duyet-active-projects]]", "[[tech-oma-credentials-out-of-sandbox]]", "[[tech-oma-bare-claude-gateway-rewrite]]", "[[tech-gh-token-git-host-alias]]", "[[tech-ai-agent-stack]]", "[[feedback-never-auto-merge-release-please]]", "[[project-oma-verify-skill]]", "[[project-oma-console-monitor]]", "[[project-oma-output-file-opt-in]]", "[[project-oma-console-hitl-approvals]]", "[[project-oma-session-env-secret-persist]]", "[[project-oma-home-session]]", "[[project-oma-node-model-card-credentials]]"]
 sources: ["https://github.com/duyet/oma", "https://oma.duyet.net"]
 created: 2026-08-10
-updated: 2026-09-09
+updated: 2026-09-17
 timestamp: 2026-08-10T18:00:00Z
 ---
 
@@ -28,3 +28,4 @@ Console declared deliverables: [[project-oma-output-file-opt-in]].
 HITL approvals: [[project-oma-console-hitl-approvals]].
 Session env secrets: [[project-oma-session-env-secret-persist]].
 Home session / home runtime: [[project-oma-home-session]].
+Node Model Card credentials: [[project-oma-node-model-card-credentials]].

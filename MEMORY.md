@@ -108,6 +108,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [oma Console HITL approvals](memory/projects/project-oma-console-hitl-approvals.md) — Console posts user.tool_confirmation from ApprovalCard; session cards + notice bell for mobile-compact HITL
 - [oma verify skill](memory/projects/project-oma-verify-skill.md) — Project-local `.cursor/skills/verify-oma` with `control-oma.mjs` CLI lever and Feature Map for web + Console
 - [oma home session and home runtime](memory/projects/project-oma-home-session.md) — Agent durable home inbox + paired long-lived home runtime presence
+- [oma Node model-card credentials](memory/projects/project-oma-node-model-card-credentials.md) — Self-hosted Node resolves tenant Model Card creds before AnyRouter/deployment globals
 
 ## Tech
 - [Agent-loop PR cycle](memory/topics/workflow/tech-agent-loop-cycle.md) — Periodic cycle triages open PRs and dispatches fix/review work
