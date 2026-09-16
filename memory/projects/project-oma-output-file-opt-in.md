@@ -9,8 +9,8 @@ aliases: [oma-output-file, oma-declared-outputs]
 related: ["[[project-open-managed-agents]]", "[[project-oma-verify-skill]]"]
 sources: ["https://github.com/duyet/oma", "https://oma.duyet.net"]
 created: 2026-09-04
-updated: 2026-09-04
-timestamp: 2026-09-03T18:38:01Z
+updated: 2026-09-16
+timestamp: 2026-09-16T19:05:00Z
 ---
 
 In [[project-open-managed-agents]], `output_file` is **not** a default-on write to `/mnt/session/outputs/`. It is an **opt-in** tool (same `configs` gate as `browser` / `run_dynamic_worker`) that marks a file as a session deliverable.
@@ -20,4 +20,4 @@ Enable via agent toolset config, e.g. `agent_toolset_20260401` with `{ "name": "
 Marketing copy on https://oma.duyet.net names this under Building Blocks → Artifacts.
 
 **Why:** Operators want intentional keep-this artifacts, not every sandbox write.
-**How to apply:** Do not assume `output_file` is always present; check agent configs. Full Artifacts panel listing is a separate slice.
+**How to apply:** Do not assume `output_file` is always present; check agent configs. Console session Inspector **Artifacts** tab (duyet/oma #442) aggregates writes, tool-result media, uploads, session outputs, and declared deliverables from the event log — no extra store.
