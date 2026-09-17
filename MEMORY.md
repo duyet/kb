@@ -149,6 +149,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Eve durable runtime is Vercel or Nitro](memory/topics/llm-agents/tech-eve-runtime-vercel-nitro.md) — Eve sessions need Vercel Workflow or a self-hosted Nitro Node server
 - [Flat design: hairline borders](memory/topics/web/tech-flat-design-hairline.md) — Prefer hairline borders over heavy shadows for public site UI
 - [Bun mock.module vs node: builtins](memory/topics/testing/tech-bun-mock-module-node-builtins.md) — mock.module cannot intercept node:child_process on Bun 1.4.2; use PATH shims or pre-import spyOn
+- [Bare `charts/` gitignore hides vendored Helm deps](memory/topics/ci/tech-helm-vendored-deps-gitignore.md) — Chart.lock present + charts/*.tgz missing breaks source installs; vendor and anchor the ignore
 - [Flue: register providers in initializer](memory/topics/llm-agents/tech-flue-register-in-initializer.md) — Custom gateways must register from agent init with ctx.env; module load has empty env
 - [forwardAuth must preserve status](memory/topics/cloudflare/tech-forwardauth-preserve-status.md) — Error pages middleware can rewrite 302 challenges into 401/500 and break OAuth
 - [Hermes custom_providers](memory/topics/llm-agents/tech-hermes-custom-provider.md) — Register custom OpenAI-compatible providers by name, base_url, model
