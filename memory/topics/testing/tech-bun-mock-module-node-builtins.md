@@ -1,6 +1,6 @@
 ---
 name: tech-bun-mock-module-node-builtins
-title: Bun mock.module does not intercept node: builtins (1.4.2)
+title: "Bun mock.module does not intercept node: builtins (1.4.2)"
 description: bun:test mock.module cannot replace node:child_process in importers; use PATH shims or spyOn before import
 type: reference
 category: testing
