@@ -1,6 +1,10 @@
 # TEAM — duyet fleet (duyetbot Chief of Staff)
 
+<<<<<<< HEAD
 Updated: 2026-09-17 ICT
+=======
+Updated: 2026-09-16 ICT
+>>>>>>> 9b72205 (memory: auto-sync 2026-09-24 18:19)
 
 ## Reporting
 - All bots report to **duyetbot**. Duyet gets one clear update (results / blockers / decisions).
@@ -67,7 +71,10 @@ Updated: 2026-09-17 ICT
 
 ## Standing
 - Leave Dependency Dashboards alone unless asked.
+<<<<<<< HEAD
 - **2026-09-17 improver:** expanded thin `SEO/GEO Specialist` (`1a863a6f-…`) persona to fleet standard (one job, anti-jobs, handoff→duyetbot, on-demand wake, no invent metrics/$). UpdateAgent API could not see that id — profile written on disk; verify in sidebar. Next candidate: growth `cn-community-replies` weekday 10:01 clock (HOLD + profile only lists pulse/Monday).
+=======
+>>>>>>> 9b72205 (memory: auto-sync 2026-09-24 18:19)
 - **2026-09-16 improver:** disabled templatebot cron `hunt-x-top-bot-changelog` (Weekday X bot-link hunt, `0 9 * * 1-5`) — unapproved engineer clock wake; profile/TEAM require GitHub-event only. If X→templatebot.lol ingest is still wanted, fold into xops pulse or on-demand — do not re-enable this cron.
 - **Also open:** accidental probe stray `77fe1528-…` (created 2026-09-15; description says delete me).
 - **Open (Duyet):** delete orphan empty bots `9b647a7b-…` (`stray-empty (delete me)`) and `2d572d2b-…` (`stray-duyetboss (delete me)` — accidental CreateAgent, not real duyetbot). Named cloud sandbox `duyet/templatebot` still missing.
