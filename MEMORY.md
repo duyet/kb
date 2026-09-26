@@ -33,6 +33,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Cheap models for sub-agents](memory/feedback/feedback-cheap-models-subagents.md) — Fan-out sub-agents to cheaper models by default
 - [Disambiguate which product/repo](memory/feedback/feedback-disambiguate-repo.md) — When the user jumps between products, confirm target repo before large edits
 - [Docs-Driven Development (index)](memory/feedback/feedback-docs-driven-development.md) — Tiny router files + versioned kb brain; reflexive read/write
+- [Issue → research → PR](memory/feedback/feedback-issue-research-pr.md) — Addressable only with where/what/verify/why-not-done; research-only is valid; `needs-design` is a hard stop
 - [Fail loud; don't hide skips](memory/feedback/feedback-fail-loud.md) — Never claim done if tests/steps were skipped silently
 - [KB is the shared brain](memory/feedback/feedback-docs-kb-is-brain.md) — Versioned, grep-able notes beat rules stuck only in prompts
 - [KB stores public generic facts only](memory/feedback/feedback-public-kb-only.md) — No secrets, hosts, internal project names, or adhoc session dumps
@@ -83,6 +84,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [codex-claude-plugins verify skill](memory/projects/project-codex-claude-plugins-verify-skill.md) — Project-local `.cursor/skills/verify-marketplace`; catalogs/manifests CLI, not a hosted UI
 - [templatebot verify skill](memory/projects/project-templatebot-verify-skill.md) — Project-local `.cursor/skills/verify-templatebot`; CDP CLI; Feature Map includes 30-per-page D1 browse, landing marquee + pay-to-install (unlock + email)
 - [templatebot pay-to-install Sale listings](memory/projects/project-templatebot-pay-to-install.md) — Sale templates require checkout before install; delivery is email plus secret unlock URL; owners see 5% platform fee plus processor estimate and net
+- [chmonitor scheduled desk jobs](memory/projects/project-chmonitor-desk-jobs.md) — Four herdr-desk jobs (triage/babysit/prod/improve), staggered minutes, one agent name each, `name` must equal the folder
 - [chmonitor verify skill](memory/projects/project-chmonitor-verify-skill.md) — Project-local `.cursor/skills/verify-chmonitor`; CLI-first; identity-only doctor by default
 - [chmonitor hide sidebar pages](memory/projects/project-chmonitor-hide-menu-item.md) — Hover Hide next to pin hides a sidebar leaf; restore in Settings → Workspace → Navigation
 - [duyet/agentstate](memory/projects/project-agentstate.md) — State and coordination layer for AI agent fleets (public OSS)
@@ -132,8 +134,10 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [CLI report assemble from repo root](memory/topics/ci/tech-cli-report-assemble-from-root.md) — Resolve --assemble/--report/--out from the repo root; do not cd into the crate first
 - [Cloudflare Pages deploy habit](memory/topics/cloudflare/tech-cloudflare-pages-deploy.md) — Semantic commit → push → deploy changed app; avoid parallel deploys that share env files
 - [Codebase maintenance loop](memory/topics/workflow/tech-codebase-maintenance-loop.md) — Measure → fix top issue → verify → commit → deploy → log
+- [A per-package task gate lints nothing when no package defines it](memory/topics/ci/tech-automation-gate-vacuous.md) — turbo `run lint` over an empty task list; align the pre-push hook and CI on one command; the first `--no-verify` is a defect report
 - [Host cron as code](memory/topics/workflow/tech-cron-as-code-install-script.md) — Reproducible host jobs are committed crontab snippets plus an idempotent installer
 - [Daily digest keys must use the audience timezone](memory/topics/workflow/tech-digest-local-date.md) — A UTC-dated snapshot can miss the local calendar day so the daily digest looks up null and never sends
+- [A failing scheduled job looks like one with nothing to do](memory/topics/workflow/tech-silent-scheduler-failure.md) — Count consecutive failures per job, not last status; a stale path can kill every future fire permanently
 - [Daily manager leaves worktrees](memory/topics/workflow/tech-daily-manager-leaves-worktrees.md) — Overnight issue-fanout persists worktrees and a dated summary for next-morning review
 - [Convert history DTO → UIMessage](memory/topics/llm-agents/tech-ai-sdk-history-dto-convert.md) — Keep API neutral; translate tool-call DTOs to AI SDK parts per client
 - [createContext breaks RSC importers](memory/topics/web/tech-kumo-rsc-createcontext.md) — Libraries that call createContext at module scope force client boundaries
