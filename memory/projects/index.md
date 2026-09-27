@@ -8,6 +8,7 @@
 
 - [AnyRouter](project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
 - [AnyRouter CLI is a native Rust binary](project-anyrouter-cli-native.md) — Public install is curl | bash; binary is anyr; pin models with anyr claude --model owner/model
+- [CodexBar declined the AnyRouter provider](project-anyrouter-codexbar-declined.md) — Endorsement block, not code; the named-operator gate is the only real blocker
 - [AnyRouter OpenAI-compatible API](project-anyrouter-openai-compat.md) — OpenAI-shaped clients; text and embeddings only — image/video generation is gone
 - [AnyRouter OS](project-anyrouter-os.md) — Browser OS workshop — repo duyet/anyrouter-os; file bugs on duyet/anyrouter with [os] prefix
 - [AnyRouter playground MCP](project-anyrouter-playground-mcp.md) — Playground new chats enable AnyRouter MCP at the documented HTTP endpoint

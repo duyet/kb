@@ -1,4 +1,5 @@
 # `topics/ci/`
+- [A new CodexBar provider is a plugin](tech-codexbar-new-provider-is-a-plugin.md) — Declarative spec + one `.ts`, not bespoke Swift; CI is Swift 6.3.3 on ubuntu-24.04
 
 ## Concepts
 

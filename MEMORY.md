@@ -66,6 +66,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 
 ## Project
 - [AnyRouter](memory/projects/project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
+- [CodexBar declined the AnyRouter provider](memory/projects/project-anyrouter-codexbar-declined.md) — Endorsement block, not code; named operator is the one real gate
 - [AnyRouter CLI is a native Rust binary](memory/projects/project-anyrouter-cli-native.md) — curl | bash install; `anyr claude --model owner/model`
 - [AnyRouter OS](memory/projects/project-anyrouter-os.md) — Browser OS workshop — repo duyet/anyrouter-os; file bugs on duyet/anyrouter with [os] prefix
 - [AnyRouter public UI chrome](memory/projects/project-anyrouter-ui-chrome.md) — Viewport tokens, 44px targets, semantic dark, compact playground row, /models listing header one row from md
@@ -115,6 +116,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [oma Node model-card credentials](memory/projects/project-oma-node-model-card-credentials.md) — Self-hosted Node resolves tenant Model Card creds before AnyRouter/deployment globals
 
 ## Tech
+- [A new CodexBar provider is a plugin](memory/topics/ci/tech-codexbar-new-provider-is-a-plugin.md) — Declarative spec + one `.ts`; CI is Swift 6.3.3 on ubuntu-24.04
 - [Agent-loop PR cycle](memory/topics/workflow/tech-agent-loop-cycle.md) — Periodic cycle triages open PRs and dispatches fix/review work
 - [Morning Herdr issue-desk cron](memory/topics/workflow/tech-herdr-morning-issue-desk.md) — Cron starts a Grok manager on main; isolated worktrees; dated run folder left open for review
 - [Agent-loop uses cheap workers](memory/topics/workflow/tech-agent-loop-cheap-subagents.md) — PR fix/review fan-out should not all run on the most expensive model
@@ -178,6 +180,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [shadcn/ui base components](memory/topics/web/tech-shadcn-base.md) — shadcn + CVA + slot pattern as default React component base
 - [Single-source env config](memory/topics/workflow/tech-single-source-env.md) — One committed non-secret env file feeds client build and server runtime
 - [Squash PR title is the release commit](memory/topics/ci/tech-release-please-pr-title.md) — Under squash-merge, PR title becomes the commit release-please reads
+- [Squash merges break patch-id branch cleanup](memory/topics/ci/tech-squash-merge-hides-branch-cleanup.md) — git cherry calls landed branches unmerged; ask the forge for merged PRs instead
 - [Stale route chunks after deploy](memory/topics/web/tech-tanstack-stale-chunks.md) — Missing lazy chunks throw reading 'component'; add reload guard + prerender shells
 - [TanStack Start SSG](memory/topics/web/tech-tanstack-start-ssg.md) — Prerender Vite/TanStack apps to static HTML for crawlers and edge hosts
 - [Tmux pane status labels](memory/topics/workflow/tech-tmux-pane-labels.md) — Map pane-current-command to short icons for agent vs editor vs idle
