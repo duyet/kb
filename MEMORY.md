@@ -73,6 +73,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [One AnyRouter listing id per model](memory/projects/project-anyrouter-catalog-one-id.md) — Catalog id is owner/model; host SKUs (date, vision-exp, fast, casing) are upstream names or aliases
 - [Unlist broken AnyRouter models](memory/projects/project-anyrouter-unlist-broken-models.md) — Disable or unlist a broken model from /models and the catalog; do not delete history
 - [AnyRouter OpenAI-compatible API](memory/projects/project-anyrouter-openai-compat.md) — OpenAI-shaped clients; text and embeddings only — image/video generation is gone
+- [AnyRouter should unify reasoning effort](memory/projects/project-anyrouter-uniform-reasoning.md) — Ticket: reasoning params on 12 of 206 listings, effort values never published; one ladder for the whole gateway
 - [AnyWorker local agent + GUI](memory/projects/project-anyworker-local-agent.md) — Product path: Python agent server plus React GUI; web is separate marketing app
 - [chmonitor](memory/projects/project-clickhouse-monitoring.md) — Open-source ClickHouse operational advisor — monitoring + AI recommendations
 - [chmonitor paid licenses are self-hosted host-count](memory/projects/project-chmonitor-licenses.md) — Honor-system host-count licenses; replicas not counted; not hosted SaaS seats
