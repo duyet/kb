@@ -67,12 +67,33 @@ only rungs accepted on all 12 routes reachable from a plain key. A published
 (`nvidia-byok`). The field *is* honoured — `reasoning_tokens` track the value
 (`gpt-oss-20b` 21/53/98 across low/medium/high).
 
+The accepted set is **per model id, not per backend**: `nvidia-byok` serves
+both `deepseek-v4.1-flash` (rejects `minimal`/`medium`) and
+`muse-glimmer-30b` (accepts both). No toggle field exists — `reasoning: true`
+and `reasoning: false` both 400 on every reachable route.
+
+Honored effect, same prompt, `max_tokens=700`, two runs per value, mean
+`reasoning_tokens` (2026-09-27):
+
+| route | `none` | `low` | `medium` | `high` |
+| --- | --- | --- | --- | --- |
+| `minimax/m3` | 349 (one run 0) | 611 | 551 | 846 |
+| `nvidia/nemotron-3-super-120b-a12b` | 0 | 483 | 592 | 558 |
+| `openai/gpt-oss-20b` | rejected | 273 | 629 | 698 |
+| `deepseek-v4.1-flash` | 0 | 537 | rejected | 700 |
+| `anyrouter/free` | 0 | 566 | 667 | 697 |
+
+Depth rises with the value where the rung is accepted, and `none` drives
+`reasoning_tokens` to 0, so it is a real off position. `nemotron-3-ultra`
+returned no usage for the depth probe.
+
 **Why:** without this, every client maintains its own per-model reasoning
 table and guesses, and a uniform contract silently breaks on the routes whose
 upstream is narrower.
 **How to apply:** no public tracker exists for AnyRouter (closed service, no
 GitHub repo, issues disabled here), so this note is the ticket of record. Until
-the API normalizes, publish only the safe intersection and cite the measurement
-— do not encode per-lab ladders, and do not publish a rung a route rejects. Ask
-#2 is the one that unblocks full-fidelity per-model data. See
+the API normalizes, publish only a route's measured set and cite the
+measurement — do not encode per-lab ladders, do not publish a rung a route
+rejects, and never publish a `toggle`, which this API does not have. Ask #2 is
+the one that unblocks full-fidelity per-model data. See
 [[project-anyrouter-openai-compat]].
