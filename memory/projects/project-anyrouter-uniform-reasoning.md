@@ -47,11 +47,32 @@ Asks:
 4. Fill `top_provider.max_completion_tokens` (or add an explicit
    `max_output_tokens`) so the clamp is discoverable.
 
+## Measured: AnyRouter does not validate the field at all
+
+Live test 2026-09-27, `POST /api/v1/chat/completions`, reading
+`error.metadata.upstream_message`. The gateway forwards `reasoning_effort`
+verbatim and the **serving upstream's** 400 decides:
+
+| upstream | its own allowlist |
+| --- | --- |
+| `openrouter-pool` | `max`, `xhigh`, `high`, `medium`, `low`, `minimal`, `none` |
+| `huggingface-pool` | `low`, `medium`, `high` — rejects `xhigh` |
+| `nvidia-byok` | rejects `medium` |
+| `z-ai-coding-byok` | no validation, accepts any value |
+| `hermes-agent` | `low`, `medium`, `high`, `xhigh` |
+
+So there is no uniform ladder the gateway enforces. `low` and `high` are the
+only rungs accepted on all 12 routes reachable from a plain key. A published
+`low`/`medium`/`high` contract returns a hard 400 on `deepseek-v4.1-flash`
+(`nvidia-byok`). The field *is* honoured — `reasoning_tokens` track the value
+(`gpt-oss-20b` 21/53/98 across low/medium/high).
+
 **Why:** without this, every client maintains its own per-model reasoning
-table and guesses. AnyRouter's gateway already hides upstream differences, so
-the reasoning contract should be hidden the same way.
+table and guesses, and a uniform contract silently breaks on the routes whose
+upstream is narrower.
 **How to apply:** no public tracker exists for AnyRouter (closed service, no
-GitHub repo, issues disabled here), so this note is the ticket of record.
-Until the API ships it, treat the uniform ladder as the contract *we* publish
-and flag the divergence rather than encoding per-lab ladders in a provider
-that has none of its own. See [[project-anyrouter-openai-compat]].
+GitHub repo, issues disabled here), so this note is the ticket of record. Until
+the API normalizes, publish only the safe intersection and cite the measurement
+— do not encode per-lab ladders, and do not publish a rung a route rejects. Ask
+#2 is the one that unblocks full-fidelity per-model data. See
+[[project-anyrouter-openai-compat]].
