@@ -40,6 +40,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Keep router files tiny](memory/feedback/feedback-docs-router-tiny.md) — CLAUDE.md/AGENTS.md = short stable rules + pointers, not architecture dumps
 - [Logic change → update related tests](memory/feedback/feedback-logic-change-update-tests.md) — Co-update tests in the same change; never wait for CI
 - [Never auto-merge release-please PRs](memory/feedback/feedback-never-auto-merge-release-please.md) — Leave release-please and changeset version PRs for human merge
+- [Verify UI work in a real browser](memory/feedback/feedback-verify-ui-in-browser.md) — Measure the rendered page; class-collision, UA-default, and hit-area bugs hide from review and green tests
 - [pstack verification is infra](memory/feedback/feedback-pstack-verification.md) — Project-local verify skill + CLI lever + Feature Map; cloud agents, not worktrees
 - [Prefer simple code](memory/feedback/feedback-simple-code.md) — Minimum code that solves the problem; no speculative abstraction
 - [Read MEMORY.md on entry](memory/feedback/feedback-docs-read-on-entry.md) — Before non-trivial work, read the index and relevant notes

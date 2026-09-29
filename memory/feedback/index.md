@@ -3,9 +3,11 @@
 ## Concepts
 
 - [Cheap models for sub-agents](feedback-cheap-models-subagents.md) — Fan-out sub-agents to cheaper models by default
+- [Commit and push to deploy](feedback-commit-push-deploy.md) — After shipping work, commit and push so CI deploys — do not wait to be asked
 - [Disambiguate which product/repo](feedback-disambiguate-repo.md) — When the user jumps between products, confirm target repo before large edits
 - [Docs-Driven Development (index)](feedback-docs-driven-development.md) — Tiny router files + versioned kb brain; reflexive read/write
 - [Fail loud; don't hide skips](feedback-fail-loud.md) — Never claim done if tests/steps were skipped silently
+- [Issue → research → PR: require the verify path before implementation](feedback-issue-research-pr.md) — An issue is addressable only when it names where the change starts, what the behaviour becomes, and which check proves it
 - [KB is the shared brain](feedback-docs-kb-is-brain.md) — Versioned, grep-able notes beat rules stuck only in prompts
 - [KB stores public generic facts only](feedback-public-kb-only.md) — No secrets, hosts, internal project names, or adhoc session dumps
 - [Keep main CI green, fast, and performant](feedback-main-ci-green-fast.md) — After merges and new features, verify main CI is green; do not add slow tests or extra hot-path queries
@@ -18,6 +20,7 @@
 - [Semantic commits](feedback-semantic-commits.md) — Use conventional semantic commit messages
 - [Surgical changes only](feedback-surgical-changes.md) — Touch only what the request requires; no drive-by refactors
 - [Tailscale Serve for local Vite](feedback-tailscale-serve-local-vite.md) — When asked for Tailscale or remote access to a local Vite/TanStack app, bind Vite on every interface and add a tailnet-only Serve proxy. Never Funnel unless asked.
+- [Verify UI work in a real browser, not by reading the diff](feedback-verify-ui-in-browser.md) — Markup/CSS/JS bugs stay invisible in review — measure the rendered page before claiming done
 - [Working style (index)](feedback-working-style.md) — Index of agent collaboration preferences
 - [Write concise simple English](feedback-concise-english.md) — Prefer short plain English in prose and commits
 - [Write memory as you work](feedback-docs-write-on-exit.md) — Persist durable public facts during work, not only at session end
