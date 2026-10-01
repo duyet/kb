@@ -9,5 +9,6 @@
 - [`llm-agents/`](llm-agents/)
 - [`npm/`](npm/)
 - [`standards/`](standards/)
+- [`testing/`](testing/)
 - [`web/`](web/)
 - [`workflow/`](workflow/)

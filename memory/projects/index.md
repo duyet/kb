@@ -6,13 +6,14 @@
 
 ## Concepts
 
+- [aidr uses the cf CLI for D1 and secrets](project-aidr-cf-cli.md) — aidr.today keeps wrangler.toml and wrangler deploy because cf migrate drops Workflows and Durable Objects.
 - [AnyRouter](project-anyrouter.md) — Universal multi-provider LLM API gateway at anyrouter.dev
 - [AnyRouter CLI is a native Rust binary](project-anyrouter-cli-native.md) — Public install is curl | bash; binary is anyr; pin models with anyr claude --model owner/model
-- [CodexBar declined the AnyRouter provider](project-anyrouter-codexbar-declined.md) — Endorsement block, not code; the named-operator gate is the only real blocker
 - [AnyRouter OpenAI-compatible API](project-anyrouter-openai-compat.md) — OpenAI-shaped clients; text and embeddings only — image/video generation is gone
 - [AnyRouter OS](project-anyrouter-os.md) — Browser OS workshop — repo duyet/anyrouter-os; file bugs on duyet/anyrouter with [os] prefix
 - [AnyRouter playground MCP](project-anyrouter-playground-mcp.md) — Playground new chats enable AnyRouter MCP at the documented HTTP endpoint
 - [AnyRouter public UI chrome](project-anyrouter-ui-chrome.md) — Viewport tokens, 44px targets, semantic dark, compact playground row
+- [AnyRouter should unify reasoning effort across upstreams and models](project-anyrouter-uniform-reasoning.md) — Ticket — /api/v1/models advertises reasoning params on 12 of 206 listings, never the accepted effort values, so clients cannot discover a uniform reasoning surface; chat is effort-only by the host's own docs
 - [AnyWorker local agent + GUI](project-anyworker-local-agent.md) — Product path: Python agent server plus React GUI; web is separate marketing app
 - [chmonitor](project-clickhouse-monitoring.md) — Open-source ClickHouse operational advisor — monitoring + AI recommendations
 - [chmonitor CLI local named connections](project-chmonitor-cli-local-connections.md) — chm add/ls/use/rm save local ClickHouse HTTP and postgres:// connections; secrets stay in the credentials helper
@@ -20,10 +21,12 @@
 - [chmonitor menu engine filter](project-chmonitor-menu-engine-filter.md) — Absent engines on a menu item means ClickHouse family; Postgres hosts must not see those items
 - [chmonitor paid licenses are self-hosted host-count](project-chmonitor-licenses.md) — Paid chmonitor is honor-system host-count licenses (yearly/lifetime), not hosted SaaS seats
 - [chmonitor recommends, never auto-DDL](project-chmonitor-advisor.md) — AI/ops advisor suggests CH changes but does not apply DDL automatically
+- [chmonitor scheduled desk jobs](project-chmonitor-desk-jobs.md) — Four herdr-desk jobs (triage, babysit, prod watch, improve) with staggered minutes and one agent name each
 - [chmonitor Tools sidebar group](project-chmonitor-tools-sidebar.md) — Dashboard Tools group holds SQL Console, Data Explorer, Explain, Advisor, Chart Builder, Schema Compare, Settings Diff
 - [chmonitor TTL & Partitions inventory](project-chmonitor-ttl-partitions.md) — System TTL page lists table inventory plus part-health charts; never select system.tables.ttl
 - [chmonitor verify skill](project-chmonitor-verify-skill.md) — Project-local .cursor/skills/verify-chmonitor drives the Rust CLI; default doctor is identity-only
 - [codex-claude-plugins verify skill](project-codex-claude-plugins-verify-skill.md) — Project-local .cursor/skills/verify-marketplace; CLI lever on catalogs/manifests, not a hosted UI
+- [CodexBar declined the AnyRouter provider on endorsement grounds](project-anyrouter-codexbar-declined.md) — steipete/CodexBar closed the AnyRouter provider PRs twice in favor of named-operator, upstream-authorization, and track-record gates
 - [duyet/agentstate](project-agentstate.md) — State and coordination layer for AI agent fleets (public OSS)
 - [duyet/anyworker](project-anyworker.md) — Open alternative to Claude Cowork-style agents — local agent + marketing site
 - [duyet/charts](project-charts.md) — Public Helm charts repository
@@ -36,10 +39,13 @@
 - [news.duyet.net](project-news.md) — Personal news feed + public digest; homepage AI;DR thumbs; news-tab own 0.1.x release line
 - [oma Console Agent Monitor tab](project-oma-console-monitor.md) — Console AgentDetail health strip plus Monitor tab is the live agent.status heartbeat feed
 - [oma Console Analytics dashboard](project-oma-console-analytics.md) — Console /analytics charts cross-agent estimated spend, token mix by kind, and declared multiagent delegation from existing usage APIs
+- [OMA Console Artifacts Inspector tab](project-oma-console-artifacts.md) — Session detail Inspector Artifacts tab aggregates writes, tool-result media, uploads, and session outputs from the event log
 - [oma Console daily summary for scheduled agent runs](project-oma-console-daily-summary.md) — Agent detail Daily summary tab rolls up schedule firings over 1/7/30 UTC days from agent_schedule_runs
 - [OMA Console HITL approvals and notice bell](project-oma-console-hitl-approvals.md) — Console posts user.tool_confirmation from ApprovalCard; session cards + notice bell for mobile-compact HITL
 - [OMA Console session Inject overlay](project-oma-console-session-inject.md) — Operators inject prompts, MCP, tools, and vault credentials into a live session without mutating the agent
+- [oma home session and home runtime](project-oma-home-session.md) — Agent has one durable home inbox plus paired long-lived home runtime; ephemeral sandboxes stay separate
 - [oma internal secret uses timing-safe compare](project-oma-timing-safe-secrets.md) — checkInternalSecret and trusted-proxy share timingSafeEqualStr from @duyet/oma-auth/timing-safe-equal
+- [oma Node model-card credentials for session turns](project-oma-node-model-card-credentials.md) — Self-hosted Node resolves tenant Model Card creds before AnyRouter/deployment globals
 - [OMA output_file is opt-in declared deliverables](project-oma-output-file-opt-in.md) — output_file is gated like browser tools; marks keep-this files as agent.output_declared for Console Artifacts
 - [oma session create persists env_secret to the secret store](project-oma-session-env-secret-persist.md) — POST /v1/sessions writes env_secret and inline github tokens via sessionSecrets.put; unwired store fails 500; DELETE cascades
 - [oma verify skill](project-oma-verify-skill.md) — Project-local .cursor/skills/verify-oma with control-oma.mjs CLI lever and Feature Map for web + Console
