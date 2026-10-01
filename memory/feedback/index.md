@@ -3,7 +3,7 @@
 ## Concepts
 
 - [Cheap models for sub-agents](feedback-cheap-models-subagents.md) — Fan-out sub-agents to cheaper models by default
-- [Commit and push to deploy](feedback-commit-push-deploy.md) — After shipping work, commit and push so CI deploys — do not wait to be asked
+- [Commit and push to deploy](feedback-commit-push-deploy.md) — After shipping work, always commit, push, and deploy — do not wait to be asked
 - [Disambiguate which product/repo](feedback-disambiguate-repo.md) — When the user jumps between products, confirm target repo before large edits
 - [Docs-Driven Development (index)](feedback-docs-driven-development.md) — Tiny router files + versioned kb brain; reflexive read/write
 - [Fail loud; don't hide skips](feedback-fail-loud.md) — Never claim done if tests/steps were skipped silently

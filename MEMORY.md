@@ -44,7 +44,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [pstack verification is infra](memory/feedback/feedback-pstack-verification.md) — Project-local verify skill + CLI lever + Feature Map; cloud agents, not worktrees
 - [Prefer simple code](memory/feedback/feedback-simple-code.md) — Minimum code that solves the problem; no speculative abstraction
 - [Read MEMORY.md on entry](memory/feedback/feedback-docs-read-on-entry.md) — Before non-trivial work, read the index and relevant notes
-- [Commit and push to deploy](memory/feedback/feedback-commit-push-deploy.md) — After shipping, commit and push so CI deploys
+- [Commit and push to deploy](memory/feedback/feedback-commit-push-deploy.md) — After shipping, always commit, push, and deploy (`cp and deploy`)
 - [Semantic commits](memory/feedback/feedback-semantic-commits.md) — Use conventional semantic commit messages
 - [Tailscale Serve for local Vite](memory/feedback/feedback-tailscale-serve-local-vite.md) — When asked for Tailscale/remote access to Vite, bind every interface and Serve; never Funnel unless asked
 - [Surgical changes only](memory/feedback/feedback-surgical-changes.md) — Touch only what the request requires; no drive-by refactors
@@ -60,6 +60,8 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [blog.duyet.net](memory/user/user-duyet-site-blog.md) — Personal digital garden blog
 - [Cloudflare acquired Astro (2026)](memory/reference/reference-cloudflare-acquires-astro.md) — Jan 2026: Astro team joined Cloudflare; Flue agent framework context
 - [github.com/duyet](memory/user/user-duyet-github.md) — Public GitHub org/user for open-source work
+- [GitHub Actions cancels the *pending* run](memory/reference/reference-gh-actions-concurrency-pending-cancel.md) — cancel-in-progress:false still evicts queued runs; with a paths filter, published tags can silently lag master
+- [Herdr child dispatch: verify it landed](memory/reference/reference-herdr-child-dispatch-verify.md) — A long agent prompt can sit unsent in the composer and look exactly like an idle child
 - [homelab.duyet.net](memory/user/user-duyet-site-homelab.md) — Public homelab overview site on the personal domain
 - [kb.duyet.net](memory/user/user-duyet-site-kb.md) — Public rendered face of this shared-brain repo
 - [Notable public GitHub repos](memory/reference/reference-duyet-github.md) — Catalog of notable public duyet/* and related OSS repos
@@ -96,6 +98,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [duyet/homelab](memory/projects/project-homelab.md) — Public personal homelab repo — configs and experiments (no private topology in kb)
 - [duyet/kb shared brain](memory/projects/project-kb.md) — Public shared-brain repo — atomic notes, MEMORY.md index, OKF layout
 - [duyet/monorepo](memory/projects/project-monorepo.md) — Public Bun+Turborepo for personal duyet.net web apps; news-tab is its own 0.1.x release line
+- [aidr cf CLI](memory/projects/project-aidr-cf-cli.md) — D1 and secrets use cf; wrangler deploy stays until Workflows migrate
 - [news.duyet.net](memory/projects/project-news.md) — Personal news feed + public digest; homepage AI;DR thumbs; hourly ingest via DO alarm + GitHub watchdog; news-tab own 0.1.x release
 - [duyetbot persona](memory/projects/project-duyetbot.md) — Manager agent for the public product fleet — assigns work, keeps kb current
 - [KB site front-end](memory/projects/project-kb-site.md) — kb.duyet.net renders the shared-brain notes; apps/kb/kb mounts ~/kb
@@ -157,6 +160,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Eve durable runtime is Vercel or Nitro](memory/topics/llm-agents/tech-eve-runtime-vercel-nitro.md) — Eve sessions need Vercel Workflow or a self-hosted Nitro Node server
 - [Flat design: hairline borders](memory/topics/web/tech-flat-design-hairline.md) — Prefer hairline borders over heavy shadows for public site UI
 - [Bun mock.module vs node: builtins](memory/topics/testing/tech-bun-mock-module-node-builtins.md) — mock.module cannot intercept node:child_process on Bun 1.4.2; use PATH shims or pre-import spyOn
+- [Bun test fixture HOME isolation](memory/topics/testing/tech-bun-test-home-isolation.md) — bun writes .bun into fixture HOME; assert app state dir absent, not HOME emptiness
 - [Bare `charts/` gitignore hides vendored Helm deps](memory/topics/ci/tech-helm-vendored-deps-gitignore.md) — Chart.lock present + charts/*.tgz missing breaks source installs; vendor and anchor the ignore
 - [Flue: register providers in initializer](memory/topics/llm-agents/tech-flue-register-in-initializer.md) — Custom gateways must register from agent init with ctx.env; module load has empty env
 - [forwardAuth must preserve status](memory/topics/cloudflare/tech-forwardauth-preserve-status.md) — Error pages middleware can rewrite 302 challenges into 401/500 and break OAuth
