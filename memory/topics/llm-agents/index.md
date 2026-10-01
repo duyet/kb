@@ -14,6 +14,7 @@
 - [Eve durable runtime is Vercel or Nitro](tech-eve-runtime-vercel-nitro.md) — Eve sessions need Vercel Workflow or a self-hosted Nitro Node server
 - [Filesystem-first durable agents](tech-eve-filesystem-agents.md) — Eve authors an agent as agent/ files — instructions, tools, connections
 - [Flue: register providers in initializer](tech-flue-register-in-initializer.md) — Custom gateways must register from agent init with ctx.env; module load has empty env
+- [Generate API markdown from Python docstrings with ast](tech-python-ast-docstring-markdown.md) — Prefer stdlib ast over Sphinx/pdoc when emitting markdown API pages from docstrings without importing the app
 - [GitHub CLI tokens need a git host alias](tech-gh-token-git-host-alias.md) — A gh vault token keyed to api.github.com does not match github.com git remotes unless lookup aliases those hosts
 - [Hermes custom_providers](tech-hermes-custom-provider.md) — Register custom OpenAI-compatible providers by name, base_url, model
 - [Hermes steer mode](tech-hermes-steer-mode.md) — While busy, new user messages can adjust the current task instead of being ignored
