@@ -1,7 +1,7 @@
 ---
 name: project-oma-cli-envs-get-delete
 title: oma CLI envs get and delete
-description: oma envs get/delete honor --json; 409/404 via apiFetch; Partial #484 tip 5c5c9178
+description: oma envs get/delete call GET/DELETE /v1/environments/:id; --json; Partial #484
 type: project
 category: agents
 tags: [project, oma, cli, envs]
@@ -13,8 +13,8 @@ updated: 2026-10-03
 timestamp: 2026-10-03T04:57:00+07:00
 ---
 
-`oma envs get <id>` → `GET /v1/environments/:id` (name/id/type plus optional sandbox/harness/status/kind/desc/created; `--json` = raw object). `oma envs delete <id>` → `DELETE /v1/environments/:id` (409 active sessions / 404 via `apiFetch`; empty 2xx still emits `{ type: environment_deleted, id }` under `--json`).
+`oma envs get <id>` hits `GET /v1/environments/:id` and prints name/id/type plus optional sandbox provider, harness, status, kind, description, and created date; `--json` emits the raw object. `oma envs delete <id>` hits `DELETE /v1/environments/:id`; 409 (active sessions) and 404 surface through `apiFetch`; empty delete bodies still honor `--json` envelopes (see [[project-oma-cli-empty-2xx]]).
 
-**Why:** Operators need detail beyond `envs list` and a hard-delete path that surfaces server refusals honestly.
+**Why:** Smoke and ops need read-back and cleanup of environments without raw `oma api` calls; #484 item 5.
 
-**How to apply:** Recert `oma envs get --help`, `oma envs delete --help` (no auth required for help). Soft live: dry get/delete on a throwaway env. Shipped #488 tip `5c5c9178` (Partial #484; does not close). Patch changeset pending Version Packages → `@getoma/cli` 0.1.14 — leave VP/RP alone; npm after publish. Leftover on #484: `envs create` networking/packages flags, `oma usage`, hosted `runtime list`. Open RP #489 (root 0.1.8) — leave alone.
+**How to apply:** After publish past tip that includes #488 (`5c5c917`), Soft CLI QA `oma envs get --help`, `oma envs delete --help`, then live get/delete against a disposable env id. Leave release-please and changeset Version Packages for a human. #484 remains open for envs create config, `oma usage`, and hosted `runtime list`.
