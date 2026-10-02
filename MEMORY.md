@@ -153,6 +153,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [createContext breaks RSC importers](memory/topics/web/tech-kumo-rsc-createcontext.md) — Libraries that call createContext at module scope force client boundaries
 - [GitHub CLI tokens need a git host alias](memory/topics/llm-agents/tech-gh-token-git-host-alias.md) — A gh vault token keyed to api.github.com does not match github.com git remotes unless lookup aliases those hosts
 - [CF two-segment package mounts need invokePackage](memory/topics/llm-agents/tech-oma-cf-two-segment-invoke-package.md) — Cloudflare Hono wrappers for /v1/<group>/<name>/* must use invokePackage, not nested fetch on c.req.path
+- [oma DO alarm tests same-instance](memory/topics/llm-agents/tech-oma-do-alarm-test-same-instance.md) — Call alarm() inside the same runInDurableObject as setAlarm spies; reincarnation empties them
 - [OMA env-fallback Claude uses anyrouter/free on AnyRouter](memory/topics/llm-agents/tech-oma-bare-claude-gateway-rewrite.md) — Bare claude-* rewrites to anthropic/claude-*; AnyRouter env-fallback sonnet sends anyrouter/free (not dotted BYOK 4.6)
 - [Credentials never enter the sandbox](memory/topics/llm-agents/tech-oma-credentials-out-of-sandbox.md) — Managed-agent platforms should inject secrets via outbound proxy, not into the sandbox FS
 - [Dashboard auth gate precedence](memory/topics/llm-agents/tech-hermes-dashboard-auth-gate.md) — Insecure/loopback allowlists can bypass OAuth if ordered wrong
