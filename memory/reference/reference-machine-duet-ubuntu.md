@@ -5,7 +5,7 @@ description: "Primary Linux workstation (duet-ubuntu) — OS, Herdr workspaces, 
 type: reference
 category: reference
 tags: [reference, machine, homelab, herdr, ubuntu]
-related: ["[[project-news]]", "[[reference-duyet-github]]", "[[projects/homelab/index]]"]
+related: ["[[project-news]]", "[[reference-duyet-github]]", "[[lessons-chmonitor-homelab-deploy]]"]
 created: 2026-09-27
 updated: 2026-09-27
 timestamp: 2026-09-27T01:40:00Z
