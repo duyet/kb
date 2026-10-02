@@ -61,6 +61,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [Cloudflare acquired Astro (2026)](memory/reference/reference-cloudflare-acquires-astro.md) — Jan 2026: Astro team joined Cloudflare; Flue agent framework context
 - [github.com/duyet](memory/user/user-duyet-github.md) — Public GitHub org/user for open-source work
 - [GitHub Actions cancels the *pending* run](memory/reference/reference-gh-actions-concurrency-pending-cancel.md) — cancel-in-progress:false still evicts queued runs; with a paths filter, published tags can silently lag master
+- [Default Actions token merges skip further workflows](memory/reference/reference-gh-actions-token-merge-no-workflows.md) — automerge as github-actions bot does not start tip push CI/deploy; PR CI was the gate
 - [Herdr child dispatch: verify it landed](memory/reference/reference-herdr-child-dispatch-verify.md) — A long agent prompt can sit unsent in the composer and look exactly like an idle child
 - [homelab.duyet.net](memory/user/user-duyet-site-homelab.md) — Public homelab overview site on the personal domain
 - [kb.duyet.net](memory/user/user-duyet-site-kb.md) — Public rendered face of this shared-brain repo
