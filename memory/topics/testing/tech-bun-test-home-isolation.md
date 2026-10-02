@@ -6,7 +6,7 @@ type: reference
 category: testing
 tags: [reference, bun, testing, isolation, fixtures, gotcha, hermetic]
 aliases: ["bun test fixture HOME polluted", "empty HOME assertion fails under bun"]
-related: ["[[tech-bun-hoisting]]", "[[tech-e2e-db-external-sandbox]]"]
+related: []
 sources: []
 created: 2026-09-17
 updated: 2026-09-17
