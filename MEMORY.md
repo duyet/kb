@@ -123,6 +123,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [oma model-card vendor provider on CF wire](memory/projects/project-oma-model-card-provider-cf-wire.md) — CF SessionDO maps Model Card vendor provider (openai/anthropic) to ApiCompat wire tags — parity with Node
 - [oma CLI treats empty 2xx as success](memory/projects/project-oma-cli-empty-2xx.md) — CLI apiFetch skips JSON.parse on empty bodies; tip/npm 0.1.12 — verify tarball before trust install
 - [oma CLI version, group help, and --json before auth](memory/projects/project-oma-cli-version-help-json.md) — Argv ordering: version/help before loadConfig; --json before empty-result sentences
+- [oma CLI envs get and delete](memory/projects/project-oma-cli-envs-get-delete.md) — envs get/delete + --json; Partial #484 tip 5c5c9178
 
 ## Tech
 - [A new CodexBar provider is a plugin](memory/topics/ci/tech-codexbar-new-provider-is-a-plugin.md) — Declarative spec + one `.ts`; CI is Swift 6.3.3 on ubuntu-24.04
