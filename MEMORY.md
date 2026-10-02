@@ -120,7 +120,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [oma home session and home runtime](memory/projects/project-oma-home-session.md) — Agent durable home inbox + paired long-lived home runtime presence
 - [oma Node model-card credentials](memory/projects/project-oma-node-model-card-credentials.md) — Self-hosted Node resolves tenant Model Card creds before AnyRouter/deployment globals
 - [oma model-card vendor provider on CF wire](memory/projects/project-oma-model-card-provider-cf-wire.md) — CF SessionDO maps Model Card vendor provider (openai/anthropic) to ApiCompat wire tags — parity with Node
-- [oma CLI treats empty 2xx as success](memory/projects/project-oma-cli-empty-2xx.md) — CLI apiFetch skips JSON.parse on empty bodies so accepted 202/204 mutations do not look like failures
+- [oma CLI treats empty 2xx as success](memory/projects/project-oma-cli-empty-2xx.md) — CLI apiFetch skips JSON.parse on empty bodies; tip/npm 0.1.12 — verify tarball before trust install
 
 ## Tech
 - [A new CodexBar provider is a plugin](memory/topics/ci/tech-codexbar-new-provider-is-a-plugin.md) — Declarative spec + one `.ts`; CI is Swift 6.3.3 on ubuntu-24.04
