@@ -19,5 +19,7 @@ Fleet **state/coordination** API (not an agent framework — [[tech-agentstate-n
 
 Product version is [[tech-release-please-basics]]: standing `chore(main): release X.Y.Z` PR, human-merge only ([[feedback-never-auto-merge-release-please]]). In 0.x, `feat` bumps minor (`bump-patch-for-minor-pre-major: false`). `/api` reports that semver.
 
+**Shipping:** duyetbot auto-merges green PRs itself (merge-commit strategy that preserves the branch's semantic commits — no need to merge manually; just push, wait for CI, and confirm). Dashboard routes are auth-gated app shells, excluded from the sitemap checker.
+
 SDKs: npm `@agentstate/sdk`, PyPI `agentstate`. MCP available. MIT, self-hostable.
 Portfolio: [[user-duyet-active-projects]]. Related: [[project-anyworker]], [[project-open-managed-agents]], [[tech-ai-agent-stack]].
