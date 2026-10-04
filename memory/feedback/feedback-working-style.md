@@ -16,7 +16,7 @@ Agent working-style index:
 - [[feedback-concise-english]] · [[feedback-simple-code]] · [[feedback-semantic-commits]]
 - [[feedback-surgical-changes]] · [[feedback-fail-loud]] · [[feedback-commit-push-deploy]]
 - [[feedback-docs-driven-development]] · [[feedback-cheap-models-subagents]]
-- [[feedback-logic-change-update-tests]] · [[feedback-never-auto-merge-release-please]]
+- [[feedback-logic-change-update-tests]] · [[feedback-never-auto-merge-release-please]] · [[feedback-herdr-children-merge-clean]]
 - [[feedback-main-ci-green-fast]] — keep main CI green and hot paths cheap
 
 - [[feedback-disambiguate-repo]] — multi-product sessions
