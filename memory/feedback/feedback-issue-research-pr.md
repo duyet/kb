@@ -1,6 +1,6 @@
 ---
 name: feedback-issue-research-pr
-title: Issue → research → PR: require the verify path before implementation
+title: "Issue → research → PR: require the verify path before implementation"
 description: An issue is addressable only when it names where the change starts, what the behaviour becomes, and which check proves it
 type: feedback
 category: workflow
