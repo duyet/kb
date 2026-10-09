@@ -64,6 +64,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 - [GitHub Actions cancels the *pending* run](memory/reference/reference-gh-actions-concurrency-pending-cancel.md) — cancel-in-progress:false still evicts queued runs; with a paths filter, published tags can silently lag master
 - [Default Actions token merges skip further workflows](memory/reference/reference-gh-actions-token-merge-no-workflows.md) — automerge as github-actions bot does not start tip push CI/deploy; PR CI was the gate
 - [Herdr child dispatch: verify it landed](memory/reference/reference-herdr-child-dispatch-verify.md) — A long agent prompt can sit unsent in the composer and look exactly like an idle child
+- [Herdr has no plugin context menu](memory/topics/workflow/tech-herdr-no-plugin-context-menu.md) — The sidebar right-click menu is hardcoded; contexts=["workspace"] is parsed and never acted on
 - [homelab.duyet.net](memory/user/user-duyet-site-homelab.md) — Public homelab overview site on the personal domain
 - [kb.duyet.net](memory/user/user-duyet-site-kb.md) — Public rendered face of this shared-brain repo
 - [Dev machine duet-ubuntu](memory/reference/reference-machine-duet-ubuntu.md) — Primary Linux workstation paths and Herdr workspaces
@@ -128,6 +129,7 @@ Scope: **public, generic, durable** facts only. No secrets, hosts, or internal c
 
 ## Tech
 - [A new CodexBar provider is a plugin](memory/topics/ci/tech-codexbar-new-provider-is-a-plugin.md) — Declarative spec + one `.ts`; CI is Swift 6.3.3 on ubuntu-24.04
+- [gh squash uses the head commit title](memory/topics/ci/tech-gh-squash-uses-head-commit-title.md) — Editing the PR title does not fix the squash commit; pass `--subject` or release-please reads the typo
 - [Agent-loop PR cycle](memory/topics/workflow/tech-agent-loop-cycle.md) — Periodic cycle triages open PRs and dispatches fix/review work
 - [Morning Herdr issue-desk cron](memory/topics/workflow/tech-herdr-morning-issue-desk.md) — Cron starts a Grok manager on main; isolated worktrees; dated run folder left open for review
 - [Agent-loop uses cheap workers](memory/topics/workflow/tech-agent-loop-cheap-subagents.md) — PR fix/review fan-out should not all run on the most expensive model
