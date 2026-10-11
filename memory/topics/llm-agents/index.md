@@ -18,6 +18,7 @@
 - [GitHub CLI tokens need a git host alias](tech-gh-token-git-host-alias.md) — A gh vault token keyed to api.github.com does not match github.com git remotes unless lookup aliases those hosts
 - [Hermes custom_providers](tech-hermes-custom-provider.md) — Register custom OpenAI-compatible providers by name, base_url, model
 - [Hermes steer mode](tech-hermes-steer-mode.md) — While busy, new user messages can adjust the current task instead of being ignored
+- [Hermes VPS backup & restore (restic → R2)](tech-hermes-vps-backup-restore.md) — Daily encrypted restic backup of ~/.hermes, ~/kb, SQLite DBs and host config to R2; one-command restore
 - [OMA env-fallback Claude uses anyrouter/free on AnyRouter](tech-oma-bare-claude-gateway-rewrite.md) — Bare claude-* rewrites to anthropic/claude-*; AnyRouter env-fallback sonnet sends anyrouter/free on both OpenAI and Anthropic wire paths (not dotted BYOK 4.6)
 - [Prompt cache is byte-sensitive](tech-prompt-cache-byte-sensitive.md) — Any prefix byte change can bust LLM prompt cache
 - [Quota errors may arrive as HTTP 400](tech-llm-gateway-quota-as-retryable.md) — Reseller budget errors buried in 400 should failover like 402/429
