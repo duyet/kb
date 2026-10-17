@@ -14,7 +14,7 @@ jobs:
     env:
       GITLEAKS_VERSION: "8.18.4"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: kb lint (frontmatter, links, index, secret scan)
         run: KB_DIR="$PWD" bash scripts/lint.sh
